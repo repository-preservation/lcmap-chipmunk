@@ -1,0 +1,47 @@
+version: "2"
+
+networks:
+  lcmap_chipmunk:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      - subnet: 192.168.43.0/24
+
+services:
+
+  elastic:
+    image: elasticsearch:5.2.0
+    ports:
+    - "9200:9200"
+    - "9300:9300"
+    networks:
+      - lcmap_chipmunk
+
+  rabbit:
+    image: rabbitmq:3.6.6-management
+    ports:
+    - "15672:15672"
+    - "5672:5672"
+    - "5671:5671"
+    networks:
+      - lcmap_chipmunk
+
+  cassandra:
+    image: cassandra:3.9
+    ports:
+    - "9042:9042"
+    networks:
+      - lcmap_chipmunk
+
+  nginx:
+    image: "nginx:latest"
+    ports:
+      - "9080:80"
+      - "9443:443"
+    volumes:
+      - ./../test/nginx/config:/etc/nginx/conf.d
+      - ./../test/nginx/ssl:/etc/ssl
+      - ./../test/nginx/data/:/usr/share/nginx/data
+    networks:
+      - lcmap_chipmunk

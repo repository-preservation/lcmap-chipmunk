@@ -1,3 +1,13 @@
-# Introduction to chipmunk
+# Overview
 
-TODO: write [great documentation](http://jacobian.org/writing/what-to-write/)
+TODO: Describe how chipmunk fits into the overall system.
+
+## Dependencies
+
+TODO: Explain libraries used by chipmunk.
+
+TODO: Explain services used by chipmunk.
+
+## Design
+
+TODO: Explain how chipmunk works.

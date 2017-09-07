@@ -1,0 +1,31 @@
+language: clojure
+
+jdk:
+- openjdk8
+
+services:
+  - docker
+
+sudo: required
+
+env:
+  global:
+  - COMMIT=${TRAVIS_COMMIT::8}
+  - DB_HOST="localhost"
+  - DB_KEYSPACE="chipmunk_test"
+  - HTTP_PORT="5757"
+
+before_install:
+  - sudo sysctl -w vm.max_map_count=262144
+  - make docker-compose-up
+  - sudo apt-add-repository ppa:ubuntugis/ppa -y
+  - sudo apt-get update -qq
+  - sudo apt-get install libgdal-dev libgdal-java -y
+
+after_success:
+  - echo "build docker image, eventually"
+
+notifications:
+  slack:
+    rooms:
+      - lcmap:UTqlh9PfPVomfpli10WKyZoh#cicd

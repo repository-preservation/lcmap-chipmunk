@@ -1,6 +1,33 @@
 (defproject chipmunk "0.1.0-SNAPSHOT"
-  :description "FIXME: write description"
-  :url "http://example.com/FIXME"
-  :license {:name "Eclipse Public License"
-            :url "http://www.eclipse.org/legal/epl-v10.html"}
-  :dependencies [[org.clojure/clojure "1.8.0"]])
+  :description "Geospatial data ingest tools"
+  :url "http://github.com/usgs-eros/lcmap-chipmunk"
+  :license {:name "Unlicense"
+            :url ""}
+  :dependencies [[org.clojure/clojure "1.8.0"]
+                 [org.gdal/gdal "1.11.2"]
+                 [digest "1.4.6"]
+                 [clojurewerkz/buffy "1.1.0"]
+                 [org.clojure/tools.logging "0.4.0"]
+                 [org.slf4j/slf4j-log4j12 "1.7.21"]
+                 [environ "1.1.0"]
+                 [cc.qbits/alia-all "4.0.0"]
+                 [cc.qbits/hayt "4.0.0"]
+                 [cc.qbits/spandex "0.5.2"]
+                 [mount "0.1.11"]
+                 [http-kit "2.2.0"]
+                 [ring "1.6.2"]
+                 [ring/ring-defaults "0.3.1"]
+                 [ring/ring-json "0.4.0"]
+                 [compojure "1.6.0"]
+                 [metrics-clojure "2.9.0"]
+                 [metrics-clojure-health "2.9.0"]
+                 [metrics-clojure-jvm "2.9.0"]
+                 [metrics-clojure-ring "2.9.0"]]
+  :plugins [[lein-environ "1.1.0"]]
+  :profiles {:dev     {:resource-paths ["dev"]}
+             :repl    {:resource-paths ["dev"]}
+             :uberjar {:omit-source true
+                       :aot :all}}
+  :jvm-opts ["-server"]
+  :main lcmap.chipmunk.entry
+  :repl-options {:init-ns user})
