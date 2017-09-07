@@ -23,7 +23,7 @@ before_install:
   - sudo apt-get install libgdal-dev libgdal-java -y
 
 after_success:
-  - echo "build docker image, eventually"
+  - ./bin/build
 
 notifications:
   slack:
