@@ -137,18 +137,24 @@
    (chip-seq path {:xstart 0 :ystart 0 :xstop 5000 :ystop 5000 :xstep 100 :ystep 100})))
 
 
-(defn ingest
-  "Save data at source in layer as chips.
+(defn -ingest [layer-name path]
+  ""
+  (into []
+        (map #(layer/insert-chip! layer-name %))
+        (chip-seq path)))
 
-   ^String :path: URL to raster data; works with GDAL's VSI feature,
-     but must only refer to a single raster image.
-   ^String :layer-name:
-  "
-  [path layer-name]
+
+(defn ingest
+  "Save data at path source in layer as chips."
+  [layer-id source-id path]
   (try
-    (log/debugf "ingest '%s' into layer '%s'" path layer-name)
-    (dorun (map (partial layer/insert-chip! layer-name) (chip-seq path)))
-    true
+    (let [chips (chip-seq (str "/vsitar/vsicurl/" path))
+          layer (keyword layer-id)
+          about (map #(select-keys % [:x :y :hash]) chips)]
+      (log/debugf "ingest source '%s' into layer '%s' begin" source-id layer-id)
+      (dorun (map (partial layer/insert-chip! layer) chips))
+      (log/debugf "ingest source '%s' into layer '%s' complete" source-id layer-id)
+      about)
     (catch RuntimeException ex
-      (log/errorf "ingest failed: %s" ex)
-      false)))
+      (log/errorf "ingest source '%s' into layer '%s' failed" ex)
+      (.getMessage ex))))

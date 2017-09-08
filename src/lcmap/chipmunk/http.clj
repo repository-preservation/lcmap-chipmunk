@@ -9,7 +9,8 @@
             [ring.middleware.defaults :as ring-defaults]
             [ring.util.response :as ring-response]
             [lcmap.chipmunk.config :as config]
-            [lcmap.chipmunk.layer :as layer]))
+            [lcmap.chipmunk.layer :as layer]
+            [lcmap.chipmunk.core :as core]))
 
 
 (defn get-layers
@@ -28,7 +29,7 @@
 
 (defn put-layer [layer-id req]
   (log/debug "PUT layer %s" layer-id)
-  {:body (layer/create! layer-id)})
+  {:body {:count (layer/create! (keyword layer-id))}})
 
 
 (defn get-source [layer-id source-id req]
@@ -36,9 +37,12 @@
   {:body "get-source"})
 
 
-(defn put-source [layer-id source-id req]
-  (log/debug "PUT source %s in layer %s" source-id layer-id )
-  {:body "put-source"})
+(defn put-source
+  ""
+  [layer-id source-id req]
+  (let [url     (get-in req [:body :url])
+        results (core/ingest layer-id source-id url)]
+    {:status 200 :body {:results results}}))
 
 
 (defn healthy
@@ -71,16 +75,16 @@
       (get-layer layer-id request))
     (compojure/PUT "/layers/:layer-id" [layer-id]
       (put-layer layer-id request))
-    (compojure/GET "/layers/:layer-id/:source-id" [layer-id source-id]
+    (compojure/GET "/layers/:layer-id/source/:source-id" [layer-id source-id]
       (get-source layer-id source-id request))
-    (compojure/PUT "/layers/:layer-id/:source-id" [layer-id source-id]
+    (compojure/PUT "/layers/:layer-id/source/:source-id" [layer-id source-id]
       (put-source layer-id source-id request))))
 
 
 (def app
   (-> routes
-      (ring-json/wrap-json-body)
-      (ring-json/wrap-json-response {:pretty true})
+      (ring-json/wrap-json-body {:keywords? true})
+      (ring-json/wrap-json-response)
       (ring-defaults/wrap-defaults ring-defaults/api-defaults)))
 
 

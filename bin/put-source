@@ -1,0 +1,11 @@
+#!/bin/bash
+
+#
+# PUT /layers/:layer-name/source/:source-name
+#
+
+curl --silent -O -X PUT \
+     -H 'Content-Type: application/json' \
+     -H 'Accept: application/json' \
+     -d '{"url":"http://guest:guest@localhost:9080/LC08_CU_027009_20130701_20170430_C01_V01_SR.tar/LC08_CU_027009_20130701_20170430_C01_V01_SRB2.tif"}' \
+     'http://localhost:5656/layers/LC08_SRB1/source/LC08_CU_027009_20130701_20170430_C01_V01_SRB2'

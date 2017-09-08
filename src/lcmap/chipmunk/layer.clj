@@ -41,8 +41,10 @@
 (defn create
   "Create a row and table to store chips for a band of data."
   [layer-name]
-  [(hayt/create-table layer-name {:column-definitions default-columns
-                                  :with default-options})
+  [(hayt/create-table (keyword layer-name)
+                      (hayt/if-exists false)
+                      (hayt/column-definitions default-columns)
+                      (hayt/with default-options))
    (hayt/insert :layers (hayt/values {:name (name layer-name)}))])
 
 
@@ -88,4 +90,5 @@
 (defn insert-chip!
   "Add chip to layer."
   [layer-name chip]
-  (alia/execute db/db-session (insert-chip layer-name chip)))
+  (alia/execute db/db-session (insert-chip layer-name chip))
+  chip)
