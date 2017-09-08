@@ -8,7 +8,7 @@
   (format "/vsitar/vsicurl/http://guest:guest@localhost:9080/%s" path))
 
 
-(deftest process-test-chip-seq
+(deftest chip-seq-test
   (testing "INT16 data"
     (let [path (gdal-file-path "LC08_CU_027009_20130701_20170430_C01_V01_SR.tar/LC08_CU_027009_20130701_20170430_C01_V01_SRB2.tif")
           chips (chip-seq path)]
@@ -27,3 +27,9 @@
       (is (= 2500 (count chips)))
       (is (=  663 (count (filter #(= "b85d6fb9ef4260dcf1ce0a1b0bff80d3" %) (map :hash chips)))))
       (is (=   54 (count (distinct (map :hash chips))))))))
+
+
+(deftest ingest-test
+  (testing "Bad URL"
+    (is (thrown? clojure.lang.ExceptionInfo
+                 (ingest "layer-id" "source-id" "bad-url")))))

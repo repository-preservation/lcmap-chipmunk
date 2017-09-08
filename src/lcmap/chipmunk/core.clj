@@ -137,24 +137,26 @@
    (chip-seq path {:xstart 0 :ystart 0 :xstop 5000 :ystop 5000 :xstep 100 :ystep 100})))
 
 
-(defn -ingest [layer-name path]
-  ""
-  (into []
-        (map #(layer/insert-chip! layer-name %))
-        (chip-seq path)))
+(defn add-vsi-prefix
+  "Make an ordinary URL a GDAL path with VSI prefixes."
+  [url]
+  (str "/vsitar/vsicurl/" url))
 
 
 (defn ingest
   "Save data at path source in layer as chips."
-  [layer-id source-id path]
+  [layer-id source-id url]
   (try
-    (let [chips (chip-seq (str "/vsitar/vsicurl/" path))
-          layer (keyword layer-id)
-          about (map #(select-keys % [:x :y :hash]) chips)]
+    (let [path  (add-vsi-prefix url)
+          chips (chip-seq path)
+          layer (keyword layer-id)]
       (log/debugf "ingest source '%s' into layer '%s' begin" source-id layer-id)
       (dorun (map (partial layer/insert-chip! layer) chips))
       (log/debugf "ingest source '%s' into layer '%s' complete" source-id layer-id)
-      about)
-    (catch RuntimeException ex
-      (log/errorf "ingest source '%s' into layer '%s' failed" ex)
-      (.getMessage ex))))
+      {:source   source-id
+       :layer    layer-id
+       :chips    (map #(select-keys % [:x :y :hash]) chips)})
+    (catch java.lang.NullPointerException cause
+       (throw (ex-info (format "ingest failed")
+                       {:layer layer-id :source source-id :url url}
+                       cause)))))

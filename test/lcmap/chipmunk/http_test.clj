@@ -30,7 +30,7 @@
           resource    (format "layers/%s/source/%s" layer-id source-id)
           resp    (-> {:url resource :method :put :body {:url source-url}} shared/pew client/request)
           body    (-> @resp :body (json/decode keyword))]
-      (is (= 2500 (count (body :results))))))
+      (is (= 2500 (count (-> body :result :chips))))))
   ;; Obviously, this layer must not exist.
   (testing "PUT in an invalid layer"
     #_"Layer does not exist")

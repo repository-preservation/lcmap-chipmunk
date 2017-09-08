@@ -40,9 +40,9 @@
 (defn put-source
   ""
   [layer-id source-id req]
-  (let [url     (get-in req [:body :url])
-        results (core/ingest layer-id source-id url)]
-    {:status 200 :body {:results results}}))
+  (let [url    (get-in req [:body :url])
+        result (core/ingest layer-id source-id url)]
+    {:status 200 :body {:result result}}))
 
 
 (defn healthy
