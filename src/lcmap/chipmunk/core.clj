@@ -62,7 +62,7 @@
     copy))
 
 
-(defn copy
+(defn as-byte-array
   "Transform function, adds hash-code for data buffer to chip.
 
    ^Map :chip:
@@ -138,8 +138,7 @@
    return: Sequence of chips with added context.
   "
   ([url info opts]
-   ;; This is intentionally eager, not lazy. The data
-   ;; must be read before the raster is closed.
+   ;; This is intentionally eager, not lazy.
    (gdal/with-data [dataset (gdal/open (add-vsi-prefix url))]
      (let [band (gdal/band dataset)
            source   (:source info)
@@ -151,8 +150,7 @@
                    (map #(assoc % :acquired acquired))
                    (map #(assoc % :layer layer))
                    (map #(point % dataset))
-                   (map #(check %))
-                   (map #(copy %)))
+                   (map #(check %)))
              ;; collection of chips
              (gdal/raster-seq band opts)))))
   ([path info]
