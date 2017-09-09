@@ -84,3 +84,11 @@
       (is (= 2500 (count (get-in resp [:body :result :chips]))))
       (is (= "test_layer" (get-in resp [:body :result :layer])))
       (is (= "test_source" (get-in resp [:body :result :source]))))))
+
+
+(deftest get-chip-test
+  (testing "GET chips"
+    (let [query {"x" "1526415" "y" "1922805"}
+          resp  (shared/go-fish {:url "/test_layer/chips"
+                                 :query-params query})]
+      (is (= 1 (count (get-in resp [:body :result])))))))

@@ -1,6 +1,8 @@
 (ns lcmap.chipmunk.http
   "Handlers for HTTP requests."
   (:require [clojure.tools.logging :as log]
+            [clojure.stacktrace :as stacktrace]
+            [cheshire.generate :as json-gen :refer [add-encoder]]
             [compojure.core :as compojure]
             [metrics.ring.expose]
             [mount.core :as mount]
@@ -12,7 +14,9 @@
             [lcmap.chipmunk.registry :as registry]
             [lcmap.chipmunk.inventory :as inventory]
             [lcmap.chipmunk.layer :as layer]
-            [lcmap.chipmunk.core :as core]))
+            [lcmap.chipmunk.core :as core])
+  (:import [org.joda.time.DateTime]
+           [org.apache.commons.codec.binary Base64]))
 
 
 (defn get-registry
@@ -30,6 +34,15 @@
   {:status 200 :body {:result (registry/lookup! layer-id)}})
 
 
+
+(defn get-chips
+  ""
+  [layer-id req]
+  (log/debugf "GET layer %s chips" layer-id)
+  (let [chips (layer/find! layer-id (:query-params req))]
+    {:status 200 :body {:result chips}}))
+
+
 (defn put-layer
   ""
   [layer-id req]
@@ -40,7 +53,7 @@
 (defn get-source
   ""
   [layer-id source-id req]
-  (log/debug "GET source %s in layer %s" source-id layer-id)
+  (log/debugf "GET source %s in layer %s" source-id layer-id)
   (if-let [source (inventory/lookup! layer-id source-id)]
     {:status 200 :body {:result source}}
     {:status 404 :body {:result []}}))
@@ -87,6 +100,8 @@
       (get-layer layer-id request))
     (compojure/PUT "/:layer-id" [layer-id]
       (put-layer layer-id request))
+    (compojure/GET "/:layer-id/chips" [layer-id]
+      (get-chips layer-id request))
     (compojure/GET "/:layer-id/:source-id" [layer-id source-id]
       (get-source layer-id source-id request))
     (compojure/PUT "/:layer-id/:source-id" [layer-id source-id]
@@ -99,7 +114,8 @@
     (try
       (handler request)
       (catch java.lang.RuntimeException cause
-        (log/errorf (.getMessage cause))
+        (log/error cause "middleware caught exception")
+        (stacktrace/print-stack-trace cause)
         {:status 500 :body {:errors (.getMessage cause)}}))))
 
 
@@ -128,3 +144,25 @@
 (mount/defstate http-server
   :start (http-start)
   :stop  (http-stop))
+
+
+(defn iso8601-encoder
+  "Transform a Joda DateTime object into an ISO8601 string."
+  [date-time generator]
+  (.writeString generator (str date-time)))
+
+
+(defn base64-encoder
+  "Base64 encode a byte-buffer, usually raster data from Cassandra."
+  [buffer generator]
+  (log/debug "encoding HeapByteBuffer")
+  (let [size (- (.limit buffer) (.position buffer))
+        copy (byte-array size)]
+    (.get buffer copy)
+    (.writeString generator (Base64/encodeBase64String copy))))
+
+
+(mount/defstate json-encoders
+  :start (do
+           (json-gen/add-encoder org.joda.time.DateTime iso8601-encoder)
+           (json-gen/add-encoder java.nio.HeapByteBuffer base64-encoder)))

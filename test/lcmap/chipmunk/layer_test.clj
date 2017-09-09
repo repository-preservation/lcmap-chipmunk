@@ -12,5 +12,6 @@
 
 (deftest find-test
   (testing "get the data"
-    (let [chips (layer/find! "test_layer" {:x 1526415 :y 1922805})]
-      (is (= 1 (count chips))))))
+    (let [chips (layer/find! "test_layer" {"x" "1526415" "y" "1922805"})]
+      (is (= 1 (count chips)))
+      chips)))

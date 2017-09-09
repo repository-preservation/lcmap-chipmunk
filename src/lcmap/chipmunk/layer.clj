@@ -7,12 +7,14 @@
   (:require [clojure.tools.logging :as log]
             [qbits.alia :as alia]
             [qbits.hayt :as hayt]
-            [lcmap.chipmunk.db :as db]))
+            [lcmap.chipmunk.db :as db]
+            [lcmap.chipmunk.util :as util]))
 
 
 (defn insert-chip
   "Add chip to layer."
   [{:keys [:layer] :as chip}]
+  (-> chip :data (.rewind))
   (->> (select-keys chip [:source :x :y :acquired :data :hash])
        (hayt/values)
        (hayt/insert (keyword layer))))
@@ -35,7 +37,8 @@
   [layer-name query]
   (hayt/select (keyword layer-name)
                (hayt/columns :data :hash :acquired)
-               (hayt/where query)))
+               (hayt/where [[= :x (util/numberize (query "x"))]
+                            [= :y (util/numberize (query "y"))]])))
 
 
 (defn find!
