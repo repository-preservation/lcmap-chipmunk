@@ -50,6 +50,13 @@
   {:status 201 :body {:result (registry/add! layer-id)}})
 
 
+(defn post-registry
+  ""
+  [req]
+  (let [layer-id (get-in req [:body :layer-id])]
+    {:status 201 :body {:result (registry/add! layer-id)}}))
+
+
 (defn get-source
   ""
   [layer-id source-id req]
@@ -93,7 +100,9 @@
     (compojure/GET "/metrics" []
       (metrics request))
     (compojure/GET "/registry" []
-      {:status 200 :body {:result (registry/all!)}})
+      {:status 200 :body {:result (get-registry)}})
+    (compojure/POST "/registry" []
+      {:status 201 :body {:result (post-registry request)}})
     (compojure/GET "/inventory" []
       {:status 501})
     (compojure/GET "/:layer-id" [layer-id]

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+curl -X POST \
+     -H 'Content-Type: application/json' \
+     -H 'Accept: application/json' \
+     -d '{"layer-id":"test_layer_b", "tags":["test","layer","bravo"]}' \
+     'http://localhost:5656/registry'

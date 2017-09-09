@@ -57,6 +57,14 @@
       resp)))
 
 
+(deftest post-registry-test
+  (testing "POST /registry"
+    (let [layer {:layer-id "test_layer_2" :tags ["test" "layer" "bravo"]}
+          resp (shared/go-fish {:url "/registry" :method :post :body layer})]
+      (is (= 201 (:status resp)))
+      resp)))
+
+
 (deftest get-layer-source-test
   (testing "GET /test_layer/test_source"
     (let [resp (shared/go-fish {:url "/test_layer/test_source"})]
