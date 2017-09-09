@@ -17,12 +17,36 @@
 
 (defn create-registry
   ""
-  [registry-name]
-  (hayt/create-table registry-name
+  []
+  (hayt/create-table :registry
                      (hayt/if-exists false)
                      (hayt/column-definitions {:primary-key [:name] :name :text})
                      (hayt/with {:compression {"sstable_compression" "LZ4Compressor"}
                                  :compaction  {"class" "LeveledCompactionStrategy"}})))
+
+
+;; [[layer,source],created] => {:chips [ {:x :y: acquired :hash} ]}
+
+(defn create-inventory
+  ""
+  []
+  (hayt/create-table :inventory
+                     (hayt/if-exists false)
+                     (hayt/column-definitions {:primary-key [[:layer,:source]]
+                                               :layer    :text
+                                               :source   :text
+                                               :url      :text
+                                               :tile     :text
+                                               :chips    :text})))
+
+
+(defn create-inventory-tile-index
+  ""
+  []
+  (hayt/create-index :inventory
+                     :tile
+                     (hayt/index-name :inventory_tile_ix)
+                     (hayt/if-exists false)))
 
 
 (defn init
@@ -30,12 +54,13 @@
   []
   (let [cluster (alia/cluster (config/alia-config))
         session (alia/connect cluster)
-        ks-name (config/config :db-keyspace)
-        tb-name :layers]
+        ks-name (config/config :db-keyspace)]
     (log/debug "chipmunk db setup started")
     (alia/execute session (create-keyspace ks-name))
     (alia/execute session (hayt/use-keyspace ks-name))
-    (alia/execute session (create-registry tb-name))
+    (alia/execute session (create-registry))
+    (alia/execute session (create-inventory))
+    (alia/execute session (create-inventory-tile-index))
     (alia/shutdown session)
     (alia/shutdown cluster)
     (log/debug "chipmunk db setup finished")

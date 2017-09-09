@@ -4,11 +4,65 @@
             [lcmap.chipmunk.config :as config]
             [lcmap.chipmunk.layer  :as layer]
             [lcmap.chipmunk.http :refer :all]
-            [org.httpkit.client :as client]
+            [org.httpkit.client :as http]
             [cheshire.core :as json]))
 
 
 (use-fixtures :once shared/mount-fixture shared/layer-fixture)
+
+
+(deftest get-base-url-test
+  (testing "it exists, and it's nuts"
+    (let [resp (shared/go-fish {:url ""})]
+      (is (= 200 (:status resp)))
+      (is (= "Chipmunk. It's nuts!" (-> resp :body :result))))))
+
+
+(deftest get-healthy-test
+  (testing "it looks good right now"
+    (let [resp (shared/go-fish {:url "/healthy"})]
+      (is (= 200 (:status resp))))))
+
+
+(deftest get-metrics-test
+  (testing "it exists, but there isn't much there right now"
+    (let [resp (shared/go-fish {:url "/metrics"})]
+      (is (= 200 (:status resp))))))
+
+
+(deftest get-registry-test
+  (testing "GET /registry isnt' done yet, but it's there."
+    (let [resp (shared/go-fish {:url "/registry"})]
+      (is (= 200 (:status resp))))))
+
+
+(deftest get-inventory-test
+  (testing "GET /inventory isnt' done yet, but it's there."
+    (let [resp (shared/go-fish {:url "/inventory"})]
+      (is (= 501 (:status resp))))))
+
+
+(deftest get-layer-test
+  (testing "GET /test_layer"
+    (let [resp (shared/go-fish {:url "/test_layer"})]
+      (is (= 200 (:status resp)))
+      (is (= 1 (-> resp :body :result count))))))
+
+
+(deftest put-layer-test
+  (testing "PUT /test_layer_b"
+    (let [layer {:tags ["test" "layer" "bravo"]}
+          resp (shared/go-fish {:url "/test_layer_b" :method :put :body layer})]
+      (is (= 201 (:status resp)))
+      resp)))
+
+
+(deftest get-layer-source-test
+  (testing "GET /test_layer/test_source"
+    (let [resp (shared/go-fish {:url "/test_layer/test_source"})]
+      (is (= 200 (:status resp)))
+      (resp :body))))
+
 
 ;;
 ;; Dear Future Self,
@@ -22,19 +76,11 @@
 ;;
 
 (deftest put-source-test
-  ;; This layer must exist (one is created as a fixture).
   (testing "PUT a valid source"
-    (let [layer-id    "test_layer"
-          source-id   "LC08_CU_027009_20130701_20170430_C01_V01_SRB2"
-          source-url  "http://guest:guest@localhost:9080/LC08_CU_027009_20130701_20170430_C01_V01_SR.tar/LC08_CU_027009_20130701_20170430_C01_V01_SRB2.tif"
-          resource    (format "layers/%s/source/%s" layer-id source-id)
-          resp    (-> {:url resource :method :put :body {:url source-url}} shared/pew client/request)
-          body    (-> @resp :body (json/decode keyword))]
-      (is (= 2500 (count (-> body :result :chips))))))
-  ;; Obviously, this layer must not exist.
-  (testing "PUT in an invalid layer"
-    #_"Layer does not exist")
-  (testing "PUT an invalid source"
-    #_"Data does not exist"
-    #_"Data isn't a raster"
-    #_"Data is a raster but doesn't conform layer definition"))
+    (let [body {:url "http://guest:guest@localhost:9080/LC08_CU_027009_20130701_20170430_C01_V01_SR.tar/LC08_CU_027009_20130701_20170430_C01_V01_SRB2.tif"}
+          resp (shared/go-fish {:url "/test_layer/test_source"
+                                :method :put
+                                :body body})]
+      (is (= 2500 (count (get-in resp [:body :result :chips]))))
+      (is (= "test_layer" (get-in resp [:body :result :layer])))
+      (is (= "test_source" (get-in resp [:body :result :source]))))))

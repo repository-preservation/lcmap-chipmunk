@@ -45,7 +45,8 @@
   (:require [clojure.tools.logging :as log]
             [digest :as digest]
             [lcmap.chipmunk.gdal :as gdal]
-            [lcmap.chipmunk.layer :as layer]))
+            [lcmap.chipmunk.layer :as layer]
+            [lcmap.chipmunk.inventory :as inventory]))
 
 
 (defn byte-buffer-copy
@@ -82,6 +83,12 @@
     (merge chip {:x (long x) :y (long y)})))
 
 
+(defn add-vsi-prefix
+  "Make an ordinary URL a GDAL path with VSI prefixes."
+  [url]
+  (str "/vsitar/vsicurl/" url))
+
+
 (defn parse-date
   "Turn a basic (undelimited) IS08601 date into one with delimiters.
 
@@ -93,13 +100,13 @@
        (clojure.string/join "-")))
 
 
-(defn ->source
-  "Transform function, adds source info derived from path to chip.
+(defn derive-info
+  "Derive additional info from path to source.
 
-   ^Map :chip:
    ^String :path:
+   ^Map :more:
   "
-  [path]
+  [path more]
   ;; !!!
   ;; Please Note: This is specific to USGS:ARD naming conventions.
   ;; !!!
@@ -107,7 +114,8 @@
         vals (re-find #"([A-Z0-9]{4})_(.{2})_(.{6})_(.{8})_(.{8})_(C.{2})_(V.{2})_([A-Z0-9]+)\.(tif)$" path)]
     (-> (zipmap keys vals)
         (update :acquired parse-date)
-        (update :produced parse-date))))
+        (update :produced parse-date)
+        (merge more))))
 
 
 (defn chip-seq
@@ -115,48 +123,53 @@
 
    ^String :path: URL to raster data; works with GDAL's VSI feature,
      but must only refer to a single raster image.
-   ^Map :opts: Additional parameters to control start/stop/size of
-     chips in raster grid units.
+   ^Map :info: Additional source metadata.
 
    return: Sequence of chips with added context.
   "
-  ([path opts]
+  ([url info opts]
    ;; This is intentionally eager, not lazy. The data
    ;; must be read before the raster is closed.
-   (gdal/with-data [dataset (gdal/open path)]
+   (gdal/with-data [dataset (gdal/open (add-vsi-prefix url))]
      (let [band (gdal/band dataset)
-           info (->source path)]
+           source   (:source info)
+           layer    (:layer info)
+           acquired (:acquired info)]
        (into []
              ;; transform function
-             (comp (map #(merge % info))
+             (comp (map #(assoc % :source source))
+                   (map #(assoc % :acquired acquired))
+                   (map #(assoc % :layer layer))
                    (map #(point % dataset))
                    (map #(check %)))
              ;; collection of chips
              (gdal/raster-seq band opts)))))
-  ([path]
-   (chip-seq path {:xstart 0 :ystart 0 :xstop 5000 :ystop 5000 :xstep 100 :ystep 100})))
+  ([path info]
+   (chip-seq path info {:xstart 0 :ystart 0 :xstop 5000 :ystop 5000 :xstep 100 :ystep 100})))
 
 
-(defn add-vsi-prefix
-  "Make an ordinary URL a GDAL path with VSI prefixes."
-  [url]
-  (str "/vsitar/vsicurl/" url))
+(defn summarize
+  ""
+  [chips info]
+  (assoc info :chips (map #(select-keys % [:x :y :hash]) chips)))
 
 
 (defn ingest
-  "Save data at path source in layer as chips."
+  "Save data at url; adds chips to layer and source info to inventory.
+  "
   [layer-id source-id url]
   (try
-    (let [path  (add-vsi-prefix url)
-          chips (chip-seq path)
-          layer (keyword layer-id)]
-      (log/debugf "ingest source '%s' into layer '%s' begin" source-id layer-id)
-      (dorun (map (partial layer/insert-chip! layer) chips))
-      (log/debugf "ingest source '%s' into layer '%s' complete" source-id layer-id)
-      {:source   source-id
-       :layer    layer-id
-       :chips    (map #(select-keys % [:x :y :hash]) chips)})
+    (let [info (derive-info url {:source source-id :layer layer-id :url url})
+          chips (chip-seq url info)
+          summary (summarize chips info)]
+      (layer/save! chips)
+      (inventory/save! summary)
+      summary)
     (catch java.lang.NullPointerException cause
-       (throw (ex-info (format "ingest failed")
-                       {:layer layer-id :source source-id :url url}
-                       cause)))))
+      (let [msg "GDAL couldn't open source data"]
+        (log/errorf "ingest failed: %s" msg)
+        (throw (ex-info msg {} cause))))
+    (catch com.datastax.driver.core.exceptions.InvalidQueryException cause
+      (let [msg "DB statement invalid."]
+        (log/errorf "ingest failed: %s" msg)
+        (throw (ex-info msg {} cause))))))

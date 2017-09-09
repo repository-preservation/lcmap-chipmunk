@@ -9,40 +9,50 @@
             [ring.middleware.defaults :as ring-defaults]
             [ring.util.response :as ring-response]
             [lcmap.chipmunk.config :as config]
+            [lcmap.chipmunk.registry :as registry]
+            [lcmap.chipmunk.inventory :as inventory]
             [lcmap.chipmunk.layer :as layer]
             [lcmap.chipmunk.core :as core]))
 
 
-(defn get-layers
+(defn get-registry
   ""
   [req]
   (log/debugf "GET layers")
-  {:body (layer/all!)})
+  (if-let [layers (registry/all!)]
+    {:status 200 :body {:result layers}}))
 
 
 (defn get-layer
   ""
   [layer-id req]
-  (log/debug "GET layer %s" layer-id)
-  {:body (layer/lookup! layer-id)})
+  (log/debugf "GET layer %s" layer-id)
+  {:status 200 :body {:result (registry/lookup! layer-id)}})
 
 
-(defn put-layer [layer-id req]
-  (log/debug "PUT layer %s" layer-id)
-  {:body {:count (layer/create! (keyword layer-id))}})
+(defn put-layer
+  ""
+  [layer-id req]
+  (log/debugf "PUT layer %s" layer-id)
+  {:status 201 :body {:result (registry/add! layer-id)}})
 
 
-(defn get-source [layer-id source-id req]
+(defn get-source
+  ""
+  [layer-id source-id req]
   (log/debug "GET source %s in layer %s" source-id layer-id)
-  {:body "get-source"})
+  (if-let [source (inventory/lookup! layer-id source-id)]
+    {:status 200 :body {:result source}}
+    {:status 404 :body {:result []}}))
 
 
 (defn put-source
   ""
-  [layer-id source-id req]
-  (let [url    (get-in req [:body :url])
-        result (core/ingest layer-id source-id url)]
-    {:status 200 :body {:result result}}))
+  [layer-id source-id {{url :url} :body}]
+  (log/debugf "PUT source '%s' at URL '%s' into layer '%s'" source-id url layer-id)
+  (if-let [source (core/ingest layer-id source-id url)]
+    {:status 200 :body {:result source}}
+    {:status 500 :body {:errors ["could not handle source"]}}))
 
 
 (defn healthy
@@ -64,28 +74,41 @@
 (compojure/defroutes routes
   (compojure/context "/" request
     (compojure/GET "/" []
-      {:status 200 :body "Chipmunk. It's nuts!"})
+      {:status 200 :body {:result "Chipmunk. It's nuts!"}})
     (compojure/GET "/healthy" []
       (healthy request))
     (compojure/GET "/metrics" []
       (metrics request))
-    (compojure/GET "/layers" []
-      (get-layers request))
-    (compojure/GET "/layers/:layer-id" [layer-id]
+    (compojure/GET "/registry" []
+      {:status 200 :body {:result (registry/all!)}})
+    (compojure/GET "/inventory" []
+      {:status 501})
+    (compojure/GET "/:layer-id" [layer-id]
       (get-layer layer-id request))
-    (compojure/PUT "/layers/:layer-id" [layer-id]
+    (compojure/PUT "/:layer-id" [layer-id]
       (put-layer layer-id request))
-    (compojure/GET "/layers/:layer-id/source/:source-id" [layer-id source-id]
+    (compojure/GET "/:layer-id/:source-id" [layer-id source-id]
       (get-source layer-id source-id request))
-    (compojure/PUT "/layers/:layer-id/source/:source-id" [layer-id source-id]
+    (compojure/PUT "/:layer-id/:source-id" [layer-id source-id]
       (put-source layer-id source-id request))))
+
+
+(defn wrap-exception-handling
+  [handler]
+  (fn [request]
+    (try
+      (handler request)
+      (catch java.lang.RuntimeException cause
+        (log/errorf (.getMessage cause))
+        {:status 500 :body {:errors (.getMessage cause)}}))))
 
 
 (def app
   (-> routes
       (ring-json/wrap-json-body {:keywords? true})
       (ring-json/wrap-json-response)
-      (ring-defaults/wrap-defaults ring-defaults/api-defaults)))
+      (ring-defaults/wrap-defaults ring-defaults/api-defaults)
+      (wrap-exception-handling)))
 
 
 (declare http-server)

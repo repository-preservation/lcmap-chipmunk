@@ -1,12 +1,15 @@
 (ns lcmap.chipmunk.shared
   (:require [mount.core :as mount]
             [cheshire.core :as json]
+            [org.httpkit.client :as http]
             [lcmap.chipmunk.setup]
             [lcmap.chipmunk.config :as config]
             [lcmap.chipmunk.gdal]
             [lcmap.chipmunk.http]
             [lcmap.chipmunk.db]
-            [lcmap.chipmunk.layer :as layer]))
+            [lcmap.chipmunk.layer :as layer]
+            [lcmap.chipmunk.inventory :as inventory]
+            [lcmap.chipmunk.registry :as registry]))
 
 
 ;; Important:
@@ -39,9 +42,10 @@
 
 
 (defn layer-fixture [f]
-  (layer/create! "test_layer")
+  (registry/add! "test_layer")
   (f)
-  (layer/delete! "test_layer"))
+  (registry/remove! "test_layer"))
+
 
 ;;
 ;; Utilities
@@ -56,3 +60,30 @@
       (update-in [:url] (fn [path] (str base path)))
       (assoc-in  [:headers "Content-Type"] "application/json")
       (update-in [:body] json/encode))))
+
+
+(defn app-url [path]
+  (let [port (-> config/config :http-port Integer/parseInt)]
+    (str (java.net.URL. (java.net.URL. "http" "localhost" port "/") path))))
+
+
+(defn decode-or-whatever
+  [body]
+  (try
+    (json/decode body keyword)
+    (catch java.lang.RuntimeException ex
+      body)))
+
+
+(defn go-fish
+  "Helper function for integration tests."
+  [opts]
+  (let [port (config/config :http-port)
+        base (format "http://localhost:%s/" port)]
+    (-> opts
+        (update-in [:url] (fn [url] (app-url url)))
+        (assoc-in  [:headers "Content-Type"] "application/json")
+        (update-in [:body] json/encode)
+        (http/request)
+        (deref)
+        (update-in [:body] decode-or-whatever))))
