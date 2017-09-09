@@ -110,7 +110,7 @@
   ;; !!!
   ;; Please Note: This is specific to USGS:ARD naming conventions.
   ;; !!!
-  (let [keys [:source :mission :area :tile :produced :acquired :collection :version :band :format]
+  (let [keys [:source :mission :area :tile :acquired :produced :collection :version :band :format]
         vals (re-find #"([A-Z0-9]{4})_(.{2})_(.{6})_(.{8})_(.{8})_(C.{2})_(V.{2})_([A-Z0-9]+)\.(tif)$" path)]
     (-> (zipmap keys vals)
         (update :acquired parse-date)

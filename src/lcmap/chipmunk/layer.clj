@@ -28,3 +28,18 @@
   "Add all chips to layer."
   [chips]
   (dorun (map insert-chip! chips)))
+
+
+(defn find
+  "Get chips matching query."
+  [layer-name query]
+  (hayt/select (keyword layer-name)
+               (hayt/columns :data :hash :acquired)
+               (hayt/where query)))
+
+
+(defn find!
+  "Get chips matching query."
+  [layer-name query]
+  (->> (find layer-name query)
+       (alia/execute db/db-session)))
