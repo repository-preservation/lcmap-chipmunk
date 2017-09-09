@@ -25,8 +25,6 @@
                                  :compaction  {"class" "LeveledCompactionStrategy"}})))
 
 
-;; [[layer,source],created] => {:chips [ {:x :y: acquired :hash} ]}
-
 (defn create-inventory
   ""
   []

@@ -14,7 +14,6 @@
 (defn insert-chip
   "Add chip to layer."
   [{:keys [:layer] :as chip}]
-  (-> chip :data (.rewind))
   (->> (select-keys chip [:source :x :y :acquired :data :hash])
        (hayt/values)
        (hayt/insert (keyword layer))))
@@ -23,26 +22,27 @@
 (defn insert-chip!
   "Add chip to layer."
   [chip]
-  (alia/execute db/db-session (insert-chip chip)))
+  (alia/execute db/db-session (insert-chip chip))
+  (assoc chip :saved true))
 
 
 (defn save!
   "Add all chips to layer."
   [chips]
-  (dorun (map insert-chip! chips)))
+  (into [] (map insert-chip! chips)))
 
 
 (defn find
   "Get chips matching query."
   [layer-name query]
   (hayt/select (keyword layer-name)
-               (hayt/columns :data :hash :acquired)
-               (hayt/where [[= :x (util/numberize (query "x"))]
-                            [= :y (util/numberize (query "y"))]])))
+               (-> query
+                   (update :x util/numberize)
+                   (update :y util/numberize)
+                   (hayt/where))))
 
 
 (defn find!
   "Get chips matching query."
   [layer-name query]
-  (->> (find layer-name query)
-       (alia/execute db/db-session)))
+  (alia/execute db/db-session (find layer-name query)))

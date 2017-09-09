@@ -39,7 +39,7 @@
   ""
   [layer-id req]
   (log/debugf "GET layer %s chips" layer-id)
-  (let [chips (layer/find! layer-id (:query-params req))]
+  (let [chips (layer/find! layer-id (:params req))]
     {:status 200 :body {:result chips}}))
 
 
@@ -119,11 +119,20 @@
         {:status 500 :body {:errors (.getMessage cause)}}))))
 
 
+(defn wrap-keyword-params
+  [handler]
+  (fn [request]
+    (-> request
+        (update :params clojure.walk/keywordize-keys)
+        (handler))))
+
+
 (def app
   (-> routes
       (ring-json/wrap-json-body {:keywords? true})
       (ring-json/wrap-json-response)
       (ring-defaults/wrap-defaults ring-defaults/api-defaults)
+      (wrap-keyword-params)
       (wrap-exception-handling)))
 
 

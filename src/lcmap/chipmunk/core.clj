@@ -58,7 +58,17 @@
   (let [size (.capacity byte-buffer)
         copy (byte-array size)]
     (.get byte-buffer copy)
+    (.rewind byte-buffer)
     copy))
+
+
+(defn copy
+  "Transform function, adds hash-code for data buffer to chip.
+
+   ^Map :chip:
+  "
+  [chip]
+  (assoc chip :data (-> chip :data byte-buffer-copy)))
 
 
 (defn check
@@ -141,7 +151,8 @@
                    (map #(assoc % :acquired acquired))
                    (map #(assoc % :layer layer))
                    (map #(point % dataset))
-                   (map #(check %)))
+                   (map #(check %))
+                   (map #(copy %)))
              ;; collection of chips
              (gdal/raster-seq band opts)))))
   ([path info]
@@ -159,12 +170,11 @@
   "
   [layer-id source-id url]
   (try
-    (let [info (derive-info url {:source source-id :layer layer-id :url url})
-          chips (chip-seq url info)
-          summary (summarize chips info)]
-      (layer/save! chips)
-      (inventory/save! summary)
-      summary)
+    (let [info (derive-info url {:source source-id :layer layer-id :url url})]
+      (-> (chip-seq url info)
+          (layer/save!)
+          (summarize info)
+          (inventory/save!)))
     (catch java.lang.NullPointerException cause
       (let [msg "GDAL couldn't open source data"]
         (log/errorf "ingest failed: %s" msg)

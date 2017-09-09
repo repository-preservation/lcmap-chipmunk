@@ -20,7 +20,8 @@
 (defn save!
   "Add info about a source to the inventory."
   [source]
-  (alia/execute db/db-session (insert-source source)))
+  (alia/execute db/db-session (insert-source source))
+  source)
 
 
 (defn lookup

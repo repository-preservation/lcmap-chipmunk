@@ -1,6 +1,7 @@
 (ns lcmap.chipmunk.gdal
   "Minimal GDAL Java utility functions."
-  (:require [mount.core :as mount]
+  (:require [clojure.tools.logging :as log]
+            [mount.core :as mount]
             [lcmap.chipmunk.util :as util])
   (:import [org.gdal.gdal gdal]
            [org.gdal.gdalconst gdalconst]))
@@ -35,12 +36,14 @@
 (defn open
   "Open dataset at path."
   [path]
+  (log/debugf "GDAL open dataset")
   (gdal/Open path))
 
 
 (defn close
   "Free resources associated with an open dataset."
   [ds]
+  (log/debugf "GDAL close dataset")
   (.delete ds))
 
 
@@ -59,7 +62,7 @@
   [matrix raster-x raster-y]
   (let [gx (double-array 1)
         gy (double-array 1)]
-    (gdal/ApplyGeoTransform matrix raster-y raster-y gx gy)
+    (gdal/ApplyGeoTransform matrix raster-x raster-y gx gy)
     [(first gx) (first gy)]))
 
 
@@ -100,5 +103,5 @@
   [band {:keys [xstart ystart xstop ystop xstep ystep]}]
   (let [reader #(read-raster-direct band %1 %2 xstep ystep)]
     (for [x (range xstart xstop xstep)
-          y (range xstart ystop ystep)]
+          y (range ystart ystop ystep)]
       {:raster-x x :raster-y y :data (reader x y)})))
