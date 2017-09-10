@@ -36,7 +36,7 @@
 
 ;; This is a path to some real data.
 ;;
-(def path-to-data "http://guest:guest@localhost:9080/LC08_CU_027009_20130701_20170430_C01_V01_SR.tar/LC08_CU_027009_20130701_20170430_C01_V01_SRB2.tif")
+(def path-to-data "http://guest:guest@localhost:9080/LC08_CU_027009_20130701_20170729_C01_V01_SR.tar/LC08_CU_027009_20130701_20170729_C01_V01_SRB1.tif")
 
 ;;
 ;; Fixtures

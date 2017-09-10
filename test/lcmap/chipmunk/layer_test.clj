@@ -16,6 +16,6 @@
   ;; specific chips.
   (testing "get the data"
     (let [chips (layer/lookup! "test_layer" {:x "1502415" :y "1946805"})
-          hash  "f5aafc702f24102e4d8bf2fc8bf70efe"]
+          hash  "936f89d12f25727ab7a60f3d9c2cd608"]
       (is (= 1 (count chips)))
       (is (= hash (-> chips first :hash))))))

@@ -1,8 +1,11 @@
 (ns user
   "Developer namespace."
-  (:require [lcmap.chipmunk.db :as db]
+  (:require [clojure.edn :as edn]
+            [lcmap.chipmunk.db :as db]
             [lcmap.chipmunk.jmx]
             [lcmap.chipmunk.http]
+            [lcmap.chipmunk.registry :as registry]
+            [lcmap.chipmunk.inventory :as inventory]
             [lcmap.chipmunk.layer :as layer]
             [lcmap.chipmunk.gdal :as gdal]
             [lcmap.chipmunk.core :as core]
@@ -14,7 +17,9 @@
 ;; Starting a REPL will automatically setup and start the system.
 ;;
 (try
+  (print "setting up chipmunk instance")
   (setup/init)
+  (print "starting mount components")
   (mount/start)
   :ready
   (catch RuntimeException ex
@@ -23,7 +28,8 @@
 
 (comment
   "Create some layers and tables for chip data."
-  (map layer/create! [:LC08_SRB1 :LC08_PIXELQA :LC08_LINEAGEQA]))
+  (let [layers (-> "registry.sample.edn" clojure.java.io/resource slurp edn/read-string)]
+    (map registry/add! layers)))
 
 
 (comment

@@ -77,7 +77,7 @@
 
 (deftest put-source-test
   (testing "PUT a valid source"
-    (let [body {:url "http://guest:guest@localhost:9080/LC08_CU_027009_20130701_20170430_C01_V01_SR.tar/LC08_CU_027009_20130701_20170430_C01_V01_SRB2.tif"}
+    (let [body {:url shared/path-to-data}
           resp (shared/go-fish {:url "/test_layer/test_source"
                                 :method :put
                                 :body body})]
