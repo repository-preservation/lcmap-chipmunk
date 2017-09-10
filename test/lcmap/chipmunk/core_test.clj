@@ -32,7 +32,7 @@
       (is (=   54 (count (distinct (map :hash chips))))))))
 
 
-(deftest ingest-test
+(deftest ingest-tif-in-tar-test
   (testing "ingest valid data"
     (let [path (gdal-file-path "LC08_CU_027009_20130701_20170430_C01_V01_SR.tar/LC08_CU_027009_20130701_20170430_C01_V01_SRB2.tif")
           summary (ingest "test_layer" "test_source" path)]
@@ -42,3 +42,22 @@
   (testing "ingest with a bad URL"
     (is (thrown? clojure.lang.ExceptionInfo
                  (ingest "layer-id" "source-id" "bad-url")))))
+
+(deftest ingest-tif-test
+  (testing "ingest valid data"
+    (let [path (gdal-file-path "LC08_CU_027009_20130701_20170430_C01_V01_PIXELQA.tif")
+          summary (ingest "test_layer" "test_source" path)]
+      (is (= 2500 (-> summary :chips count))))))
+
+
+(deftest add-vsi-prefix-test
+  (testing "add /vsicurl/"
+    (let [url "http://localhost:9090/foo.tif"
+          path (add-vsi-prefix url)]
+      (is (some? (re-seq #"/vsicurl/" path)))
+      (is (not (some? (re-seq #"/vsitar/" path))))))
+  (testing "add /vsitar/"
+    (let [url "http://localhost:9090/foo.tar/bar.tif"
+          path (add-vsi-prefix url)]
+      (is (some? (re-seq #"/vsicurl/" path)))
+      (is (some? (re-seq #"/vsitar/" path))))))

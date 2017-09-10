@@ -96,7 +96,10 @@
 (defn add-vsi-prefix
   "Make an ordinary URL a GDAL path with VSI prefixes."
   [url]
-  (str "/vsitar/vsicurl/" url))
+  (cond
+    (re-seq #"http.+\.tar.+\.tif" url) (str "/vsitar/vsicurl/" url)
+    (re-seq #"http.+\.tif" url) (str "/vsicurl/" url)
+    :else url))
 
 
 (defn parse-date
