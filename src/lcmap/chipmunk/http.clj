@@ -9,6 +9,7 @@
             [org.httpkit.server :as server]
             [ring.middleware.json :as ring-json]
             [ring.middleware.defaults :as ring-defaults]
+            [ring.middleware.keyword-params :as ring-keyword-params]
             [ring.util.response :as ring-response]
             [lcmap.chipmunk.config :as config]
             [lcmap.chipmunk.registry :as registry]
@@ -32,7 +33,6 @@
   [layer-id req]
   (log/debugf "GET layer %s" layer-id)
   {:status 200 :body {:result (registry/lookup! layer-id)}})
-
 
 
 (defn get-chips
@@ -91,6 +91,12 @@
   (metrics.ring.expose/serve-metrics {}))
 
 
+(defn unsupported
+  ""
+  [reason]
+  {:status 501 :body {:result reason}})
+
+
 (compojure/defroutes routes
   (compojure/context "/" request
     (compojure/GET "/" []
@@ -100,15 +106,17 @@
     (compojure/GET "/metrics" []
       (metrics request))
     (compojure/GET "/registry" []
-      {:status 200 :body {:result (get-registry)}})
+      (get-registry request))
     (compojure/POST "/registry" []
-      {:status 201 :body {:result (post-registry request)}})
+      (post-registry request))
     (compojure/GET "/inventory" []
-      {:status 501})
+      (unsupported "Browsing and searching inventory not supported at this time."))
     (compojure/GET "/:layer-id" [layer-id]
       (get-layer layer-id request))
     (compojure/PUT "/:layer-id" [layer-id]
-      (put-layer layer-id request))
+      (unsupported "User POST /registry instead."))
+    (compojure/DELETE "/:layer-id" [layer-id]
+      (unsupported "Removing layers not supported via HTTP at this time."))
     (compojure/GET "/:layer-id/chips" [layer-id]
       (get-chips layer-id request))
     (compojure/GET "/:layer-id/:source-id" [layer-id source-id]
@@ -118,6 +126,7 @@
 
 
 (defn wrap-exception-handling
+  "Catch otherwise unhandled exceptions."
   [handler]
   (fn [request]
     (try
@@ -128,20 +137,12 @@
         {:status 500 :body {:errors (.getMessage cause)}}))))
 
 
-(defn wrap-keyword-params
-  [handler]
-  (fn [request]
-    (-> request
-        (update :params clojure.walk/keywordize-keys)
-        (handler))))
-
-
 (def app
   (-> routes
       (ring-json/wrap-json-body {:keywords? true})
       (ring-json/wrap-json-response)
       (ring-defaults/wrap-defaults ring-defaults/api-defaults)
-      (wrap-keyword-params)
+      (ring-keyword-params/wrap-keyword-params)
       (wrap-exception-handling)))
 
 

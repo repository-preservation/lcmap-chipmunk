@@ -30,12 +30,6 @@
       (is (= 200 (:status resp))))))
 
 
-(deftest get-registry-test
-  (testing "GET /registry isnt' done yet, but it's there."
-    (let [resp (shared/go-fish {:url "/registry"})]
-      (is (= 200 (:status resp))))))
-
-
 (deftest get-inventory-test
   (testing "GET /inventory isnt' done yet, but it's there."
     (let [resp (shared/go-fish {:url "/inventory"})]
@@ -49,39 +43,37 @@
       (is (= 1 (-> resp :body :result count))))))
 
 
-(deftest put-layer-test
-  (testing "PUT /test_layer_b"
-    (let [layer {:tags ["test" "layer" "bravo"]}
-          resp (shared/go-fish {:url "/test_layer_b" :method :put :body layer})]
-      (is (= 201 (:status resp)))
-      resp)))
+(deftest get-registry-test
+  (testing "GET /registry isnt' done yet, but it's there."
+    (let [resp (shared/go-fish {:url "/registry"})]
+      (is (= 200 (:status resp))))))
 
 
 (deftest post-registry-test
   (testing "POST /registry"
-    (let [layer {:layer-id "test_layer_2" :tags ["test" "layer" "bravo"]}
+    (let [layer {:layer-id "test_layer_b" :tags ["test" "layer" "bravo"]}
           resp (shared/go-fish {:url "/registry" :method :post :body layer})]
-      (is (= 201 (:status resp)))
-      resp)))
+      (is (= 201 (:status resp))))))
+
+
+(deftest put-layer-test
+  (testing "PUT /test_layer_b is not supported"
+    (let [layer {:tags ["test" "layer" "bravo"]}
+          resp (shared/go-fish {:url "/test_layer_b" :method :put :body layer})]
+      (is (= 501 (:status resp))))))
+
+
+(deftest delete-layer-test
+  (testing "DELETE /test_layer_b is not supported"
+    (let [resp (shared/go-fish {:url "/test_layer_b" :method :put})]
+      (is (= 501 (:status resp))))))
 
 
 (deftest get-layer-source-test
   (testing "GET /test_layer/test_source"
     (let [resp (shared/go-fish {:url "/test_layer/test_source"})]
-      (is (= 200 (:status resp)))
-      (resp :body))))
+      (is (= 200 (:status resp))))))
 
-
-;;
-;; Dear Future Self,
-;;
-;; This is one of the most important tests in the entire suite
-;; because it fully exercises ingest from end-to-end. Don't
-;; try to make it faster by stubbing or mocking behavior.
-;;
-;; Love,
-;; - me.
-;;
 
 (deftest put-source-test
   (testing "PUT a valid source"
