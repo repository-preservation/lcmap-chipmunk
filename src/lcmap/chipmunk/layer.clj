@@ -32,7 +32,7 @@
   (into [] (map insert-chip! chips)))
 
 
-(defn find
+(defn lookup
   "Get chips matching query."
   [layer-name query]
   (hayt/select (keyword layer-name)
@@ -42,7 +42,7 @@
                    (hayt/where))))
 
 
-(defn find!
+(defn lookup!
   "Get chips matching query."
   [layer-name query]
-  (alia/execute db/db-session (find layer-name query)))
+  (alia/execute db/db-session (lookup layer-name query)))

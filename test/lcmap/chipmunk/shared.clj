@@ -50,7 +50,7 @@
 
 
 (defn layer-fixture [f]
-  (registry/add! "test_layer")
+  (registry/add! {:name "test_layer" :tags ["test" "layer"]})
   (f)
   (registry/remove! "test_layer"))
 
@@ -77,6 +77,8 @@
   [body]
   (try
     (json/decode body keyword)
+    (catch com.fasterxml.jackson.core.JsonParseException ex
+      body)
     (catch java.lang.RuntimeException ex
       body)))
 

@@ -21,7 +21,7 @@
 
 
 (defn get-registry
-  ""
+  "Get all registered layers."
   [req]
   (log/debugf "GET layers")
   (if-let [layers (registry/all!)]
@@ -29,36 +29,30 @@
 
 
 (defn get-layer
-  ""
-  [layer-id req]
-  (log/debugf "GET layer %s" layer-id)
-  {:status 200 :body {:result (registry/lookup! layer-id)}})
+  "Get layer by name."
+  [layer-name req]
+  (log/debugf "GET layer %s" layer-name)
+  {:status 200 :body {:result (registry/lookup! layer-name)}})
 
 
 (defn get-chips
-  ""
+  "Get all chips in layer specified meeting criteria in params."
   [layer-id req]
   (log/debugf "GET layer %s chips" layer-id)
-  (let [chips (layer/find! layer-id (:params req))]
+  (let [chips (layer/lookup! layer-id (:params req))]
     {:status 200 :body {:result chips}}))
 
 
-(defn put-layer
-  ""
-  [layer-id req]
-  (log/debugf "PUT layer %s" layer-id)
-  {:status 201 :body {:result (registry/add! layer-id)}})
-
-
 (defn post-registry
-  ""
+  "Register a layer."
   [req]
-  (let [layer-id (get-in req [:body :layer-id])]
-    {:status 201 :body {:result (registry/add! layer-id)}}))
+  (let [layer (req :body)]
+    (log/debugf "POST registry %s" layer)
+    {:status 201 :body {:result (registry/add! layer)}}))
 
 
 (defn get-source
-  ""
+  "Get source metadata."
   [layer-id source-id req]
   (log/debugf "GET source %s in layer %s" source-id layer-id)
   (if-let [source (inventory/lookup! layer-id source-id)]
@@ -67,7 +61,7 @@
 
 
 (defn put-source
-  ""
+  "Create and ingest data specified by source."
   [layer-id source-id {{url :url} :body}]
   (log/debugf "PUT source '%s' at URL '%s' into layer '%s'" source-id url layer-id)
   (if-let [source (core/ingest layer-id source-id url)]
@@ -92,7 +86,7 @@
 
 
 (defn unsupported
-  ""
+  "Explain why a method is not suppoted by a resource."
   [reason]
   {:status 501 :body {:result reason}})
 

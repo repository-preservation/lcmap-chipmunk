@@ -30,8 +30,8 @@
 
 (defn create-layer-table
   "Create table to store layer's chips."
-  [layer-name]
-  (hayt/create-table (keyword layer-name)
+  [{name :name :as layer}]
+  (hayt/create-table (keyword name)
                      (hayt/if-exists false)
                      (hayt/column-definitions default-columns)
                      (hayt/with default-options)))
@@ -39,15 +39,17 @@
 
 (defn insert-layer-row
   "Add layer to registry."
-  [layer-name]
-  (hayt/insert :registry (hayt/values {:name layer-name})))
+  [layer]
+  (->> (update layer :tags set)
+       (hayt/values)
+       (hayt/insert :registry)))
 
 
 (defn add!
   "Add a layer to the registry."
-  [layer-name]
-  (alia/execute db/db-session (create-layer-table layer-name))
-  (alia/execute db/db-session (insert-layer-row layer-name)))
+  [layer]
+  (alia/execute db/db-session (create-layer-table layer))
+  (alia/execute db/db-session (insert-layer-row layer)))
 
 
 (defn drop-layer-table

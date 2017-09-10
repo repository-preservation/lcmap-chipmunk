@@ -20,7 +20,9 @@
   []
   (hayt/create-table :registry
                      (hayt/if-exists false)
-                     (hayt/column-definitions {:primary-key [:name] :name :text})
+                     (hayt/column-definitions {:primary-key [:name]
+                                               :name :text
+                                               :tags (hayt/frozen (hayt/set-type :text))})
                      (hayt/with {:compression {"sstable_compression" "LZ4Compressor"}
                                  :compaction  {"class" "LeveledCompactionStrategy"}})))
 
@@ -53,13 +55,17 @@
   (let [cluster (alia/cluster (config/alia-config))
         session (alia/connect cluster)
         ks-name (config/config :db-keyspace)]
-    (log/debug "chipmunk db setup started")
-    (alia/execute session (create-keyspace ks-name))
-    (alia/execute session (hayt/use-keyspace ks-name))
-    (alia/execute session (create-registry))
-    (alia/execute session (create-inventory))
-    (alia/execute session (create-inventory-tile-index))
-    (alia/shutdown session)
-    (alia/shutdown cluster)
-    (log/debug "chipmunk db setup finished")
-    :done))
+    (try
+      (log/debug "chipmunk db setup started")
+      (alia/execute session (create-keyspace ks-name))
+      (alia/execute session (hayt/use-keyspace ks-name))
+      (alia/execute session (create-registry))
+      (alia/execute session (create-inventory))
+      (alia/execute session (create-inventory-tile-index))
+      (alia/shutdown session)
+      (alia/shutdown cluster)
+      (log/debug "chipmunk db setup finished")
+      :done
+    (catch java.lang.RuntimeException cause
+      (log/fatal "could not init Chipmunk: %s" (.getMessage cause))
+      :fail))))
