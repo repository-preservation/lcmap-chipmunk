@@ -5,7 +5,9 @@ Chipmunk. It's nuts.
 ## Deploying Chipmunk
 
 Chipmunk is run as a Docker container so you don't have to worry
-about installing GDAL or building an uberjar.
+about installing GDAL or building an uberjar. It will automatically
+create keyspaces and default tables if you give it priveleged
+credentials.
 
 ```
 export DB_HOST=<your_cassandra_host_name>
@@ -13,16 +15,16 @@ export HTTP_PORT=5858
 docker run -p 5858:5858 -it usgseros/lcmap-chipmunk:latest
 ```
 
-Use these environment variables to
+Chipmunk is configured using these environment variables:
 
 | ENV            | Description                 |
 | -------------- | --------------------------- |
-| `DB_HOST`      | List of Cassandra nodes     |
+| `HTTP_PORT`    | Chipmunk's HTTP listener    |
+| `DB_HOST`      | Cassandra node (just one)   |
 | `DB_USER`      | Cassandra username          |
 | `DB_PASS`      | Cassandra password          |
-| `DB_PORT`      | Cassandra password          |
+| `DB_PORT`      | Cassandra cluster port      |
 | `DB_KEYSPACE`  | Chipmunk's keyspace name    |
-| `HTTP_PORT`    | HTTP server listening port  |
 
 
 ## Developing Chipmunk
@@ -40,7 +42,7 @@ git clone git@github.com:USGS-EROS/lcmap-chipmunk.git
 cd lcmap-chipmunk
 ```
 
-Start backing services with Docker compose.
+Start backing services using Docker compose.
 
 ```
 make docker-compose-up
@@ -65,9 +67,6 @@ Start a REPL.
 ```
 lein repl
 ```
-
-## Environment Variables
-
 
 ## Conclusion
 
