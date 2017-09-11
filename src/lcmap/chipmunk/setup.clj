@@ -58,17 +58,20 @@
     (log/debug "chipmunk db setup started")
     (try
       (log/debugf "creating keyspace '%s' if needed" ks-name)
-      (create-keyspace session ks-name)
+      (alia/execute session (create-keyspace ks-name))
       (catch java.lang.RuntimeException cause
-        (log/errorf "could not create chipmunk keyspace '%s'" ks-name)))
+        (log/errorf "could not create chipmunk keyspace '%s'" ks-name)
+        :fail))
     (try
       (log/debugf "creating tables and indices '%s' if needed" ks-name)
-      (hayt/use-keyspace session ks-name)
-      (create-registry session)
-      (create-inventory session)
-      (create-inventory-tile-index session)
+      (alia/execute session (hayt/use-keyspace ks-name))
+      (alia/execute session (create-registry))
+      (alia/execute session (create-inventory))
+      (alia/execute session (create-inventory-tile-index))
+      :done
       (catch java.lang.RuntimeException cause
-        (log/errorf "could not create chipmunk's default tables."))
+        (log/errorf "could not create chipmunk's default tables.")
+        :fail)
       (finally
         (alia/shutdown session)
         (alia/shutdown cluster)
