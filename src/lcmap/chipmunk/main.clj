@@ -1,5 +1,5 @@
 (ns lcmap.chipmunk.main
-  "App startup related functions and entrypoint."
+  "Start-up related functions and entry-point."
   (:require [clojure.tools.logging :as log]
             [mount.core]
             [lcmap.chipmunk.config]
@@ -14,12 +14,21 @@
 
 
 (defn -main
-  ""
+  "This is the entry-point used to start a Chipmunk server.
+
+   Arguments are ignored, use ENV variables or profiles.clj
+   to configure the app."
   [& args]
   (try
     (log/debug "chipmunk init")
+    ;; This needs to happen before mount states are started
+    ;; because they expect keyspaces and tables to exist.
     (lcmap.chipmunk.setup/init)
+    ;; A shutdown hook gives us a way to cleanly stop mount
+    ;; states.
     (lcmap.chipmunk.util/add-shutdown-hook)
+    ;; Remember, only mount states defined that are defined
+    ;; in required namepsaces are started.
     (mount.core/start)
     (catch RuntimeException ex
       (log/errorf "error starting chipmunk: %s" (.getMessage ex))
