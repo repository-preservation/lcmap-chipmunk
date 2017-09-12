@@ -13,7 +13,7 @@
 
 (deftest chip-seq-test
   (testing "INT16 data"
-    (let [path (gdal-file-path "LC08_CU_027009_20130701_20170729_C01_V01_SR.tar/LC08_CU_027009_20130701_20170729_C01_V01_SRB2.tif")
+    (let [path (gdal-file-path "LC08_CU_027009_20130701_20170729_C01_V01_SR.tar/LC08_CU_027009_20130701_20170729_C01_V01_SRB1.tif")
           chips (chip-seq path {:layer "test_layer" :source "test_source"})]
       (is (= 2500 (count chips)))
       (is (=  663 (count (filter #(= "fefd82bcde07e5407f77a990eb18d85d" %) (map :hash chips)))))
