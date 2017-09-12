@@ -29,5 +29,5 @@
              :uberjar {:omit-source true
                        :aot :all}}
   :jvm-opts ["-server"]
-  :main lcmap.chipmunk.entry
+  :main lcmap.chipmunk.main
   :repl-options {:init-ns user})

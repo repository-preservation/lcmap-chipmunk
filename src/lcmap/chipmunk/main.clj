@@ -1,4 +1,4 @@
-(ns lcmap.chipmunk.entry
+(ns lcmap.chipmunk.main
   "App startup related functions and entrypoint."
   (:require [clojure.tools.logging :as log]
             [mount.core]
