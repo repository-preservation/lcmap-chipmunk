@@ -31,7 +31,6 @@ Chipmunk is configured using these environment variables:
 
 You need to install a few dependencies before running Chipmunk locally.
 
-* [Git Large File Storage](https://git-lfs.github.com/).
 * [Docker Compose](https://docs.docker.com/compose/install/)
 * [GDAL 1.11.x](https://gdal.org)
 
