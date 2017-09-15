@@ -1,6 +1,7 @@
 (ns lcmap.chipmunk.http-test
   (:require [clojure.test :refer :all]
             [lcmap.chipmunk.shared :as shared]
+            [lcmap.chipmunk.fixtures :as fixtures]
             [lcmap.chipmunk.config :as config]
             [lcmap.chipmunk.layer  :as layer]
             [lcmap.chipmunk.http :refer :all]
@@ -8,7 +9,7 @@
             [cheshire.core :as json]))
 
 
-(use-fixtures :once shared/mount-fixture shared/layer-fixture)
+(use-fixtures :once fixtures/all-fixtures)
 
 
 (deftest get-base-url-test
@@ -37,10 +38,11 @@
 
 
 (deftest get-layer-test
-  (testing "GET /test_layer"
-    (let [resp (shared/go-fish {:url "/test_layer"})]
+  ;; Just a reminder, this test relies on fixture data...
+  (testing "GET /LC08_SRB1"
+    (let [resp (shared/go-fish {:url "/LC08_SRB1"})]
       (is (= 200 (:status resp)))
-      (is (= 1 (-> resp :body :result count))))))
+      (is (= {:name "LC08_SRB1"} (-> resp :body :result (select-keys [:name])))))))
 
 
 (deftest get-registry-test
@@ -51,44 +53,43 @@
 
 (deftest post-registry-test
   (testing "POST /registry"
-    (let [layer {:name "test_layer_b" :tags ["test" "layer" "bravo"]}
+    (let [layer {:name "LC08_SRB1" :tags ["LC08" "SRB1" "aerosol"]}
           resp (shared/go-fish {:url "/registry" :method :post :body layer})]
       (is (= 201 (:status resp))))))
 
 
 (deftest put-layer-test
-  (testing "PUT /test_layer_b is not supported"
-    (let [layer {:tags ["test" "layer" "bravo"]}
-          resp (shared/go-fish {:url "/test_layer_b" :method :put :body layer})]
+  (testing "PUT layer is not supported"
+    (let [layer {:tags ["LC08" "SRBX"]}
+          resp (shared/go-fish {:url "/LC08_SRBX" :method :put :body layer})]
       (is (= 501 (:status resp))))))
 
 
 (deftest delete-layer-test
-  (testing "DELETE /test_layer_b is not supported"
-    (let [resp (shared/go-fish {:url "/test_layer_b" :method :put})]
+  (testing "DELETE layer is not supported"
+    (let [resp (shared/go-fish {:url "/LC08_SRB1" :method :delete})]
       (is (= 501 (:status resp))))))
 
 
-(deftest get-layer-source-test
-  (testing "GET /test_layer/test_source"
-    (let [resp (shared/go-fish {:url "/test_layer/test_source"})]
-      (is (= 200 (:status resp))))))
-
-
-(deftest put-source-test
-  (testing "PUT a valid source"
-    (let [body {:url shared/path-to-data}
-          resp (shared/go-fish {:url "/test_layer/test_source"
-                                :method :put
-                                :body body})]
-      (is (= 2500 (count (get-in resp [:body :result :chips]))))
-      (is (= "test_layer" (get-in resp [:body :result :layer])))
-      (is (= "test_source" (get-in resp [:body :result :source]))))))
-
-
-(deftest get-chip-test
-  (testing "GET chips"
-    (let [query {"x" "1526415" "y" "1922805"}
-          resp  (shared/go-fish {:url "/test_layer/chips"
-                                 :query-params query})]
-      (is (= 1 (count (get-in resp [:body :result])))))))
+(deftest put-source-then-get-results
+  ;; These tests are combined because the source and chips will not exist until
+  ;; they have been ingested first. This is a slow test because it tests the
+  ;; core functionality of the app: ingest data and make it available as chips.
+  (testing "ingest via HTTP"
+    (testing "given PUT a source"
+      (let [path "LC08_SRB1/LC08_CU_027009_20130701_20170729_C01_V01_SRB1"
+            body {:url (shared/nginx-url "LC08_CU_027009_20130701_20170729_C01_V01_SR.tar/LC08_CU_027009_20130701_20170729_C01_V01_SRB1.tif")}
+            resp (shared/go-fish {:url path :method :put :body body})]
+        (is (= 2500 (count (get-in resp [:body :result :chips]))))
+        (is (= "LC08_SRB1" (get-in resp [:body :result :layer])))
+        (is (= "LC08_CU_027009_20130701_20170729_C01_V01_SRB1" (get-in resp [:body :result :source])))))
+    (testing "then GET source"
+      (let [path "LC08_SRB1/LC08_CU_027009_20130701_20170729_C01_V01_SRB1"
+            resp (shared/go-fish {:url path :method :get})]
+        (is (= 2500 (count (get-in resp [:body :result :chips]))))
+        (is (= "LC08_SRB1" (get-in resp [:body :result :layer])))
+        (is (= "LC08_CU_027009_20130701_20170729_C01_V01_SRB1" (get-in resp [:body :result :source])))))
+    (testing "then GET layer data"
+      (let [resp (shared/go-fish {:url "/LC08_SRB1/chips" :query-params {"x" "1526415" "y" "1946805"}})]
+        (is (= (-> resp (get-in [:body :result]) count) 1))
+        (is (= (-> resp :body :result first :hash) "42eaf57aaf20aac1ae04f539816614ae"))))))

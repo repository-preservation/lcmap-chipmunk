@@ -33,18 +33,27 @@
   :start (init))
 
 
+(defn add-vsi-prefix
+  "Make an ordinary URL a GDAL path with VSI prefixes."
+  [url]
+  (cond
+    (re-seq #"http.+\.tar.+\.tif" url) (str "/vsitar/vsicurl/" url)
+    (re-seq #"http.+\.tif" url) (str "/vsicurl/" url)
+    :else url))
+
+
 (defn open
   "Open dataset at path."
   [path]
-  (log/debugf "GDAL open dataset")
-  (gdal/Open path))
+  (log/tracef "GDAL open dataset '%s'" path)
+  (gdal/Open (add-vsi-prefix path)))
 
 
 (defn close
   "Free resources associated with an open dataset."
   [ds]
-  (log/debugf "GDAL close dataset")
-  (.delete ds))
+  (log/tracef "GDAL close dataset")
+  (if ds (.delete ds)))
 
 
 (defmacro with-data
@@ -74,8 +83,24 @@
   (.GetRasterCount ds))
 
 
+(defn get-raster-x-size [ds]
+  (.GetRasterXSize ds))
+
+
+(defn get-raster-y-size [ds]
+  (.GetRasterYSize ds))
+
+
 (defn get-geo-transform [ds]
   (.GetGeoTransform ds))
+
+
+(defn get-geo-transform-vec [ds]
+  (vec (get-geo-transform ds)))
+
+
+(defn get-metadata [ds]
+  (.GetMetadata_Dict ds))
 
 
 (defn band
@@ -105,3 +130,17 @@
     (for [x (range xstart xstop xstep)
           y (range ystart ystop ystep)]
       {:raster-x x :raster-y y :data (reader x y)})))
+
+
+(defn dataset-info
+  ""
+  [path]
+  (with-data [data (open path)]
+    (if data
+      {:path          path
+       :metadata      (get-metadata data)
+       :projection    (get-projection data)
+       :raster-x-size (get-raster-x-size data)
+       :raster-y-size (get-raster-y-size data)
+       :raster-count  (get-raster-count data)
+       :geo-transform (get-geo-transform-vec data)})))

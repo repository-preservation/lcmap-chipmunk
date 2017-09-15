@@ -24,6 +24,12 @@
   source)
 
 
+(defn ->source
+  ""
+  [result]
+  (update result :chips json/decode))
+
+
 (defn lookup
   ""
   [layer-id source-id]
@@ -35,4 +41,5 @@
   "Retrieve info about a source from the inventory."
   [layer-id source-id]
   (->> (lookup layer-id source-id)
-       (alia/execute db/db-session)))
+       (alia/execute db/db-session)
+       (map ->source)))

@@ -46,7 +46,8 @@
             [digest :as digest]
             [lcmap.chipmunk.gdal :as gdal]
             [lcmap.chipmunk.layer :as layer]
-            [lcmap.chipmunk.inventory :as inventory]))
+            [lcmap.chipmunk.inventory :as inventory]
+            [lcmap.chipmunk.registry :as registry]))
 
 
 (defn byte-buffer-copy
@@ -93,21 +94,12 @@
     (merge chip {:x (long x) :y (long y)})))
 
 
-(defn add-vsi-prefix
-  "Make an ordinary URL a GDAL path with VSI prefixes."
-  [url]
-  (cond
-    (re-seq #"http.+\.tar.+\.tif" url) (str "/vsitar/vsicurl/" url)
-    (re-seq #"http.+\.tif" url) (str "/vsicurl/" url)
-    :else url))
-
-
 (defn parse-date
   "Turn a basic (undelimited) IS08601 date into one with delimiters.
 
    ^String :date: ISO8601 basic date."
   [date]
-  (->> date
+  (->> (str date)
        (re-matches #"([0-9]{4})([0-9]{2})([0-9]{2})")
        (rest)
        (clojure.string/join "-")))
@@ -142,7 +134,7 @@
   "
   ([url info opts]
    ;; This is intentionally eager, not lazy.
-   (gdal/with-data [dataset (gdal/open (add-vsi-prefix url))]
+   (gdal/with-data [dataset (gdal/open url)]
      (let [band (gdal/band dataset)
            source   (:source info)
            layer    (:layer info)
@@ -164,6 +156,30 @@
   ""
   [chips info]
   (assoc info :chips (map #(select-keys % [:x :y :hash]) chips)))
+
+
+(defn compatible?
+  ""
+  [layer info]
+  (let [pattern (-> layer (get :re_pattern "") re-pattern)
+        path (info :path)]
+    (seq? (re-seq pattern path))))
+
+
+(defn verify
+  "Throw an exception if the layer and data at URL are not compatible"
+  [layer-id source-id url]
+  (let [layer (registry/lookup! layer-id)
+        info  (gdal/dataset-info url)]
+    #_(log/debugf "verify layer: %s" layer)
+    #_(log/debugf "verify gdal info: %s" info)
+    (if-not (some? layer)
+      (throw (ex-info (format "layer does not exist '%s'" layer-id) {})))
+    (if-not (some? info)
+      (throw (ex-info (format "source does not exist '%s'" url) {})))
+    (if-not (compatible? layer info)
+      (throw (ex-info (format "layer '%s' not intended for source '%s'" layer-id url) {})))
+    true))
 
 
 (defn ingest

@@ -48,8 +48,13 @@
 (defn add!
   "Add a layer to the registry."
   [layer]
-  (alia/execute db/db-session (create-layer-table layer))
-  (alia/execute db/db-session (insert-layer-row layer)))
+  (try
+    (alia/execute db/db-session (create-layer-table layer))
+    (alia/execute db/db-session (insert-layer-row layer))
+    layer
+    (catch java.lang.RuntimeException cause
+      (let [msg (format "could not create layer %s: %s" layer (.getMessage cause))]
+        (throw (ex-info msg {} cause))))))
 
 
 (defn drop-layer-table
@@ -67,8 +72,14 @@
 (defn remove!
   "Remove layer's corresponding row and table given by name."
   [layer-name]
-  (alia/execute db/db-session (drop-layer-table layer-name))
-  (alia/execute db/db-session (delete-layer-row layer-name)))
+  (try
+    (alia/execute db/db-session (drop-layer-table layer-name))
+    (alia/execute db/db-session (delete-layer-row layer-name))
+    true
+    (catch java.lang.RuntimeException cause
+      (let [msg (format "could not remove layer '%s'" layer-name)]
+        (log/error msg)
+        false))))
 
 
 (defn lookup
@@ -80,7 +91,9 @@
 (defn lookup!
   "Find layer by name."
   [layer-name]
-  (alia/execute db/db-session (lookup layer-name)))
+  (->> (lookup layer-name)
+       (alia/execute db/db-session)
+       (first)))
 
 
 (defn all

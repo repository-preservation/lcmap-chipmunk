@@ -28,7 +28,7 @@
 
 (comment
   "Create some layers and tables for chip data."
-  (let [layers (-> "registry.sample.edn" clojure.java.io/resource slurp edn/read-string)]
+  (let [layers (-> "registry-lc08.edn" clojure.java.io/resource slurp edn/read-string)]
     (map registry/add! layers)))
 
 

@@ -26,6 +26,7 @@
   :plugins [[lein-environ "1.1.0"]]
   :profiles {:dev     {:resource-paths ["dev"]}
              :repl    {:resource-paths ["dev"]}
+             :test    {:resource-paths ["test" "test/resources"]}
              :uberjar {:omit-source true
                        :aot :all}}
   :jvm-opts ["-server"]

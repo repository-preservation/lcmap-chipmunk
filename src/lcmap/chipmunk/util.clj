@@ -59,3 +59,13 @@
     (try
       (.parse number-format string)
       (catch java.text.ParseException ex nil))))
+
+
+(defn re-grouper
+  [matcher keys]
+  (if (.matches matcher)
+    (into {} (map (fn [k] [k (.group matcher (name k))])) keys)))
+
+
+(defn re-mapper [re ks s]
+  (re-grouper (re-matcher re s) ks))

@@ -55,9 +55,9 @@
   "Get source metadata."
   [layer-id source-id req]
   (log/debugf "GET source %s in layer %s" source-id layer-id)
-  (if-let [source (inventory/lookup! layer-id source-id)]
+  (if-let [source (first (inventory/lookup! layer-id source-id))]
     {:status 200 :body {:result source}}
-    {:status 404 :body {:result []}}))
+    {:status 404 :body {:result nil}}))
 
 
 (defn put-source
