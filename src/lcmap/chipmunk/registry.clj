@@ -5,6 +5,7 @@
   (:require [clojure.tools.logging :as log]
             [qbits.alia :as alia]
             [qbits.hayt :as hayt]
+            [camel-snake-kebab.core :as csk]
             [lcmap.chipmunk.db :as db]))
 
 
@@ -28,6 +29,13 @@
                       :compaction  {"class" "LeveledCompactionStrategy"}})
 
 
+(defn canonical-layer-name
+  "Convert layer name to lower-case keyword"
+  [layer-name]
+  ;; separate on non-alphanumeric characters
+  (csk/->SCREAMING_SNAKE_CASE layer-name :separator #"[\W]+"))
+
+
 (defn create-layer-table
   "Create table to store layer's chips."
   [{name :name :as layer}]
@@ -49,9 +57,10 @@
   "Add a layer to the registry."
   [layer]
   (try
-    (alia/execute db/db-session (create-layer-table layer))
-    (alia/execute db/db-session (insert-layer-row layer))
-    layer
+    (let [layer (update layer :name canonical-layer-name)]
+      (alia/execute db/db-session (create-layer-table layer))
+      (alia/execute db/db-session (insert-layer-row layer))
+      layer)
     (catch java.lang.RuntimeException cause
       (let [msg (format "could not create layer %s: %s" layer (.getMessage cause))]
         (throw (ex-info msg {} cause))))))
@@ -66,7 +75,7 @@
 (defn delete-layer-row
   ""
   [layer-name]
-  (hayt/delete :registry (hayt/where {:name layer-name})))
+  (hayt/delete :registry (hayt/where {:name (name layer-name)})))
 
 
 (defn remove!
@@ -85,7 +94,7 @@
 (defn lookup
   "Find layer by name."
   [layer-name]
-  (hayt/select :registry (hayt/where {:name (name layer-name)})))
+  (hayt/select :registry (hayt/where {:name (canonical-layer-name layer-name)})))
 
 
 (defn lookup!

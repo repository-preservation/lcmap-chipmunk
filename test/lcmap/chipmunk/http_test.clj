@@ -42,6 +42,12 @@
   (testing "GET /LC08_SRB1"
     (let [resp (shared/go-fish {:url "/LC08_SRB1"})]
       (is (= 200 (:status resp)))
+      (is (= {:name "LC08_SRB1"} (-> resp :body :result (select-keys [:name])))))
+    (let [resp (shared/go-fish {:url "/lc08_srb1"})]
+      (is (= 200 (:status resp)))
+      (is (= {:name "LC08_SRB1"} (-> resp :body :result (select-keys [:name])))))
+    (let [resp (shared/go-fish {:url "/LC08-srb1"})]
+      (is (= 200 (:status resp)))
       (is (= {:name "LC08_SRB1"} (-> resp :body :result (select-keys [:name])))))))
 
 
