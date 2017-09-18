@@ -186,6 +186,7 @@
   "Save data at url; adds chips to layer and source info to inventory.
   "
   [layer-id source-id url]
+  (verify layer-id source-id url)
   (try
     (let [info (derive-info url {:source source-id :layer layer-id :url url})]
       (-> (chip-seq url info)

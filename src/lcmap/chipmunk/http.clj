@@ -2,6 +2,7 @@
   "Handlers for HTTP requests."
   (:require [clojure.tools.logging :as log]
             [clojure.stacktrace :as stacktrace]
+            [cheshire.core :as json]
             [cheshire.generate :as json-gen :refer [add-encoder]]
             [compojure.core :as compojure]
             [metrics.ring.expose]
@@ -126,9 +127,8 @@
     (try
       (handler request)
       (catch java.lang.RuntimeException cause
-        (log/error cause "middleware caught exception")
-        (stacktrace/print-stack-trace cause)
-        {:status 500 :body {:errors (.getMessage cause)}}))))
+        (log/error cause "middleware caught exception: %s")
+        {:status 500 :body (json/encode {:errors (.getMessage cause)})}))))
 
 
 (def app

@@ -101,4 +101,4 @@
           (alia/shutdown session)
           (alia/shutdown cluster)
           (log/debugf "chipmunk db teardown finished")))
-      (throw (ex-info "You cannot nuke the DB unless the keyspace you provide matches the configured keyspace.")))))
+      (throw (ex-info "You cannot nuke the DB unless the keyspace you provide matches the configured keyspace." {})))))
