@@ -32,9 +32,14 @@
 
 
 (deftest get-inventory-test
-  (testing "GET /inventory isnt' done yet, but it's there."
+  (testing "GET /inventory without params"
     (let [resp (shared/go-fish {:url "/inventory"})]
-      (is (= 501 (:status resp))))))
+      (is (= 400 (:status resp)))
+      (is (= 0 (-> resp :body :result count)))))
+  (testing "GET /inventory for tile without sources"
+    (let [resp (shared/go-fish {:url "/inventory" :query-params {:tile "001001"}})]
+      (is (= 200 (:status resp)))
+      (is (= 0 (-> resp :body :result count))))))
 
 
 (deftest get-layer-test
@@ -98,7 +103,11 @@
     (testing "then GET layer data"
       (let [resp (shared/go-fish {:url "/LC08_SRB1/chips" :query-params {"x" "1526415" "y" "1946805"}})]
         (is (= (-> resp (get-in [:body :result]) count) 1))
-        (is (= (-> resp :body :result first :hash) "42eaf57aaf20aac1ae04f539816614ae"))))))
+        (is (= (-> resp :body :result first :hash) "42eaf57aaf20aac1ae04f539816614ae"))))
+    (testing "GET inventory for tile"
+      (let [resp (shared/go-fish {:url "/inventory" :query-params {:tile "027009"}})]
+        (is (= 200 (:status resp)))
+        (is (= 1 (-> resp :body :result count)))))))
 
 
 (deftest put-source-in-wrong-layer-test

@@ -61,6 +61,14 @@
     {:status 404 :body {:result nil}}))
 
 
+(defn get-sources
+  ""
+  [{:keys [:params] :as req}]
+  (if (seq params)
+    {:status 200 :body {:result (inventory/search params)}}
+    {:status 400 :body {:result []}}))
+
+
 (defn put-source
   "Create and ingest data specified by source."
   [layer-id source-id {{url :url} :body}]
@@ -105,7 +113,7 @@
     (compojure/POST "/registry" []
       (post-registry request))
     (compojure/GET "/inventory" []
-      (unsupported "Browsing and searching inventory not supported at this time."))
+      (get-sources request))
     (compojure/GET "/:layer-id" [layer-id]
       (get-layer layer-id request))
     (compojure/PUT "/:layer-id" [layer-id]

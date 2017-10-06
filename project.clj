@@ -3,7 +3,7 @@
   :url "http://github.com/usgs-eros/lcmap-chipmunk"
   :license {:name "Unlicense"
             :url ""}
-  :dependencies [[org.clojure/clojure "1.8.0"]
+  :dependencies [[org.clojure/clojure "1.9.0-beta1"]
                  [org.gdal/gdal "1.11.2"]
                  [camel-snake-kebab "0.4.0"]
                  [digest "1.4.6"]

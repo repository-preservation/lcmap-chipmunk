@@ -2,11 +2,12 @@
   "Functions for managing source data. These are created as
    part of the ingest process."
   (:require [clojure.tools.logging :as log]
+            [clojure.spec.alpha :as spec]
             [cheshire.core :as json]
             [qbits.alia :as alia]
             [qbits.hayt :as hayt]
-            [lcmap.chipmunk.db :as db]))
-
+            [lcmap.chipmunk.db :as db]
+            :reload))
 
 (defn insert-source
   "Add source info to inventory."
@@ -41,5 +42,24 @@
   "Retrieve info about a source from the inventory."
   [layer-id source-id]
   (->> (lookup layer-id source-id)
+       (alia/execute db/db-session)
+       (map ->source)))
+
+
+(spec/def ::tile string?)
+(spec/def ::layer string?)
+(spec/def ::source string?)
+(spec/def ::query (spec/keys :req-un [(or ::tile (and ::layer ::source))]))
+
+
+(defn search
+  "Query inventory by tile, layer, and/or source."
+  [{:keys [:tile :layer :source] :as params}]
+  (some->> (spec/explain-data ::query params)
+           (ex-info "invalid params")
+           (throw))
+  (->> (hayt/select :inventory
+                    (hayt/where params)
+                    (hayt/columns :layer :source :url))
        (alia/execute db/db-session)
        (map ->source)))
