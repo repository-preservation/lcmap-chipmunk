@@ -19,6 +19,7 @@
                  [ring "1.6.2"]
                  [ring/ring-defaults "0.3.1"]
                  [ring/ring-json "0.4.0"]
+                 [jumblerg/ring.middleware.cors "1.0.1"]
                  [compojure "1.6.0"]
                  [metrics-clojure "2.9.0"]
                  [metrics-clojure-health "2.9.0"]

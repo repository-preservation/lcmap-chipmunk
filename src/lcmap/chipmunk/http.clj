@@ -11,6 +11,7 @@
             [ring.middleware.json :as ring-json]
             [ring.middleware.defaults :as ring-defaults]
             [ring.middleware.keyword-params :as ring-keyword-params]
+            [ring.middleware.cors :as ring-cors]
             [ring.util.response :as ring-response]
             [lcmap.chipmunk.config :as config]
             [lcmap.chipmunk.registry :as registry]
@@ -143,6 +144,7 @@
   (-> routes
       (ring-json/wrap-json-body {:keywords? true})
       (ring-json/wrap-json-response)
+      (ring-cors/wrap-cors #".*")
       (ring-defaults/wrap-defaults ring-defaults/api-defaults)
       (ring-keyword-params/wrap-keyword-params)
       (wrap-exception-handling)))
