@@ -115,6 +115,9 @@
       (post-registry request))
     (compojure/GET "/inventory" []
       (get-sources request))
+    (compojure/GET "/chips" []
+      (let [layer-id (get-in request [:params :layer])]
+        (get-chips layer-id request)))
     (compojure/GET "/:layer-id" [layer-id]
       (get-layer layer-id request))
     (compojure/PUT "/:layer-id" [layer-id]
@@ -136,7 +139,7 @@
     (try
       (handler request)
       (catch java.lang.RuntimeException cause
-        (log/error cause "middleware caught exception: %s")
+        (log/errorf cause "middleware caught exception: %s" (.getMessage cause))
         {:status 500 :body (json/encode {:errors (.getMessage cause)})}))))
 
 

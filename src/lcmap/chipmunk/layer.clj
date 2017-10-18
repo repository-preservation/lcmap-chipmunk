@@ -36,7 +36,7 @@
   "Get chips matching query."
   [layer-name query]
   (hayt/select (keyword layer-name)
-               (-> query
+               (-> (select-keys query [:x :y])
                    (update :x util/numberize)
                    (update :y util/numberize)
                    (hayt/where))))

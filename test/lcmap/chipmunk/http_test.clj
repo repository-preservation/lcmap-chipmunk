@@ -103,7 +103,9 @@
     (testing "then GET layer data"
       (let [resp (shared/go-fish {:url "/LC08_SRB1/chips" :query-params {"x" "1526415" "y" "1946805"}})]
         (is (= (-> resp (get-in [:body :result]) count) 1))
-        (is (= (-> resp :body :result first :hash) "42eaf57aaf20aac1ae04f539816614ae"))))
+        (is (= (-> resp :body :result first :hash) "42eaf57aaf20aac1ae04f539816614ae")))
+      (let [resp (shared/go-fish {:url "/chips" :query-params {"layer" "LC08_SRB1" "x" "1526415" "y" "1946805"}})]
+        (is (= (-> resp (get-in [:body :result]) count) 1))))
     (testing "GET inventory for tile"
       (let [resp (shared/go-fish {:url "/inventory" :query-params {:tile "027009"}})]
         (is (= 200 (:status resp)))
