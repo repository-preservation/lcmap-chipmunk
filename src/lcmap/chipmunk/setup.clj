@@ -70,10 +70,13 @@
         (log/errorf "could not create chipmunk keyspace '%s'" ks-name)
         :fail))
     (try
-      (log/debugf "creating tables and indices '%s' if needed" ks-name)
+      (log/debugf "using keyspace '%s'" ks-name)
       (alia/execute session (hayt/use-keyspace ks-name))
+      (log/debugf "creating registry")
       (alia/execute session (create-registry))
+      (log/debugf "creating inventory")
       (alia/execute session (create-inventory))
+      (log/debugf "creating inventory's tile index")
       (alia/execute session (create-inventory-tile-index))
       :done
       (catch java.lang.RuntimeException cause

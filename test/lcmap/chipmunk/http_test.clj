@@ -117,7 +117,5 @@
     (let [path "LC08_SRB1/LC08_CU_027009_20130701_20170729_C01_V01_SRB1"
           body {:url (shared/nginx-url "LC08_CU_027009_20130701_20170729_C01_V01_SR.tar/LC08_CU_027009_20130701_20170729_C01_V01_PIXELQA.tif")}
           resp (shared/go-fish {:url path :method :put :body body})]
-      (printf "response: %s" resp)
-      (print (resp :body))
       (is (some? (get-in resp [:body :errors])))
       (is (empty? (get-in resp [:body :result]))))))

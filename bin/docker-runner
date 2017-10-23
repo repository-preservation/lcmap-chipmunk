@@ -1,0 +1,8 @@
+#!/bin/bash
+
+docker run -p 5858:5858 \
+  -e DB_HOST=resources_cassandra_1 \
+  -e DB_KEYSPACE=chipmunk_local \
+  -e HTTP_PORT=5858 \
+  --net=resources_lcmap_chipmunk \
+  -it usgseros/lcmap-chipmunk:latest

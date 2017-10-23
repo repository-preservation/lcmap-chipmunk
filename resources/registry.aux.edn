@@ -1,0 +1,12 @@
+[{:name "ASPECT"
+  :re_pattern "(?x)AUX_CU_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<band>ASPECT)(?<extension>.*)"}
+ {:name "DEM"
+  :re_pattern "(?x)AUX_CU_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<band>DEM)(?<extension>.*)"}
+ {:name "MPW"
+  :re_pattern "(?x)AUX_CU_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<band>MPW)(?<extension>.*)"}
+ {:name "POSIDEX"
+  :re_pattern "(?x)AUX_CU_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<band>POSIDEX)(?<extension>.*)"}
+ {:name "SLOPE"
+  :re_pattern "(?x)AUX_CU_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<band>SLOPE)(?<extension>.*)"}
+ {:name "TRENDS"
+  :re_pattern "(?x)AUX_CU_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<band>TRENDS)(?<extension>.*)"}]

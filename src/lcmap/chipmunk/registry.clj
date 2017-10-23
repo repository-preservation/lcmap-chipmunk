@@ -33,7 +33,12 @@
   "Convert layer name to lower-case keyword"
   [layer-name]
   ;; separate on non-alphanumeric characters
-  (csk/->SCREAMING_SNAKE_CASE layer-name :separator #"[\W]+"))
+  (try
+    (csk/->SCREAMING_SNAKE_CASE layer-name :separator #"[\W]+")
+    (catch RuntimeException cause
+      (let [msg (format "could not derive canonical layer name for '%s'" layer-name)]
+        (log/warn msg)
+      (throw (ex-info msg {:layer-name layer-name} cause))))))
 
 
 (defn create-layer-table

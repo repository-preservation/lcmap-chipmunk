@@ -37,7 +37,11 @@
           actual (ingest layer source url)]
       (is (= 2500   (-> actual :chips count)))
       (is (= layer  (actual :layer)))
-      (is (= source (actual :source))))))
+      (is (= source (actual :source)))))
+  (testing "ingest valid data"
+    (let [url    (shared/nginx-url "LC08_CU_027009_20130701_20170729_C01_V01_SR.tar/LC08_CU_027009_20130701_20170729_C01_V01_SRB1.tif")
+          actual (ingest url)]
+      (is (= 2500 (-> actual :chips count))))))
 
 
 (deftest verify-test
@@ -79,3 +83,22 @@
     (derive-info "LC08_CU_027009_20130701_20170729_C01_V01_PIXELQA.tif" {}))
   (testing "Auxiliary info"
     (derive-info "LAUX_CU_027009_20170912_DEM.tif" {})))
+
+
+(deftest deduce-layer-name-test
+  (testing "find the layer (that exists) for a URL"
+    (let [url (shared/nginx-url "LC08_CU_027009_20130701_20170729_C01_V01_SR.tar/LC08_CU_027009_20130701_20170729_C01_V01_SRB1.tif")
+          layer (deduce-layer-name url)]
+      (is (= "LC08_SRB1" layer))))
+  (testing "find a layer (that does not exist) for a URL"
+    (let [url (shared/nginx-url "LC08_CU_027009_20130701_20170729_C01_V01_SR.tar/LC08_CU_027009_20130701_20170729_C01_V01_SRB2.tif")
+          layer (deduce-layer-name url)]
+      (is (= nil layer)))))
+
+
+(deftest deduce-source-id-test
+  (testing "generate an ID for a URL"
+    (let [url (shared/nginx-url "LC08_CU_027009_20130701_20170729_C01_V01_SR.tar/LC08_CU_027009_20130701_20170729_C01_V01_SRB1.tif")
+          actual (-> url deduce-source-id)
+          expected "/LC08_CU_027009_20130701_20170729_C01_V01_SR.tar/LC08_CU_027009_20130701_20170729_C01_V01_SRB1.tif"]
+      (is (= actual expected)))))

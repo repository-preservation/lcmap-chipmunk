@@ -161,43 +161,61 @@
 (defn compatible?
   ""
   [layer info]
-  (let [pattern (-> layer (get :re_pattern "") re-pattern)
-        path (info :path)]
-    (seq? (re-seq pattern path))))
+  (if-let [pattern (some-> layer :re_pattern re-pattern)]
+    (seq? (re-seq pattern (:path info)))))
 
 
 (defn verify
   "Throw an exception if the layer and data at URL are not compatible"
   [layer-id source-id url]
-  (let [layer (registry/lookup! layer-id)
-        info  (gdal/dataset-info url)]
-    #_(log/debugf "verify layer: %s" layer)
-    #_(log/debugf "verify gdal info: %s" info)
-    (if-not (some? layer)
-      (throw (ex-info (format "layer does not exist '%s'" layer-id) {})))
-    (if-not (some? info)
-      (throw (ex-info (format "source does not exist '%s'" url) {})))
-    (if-not (compatible? layer info)
-      (throw (ex-info (format "layer '%s' not intended for source '%s'" layer-id url) {})))
-    true))
+  (try
+    (let [layer (registry/lookup! layer-id)
+          info  (gdal/dataset-info url)]
+      (if-not (some? layer)
+        (throw (ex-info (format "layer does not exist '%s'" layer-id) {})))
+      (if-not (some? info)
+        (throw (ex-info (format "source does not exist '%s'" url) {})))
+      (if-not (compatible? layer info)
+        (throw (ex-info (format "layer '%s' not intended for source '%s'" layer-id url) {})))
+      true)
+    (catch RuntimeException cause
+      (let [reason (.getMessage cause)]
+        (log/errorf "could not verify source: %s" reason)
+        (throw (ex-info (format "could not verify source: %s" reason) {:reason reason} cause))))))
+
+
+(defn deduce-layer-name
+  "Find the layer compatible with file at URL."
+  [url]
+  (if-let [info (gdal/dataset-info url)]
+    (:name (first (filter #(compatible? % info) (registry/all!))))))
+
+
+(defn deduce-source-id
+  "Derive an ID from source from URL's path."
+  [url]
+  (.getPath (java.net.URI. url)))
 
 
 (defn ingest
-  "Save data at url; adds chips to layer and source info to inventory.
-  "
-  [layer-id source-id url]
-  (verify layer-id source-id url)
-  (try
-    (let [info (derive-info url {:source source-id :layer layer-id :url url})]
-      (-> (chip-seq url info)
-          (layer/save!)
-          (summarize info)
-          (inventory/save!)))
-    (catch java.lang.NullPointerException cause
-      (let [msg "GDAL couldn't open source data"]
-        (log/errorf "ingest failed: %s" msg)
-        (throw (ex-info msg {} cause))))
-    (catch com.datastax.driver.core.exceptions.InvalidQueryException cause
-      (let [msg "DB statement invalid."]
-        (log/errorf "ingest failed: %s" msg)
-        (throw (ex-info msg {} cause))))))
+  "Save data at url; adds chips to layer and source info to inventory."
+  ([layer-id source-id url]
+   (verify layer-id source-id url)
+   (try
+     (let [info (derive-info url {:source source-id :layer layer-id :url url})]
+       (-> (chip-seq url info)
+           (layer/save!)
+           (summarize info)
+           (inventory/save!)))
+     (catch java.lang.NullPointerException cause
+       (let [msg "GDAL couldn't open source data"]
+         (log/errorf msg)
+         (throw (ex-info msg {} cause))))
+     (catch com.datastax.driver.core.exceptions.InvalidQueryException cause
+       (let [msg "DB statement invalid."]
+         (log/errorf msg)
+         (throw (ex-info msg {} cause))))))
+  ([url]
+   (let [layer (deduce-layer-name url)
+         source (deduce-source-id url)]
+    (ingest layer source url))))

@@ -1,7 +1,0 @@
-#!/bin/bash
-
-curl --silent -X PUT \
-     -H 'Content-Type: application/json' \
-     -H 'Accept: application/json' \
-     -d '{"url":"http://guest:guest@localhost:9080/LC08_CU_027009_20130701_20170430_C01_V01_SR.tar/LC08_CU_027009_20130701_20170430_C01_V01_SRB2.tif"}' \
-     'http://localhost:5656/test_layer/LC08_CU_027009_20130701_20170430_C01_V01_SRB2'

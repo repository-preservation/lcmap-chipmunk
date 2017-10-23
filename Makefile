@@ -9,9 +9,6 @@ build:
 docker-build:
 	docker build --tag usgseros/lcmap-chipmunk:$(USERNAME) .
 
-docker-run:
-	docker run usgseros/lcmap-chipmunk:$(USERNAME)
-
 docker-shell:
 	docker run -it --entrypoint=/bin/bash usgseros/lcmap-chipmunk:$(USERNAME)
 

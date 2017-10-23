@@ -71,10 +71,19 @@
 
 
 (defn put-source
-  "Create and ingest data specified by source."
+  "Ingest data specified by source into explicit layer."
   [layer-id source-id {{url :url} :body}]
   (log/debugf "PUT source '%s' at URL '%s' into layer '%s'" source-id url layer-id)
   (if-let [source (core/ingest layer-id source-id url)]
+    {:status 200 :body {:result source}}
+    {:status 500 :body {:errors ["could not handle source"]}}))
+
+
+(defn post-source
+  "Ingest data specified by source into implicit layer."
+  [{:keys [:body] :as req}]
+  (log/debugf "POST source '%s'" (:url body))
+  (if-let [source (core/ingest (:url body))]
     {:status 200 :body {:result source}}
     {:status 500 :body {:errors ["could not handle source"]}}))
 
@@ -115,6 +124,8 @@
       (post-registry request))
     (compojure/GET "/inventory" []
       (get-sources request))
+    (compojure/POST "/inventory" []
+      (post-source request))
     (compojure/GET "/chips" []
       (let [layer-id (get-in request [:params :layer])]
         (get-chips layer-id request)))
@@ -130,6 +141,7 @@
       (get-source layer-id source-id request))
     (compojure/PUT "/:layer-id/:source-id" [layer-id source-id]
       (put-source layer-id source-id request))))
+
 
 
 (defn wrap-exception-handling
