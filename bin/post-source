@@ -5,6 +5,7 @@
 #
 # ```
 # ./bin/post-source http://guest:guest@localhost:9080/AUX_CU_029008_V01.tar/AUX_CU_029008_20171018_TRENDS.tif
+# ./bin/post-source http://guest:guest@localhost:9080/LC08_CU_027009_20130701_20170729_C01_V01_SR.tar/LC08_CU_027009_20130701_20170729_C01_V01_SRB1.tif
 # ```
 #
 #

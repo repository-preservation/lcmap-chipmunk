@@ -67,6 +67,22 @@ Start a REPL.
 lein repl
 ```
 
+## Sample Shell Scripts
+
+You can use included bash scripts to define a layer and ingest some data.
+
+Define a layer for LC08 SRB1:
+
+```
+bin/post-layer
+```
+
+Ingest some LC08 SRB1 data:
+
+```
+bin/post-source http://guest:guest@localhost:9080/LC08_CU_027009_20130701_20170729_C01_V01_SR.tar/LC08_CU_027009_20130701_20170729_C01_V01_SRB1.tif
+```
+
 ## Conclusion
 
 Chipmunk. It's nuts.

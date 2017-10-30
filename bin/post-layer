@@ -4,5 +4,5 @@ curl -X POST \
      --verbose \
      -H 'Content-Type: application/json' \
      -H 'Accept: application/json' \
-     -d '{"name":"test_layer_b", "tags":["test","layer","bravo"]}' \
+     -d '{"name":"LC08_SRB1", "re_pattern":"(?x)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>SRB1)(?<extension>.*)"}' \
      'http://localhost:5656/registry'
