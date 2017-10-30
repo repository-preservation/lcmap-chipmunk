@@ -33,6 +33,12 @@
   "Create some layers and tables for chip data."
   (let [layers (-> "registry.lc08.edn" clojure.java.io/resource slurp edn/read-string)]
     (map registry/add! layers))
+  (let [layers (-> "registry.le07.edn" clojure.java.io/resource slurp edn/read-string)]
+    (map registry/add! layers))
+  (let [layers (-> "registry.lt05.edn" clojure.java.io/resource slurp edn/read-string)]
+    (map registry/add! layers))
+  (let [layers (-> "registry.lt04.edn" clojure.java.io/resource slurp edn/read-string)]
+    (map registry/add! layers))
   (let [layers (-> "registry.aux.edn" clojure.java.io/resource slurp edn/read-string)]
     (map registry/add! layers)))
 

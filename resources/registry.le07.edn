@@ -91,7 +91,7 @@
   :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
   :data_fill "-9999"}
- :
+
  {:name "LE07_LINEAGEQA"
   :info "index"
   :tags #{"le07" "lineage" "qa" "lineageqa"}
