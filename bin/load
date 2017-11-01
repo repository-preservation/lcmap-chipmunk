@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Example Usage:
+#
+# `ls test/nginx/data/LC08_*.tar | xargs bin/load`
+#
+
+# Update this to read data from a different location.
+#
+
+URL="http://guest:guest@localhost:9080"
+
+# Ingest each .tif file in each .tar file.
+#
+
+mkdir -p tmp
+
+while [ "$1" != "" ]; do
+    TAR=$1
+    BASE=$(basename $TAR)
+    FILES=$(tar --list --file=$TAR --wildcards '*.tif')
+    for TIF in $FILES; do
+	SOURCE="$URL/$BASE/$TIF"
+	echo "$(date) - ingest $SOURCE"
+	bin/post-source $SOURCE > "tmp/ingest_$TIF.json"
+    done
+    shift
+done
