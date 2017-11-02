@@ -1,12 +1,18 @@
 [{:name "ASPECT"
-  :re_pattern "(?x)AUX_CU_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<band>ASPECT)(?<extension>.*)"}
+  :re_groups  #{"acquired" "band" "extension" "tile" "produced" "projection"}
+  :re_pattern "(?x)(?<prefix>.*)AUX_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_V01_(?<band>ASPECT)(?<extension>.*)"}
  {:name "DEM"
-  :re_pattern "(?x)AUX_CU_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<band>DEM)(?<extension>.*)"}
+  :re_groups  #{"acquired" "band" "extension" "tile" "produced" "projection"}
+  :re_pattern "(?x)(?<prefix>.*)AUX_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_V01_(?<band>DEM)(?<extension>.*)"}
  {:name "MPW"
-  :re_pattern "(?x)AUX_CU_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<band>MPW)(?<extension>.*)"}
+  :re_groups  #{"acquired" "band" "extension" "tile" "produced" "projection"}
+  :re_pattern "(?x)(?<prefix>.*)AUX_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_V01_(?<band>MPW)(?<extension>.*)"}
  {:name "POSIDEX"
-  :re_pattern "(?x)AUX_CU_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<band>POSIDEX)(?<extension>.*)"}
+  :re_groups  #{"acquired" "band" "extension" "tile" "produced" "projection"}
+  :re_pattern "(?x)(?<prefix>.*)AUX_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_V01_(?<band>POSIDEX)(?<extension>.*)"}
  {:name "SLOPE"
-  :re_pattern "(?x)AUX_CU_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<band>SLOPE)(?<extension>.*)"}
+  :re_groups  #{"acquired" "band" "extension" "tile" "produced" "projection"}
+  :re_pattern "(?x)(?<prefix>.*)AUX_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_V01_(?<band>SLOPE)(?<extension>.*)"}
  {:name "TRENDS"
-  :re_pattern "(?x)AUX_CU_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<band>TRENDS)(?<extension>.*)"}]
+  :re_groups  #{"acquired" "band" "extension" "tile" "produced" "projection"}
+  :re_pattern "(?x)(?<prefix>.*)AUX_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_V01_(?<band>TRENDS)(?<extension>.*)"}]
