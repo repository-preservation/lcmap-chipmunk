@@ -80,9 +80,9 @@
 
 (deftest derive-info-test
   (testing "Landsat ARD info"
-    (derive-info "LC08_CU_027009_20130701_20170729_C01_V01_PIXELQA.tif" {}))
-  (testing "Auxiliary info"
-    (derive-info "LAUX_CU_027009_20170912_DEM.tif" {})))
+    (let [layer {:re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
+                 :re_pattern "(?x)(?<prefix>.*)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>PIXELQA)(?<extension>.*)"}]
+      (derive-info "LC08_CU_027009_20130701_20170729_C01_V01_PIXELQA.tif" layer))))
 
 
 (deftest deduce-layer-name-test

@@ -137,9 +137,9 @@
       (unsupported "Removing layers not supported via HTTP at this time."))
     (compojure/GET "/:layer-id/chips" [layer-id]
       (get-chips layer-id request))
-    (compojure/GET "/:layer-id/:source-id" [layer-id source-id]
+    (compojure/GET "/:layer-id/:source-id{.*}" [layer-id source-id]
       (get-source layer-id source-id request))
-    (compojure/PUT "/:layer-id/:source-id" [layer-id source-id]
+    (compojure/PUT "/:layer-id/:source-id{.*}" [layer-id source-id]
       (put-source layer-id source-id request))))
 
 

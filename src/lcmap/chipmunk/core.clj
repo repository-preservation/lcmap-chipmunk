@@ -44,10 +44,13 @@
    "
   (:require [clojure.tools.logging :as log]
             [digest :as digest]
+            [camel-snake-kebab.core :as csk]
+            [camel-snake-kebab.extras :as cske]
             [lcmap.chipmunk.gdal :as gdal]
             [lcmap.chipmunk.layer :as layer]
             [lcmap.chipmunk.inventory :as inventory]
-            [lcmap.chipmunk.registry :as registry]))
+            [lcmap.chipmunk.registry :as registry]
+            [lcmap.chipmunk.util :as util]))
 
 
 (defn byte-buffer-copy
@@ -109,18 +112,14 @@
   "Derive additional info from path to source.
 
    ^String :path:
-   ^Map :more:
+   ^Map :layer:
   "
-  [path more]
-  ;; !!!
-  ;; Please Note: This is specific to USGS:ARD naming conventions.
-  ;; !!!
-  (let [keys [:source :mission :area :tile :acquired :produced :collection :version :band :format]
-        vals (re-find #"([A-Z0-9]{4})_(.{2})_(.{6})_(.{8})_(.{8})_(C.{2})_(V.{2})_([A-Z0-9]+)\.(tif)$" path)]
-    (-> (zipmap keys vals)
+  [path layer]
+  (let [pattern (re-pattern (layer :re_pattern))
+        groups  (layer :re_groups)]
+    (-> (util/re-mapper pattern groups path)
         (update :acquired parse-date)
-        (update :produced parse-date)
-        (merge more))))
+        (update :produced parse-date))))
 
 
 (defn chip-seq
@@ -202,7 +201,9 @@
   ([layer-id source-id url]
    (verify layer-id source-id url)
    (try
-     (let [info (derive-info url {:source source-id :layer layer-id :url url})]
+     (let [layer (registry/lookup! layer-id)
+           info  (merge (cske/transform-keys csk/->snake_case_keyword (derive-info url layer))
+                        {:source source-id :layer layer-id :url url})]
        (-> (chip-seq url info)
            (layer/save!)
            (summarize info)

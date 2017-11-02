@@ -82,34 +82,39 @@
       (is (= 501 (:status resp))))))
 
 
-(deftest put-source-then-get-results
+(deftest post-source-then-get-results
   ;; These tests are combined because the source and chips will not exist until
   ;; they have been ingested first. This is a slow test because it tests the
   ;; core functionality of the app: ingest data and make it available as chips.
-  (testing "ingest via HTTP"
-    (testing "given PUT a source"
-      (let [path "LC08_SRB1/LC08_CU_027009_20130701_20170729_C01_V01_SRB1"
+  (testing "ingest"
+    (testing "via HTTP POST"
+      (let [path "inventory"
             body {:url (shared/nginx-url "LC08_CU_027009_20130701_20170729_C01_V01_SR.tar/LC08_CU_027009_20130701_20170729_C01_V01_SRB1.tif")}
-            resp (shared/go-fish {:url path :method :put :body body})]
+            resp (shared/go-fish {:url path :method :post :body body})]
         (is (= 2500 (count (get-in resp [:body :result :chips]))))
+        (is (= "027009" (get-in resp [:body :result :tile])))
+        (is (= "01" (get-in resp [:body :result :collection])))
+        (is (= "01" (get-in resp [:body :result :version])))
         (is (= "LC08_SRB1" (get-in resp [:body :result :layer])))
-        (is (= "LC08_CU_027009_20130701_20170729_C01_V01_SRB1" (get-in resp [:body :result :source])))))
+        (is (= "/LC08_CU_027009_20130701_20170729_C01_V01_SR.tar/LC08_CU_027009_20130701_20170729_C01_V01_SRB1.tif"
+               (get-in resp [:body :result :source])))))
     (testing "then GET source"
-      (let [path "LC08_SRB1/LC08_CU_027009_20130701_20170729_C01_V01_SRB1"
-            resp (shared/go-fish {:url path :method :get})]
-        (is (= 2500 (count (get-in resp [:body :result :chips]))))
-        (is (= "LC08_SRB1" (get-in resp [:body :result :layer])))
-        (is (= "LC08_CU_027009_20130701_20170729_C01_V01_SRB1" (get-in resp [:body :result :source])))))
+      (let [source "/LC08_CU_027009_20130701_20170729_C01_V01_SR.tar/LC08_CU_027009_20130701_20170729_C01_V01_SRB1.tif"
+            layer  "LC08_SRB1"
+            resp   (shared/go-fish {:url "/inventory" :method :get :query-params {:layer layer :source source}})
+            result (-> resp :body :result first)]
+        (is (= "LC08_SRB1" (result :layer)))
+        (is (= "/LC08_CU_027009_20130701_20170729_C01_V01_SR.tar/LC08_CU_027009_20130701_20170729_C01_V01_SRB1.tif" (result :source)))))
+    (testing "then GET inventory for tile"
+      (let [resp (shared/go-fish {:url "/inventory" :query-params {:tile "027009"}})]
+        (is (= 200 (:status resp)))
+        (is (= 1 (-> resp :body :result count)))))
     (testing "then GET layer data"
       (let [resp (shared/go-fish {:url "/LC08_SRB1/chips" :query-params {"x" "1526415" "y" "1946805"}})]
         (is (= (-> resp (get-in [:body :result]) count) 1))
         (is (= (-> resp :body :result first :hash) "42eaf57aaf20aac1ae04f539816614ae")))
       (let [resp (shared/go-fish {:url "/chips" :query-params {"layer" "LC08_SRB1" "x" "1526415" "y" "1946805"}})]
-        (is (= (-> resp (get-in [:body :result]) count) 1))))
-    (testing "GET inventory for tile"
-      (let [resp (shared/go-fish {:url "/inventory" :query-params {:tile "027009"}})]
-        (is (= 200 (:status resp)))
-        (is (= 1 (-> resp :body :result count)))))))
+        (is (= (-> resp (get-in [:body :result]) count) 1))))))
 
 
 (deftest put-source-in-wrong-layer-test

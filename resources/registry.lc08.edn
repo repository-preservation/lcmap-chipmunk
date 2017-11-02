@@ -1,49 +1,49 @@
 [{:name "LC08_SRB1"
   :info "band 1 surface reflectance"
   :tags #{"lc08" "srb2" "sr" "b1" "coastal" "aerosol" "plurpal"}
-  :re_pattern "(?x)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>SRB1)(?<extension>.*)"
+  :re_pattern "(?x)(?<prefix>.*)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>SRB1)(?<extension>.*)"
   :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
   :data_fill "-9999"}
  {:name "LC08_SRB2"
   :info "band 2 surface reflectance"
   :tags #{"lc08" "srb2" "sr" "b2" "blue"}
-  :re_pattern "(?x)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>SRB2)(?<extension>.*)"
+  :re_pattern "(?x)(?<prefix>.*)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>SRB2)(?<extension>.*)"
   :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
   :data_fill "-9999"}
  {:name "LC08_SRB3"
   :info "band 3 surface reflectance"
   :tags #{"lc08" "srb3" "sr" "b3" "green"}
-  :re_pattern "(?x)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>SRB3)(?<extension>.*)"
+  :re_pattern "(?x)(?<prefix>.*)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>SRB3)(?<extension>.*)"
   :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
   :data_fill "-9999"}
  {:name "LC08_SRB4"
   :info "band 4 surface reflectance"
   :tags #{"lc08" "srb4" "sr" "b4" "red"}
-  :re_pattern "(?x)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>SRB4)(?<extension>.*)"
+  :re_pattern "(?x)(?<prefix>.*)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>SRB4)(?<extension>.*)"
   :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
   :data_fill "-9999"}
  {:name "LC08_SRB5"
   :info "band 5 surface reflectance"
   :tags #{"lc08" "srb5" "sr" "b5" "nir"}
-  :re_pattern "(?x)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>SRB5)(?<extension>.*)"
+  :re_pattern "(?x)(?<prefix>.*)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>SRB5)(?<extension>.*)"
   :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
   :data_fill "-9999"}
  {:name "LC08_SRB6"
   :info "band 6 surface reflectance"
   :tags #{"lc08" "srb6" "sr" "b6" "swir1"}
-  :re_pattern "(?x)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>SRB6)(?<extension>.*)"
+  :re_pattern "(?x)(?<prefix>.*)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>SRB6)(?<extension>.*)"
   :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
   :data_fill "-9999"}
  {:name "LC08_SRB7"
   :info "band 7 surface reflectance"
   :tags #{"lc08" "srb7" "sr" "b7" "swir2"}
-  :re_pattern "(?x)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>SRB7)(?<extension>.*)"
+  :re_pattern "(?x)(?<prefix>.*)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>SRB7)(?<extension>.*)"
   :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
   :data_fill "-9999"}
@@ -51,56 +51,56 @@
  {:name "LC08_TAB1"
   :info "band 1 top-of-atmosphere reflectance"
   :tags #{"lc08" "tab1" "ta" "b1" "coastal" "aerosol" "plurpal"}
-  :re_pattern "(?x)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>TAB1)(?<extension>.*)"
+  :re_pattern "(?x)(?<prefix>.*)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>TAB1)(?<extension>.*)"
   :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
   :data_fill "-9999"}
  {:name "LC08_TAB2"
   :info "band 2 top-of-atmosphere reflectance"
   :tags #{"lc08" "tab2" "ta" "b2" "blue"}
-  :re_pattern "(?x)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>TAB2)(?<extension>.*)"
+  :re_pattern "(?x)(?<prefix>.*)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>TAB2)(?<extension>.*)"
   :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
   :data_fill "-9999"}
  {:name "LC08_TAB3"
   :info "band 3 top-of-atmosphere reflectance"
   :tags #{"lc08" "tab3" "ta" "b3" "green"}
-  :re_pattern "(?x)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>TAB3)(?<extension>.*)"
+  :re_pattern "(?x)(?<prefix>.*)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>TAB3)(?<extension>.*)"
   :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
   :data_fill "-9999"}
  {:name "LC08_TAB4"
   :info "band 4 top-of-atmosphere reflectance"
   :tags #{"lc08" "tab4" "ta" "b4" "red"}
-  :re_pattern "(?x)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>TAB4)(?<extension>.*)"
+  :re_pattern "(?x)(?<prefix>.*)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>TAB4)(?<extension>.*)"
   :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
   :data_fill "-9999"}
  {:name "LC08_TAB5"
   :info "band 5 top-of-atmosphere reflectance"
   :tags #{"lc08" "tab5" "ta" "b5" "nir"}
-  :re_pattern "(?x)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>TAB5)(?<extension>.*)"
+  :re_pattern "(?x)(?<prefix>.*)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>TAB5)(?<extension>.*)"
   :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
   :data_fill "-9999"}
  {:name "LC08_TAB6"
   :info "band 6 top-of-atmosphere reflectance"
   :tags #{"lc08" "tab6" "ta" "b6" "swir1"}
-  :re_pattern "(?x)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>TAB6)(?<extension>.*)"
+  :re_pattern "(?x)(?<prefix>.*)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>TAB6)(?<extension>.*)"
   :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
   :data_fill "-9999"}
  {:name "LC08_TAB7"
   :info "band 7 top-of-atmosphere reflectance"
   :tags #{"lc08" "tab7" "ta" "b7" "swir2"}
-  :re_pattern "(?x)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>TAB7)(?<extension>.*)"
+  :re_pattern "(?x)(?<prefix>.*)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>TAB7)(?<extension>.*)"
   :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
   :data_fill "-9999"}
  {:name "LC08_TAB9"
   :info "band 9 top-of-atmosphere reflectance"
   :tags #{"lc08" "tab9" "ta" "b9" "cirrus"}
-  :re_pattern "(?x)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>TAB9)(?<extension>.*)"
+  :re_pattern "(?x)(?<prefix>.*)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>TAB9)(?<extension>.*)"
   :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
   :data_fill "-9999"}
@@ -108,14 +108,14 @@
  {:name "LC08_BTB10"
   :info "band 10 at-satellite brightness temperature"
   :tags #{"lc08" "bt" "b10" "brightness" "temperature"}
-  :re_pattern "(?x)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>BTB10)(?<extension>.*)"
+  :re_pattern "(?x)(?<prefix>.*)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>BTB10)(?<extension>.*)"
   :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
   :data_fill "-9999"}
  {:name "LC08_BTB11"
   :info "band 11 at-satellite brightness temperature"
   :tags #{"lc08" "bt" "b11" "brightness" "temperature"}
-  :re_pattern "(?x)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>BTB11)(?<extension>.*)"
+  :re_pattern "(?x)(?<prefix>.*)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>BTB11)(?<extension>.*)"
   :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
   :data_fill "-9999"}
@@ -123,49 +123,49 @@
  {:name "LC08_LINEAGEQA"
   :info "index"
   :tags #{"lc08" "lineage" "qa" "lineageqa"}
-  :re_pattern "(?x)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>PIXELQA)(?<extension>.*)"
+  :re_pattern "(?x)(?<prefix>.*)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>PIXELQA)(?<extension>.*)"
   :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}}
  {:name "LC08_PIXELQA"
   :info "level-2 pixel quality band"
   :tags #{"lc08" "pixel" "qa" "pixelqa"}
-  :re_pattern "(?x)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>PIXELQA)(?<extension>.*)"
+  :re_pattern "(?x)(?<prefix>.*)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>PIXELQA)(?<extension>.*)"
   :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}}
  {:name "LC08_RADSATQA"
   :info "saturation mask"
   :tags #{"lc08" "qa" "saturation" "mask"}
-  :re_pattern "(?x)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>PIXELQA)(?<extension>.*)"
+  :re_pattern "(?x)(?<prefix>.*)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>PIXELQA)(?<extension>.*)"
   :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}}
  {:name "LC08_SRAEROSOLQA"
   :info "surface reflectance aerosol mask"
   :tags #{"lc08" "sr" "qa" "aerosol" "mask"}
-  :re_pattern "(?x)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>PIXELQA)(?<extension>.*)"
+  :re_pattern "(?x)(?<prefix>.*)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>PIXELQA)(?<extension>.*)"
   :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}}
 
  {:name "LC08_SEA4"
   :info "band 4 sensor azimuth angles"
   :tags #{"lc08" "sea4" "sensor" "azimuth" "angles"}
-  :re_pattern "(?x)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>SEA4)(?<extension>.*)"
+  :re_pattern "(?x)(?<prefix>.*)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>SEA4)(?<extension>.*)"
   :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
   :data_fill "-32768"}
  {:name "LC08_SEZ4"
   :info "band 4 sensor zenith angles"
   :tags #{"lc08" "sez4" "sensor" "zenith" "angles"}
-  :re_pattern "(?x)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>SEZ4)(?<extension>.*)"
+  :re_pattern "(?x)(?<prefix>.*)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>SEZ4)(?<extension>.*)"
   :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
   :data_fill "-32768"}
  {:name "LC08_SOA4"
   :info "band 4 solar azimuth angles"
   :tags #{"lc08" "soa4" "solar" "azimuth" "angles"}
-  :re_pattern "(?x)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>SOA4)(?<extension>.*)"
+  :re_pattern "(?x)(?<prefix>.*)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>SOA4)(?<extension>.*)"
   :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
   :data_fill "-32768"}
  {:name "LC08_SOZ4"
   :info "band 4 solar zenith angles"
   :tags #{"lc08" "soz4" "solar" "zenith" "angles"}
-  :re_pattern "(?x)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>SOZ4)(?<extension>.*)"
+  :re_pattern "(?x)(?<prefix>.*)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>SOZ4)(?<extension>.*)"
   :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
   :data_fill "-32768"}]
