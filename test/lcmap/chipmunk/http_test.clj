@@ -96,15 +96,15 @@
         (is (= "01" (get-in resp [:body :result :collection])))
         (is (= "01" (get-in resp [:body :result :version])))
         (is (= "LC08_SRB1" (get-in resp [:body :result :layer])))
-        (is (= "/LC08_CU_027009_20130701_20170729_C01_V01_SR.tar/LC08_CU_027009_20130701_20170729_C01_V01_SRB1.tif"
+        (is (= "LC08_CU_027009_20130701_20170729_C01_V01_SRB1.tif"
                (get-in resp [:body :result :source])))))
     (testing "then GET source"
-      (let [source "/LC08_CU_027009_20130701_20170729_C01_V01_SR.tar/LC08_CU_027009_20130701_20170729_C01_V01_SRB1.tif"
+      (let [source "LC08_CU_027009_20130701_20170729_C01_V01_SRB1.tif"
             layer  "LC08_SRB1"
             resp   (shared/go-fish {:url "/inventory" :method :get :query-params {:layer layer :source source}})
             result (-> resp :body :result first)]
         (is (= "LC08_SRB1" (result :layer)))
-        (is (= "/LC08_CU_027009_20130701_20170729_C01_V01_SR.tar/LC08_CU_027009_20130701_20170729_C01_V01_SRB1.tif" (result :source)))))
+        (is (= "LC08_CU_027009_20130701_20170729_C01_V01_SRB1.tif" (result :source)))))
     (testing "then GET inventory for tile"
       (let [resp (shared/go-fish {:url "/inventory" :query-params {:tile "027009"}})]
         (is (= 200 (:status resp)))

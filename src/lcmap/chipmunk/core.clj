@@ -45,7 +45,6 @@
   (:require [clojure.tools.logging :as log]
             [digest :as digest]
             [camel-snake-kebab.core :as csk]
-            [camel-snake-kebab.extras :as cske]
             [lcmap.chipmunk.gdal :as gdal]
             [lcmap.chipmunk.layer :as layer]
             [lcmap.chipmunk.inventory :as inventory]
@@ -116,7 +115,7 @@
   "
   [path layer]
   (let [pattern (re-pattern (layer :re_pattern))
-        groups  (layer :re_groups)]
+        groups  (map csk/->snake_case_keyword (layer :re_groups))]
     (-> (util/re-mapper pattern groups path)
         (update :acquired parse-date)
         (update :produced parse-date))))
@@ -193,7 +192,11 @@
 (defn deduce-source-id
   "Derive an ID from source from URL's path."
   [url]
-  (.getPath (java.net.URI. url)))
+  (-> url
+      (java.net.URI.)
+      (.getPath)
+      (java.io.File.)
+      (.getName)))
 
 
 (defn ingest
@@ -202,7 +205,7 @@
    (verify layer-id source-id url)
    (try
      (let [layer (registry/lookup! layer-id)
-           info  (merge (cske/transform-keys csk/->snake_case_keyword (derive-info url layer))
+           info  (merge (derive-info url layer)
                         {:source source-id :layer layer-id :url url})]
        (-> (chip-seq url info)
            (layer/save!)
@@ -219,4 +222,4 @@
   ([url]
    (let [layer (deduce-layer-name url)
          source (deduce-source-id url)]
-    (ingest layer source url))))
+     (ingest layer source url))))

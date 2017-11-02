@@ -100,5 +100,5 @@
   (testing "generate an ID for a URL"
     (let [url (shared/nginx-url "LC08_CU_027009_20130701_20170729_C01_V01_SR.tar/LC08_CU_027009_20130701_20170729_C01_V01_SRB1.tif")
           actual (-> url deduce-source-id)
-          expected "/LC08_CU_027009_20130701_20170729_C01_V01_SR.tar/LC08_CU_027009_20130701_20170729_C01_V01_SRB1.tif"]
+          expected "LC08_CU_027009_20130701_20170729_C01_V01_SRB1.tif"]
       (is (= actual expected)))))
