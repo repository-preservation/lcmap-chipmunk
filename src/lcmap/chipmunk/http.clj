@@ -1,7 +1,6 @@
 (ns lcmap.chipmunk.http
   "Handlers for HTTP requests."
   (:require [clojure.tools.logging :as log]
-            [clojure.stacktrace :as stacktrace]
             [cheshire.core :as json]
             [cheshire.generate :as json-gen :refer [add-encoder]]
             [compojure.core :as compojure]
@@ -12,13 +11,12 @@
             [ring.middleware.defaults :as ring-defaults]
             [ring.middleware.keyword-params :as ring-keyword-params]
             [ring.middleware.cors :as ring-cors]
-            [ring.util.response :as ring-response]
             [lcmap.chipmunk.config :as config]
             [lcmap.chipmunk.registry :as registry]
             [lcmap.chipmunk.inventory :as inventory]
-            [lcmap.chipmunk.layer :as layer]
+            [lcmap.chipmunk.chips :as chips]
             [lcmap.chipmunk.core :as core])
-  (:import [org.joda.time.DateTime]
+  (:import [org.joda.time DateTime]
            [org.apache.commons.codec.binary Base64]))
 
 
@@ -30,53 +28,45 @@
     {:status 200 :body {:result layers}}))
 
 
-(defn get-layer
-  "Get layer by name."
-  [layer-name req]
-  (log/debugf "GET layer %s" layer-name)
-  {:status 200 :body {:result (registry/lookup! layer-name)}})
-
-
 (defn get-chips
-  "Get all chips in layer specified meeting criteria in params."
-  [layer-id req]
-  (log/debugf "GET layer %s chips" layer-id)
-  (let [chips (layer/lookup! layer-id (:params req))]
-    {:status 200 :body {:result chips}}))
+  "Get all chips (in a layer) specified meeting criteria in params."
+  [{:keys [params] :as req}]
+  ;; FYI: To maintain compatability with previous chip providing resources,
+  ;; each chip has a ubid property set.
+  (log/debugf "GET chips %s" params)
+  (let [ubid (get-in req [:params :ubid])
+        results (chips/lookup! params)
+        results+ (map #(assoc % :ubid ubid) results)]
+    {:status 200 :body results+}))
+
+
+(defn get-chip-specs
+  "Get all chips (in a layer) specified meeting criteria in params."
+  [{:keys [params] :as req}]
+  ;; FYI: Unlike other resources, the chips-spec resource does not
+  ;; associate the results with a ':results' key because existing clients
+  ;; do not expect this convention.
+  (log/debugf "GET chip-specs %s" params)
+  (let [results (registry/search! params)
+        results+ (map #(assoc % :ubid (get % :name)) results)]
+    {:status 200 :body results+}))
 
 
 (defn post-registry
-  "Register a layer."
+  "Create (or update) a layer's properties."
   [req]
   (let [layer (req :body)]
     (log/debugf "POST registry %s" layer)
     {:status 201 :body {:result (registry/add! layer)}}))
 
 
-(defn get-source
-  "Get source metadata."
-  [layer-id source-id req]
-  (log/debugf "GET source %s in layer %s" source-id layer-id)
-  (if-let [source (first (inventory/lookup! layer-id source-id))]
-    {:status 200 :body {:result source}}
-    {:status 404 :body {:result nil}}))
-
-
 (defn get-sources
-  ""
-  [{:keys [:params] :as req}]
+  "Find sources matching query params."
+  [{:keys [params] :as req}]
+  (log/debugf "GET sources %s" params)
   (if (seq params)
     {:status 200 :body {:result (inventory/search params)}}
     {:status 400 :body {:result []}}))
-
-
-(defn put-source
-  "Ingest data specified by source into explicit layer."
-  [layer-id source-id {{url :url} :body}]
-  (log/debugf "PUT source '%s' at URL '%s' into layer '%s'" source-id url layer-id)
-  (if-let [source (core/ingest layer-id source-id url)]
-    {:status 200 :body {:result source}}
-    {:status 500 :body {:errors ["could not handle source"]}}))
 
 
 (defn post-source
@@ -91,7 +81,7 @@
 (defn healthy
   "Handler for checking application health."
   [request]
-  (log/debug "get health")
+  (log/debug "GET health")
   (if true
     {:status 200 :body {:healthy true}}
     {:status 500 :body {:healthy false}}))
@@ -100,24 +90,14 @@
 (defn metrics
   "Handler for reporting metrics."
   [request]
-  (log/debug "get metrics")
+  (log/debug "GET metrics")
   (metrics.ring.expose/serve-metrics {}))
-
-
-(defn unsupported
-  "Explain why a method is not suppoted by a resource."
-  [reason]
-  {:status 501 :body {:result reason}})
 
 
 (compojure/defroutes routes
   (compojure/context "/" request
     (compojure/GET "/" []
       {:status 200 :body {:result "Chipmunk. It's nuts!"}})
-    (compojure/GET "/healthy" []
-      (healthy request))
-    (compojure/GET "/metrics" []
-      (metrics request))
     (compojure/GET "/registry" []
       (get-registry request))
     (compojure/POST "/registry" []
@@ -127,21 +107,13 @@
     (compojure/POST "/inventory" []
       (post-source request))
     (compojure/GET "/chips" []
-      (let [layer-id (get-in request [:params :layer])]
-        (get-chips layer-id request)))
-    (compojure/GET "/:layer-id" [layer-id]
-      (get-layer layer-id request))
-    (compojure/PUT "/:layer-id" [layer-id]
-      (unsupported "User POST /registry instead."))
-    (compojure/DELETE "/:layer-id" [layer-id]
-      (unsupported "Removing layers not supported via HTTP at this time."))
-    (compojure/GET "/:layer-id/chips" [layer-id]
-      (get-chips layer-id request))
-    (compojure/GET "/:layer-id/:source-id{.*}" [layer-id source-id]
-      (get-source layer-id source-id request))
-    (compojure/PUT "/:layer-id/:source-id{.*}" [layer-id source-id]
-      (put-source layer-id source-id request))))
-
+      (get-chips request))
+    (compojure/GET "/chip-specs" []
+      (get-chip-specs request))
+    (compojure/GET "/healthy" []
+      (healthy request))
+    (compojure/GET "/metrics" []
+      (metrics request))))
 
 
 (defn wrap-exception-handling

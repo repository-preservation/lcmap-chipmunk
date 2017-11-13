@@ -3,6 +3,7 @@
    a row to the layer registry and create or drop a table to store
    the the layer's raster data. "
   (:require [clojure.tools.logging :as log]
+            [clojure.set :as s]
             [qbits.alia :as alia]
             [qbits.hayt :as hayt]
             [camel-snake-kebab.core :as csk]
@@ -119,4 +120,12 @@
 (defn all!
   ""
   []
-  (alia/execute db/db-session (all)))
+  (sort-by :name (alia/execute db/db-session (all))))
+
+
+(defn search!
+  "Search layers by tags."
+  [params]
+  (let [layers (all!)
+        tags (-> params :tags vector flatten set)]
+    (filter #(clojure.set/subset? tags (% :tags)) layers)))

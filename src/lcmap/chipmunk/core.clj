@@ -46,7 +46,7 @@
             [digest :as digest]
             [camel-snake-kebab.core :as csk]
             [lcmap.chipmunk.gdal :as gdal]
-            [lcmap.chipmunk.layer :as layer]
+            [lcmap.chipmunk.chips :as chips]
             [lcmap.chipmunk.inventory :as inventory]
             [lcmap.chipmunk.registry :as registry]
             [lcmap.chipmunk.util :as util]))
@@ -151,20 +151,20 @@
 
 
 (defn summarize
-  ""
+  "Add x/y/hash of each chip to given info map."
   [chips info]
   (assoc info :chips (map #(select-keys % [:x :y :hash]) chips)))
 
 
 (defn compatible?
-  ""
+  "Check info map's path against the layer's re_pattern."
   [layer info]
   (if-let [pattern (some-> layer :re_pattern re-pattern)]
     (seq? (re-seq pattern (:path info)))))
 
 
 (defn verify
-  "Throw an exception if the layer and data at URL are not compatible"
+  "Throw an exception if the layer and data at URL are not compatible."
   [layer-id source-id url]
   (try
     (let [layer (registry/lookup! layer-id)
@@ -208,7 +208,7 @@
            info  (merge (derive-info url layer)
                         {:source source-id :layer layer-id :url url})]
        (-> (chip-seq url info)
-           (layer/save!)
+           (chips/save!)
            (summarize info)
            (inventory/save!)))
      (catch java.lang.NullPointerException cause

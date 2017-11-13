@@ -22,14 +22,24 @@
   (hayt/create-table :registry
                      (hayt/if-exists false)
                      (hayt/column-definitions {:primary-key [:name]
-                                               :name :text
-                                               :info :text
-                                               :data_type :text
-                                               :data_fill :text
-                                               :data_mask (hayt/frozen (hayt/map-type :text :text))
+                                               :name       :text
+                                               :info       :text
+                                               :tags       (hayt/frozen (hayt/set-type :text))
                                                :re_pattern :text
-                                               :re_groups (hayt/frozen (hayt/set-type :text))
-                                               :tags (hayt/frozen (hayt/set-type :text))})
+                                               :re_groups  (hayt/frozen (hayt/set-type :text))
+                                               :pixel_x    :float
+                                               :pixel_y    :float
+                                               :chip_x     :int
+                                               :chip_y     :int
+                                               :shift_x    :float
+                                               :shift_y    :float
+                                               :data_fill  :text
+                                               :data_mask  (hayt/frozen (hayt/map-type :text :text))
+                                               :data_range (hayt/frozen (hayt/list-type :int))
+                                               :data_scale :float
+                                               :data_shape (hayt/frozen (hayt/list-type :int))
+                                               :data_type  :text
+                                               :data_units :text})
                      (hayt/with {:compression {"sstable_compression" "LZ4Compressor"}
                                  :compaction  {"class" "LeveledCompactionStrategy"}})))
 
@@ -39,7 +49,7 @@
   []
   (hayt/create-table :inventory
                      (hayt/if-exists false)
-                     (hayt/column-definitions {:primary-key [[:layer,:source]]
+                     (hayt/column-definitions {:primary-key [:source]
                                                :layer    :text
                                                :source   :text
                                                :url      :text
@@ -53,6 +63,15 @@
   (hayt/create-index :inventory
                      :tile
                      (hayt/index-name :inventory_tile_ix)
+                     (hayt/if-exists false)))
+
+
+(defn create-inventory-layer-index
+  ""
+  []
+  (hayt/create-index :inventory
+                     :layer
+                     (hayt/index-name :inventory_layer_ix)
                      (hayt/if-exists false)))
 
 
@@ -78,6 +97,8 @@
       (alia/execute session (create-inventory))
       (log/debugf "creating inventory's tile index")
       (alia/execute session (create-inventory-tile-index))
+      (log/debugf "creating inventory's layer index")
+      (alia/execute session (create-inventory-layer-index))
       :done
       (catch java.lang.RuntimeException cause
         (log/errorf "could not create chipmunk's default tables.")

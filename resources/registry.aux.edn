@@ -1,12 +1,24 @@
 [{:name "ASPECT"
-  :re_pattern "(?x)AUX_CU_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<band>ASPECT)(?<extension>.*)"}
+  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
+  :re_groups  #{"acquired" "band" "extension" "tile" "produced" "projection"}
+  :re_pattern "(?x)(?<prefix>.*)AUX_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_V01_(?<band>ASPECT)(?<extension>.*)"}
  {:name "DEM"
-  :re_pattern "(?x)AUX_CU_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<band>DEM)(?<extension>.*)"}
+  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
+  :re_groups  #{"acquired" "band" "extension" "tile" "produced" "projection"}
+  :re_pattern "(?x)(?<prefix>.*)AUX_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_V01_(?<band>DEM)(?<extension>.*)"}
  {:name "MPW"
-  :re_pattern "(?x)AUX_CU_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<band>MPW)(?<extension>.*)"}
+  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
+  :re_groups  #{"acquired" "band" "extension" "tile" "produced" "projection"}
+  :re_pattern "(?x)(?<prefix>.*)AUX_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_V01_(?<band>MPW)(?<extension>.*)"}
  {:name "POSIDEX"
-  :re_pattern "(?x)AUX_CU_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<band>POSIDEX)(?<extension>.*)"}
+  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
+  :re_groups  #{"acquired" "band" "extension" "tile" "produced" "projection"}
+  :re_pattern "(?x)(?<prefix>.*)AUX_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_V01_(?<band>POSIDEX)(?<extension>.*)"}
  {:name "SLOPE"
-  :re_pattern "(?x)AUX_CU_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<band>SLOPE)(?<extension>.*)"}
+  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
+  :re_groups  #{"acquired" "band" "extension" "tile" "produced" "projection"}
+  :re_pattern "(?x)(?<prefix>.*)AUX_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_V01_(?<band>SLOPE)(?<extension>.*)"}
  {:name "TRENDS"
-  :re_pattern "(?x)AUX_CU_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<band>TRENDS)(?<extension>.*)"}]
+  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
+  :re_groups  #{"acquired" "band" "extension" "tile" "produced" "projection"}
+  :re_pattern "(?x)(?<prefix>.*)AUX_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_V01_(?<band>TRENDS)(?<extension>.*)"}]

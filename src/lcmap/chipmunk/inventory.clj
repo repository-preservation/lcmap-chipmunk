@@ -6,8 +6,7 @@
             [cheshire.core :as json]
             [qbits.alia :as alia]
             [qbits.hayt :as hayt]
-            [lcmap.chipmunk.db :as db]
-            :reload))
+            [lcmap.chipmunk.db :as db]))
 
 (defn insert-source
   "Add source info to inventory."
@@ -26,7 +25,7 @@
 
 
 (defn ->source
-  ""
+  "Deserialize JSON used to describe what chips were ingested."
   [result]
   (update result :chips json/decode))
 
@@ -49,7 +48,7 @@
 (spec/def ::tile string?)
 (spec/def ::layer string?)
 (spec/def ::source string?)
-(spec/def ::query (spec/keys :req-un [(or ::tile (and ::layer ::source))]))
+(spec/def ::query (spec/keys :req-un [(or ::tile ::layer ::source)]))
 
 
 (defn search
@@ -60,6 +59,6 @@
            (throw))
   (->> (hayt/select :inventory
                     (hayt/where params)
-                    (hayt/columns :layer :source :url))
+                    (hayt/columns :layer :source :tile :url))
        (alia/execute db/db-session)
        (map ->source)))

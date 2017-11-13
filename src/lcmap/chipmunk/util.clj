@@ -1,7 +1,19 @@
 (ns lcmap.chipmunk.util
   "Miscellaneous support functions."
   (:require [clojure.tools.logging :as log]
-            [mount.core]))
+            [clojure.spec.alpha :as spec]
+            [mount.core])
+  (:import  [org.joda.time DateTime Interval DateTimeZone]
+            [java.util TimeZone]))
+
+
+;; The time zone is set explicitly for both the JVM and Joda to avoid
+;; conditions where Joda uses previously cached values; setting the
+;; JVM time zone should be sufficient, but there are cases where it
+;; may not be properly set implicitly.
+
+(TimeZone/setDefault (TimeZone/getTimeZone "GMT"))
+(DateTimeZone/setDefault (DateTimeZone/forTimeZone (TimeZone/getTimeZone "GMT")))
 
 
 (defn add-shutdown-hook
@@ -59,6 +71,29 @@
     (try
       (.parse number-format string)
       (catch java.text.ParseException ex nil))))
+
+
+(defmulti intervalize
+  ""
+  (fn [n] (type n)))
+
+
+(defmethod intervalize java.lang.String
+  [interval]
+  (Interval/parse interval))
+
+
+(defmethod intervalize org.joda.time.Interval
+  [interval]
+  interval)
+
+
+(defn interval? [d]
+  (try
+    (intervalize d)
+    true
+    (catch java.lang.IllegalArgumentException ex
+      false)))
 
 
 (defn re-grouper

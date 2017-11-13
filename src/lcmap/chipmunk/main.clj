@@ -7,7 +7,7 @@
             [lcmap.chipmunk.gdal]
             [lcmap.chipmunk.http]
             [lcmap.chipmunk.jmx]
-            [lcmap.chipmunk.layer]
+            [lcmap.chipmunk.chips]
             [lcmap.chipmunk.setup]
             [lcmap.chipmunk.util])
   (:gen-class))

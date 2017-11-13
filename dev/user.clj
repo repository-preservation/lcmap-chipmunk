@@ -1,12 +1,13 @@
 (ns user
   "Developer namespace."
   (:require [clojure.edn :as edn]
+            [clojure.stacktrace :as stacktrace]
             [lcmap.chipmunk.db :as db]
             [lcmap.chipmunk.jmx]
             [lcmap.chipmunk.http]
             [lcmap.chipmunk.registry :as registry]
             [lcmap.chipmunk.inventory :as inventory]
-            [lcmap.chipmunk.layer :as layer]
+            [lcmap.chipmunk.chips :as chips]
             [lcmap.chipmunk.gdal :as gdal]
             [lcmap.chipmunk.core :as core]
             [lcmap.chipmunk.util :as util]
@@ -26,7 +27,8 @@
   (mount/start)
   :ready
   (catch RuntimeException ex
-    (print "Hmm. There was a problem automatically setting up and running chipmunk.")))
+    (print "There was a problem automatically setting up and running chipmunk.")
+    (stacktrace/print-cause-trace ex)))
 
 
 (comment
@@ -50,8 +52,7 @@
         path "%s/%s_SR.tar/%s_%s.tif"
         f1 (format path base tile tile "SRB1")
         f2 (format path base tile tile "PIXELQA")
-        f3 (format path base tile tile "LINEAGEQA")
-        counter (comp count core/chip-seq)]
-    [(core/ingest "LC08_SRB1" "test-data" f1)
-     (core/ingest "LC08_PIXELQA" "test-data" f2)
-     (core/ingest "LC08_LINEAGEQA" "test-data" f3)]))
+        f3 (format path base tile tile "LINEAGEQA")]
+    [(core/ingest f1)
+     (core/ingest f2)
+     (core/ingest f3)]))
