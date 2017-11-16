@@ -70,7 +70,10 @@
   (let [number-format (java.text.NumberFormat/getInstance)]
     (try
       (.parse number-format string)
-      (catch java.text.ParseException ex nil))))
+      (catch java.text.ParseException ex :clojure.spec.alpha/invalid))))
+
+
+(def numberizer (spec/conformer numberize))
 
 
 (defmulti intervalize
@@ -80,7 +83,9 @@
 
 (defmethod intervalize java.lang.String
   [interval]
-  (Interval/parse interval))
+  (try
+    (Interval/parse interval)
+    (catch java.lang.IllegalArgumentException ex :clojure.spec.alpha/invalid)))
 
 
 (defmethod intervalize org.joda.time.Interval
@@ -92,8 +97,10 @@
   (try
     (intervalize d)
     true
-    (catch java.lang.IllegalArgumentException ex
-      false)))
+    (catch java.lang.IllegalArgumentException ex nil)))
+
+
+(def intervalizer (spec/conformer intervalize))
 
 
 (defn re-grouper
@@ -104,3 +111,11 @@
 
 (defn re-mapper [re ks s]
   (re-grouper (re-matcher re s) ks))
+
+
+(defn check!
+  [spec params]
+  (or (some->> (spec/explain-data spec params)
+               (ex-info "validation error")
+               (throw))
+      (spec/conform spec params)))

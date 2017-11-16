@@ -4,8 +4,7 @@
             [lcmap.chipmunk.fixtures :as fixtures]
             [lcmap.chipmunk.config :as config]
             [lcmap.chipmunk.http :refer :all]
-            [org.httpkit.client :as http]
-            [cheshire.core :as json]))
+            [org.httpkit.client :as http]))
 
 
 (use-fixtures :once fixtures/all-fixtures)
@@ -15,7 +14,7 @@
   (testing "it exists, and it's nuts"
     (let [resp (shared/go-fish {:url ""})]
       (is (= 200 (:status resp)))
-      (is (= "Chipmunk. It's nuts!" (-> resp :body :result))))))
+      (is (= ["Chipmunk. It's nuts!"] (-> resp :body))))))
 
 
 (deftest get-healthy-test
@@ -31,16 +30,16 @@
 
 
 (deftest get-registry-test
-  (testing "GET /registry"
-    (let [resp (shared/go-fish {:url "/registry"})]
+  (testing "GET /chip-specs"
+    (let [resp (shared/go-fish {:url "/chip-specs"})]
       (is (= 200 (:status resp)))
-      (is (< 1 (-> resp :body :result count))))))
+      (is (< 1 (-> resp :body count))))))
 
 
 (deftest post-registry-test
-  (testing "POST /registry"
+  (testing "POST /chip-specs"
     (let [layer {:name "LC08_SRB1" :tags ["LC08" "SRB1" "aerosol"]}
-          resp (shared/go-fish {:url "/registry" :method :post :body layer})]
+          resp (shared/go-fish {:url "/chip-specs" :method :post :body layer})]
       (is (= 201 (:status resp))))))
 
 
@@ -49,7 +48,7 @@
     (let [path "/inventory"
           body {:url (shared/nginx-url "LC08_CU_027009_20130701_20170729_C01_V01_SR.tar/LC08_CU_027009_20130701_20170729_C01_V01_SRB1.tif")}
           resp (shared/go-fish {:url path :method :post :body body})
-          result (get-in resp [:body :result])]
+          result (get-in resp [:body])]
       (is (= 2500 (count (result :chips))))
       (is (= "027009" (result :tile)))
       (is (= "01" (result :collection)))
@@ -61,20 +60,20 @@
           tile "027009"
           resp (shared/go-fish {:url path :query-params {:tile tile}})]
       (is (= 200 (:status resp)))
-      (is (= 1 (-> resp :body :result count)))))
+      (is (= 1 (-> resp :body count)))))
   (testing "GET /inventory for layer"
     (let [path  "/inventory"
           query {"layer" "LC08_SRB1"}
           resp  (shared/go-fish {:url path :query-params query})]
       (is (= 200 (:status resp)))
-      (is (= 1 (-> resp :body :result count)))))
+      (is (= 1 (-> resp :body count)))))
   (testing "GET /inventory for source"
     (let [path   "/inventory"
           source "LC08_CU_027009_20130701_20170729_C01_V01_SRB1.tif"
           query  {"source" source}
           resp   (shared/go-fish {:url path :query-params query})]
       (is (= 200 (:status resp)))
-      (is (= 1   (-> resp :body :result count)))))
+      (is (= 1   (-> resp :body count)))))
   (testing "GET /chips that were ingested"
     (let [path  "/chips"
           query {"ubid" "LC08_SRB1" "x" "1526415" "y" "1946805" "acquired" "1980/2020"}

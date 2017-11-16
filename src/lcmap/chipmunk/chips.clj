@@ -2,6 +2,7 @@
   "Functions for managing chip data."
   (:require [clojure.tools.logging :as log]
             [clojure.spec.alpha :as spec]
+            [clojure.spec.test.alpha :as stest]
             [qbits.alia :as alia]
             [qbits.hayt :as hayt]
             [lcmap.chipmunk.db :as db]
@@ -9,7 +10,7 @@
 
 
 (defn insert-chip
-  "Add chip to layer."
+  "Build query to add chip to layer."
   [{:keys [:layer] :as chip}]
   (->> (select-keys chip [:source :x :y :acquired :data :hash])
        (hayt/values)
@@ -29,24 +30,29 @@
   (into [] (map insert-chip! chips)))
 
 
-(defn lookup
+(spec/def ::x (spec/conformer util/numberizer))
+(spec/def ::y (spec/conformer util/numberizer))
+(spec/def ::acquired (spec/conformer util/intervalize))
+(spec/def ::ubid string?)
+(spec/def ::query (spec/keys :req-un [::x ::y ::acquired ::ubid]))
+
+
+(defn search
   "Get chips matching query."
-  [layer-name query]
-  (let [i (-> query :acquired util/intervalize bean)
-        x (-> query :x util/numberize)
-        y (-> query :y util/numberize)]
-    (hayt/select (keyword layer-name)
-                 (hayt/where [[= :x x]
-                              [= :y y]
-                              [>= :acquired (-> :start i str)]
-                              [<= :acquired (-> :end i str)]]))))
+  [{:keys [:ubid :x :y :acquired] :as query}]
+  (hayt/select (keyword ubid)
+               (hayt/where [[= :x x]
+                            [= :y y]
+                            [>= :acquired (-> acquired bean :start str)]
+                            [<= :acquired (-> acquired bean :end str)]])))
 
 
-(defn lookup!
+(defn search!
   "Get chips matching query."
   [params]
-  ;; In order to preserve compatability with previous consumers
-  ;; of similar REST APIs the ubid of each chip needs to be set.
-  (let [ubid  (:ubid params)
-        query (dissoc params :ubid)]
-    (alia/execute db/db-session (lookup ubid query))))
+  (->> (util/check! ::query params)
+       (search)
+       (alia/execute db/db-session)))
+
+
+(spec/fdef lcmap.chipmunk.chips/search! :args (spec/cat :params ::query))

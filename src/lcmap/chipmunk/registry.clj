@@ -126,6 +126,8 @@
 (defn search!
   "Search layers by tags."
   [params]
-  (let [layers (all!)
-        tags (-> params :tags vector flatten set)]
-    (filter #(clojure.set/subset? tags (% :tags)) layers)))
+  (let [tagset (-> params :tags vector flatten set)
+        layers (all!)]
+    (if (params :tags)
+      (filter #(clojure.set/subset? tagset (% :tags)) layers)
+      layers)))

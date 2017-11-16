@@ -20,71 +20,56 @@
            [org.apache.commons.codec.binary Base64]))
 
 
-(defn get-registry
-  "Get all registered layers."
+(defn get-base
+  "Build response for base URL."
   [req]
-  (log/debugf "GET layers")
-  (if-let [layers (registry/all!)]
-    {:status 200 :body {:result layers}}))
-
-
-(defn get-chips
-  "Get all chips (in a layer) specified meeting criteria in params."
-  [{:keys [params] :as req}]
-  ;; FYI: To maintain compatability with previous chip providing resources,
-  ;; each chip has a ubid property set.
-  (log/debugf "GET chips %s" params)
-  (let [ubid (get-in req [:params :ubid])
-        results (chips/lookup! params)
-        results+ (map #(assoc % :ubid ubid) results)]
-    {:status 200 :body results+}))
+  {:status 200 :body ["Chipmunk. It's nuts!"]})
 
 
 (defn get-chip-specs
   "Get all chips (in a layer) specified meeting criteria in params."
   [{:keys [params] :as req}]
-  ;; FYI: Unlike other resources, the chips-spec resource does not
-  ;; associate the results with a ':results' key because existing clients
-  ;; do not expect this convention.
-  (log/debugf "GET chip-specs %s" params)
-  (let [results (registry/search! params)
-        results+ (map #(assoc % :ubid (get % :name)) results)]
-    {:status 200 :body results+}))
+  (log/debugf "GET chip-specs '%s'" params)
+  (let [results (registry/search! params)]
+    {:status 200 :body (map #(assoc % :ubid (get % :name)) results)}))
 
 
-(defn post-registry
+(defn post-chip-specs
   "Create (or update) a layer's properties."
-  [req]
-  (let [layer (req :body)]
-    (log/debugf "POST registry %s" layer)
-    {:status 201 :body {:result (registry/add! layer)}}))
+  [{:keys [body] :as req}]
+  (log/debugf "POST chip-specs '%s'" body)
+  (let [layer (registry/add! body)]
+    {:status 201 :body layer}))
+
+
+(defn get-chips
+  "Get all chips (in a layer) specified meeting criteria in params."
+  [{:keys [params] :as req}]
+  (log/debugf "GET chips '%s'" params)
+  (let [ubid (get-in req [:params :ubid])
+        results (map #(assoc % :ubid ubid) (chips/search! params))]
+    {:status 200 :body results}))
 
 
 (defn get-sources
   "Find sources matching query params."
   [{:keys [params] :as req}]
-  (log/debugf "GET sources %s" params)
-  (if (seq params)
-    {:status 200 :body {:result (inventory/search params)}}
-    {:status 400 :body {:result []}}))
+  (log/debugf "GET sources '%s'" params)
+  {:status 200 :body (inventory/search params)})
 
 
 (defn post-source
   "Ingest data specified by source into implicit layer."
   [{:keys [:body] :as req}]
   (log/debugf "POST source '%s'" (:url body))
-  (if-let [source (core/ingest (:url body))]
-    {:status 200 :body {:result source}}
-    {:status 500 :body {:errors ["could not handle source"]}}))
+  {:status 200 :body (core/ingest (:url body))})
 
 
 (defn healthy
   "Handler for checking application health."
   [request]
   (log/debug "GET health")
-  (if true
-    {:status 200 :body {:healthy true}}
-    {:status 500 :body {:healthy false}}))
+  {:status 200 :body {:healthy true}})
 
 
 (defn metrics
@@ -97,19 +82,17 @@
 (compojure/defroutes routes
   (compojure/context "/" request
     (compojure/GET "/" []
-      {:status 200 :body {:result "Chipmunk. It's nuts!"}})
-    (compojure/GET "/registry" []
-      (get-registry request))
-    (compojure/POST "/registry" []
-      (post-registry request))
-    (compojure/GET "/inventory" []
-      (get-sources request))
-    (compojure/POST "/inventory" []
-      (post-source request))
+      (get-base request))
     (compojure/GET "/chips" []
       (get-chips request))
     (compojure/GET "/chip-specs" []
       (get-chip-specs request))
+    (compojure/POST "/chip-specs" []
+      (post-chip-specs request))
+    (compojure/GET "/inventory" []
+      (get-sources request))
+    (compojure/POST "/inventory" []
+      (post-source request))
     (compojure/GET "/healthy" []
       (healthy request))
     (compojure/GET "/metrics" []
@@ -124,7 +107,7 @@
       (handler request)
       (catch java.lang.RuntimeException cause
         (log/errorf cause "middleware caught exception: %s" (.getMessage cause))
-        {:status 500 :body (json/encode {:errors (.getMessage cause)})}))))
+        {:status 500 :body (json/encode {:error (.getMessage cause) :problem (ex-data cause)})}))))
 
 
 (def app
@@ -135,6 +118,29 @@
       (ring-defaults/wrap-defaults ring-defaults/api-defaults)
       (ring-keyword-params/wrap-keyword-params)
       (wrap-exception-handling)))
+
+
+(defn iso8601-encoder
+  "Transform a Joda DateTime object into an ISO8601 string."
+  [date-time generator]
+  (log/debug "encoding DateTime to ISO8601")
+  (.writeString generator (str date-time)))
+
+
+(defn base64-encoder
+  "Base64 encode a byte-buffer, usually raster data from Cassandra."
+  [buffer generator]
+  (log/debug "encoding HeapByteBuffer")
+  (let [size (- (.limit buffer) (.position buffer))
+        copy (byte-array size)]
+    (.get buffer copy)
+    (.writeString generator (Base64/encodeBase64String copy))))
+
+
+(mount/defstate json-encoders
+  :start (do
+           (json-gen/add-encoder org.joda.time.DateTime iso8601-encoder)
+           (json-gen/add-encoder java.nio.HeapByteBuffer base64-encoder)))
 
 
 (declare http-server)
@@ -154,25 +160,3 @@
 (mount/defstate http-server
   :start (http-start)
   :stop  (http-stop))
-
-
-(defn iso8601-encoder
-  "Transform a Joda DateTime object into an ISO8601 string."
-  [date-time generator]
-  (.writeString generator (str date-time)))
-
-
-(defn base64-encoder
-  "Base64 encode a byte-buffer, usually raster data from Cassandra."
-  [buffer generator]
-  (log/debug "encoding HeapByteBuffer")
-  (let [size (- (.limit buffer) (.position buffer))
-        copy (byte-array size)]
-    (.get buffer copy)
-    (.writeString generator (Base64/encodeBase64String copy))))
-
-
-(mount/defstate json-encoders
-  :start (do
-           (json-gen/add-encoder org.joda.time.DateTime iso8601-encoder)
-           (json-gen/add-encoder java.nio.HeapByteBuffer base64-encoder)))

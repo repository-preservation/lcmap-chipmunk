@@ -6,7 +6,8 @@
             [cheshire.core :as json]
             [qbits.alia :as alia]
             [qbits.hayt :as hayt]
-            [lcmap.chipmunk.db :as db]))
+            [lcmap.chipmunk.db :as db]
+            [lcmap.chipmunk.util :as util]))
 
 (defn insert-source
   "Add source info to inventory."
@@ -54,11 +55,9 @@
 (defn search
   "Query inventory by tile, layer, and/or source."
   [{:keys [:tile :layer :source] :as params}]
-  (some->> (spec/explain-data ::query params)
-           (ex-info "invalid params")
-           (throw))
-  (->> (hayt/select :inventory
-                    (hayt/where params)
-                    (hayt/columns :layer :source :tile :url))
-       (alia/execute db/db-session)
-       (map ->source)))
+  (let [params (util/check! ::query params)]
+    (->> (hayt/select :inventory
+                      (hayt/where params)
+                      (hayt/columns :layer :source :tile :url))
+         (alia/execute db/db-session)
+         (map ->source))))
