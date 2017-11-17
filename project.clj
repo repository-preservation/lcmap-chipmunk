@@ -24,7 +24,10 @@
                  [metrics-clojure "2.9.0"]
                  [metrics-clojure-health "2.9.0"]
                  [metrics-clojure-jvm "2.9.0"]
-                 [metrics-clojure-ring "2.9.0"]]
+                 [metrics-clojure-ring "2.9.0"]
+                 [net.mikera/core.matrix "0.61.0"]
+                 [net.mikera/vectorz-clj "0.47.0"]
+                 [gov.usgs.eros/lcmap-commons "1.0.1-SNAPSHOT"]]
   :plugins [[lein-environ "1.1.0"]]
   :profiles {:dev     {:resource-paths ["dev"]}
              :repl    {:resource-paths ["dev"]}

@@ -6,7 +6,9 @@
             [qbits.alia :as alia]
             [qbits.hayt :as hayt]
             [lcmap.chipmunk.db :as db]
-            [lcmap.chipmunk.util :as util]))
+            [lcmap.chipmunk.util :as util]
+            [lcmap.chipmunk.registry :as registry]
+            [lcmap.commons.chip :as commons-chip]))
 
 
 (defn insert-chip
@@ -30,6 +32,15 @@
   (into [] (map insert-chip! chips)))
 
 
+(defn snap
+  "Calculate chip's upper-left x/y for arbitrary x/y."
+  [params layer]
+  (let [x (-> params :x util/numberize)
+        y (-> params :y util/numberize)
+        [cx cy] (commons-chip/snap x y layer)]
+    (assoc params :x cx :y cy)))
+
+
 (spec/def ::x (spec/conformer util/numberizer))
 (spec/def ::y (spec/conformer util/numberizer))
 (spec/def ::acquired (spec/conformer util/intervalize))
@@ -48,11 +59,13 @@
 
 
 (defn search!
-  "Get chips matching query."
+  "Get chips matching query; handles snapping arbitrary x/y to chip x/y."
   [params]
-  (->> (util/check! ::query params)
-       (search)
-       (alia/execute db/db-session)))
+  (let [layer (registry/lookup! (:ubid params))
+        params (snap params layer)]
+    (->> (util/check! ::query params)
+         (search)
+         (alia/execute db/db-session))))
 
 
 (spec/fdef lcmap.chipmunk.chips/search! :args (spec/cat :params ::query))

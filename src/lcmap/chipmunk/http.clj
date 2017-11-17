@@ -15,6 +15,7 @@
             [lcmap.chipmunk.registry :as registry]
             [lcmap.chipmunk.inventory :as inventory]
             [lcmap.chipmunk.chips :as chips]
+            [lcmap.chipmunk.experimental :as experimental]
             [lcmap.chipmunk.core :as core])
   (:import [org.joda.time DateTime]
            [org.apache.commons.codec.binary Base64]))
@@ -46,7 +47,7 @@
   "Get all chips (in a layer) specified meeting criteria in params."
   [{:keys [params] :as req}]
   (log/debugf "GET chips '%s'" params)
-  (let [ubid (get-in req [:params :ubid])
+  (let [ubid  (get-in req [:params :ubid])
         results (map #(assoc % :ubid ubid) (chips/search! params))]
     {:status 200 :body results}))
 
@@ -79,6 +80,16 @@
   (metrics.ring.expose/serve-metrics {}))
 
 
+(defn snap-point
+  ""
+  [{:keys [params] :as request}]
+  (log/debug "GET snap")
+  (let [layer (registry/lookup! (-> request :params :ubid))
+        p1 (chips/snap params layer)
+        p2 (experimental/snap-matrix params layer)]
+    {:status 200 :body {:snap-legacy p1 :snap-matrix p2}}))
+
+
 (compojure/defroutes routes
   (compojure/context "/" request
     (compojure/GET "/" []
@@ -89,6 +100,8 @@
       (get-chip-specs request))
     (compojure/POST "/chip-specs" []
       (post-chip-specs request))
+    (compojure/GET  "/snap" []
+      (snap-point request))
     (compojure/GET "/inventory" []
       (get-sources request))
     (compojure/POST "/inventory" []
