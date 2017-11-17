@@ -2,8 +2,8 @@
   :info "band 1 surface reflectance"
   :tags #{"lt05" "srb1" "sr" "b1" "blue"}
   :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
-  :re_pattern "(?x)(?<prefix>.*)(?<mission>LT05)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>SRB1)(?<extension>.*)"
-  :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
+  :re_pattern "(?x)(?<prefix>.*)(?<mission>LT05)_(?<region>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>SRB1)(?<extension>.*)"
+  :re_groups #{"mission" "region" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
@@ -11,8 +11,8 @@
   :info "band 2 surface reflectance"
   :tags #{"lt05" "srb2" "sr" "b2" "green"}
   :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
-  :re_pattern "(?x)(?<prefix>.*)(?<mission>LT05)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>SRB2)(?<extension>.*)"
-  :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
+  :re_pattern "(?x)(?<prefix>.*)(?<mission>LT05)_(?<region>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>SRB2)(?<extension>.*)"
+  :re_groups #{"mission" "region" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
@@ -20,8 +20,8 @@
   :info "band 3 surface reflectance"
   :tags #{"lt05" "srb3" "sr" "b3" "red"}
   :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
-  :re_pattern "(?x)(?<prefix>.*)(?<mission>LT05)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>SRB3)(?<extension>.*)"
-  :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
+  :re_pattern "(?x)(?<prefix>.*)(?<mission>LT05)_(?<region>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>SRB3)(?<extension>.*)"
+  :re_groups #{"mission" "region" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
@@ -29,8 +29,8 @@
   :info "band 4 surface reflectance"
   :tags #{"lt05" "srb4" "sr" "b4" "nir" "infrared"}
   :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
-  :re_pattern "(?x)(?<prefix>.*)(?<mission>LT05)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>SRB4)(?<extension>.*)"
-  :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
+  :re_pattern "(?x)(?<prefix>.*)(?<mission>LT05)_(?<region>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>SRB4)(?<extension>.*)"
+  :re_groups #{"mission" "region" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
@@ -38,8 +38,8 @@
   :info "band 5 surface reflectance"
   :tags #{"lt05" "srb5" "sr" "b5" "swir1"}
   :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
-  :re_pattern "(?x)(?<prefix>.*)(?<mission>LT05)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>SRB5)(?<extension>.*)"
-  :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
+  :re_pattern "(?x)(?<prefix>.*)(?<mission>LT05)_(?<region>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>SRB5)(?<extension>.*)"
+  :re_groups #{"mission" "region" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
@@ -47,8 +47,8 @@
   :info "band 7 surface reflectance"
   :tags #{"lt05" "srb7" "sr" "b7" "swir2"}
   :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
-  :re_pattern "(?x)(?<prefix>.*)(?<mission>LT05)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>SRB7)(?<extension>.*)"
-  :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
+  :re_pattern "(?x)(?<prefix>.*)(?<mission>LT05)_(?<region>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>SRB7)(?<extension>.*)"
+  :re_groups #{"mission" "region" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
@@ -56,8 +56,8 @@
   :info "band 1 top-of-atmosphere reflectance"
   :tags #{"lt05" "tab1" "ta" "b1" "blue"}
   :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
-  :re_pattern "(?x)(?<prefix>.*)(?<mission>LT05)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>TAB1)(?<extension>.*)"
-  :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
+  :re_pattern "(?x)(?<prefix>.*)(?<mission>LT05)_(?<region>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>TAB1)(?<extension>.*)"
+  :re_groups #{"mission" "region" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
@@ -65,8 +65,8 @@
   :info "band 2 top-of-atmosphere reflectance"
   :tags #{"lt05" "tab2" "ta" "b2" "green"}
   :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
-  :re_pattern "(?x)(?<prefix>.*)(?<mission>LT05)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>TAB2)(?<extension>.*)"
-  :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
+  :re_pattern "(?x)(?<prefix>.*)(?<mission>LT05)_(?<region>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>TAB2)(?<extension>.*)"
+  :re_groups #{"mission" "region" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
@@ -74,8 +74,8 @@
   :info "band 3 top-of-atmosphere reflectance"
   :tags #{"lt05" "tab3" "ta" "b3" "red"}
   :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
-  :re_pattern "(?x)(?<prefix>.*)(?<mission>LT05)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>TAB3)(?<extension>.*)"
-  :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
+  :re_pattern "(?x)(?<prefix>.*)(?<mission>LT05)_(?<region>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>TAB3)(?<extension>.*)"
+  :re_groups #{"mission" "region" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
@@ -83,8 +83,8 @@
   :info "band 4 top-of-atmosphere reflectance"
   :tags #{"lt05" "tab4" "ta" "b4" "nir"}
   :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
-  :re_pattern "(?x)(?<prefix>.*)(?<mission>LT05)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>TAB4)(?<extension>.*)"
-  :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
+  :re_pattern "(?x)(?<prefix>.*)(?<mission>LT05)_(?<region>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>TAB4)(?<extension>.*)"
+  :re_groups #{"mission" "region" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
@@ -92,8 +92,8 @@
   :info "band 5 top-of-atmosphere reflectance"
   :tags #{"lt05" "tab5" "ta" "b5" "swir1"}
   :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
-  :re_pattern "(?x)(?<prefix>.*)(?<mission>LT05)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>TAB5)(?<extension>.*)"
-  :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
+  :re_pattern "(?x)(?<prefix>.*)(?<mission>LT05)_(?<region>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>TAB5)(?<extension>.*)"
+  :re_groups #{"mission" "region" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
@@ -101,8 +101,8 @@
   :info "band 7 top-of-atmosphere reflectance"
   :tags #{"lt05" "tab7" "ta" "b7" "swir2"}
   :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
-  :re_pattern "(?x)(?<prefix>.*)(?<mission>LT05)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>TAB7)(?<extension>.*)"
-  :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
+  :re_pattern "(?x)(?<prefix>.*)(?<mission>LT05)_(?<region>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>TAB7)(?<extension>.*)"
+  :re_groups #{"mission" "region" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
@@ -110,8 +110,8 @@
   :info "band 6 at-satellite brightness temperature"
   :tags #{"lt05" "bt" "b6" "brightness" "temperature"}
   :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
-  :re_pattern "(?x)(?<prefix>.*)(?<mission>LT05)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>BTB6)(?<extension>.*)"
-  :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
+  :re_pattern "(?x)(?<prefix>.*)(?<mission>LT05)_(?<region>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>BTB6)(?<extension>.*)"
+  :re_groups #{"mission" "region" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
@@ -119,29 +119,29 @@
   :info "index"
   :tags #{"lt05" "lineage" "qa" "lineageqa"}
   :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
-  :re_pattern "(?x)(?<prefix>.*)(?<mission>LT05)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>LINEAGEQA)(?<extension>.*)"
-  :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
+  :re_pattern "(?x)(?<prefix>.*)(?<mission>LT05)_(?<region>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>LINEAGEQA)(?<extension>.*)"
+  :re_groups #{"mission" "region" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_shape [100 100]}
  {:name "LT05_PIXELQA"
   :info "level-2 pixel quality band"
   :tags #{"lt05" "pixel" "qa" "pixelqa"}
   :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
-  :re_pattern "(?x)(?<prefix>.*)(?<mission>LT05)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>PIXELQA)(?<extension>.*)"
-  :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
+  :re_pattern "(?x)(?<prefix>.*)(?<mission>LT05)_(?<region>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>PIXELQA)(?<extension>.*)"
+  :re_groups #{"mission" "region" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_shape [100 100]}
  {:name "LT05_RADSATQA"
   :info "saturation mask"
   :tags #{"lt05" "qa" "saturation" "mask"}
   :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
-  :re_pattern "(?x)(?<prefix>.*)(?<mission>LT05)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>RADSATQA)(?<extension>.*)"
-  :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
+  :re_pattern "(?x)(?<prefix>.*)(?<mission>LT05)_(?<region>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>RADSATQA)(?<extension>.*)"
+  :re_groups #{"mission" "region" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_shape [100 100]}
  {:name "LT05_SEA4"
   :info "band 4 sensor azimuth angles"
   :tags #{"lt05" "sea4" "sensor" "azimuth" "angles"}
   :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
-  :re_pattern "(?x)(?<prefix>.*)(?<mission>LT05)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>SEA4)(?<extension>.*)"
-  :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
+  :re_pattern "(?x)(?<prefix>.*)(?<mission>LT05)_(?<region>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>SEA4)(?<extension>.*)"
+  :re_groups #{"mission" "region" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
   :data_fill "-32768"
   :data_shape [100 100]}
@@ -149,8 +149,8 @@
   :info "band 4 sensor zenith angles"
   :tags #{"lt05" "sez4" "sensor" "zenith" "angles"}
   :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
-  :re_pattern "(?x)(?<prefix>.*)(?<mission>LT05)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>SEZ4)(?<extension>.*)"
-  :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
+  :re_pattern "(?x)(?<prefix>.*)(?<mission>LT05)_(?<region>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>SEZ4)(?<extension>.*)"
+  :re_groups #{"mission" "region" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
   :data_fill "-32768"
   :data_shape [100 100]}
@@ -158,8 +158,8 @@
   :info "band 4 solar azimuth angles"
   :tags #{"lt05" "soa4" "solar" "azimuth" "angles"}
   :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
-  :re_pattern "(?x)(?<prefix>.*)(?<mission>LT05)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>SOA4)(?<extension>.*)"
-  :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
+  :re_pattern "(?x)(?<prefix>.*)(?<mission>LT05)_(?<region>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>SOA4)(?<extension>.*)"
+  :re_groups #{"mission" "region" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
   :data_fill "-32768"
   :data_shape [100 100]}
@@ -167,8 +167,8 @@
   :info "band 4 solar zenith angles"
   :tags #{"lt05" "soz4" "solar" "zenith" "angles"}
   :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
-  :re_pattern "(?x)(?<prefix>.*)(?<mission>LT05)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>SOZ4)(?<extension>.*)"
-  :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
+  :re_pattern "(?x)(?<prefix>.*)(?<mission>LT05)_(?<region>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>SOZ4)(?<extension>.*)"
+  :re_groups #{"mission" "region" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
   :data_fill "-32768"
   :data_shape [100 100]}]

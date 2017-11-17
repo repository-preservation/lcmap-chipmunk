@@ -44,4 +44,4 @@
 
 
 (defn nginx-url [path]
-  (format "http://guest:guest@localhost:9080/%s" path))
+  (format "http://localhost:9080/%s" path))

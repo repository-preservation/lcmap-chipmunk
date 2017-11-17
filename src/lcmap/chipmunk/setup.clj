@@ -25,6 +25,7 @@
                                                :name       :text
                                                :info       :text
                                                :tags       (hayt/frozen (hayt/set-type :text))
+                                               :source_info :text
                                                :re_pattern :text
                                                :re_groups  (hayt/frozen (hayt/set-type :text))
                                                :pixel_x    :float
@@ -60,7 +61,8 @@
                                                :source   :text
                                                :url      :text
                                                :tile     :text
-                                               :chips    :text})))
+                                               :chips    :text
+                                               :extra    :text})))
 
 
 (defn create-inventory-tile-index

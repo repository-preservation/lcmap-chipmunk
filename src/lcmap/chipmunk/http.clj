@@ -119,8 +119,9 @@
     (try
       (handler request)
       (catch java.lang.RuntimeException cause
+        (prn (ex-data cause))
         (log/errorf cause "middleware caught exception: %s" (.getMessage cause))
-        {:status 500 :body (json/encode {:error (.getMessage cause) :problem (ex-data cause)})}))))
+        {:status 500 :body (json/encode {:error (.getMessage cause) #_:problem #_(ex-data cause)})}))))
 
 
 (def app

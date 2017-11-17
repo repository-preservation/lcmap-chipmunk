@@ -27,6 +27,7 @@
                  [metrics-clojure-ring "2.9.0"]
                  [net.mikera/core.matrix "0.61.0"]
                  [net.mikera/vectorz-clj "0.47.0"]
+                 [com.github.kyleburton/clj-xpath "1.4.3"]
                  [gov.usgs.eros/lcmap-commons "1.0.1-SNAPSHOT"]]
   :plugins [[lein-environ "1.1.0"]]
   :profiles {:dev     {:resource-paths ["dev"]}

@@ -1,6 +1,8 @@
 (ns lcmap.chipmunk.util-test
   (:require [clojure.test :refer :all]
-            [lcmap.chipmunk.util :refer :all]))
+            [lcmap.chipmunk.shared :as shared]
+            [lcmap.chipmunk.util :refer :all]
+            [org.httpkit.client :as http]))
 
 
 (deftest re-mapper-test
@@ -55,3 +57,25 @@
   (testing "simple interval conversion"
     (let [interval (intervalize "1980-01-01/2020-01-01")]
       (is (instance? org.joda.time.Interval interval)))))
+
+
+#_(deftest ard-scene-metadata-path-test
+  (testing "getting the url to xml"
+    (let [path (shared/nginx-url "LC08_CU_027009_20130701_20170729_C01_V01_SR.tar/LC08_CU_027009_20130701_20170729_C01_V01_SRB1.tif")
+          xml-path (ard-metadata-path path)]
+      xml-path)))
+
+
+#_(deftest ard-scene-metadata-map-test
+  (testing "getting the relevant data from XML"
+    (let [path (shared/nginx-url "LC08_CU_027009_20130701_20170729_C01_V01.xml")
+          data (slurp path)
+          result (ard-metadata-map data)]
+      result)))
+
+
+#_(deftest ard-scene-metadata-test
+  (testing "getting the relevant data from XML"
+    (let [path (shared/nginx-url "LC08_CU_027009_20130701_20170729_C01_V01.xml")
+          result (ard-metadata path)]
+      result)))

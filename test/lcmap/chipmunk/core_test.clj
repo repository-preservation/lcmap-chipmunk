@@ -71,13 +71,6 @@
       (is (thrown? clojure.lang.ExceptionInfo (verify layer source url))))))
 
 
-(deftest ingest-tif-test
-  (testing "ingest valid data"
-    (let [path (shared/nginx-url "LC08_CU_027009_20130701_20170729_C01_V01_PIXELQA.tif")
-          summary (ingest "LC08_PIXELQA" "LC08_CU_027009_20130701_20170729_C01_V01_PIXELQA" path)]
-      (is (= 2500 (-> summary :chips count))))))
-
-
 (deftest derive-info-test
   (testing "Landsat ARD info"
     (let [layer {:re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
@@ -88,17 +81,17 @@
 (deftest deduce-layer-name-test
   (testing "find the layer (that exists) for a URL"
     (let [url (shared/nginx-url "LC08_CU_027009_20130701_20170729_C01_V01_SR.tar/LC08_CU_027009_20130701_20170729_C01_V01_SRB1.tif")
-          layer (deduce-layer-name url)]
+          layer (derive-layer-name url)]
       (is (= "LC08_SRB1" layer))))
   (testing "find a layer (that does not exist) for a URL"
     (let [url (shared/nginx-url "LC08_CU_027009_20130701_20170729_C01_V01_SR.tar/LC08_CU_027009_20130701_20170729_C01_V01_SRB2.tif")
-          layer (deduce-layer-name url)]
+          layer (derive-layer-name url)]
       (is (= nil layer)))))
 
 
 (deftest deduce-source-id-test
   (testing "generate an ID for a URL"
     (let [url (shared/nginx-url "LC08_CU_027009_20130701_20170729_C01_V01_SR.tar/LC08_CU_027009_20130701_20170729_C01_V01_SRB1.tif")
-          actual (-> url deduce-source-id)
+          actual (-> url derive-source-id)
           expected "LC08_CU_027009_20130701_20170729_C01_V01_SRB1.tif"]
       (is (= actual expected)))))

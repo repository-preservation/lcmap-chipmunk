@@ -2,6 +2,7 @@
   "Miscellaneous support functions."
   (:require [clojure.tools.logging :as log]
             [clojure.spec.alpha :as spec]
+            [org.httpkit.client :as http]
             [mount.core])
   (:import  [org.joda.time DateTime Interval DateTimeZone]
             [java.util TimeZone]))
@@ -114,6 +115,7 @@
 
 
 (defn check!
+  ""
   [spec params]
   (or (some->> (spec/explain-data spec params)
                (ex-info "validation error")

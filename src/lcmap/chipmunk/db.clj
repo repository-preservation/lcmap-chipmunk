@@ -4,7 +4,12 @@
             [clojure.tools.logging :as log]
             [mount.core :refer [defstate] :as mount]
             [qbits.alia :as alia]
-            [lcmap.chipmunk.config :as config]))
+            [qbits.alia.codec.default :as default-codec]
+            [lcmap.chipmunk.config :as config])
+  (:import org.joda.time.DateTime))
+
+
+(extend-protocol default-codec/Encoder org.joda.time.DateTime (encode [x] (.toDate x)))
 
 
 (declare db-cluster db-session)

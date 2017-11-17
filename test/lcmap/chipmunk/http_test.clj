@@ -78,5 +78,5 @@
     (let [path  "/chips"
           query {"ubid" "LC08_SRB1" "x" "1526415" "y" "1946805" "acquired" "1980/2020"}
           resp  (shared/go-fish {:url "/chips" :query-params query})]
-      (is (= (-> resp :body count) 1))
-      (is (= (-> resp :body first :hash) "42eaf57aaf20aac1ae04f539816614ae")))))
+      (is (= 1 (-> resp :body count) ))
+      (is (= "42eaf57aaf20aac1ae04f539816614ae" (-> resp :body first :hash) )))))

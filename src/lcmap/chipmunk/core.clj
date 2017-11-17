@@ -45,6 +45,7 @@
   (:require [clojure.tools.logging :as log]
             [digest :as digest]
             [camel-snake-kebab.core :as csk]
+            [lcmap.chipmunk.ard :as ard]
             [lcmap.chipmunk.gdal :as gdal]
             [lcmap.chipmunk.chips :as chips]
             [lcmap.chipmunk.inventory :as inventory]
@@ -107,18 +108,29 @@
        (clojure.string/join "-")))
 
 
-(defn derive-info
-  "Derive additional info from path to source.
-
-   ^String :path:
-   ^Map :layer:
-  "
+(defn derive-info-from-path
+  "Derive additional info from source at path."
   [path layer]
   (let [pattern (re-pattern (layer :re_pattern))
         groups  (map csk/->snake_case_keyword (layer :re_groups))]
     (-> (util/re-mapper pattern groups path)
         (update :acquired parse-date)
         (update :produced parse-date))))
+
+
+(defn derive-info-from-xml
+  "Derive additional info from XML metadata for source at path."
+  [path]
+  (ard/get-info-for path))
+
+
+(defn derive-info
+  "Get additional source metadata from xml, the path, or nothing."
+  [path layer]
+  (cond
+    (= "xml" (layer :source_info)) (derive-info-from-xml path)
+    (= "path" (layer :source_info)) (derive-info-from-path path layer)
+    :else {}))
 
 
 (defn chip-seq
@@ -182,14 +194,14 @@
         (throw (ex-info (format "could not verify source: %s" reason) {:reason reason} cause))))))
 
 
-(defn deduce-layer-name
+(defn derive-layer-name
   "Find the layer compatible with file at URL."
   [url]
   (if-let [info (gdal/dataset-info url)]
     (:name (first (filter #(compatible? % info) (registry/all!))))))
 
 
-(defn deduce-source-id
+(defn derive-source-id
   "Derive an ID from source from URL's path."
   [url]
   (-> url
@@ -205,8 +217,9 @@
    (verify layer-id source-id url)
    (try
      (let [layer (registry/lookup! layer-id)
-           info  (merge (derive-info url layer)
-                        {:source source-id :layer layer-id :url url})]
+           given {:source source-id :layer layer-id :url url}
+           taken (derive-info url layer)
+           info  (merge given taken)]
        (-> (chip-seq url info)
            (chips/save!)
            (summarize info)
@@ -220,6 +233,6 @@
          (log/errorf msg)
          (throw (ex-info msg {} cause))))))
   ([url]
-   (let [layer (deduce-layer-name url)
-         source (deduce-source-id url)]
+   (let [layer (derive-layer-name url)
+         source (derive-source-id url)]
      (ingest layer source url))))
