@@ -143,4 +143,5 @@
        :raster-x-size (get-raster-x-size data)
        :raster-y-size (get-raster-y-size data)
        :raster-count  (get-raster-count data)
-       :geo-transform (get-geo-transform-vec data)})))
+       :geo-transform (get-geo-transform-vec data)}
+      (throw (ex-info (format "could not retrive GDAL info for %s" path) {:path path})))))
