@@ -79,4 +79,4 @@
           query {"ubid" "LC08_SRB1" "x" "1526415" "y" "1946805" "acquired" "1980/2020"}
           resp  (shared/go-fish {:url "/chips" :query-params query})]
       (is (= 1 (-> resp :body count) ))
-      (is (= "42eaf57aaf20aac1ae04f539816614ae" (-> resp :body first :hash) )))))
+      (is (= "f1019819e6bf364b196818eaac4d52e8" (-> resp :body first :hash))))))

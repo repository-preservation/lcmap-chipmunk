@@ -128,9 +128,8 @@
   "Get additional source metadata from xml, the path, or nothing."
   [path layer]
   (cond
-    (= "xml" (layer :source_info)) (derive-info-from-xml path)
     (= "path" (layer :source_info)) (derive-info-from-path path layer)
-    :else {}))
+    :else (derive-info-from-xml path)))
 
 
 (defn chip-seq

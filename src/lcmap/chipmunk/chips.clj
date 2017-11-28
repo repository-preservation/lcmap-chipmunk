@@ -44,8 +44,8 @@
   "Get chips matching query."
   [{:keys [:ubid :x :y :acquired] :as query}]
   (hayt/select (keyword ubid)
-               (hayt/where [[= :x x]
-                            [= :y y]
+               (hayt/where [[= :x (long x)]
+                            [= :y (long y)]
                             [>= :acquired (-> acquired bean :start str)]
                             [<= :acquired (-> acquired bean :end str)]])))
 
@@ -54,8 +54,9 @@
   "Get chips matching query; handles snapping arbitrary x/y to chip x/y."
   [params]
   (let [layer (registry/lookup! (:ubid params))
-        params (grid/snap params layer)]
-    (->> (util/check! ::query params)
+        [x y] (grid/snap params layer)]
+    (->> (assoc params :x x :y y)
+         (util/check! ::query)
          (search)
          (alia/execute db/db-session))))
 
