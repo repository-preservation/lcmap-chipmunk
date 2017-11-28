@@ -15,7 +15,7 @@
             [lcmap.chipmunk.registry :as registry]
             [lcmap.chipmunk.inventory :as inventory]
             [lcmap.chipmunk.chips :as chips]
-            [lcmap.chipmunk.experimental :as experimental]
+            [lcmap.chipmunk.grid :as grid]
             [lcmap.chipmunk.core :as core])
   (:import [org.joda.time DateTime]
            [org.apache.commons.codec.binary Base64]))
@@ -85,9 +85,8 @@
   [{:keys [params] :as request}]
   (log/debug "GET snap")
   (let [layer (registry/lookup! (-> request :params :ubid))
-        p1 (chips/snap params layer)
-        p2 (experimental/snap-matrix params layer)]
-    {:status 200 :body {:snap-legacy p1 :snap-matrix p2}}))
+        [sx sy](grid/snap params layer)]
+    {:status 200 :body {:snapped {:x sx :y sy}}}))
 
 
 (compojure/defroutes routes
@@ -119,9 +118,8 @@
     (try
       (handler request)
       (catch java.lang.RuntimeException cause
-        (prn (ex-data cause))
         (log/errorf cause "middleware caught exception: %s" (.getMessage cause))
-        {:status 500 :body (json/encode {:error (.getMessage cause) #_:problem #_(ex-data cause)})}))))
+        {:status 500 :body (json/encode {:error (.getMessage cause) :problem (ex-data cause)})}))))
 
 
 (def app
