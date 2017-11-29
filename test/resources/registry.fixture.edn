@@ -3,7 +3,7 @@
   :tags #{"lc08" "srb1" "sr" "b1" "coastal" "aerosol" "plurpal"}
   :source_info "xml"
   :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
-  :grid_rx 1.0 :grid_ry -1.0 :grid_sx  3.3333333E-4 :grid_sy  3.3333333E-4 :grid_tx 2565585.0 :grid_ty 3314805.0
+  :grid_rx 1.0 :grid_ry -1.0 :grid_sx  3000.0 :grid_sy  3000.0 :grid_tx 2565585.0 :grid_ty 3314805.0
   :re_pattern "(?x)(?<prefix>.*)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>SRB1)(?<extension>.*)"
   :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
@@ -14,6 +14,7 @@
   :tags #{"lc08" "srb2" "sr" "b2" "blue"}
   :source_info "xml"
   :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
+  :grid_rx 1.0 :grid_ry -1.0 :grid_sx  3000.0 :grid_sy  3000.0 :grid_tx 2565585.0 :grid_ty 3314805.0
   :re_pattern "(?x)(?<prefix>.*)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>SRB2)(?<extension>.*)"
   :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
@@ -24,6 +25,7 @@
   :tags #{"lc08" "srb3" "sr" "b3" "green"}
   :source_info "xml"
   :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
+  :grid_rx 1.0 :grid_ry -1.0 :grid_sx  3000.0 :grid_sy  3000.0 :grid_tx 2565585.0 :grid_ty 3314805.0
   :re_pattern "(?x)(?<prefix>.*)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>SRB3)(?<extension>.*)"
   :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
@@ -34,6 +36,7 @@
   :tags #{"lc08" "srb4" "sr" "b4" "red"}
   :source_info "xml"
   :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
+  :grid_rx 1.0 :grid_ry -1.0 :grid_sx  3000.0 :grid_sy  3000.0 :grid_tx 2565585.0 :grid_ty 3314805.0
   :re_pattern "(?x)(?<prefix>.*)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>SRB4)(?<extension>.*)"
   :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
@@ -44,6 +47,7 @@
   :tags #{"lc08" "srb5" "sr" "b5" "nir"}
   :source_info "xml"
   :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
+  :grid_rx 1.0 :grid_ry -1.0 :grid_sx  3000.0 :grid_sy  3000.0 :grid_tx 2565585.0 :grid_ty 3314805.0
   :re_pattern "(?x)(?<prefix>.*)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>SRB5)(?<extension>.*)"
   :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
@@ -54,6 +58,7 @@
   :tags #{"lc08" "srb6" "sr" "b6" "swir1"}
   :source_info "xml"
   :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
+  :grid_rx 1.0 :grid_ry -1.0 :grid_sx  3000.0 :grid_sy  3000.0 :grid_tx 2565585.0 :grid_ty 3314805.0
   :re_pattern "(?x)(?<prefix>.*)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>SRB6)(?<extension>.*)"
   :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
@@ -64,6 +69,7 @@
   :tags #{"lc08" "srb7" "sr" "b7" "swir2"}
   :source_info "xml"
   :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
+  :grid_rx 1.0 :grid_ry -1.0 :grid_sx  3000.0 :grid_sy  3000.0 :grid_tx 2565585.0 :grid_ty 3314805.0
   :re_pattern "(?x)(?<prefix>.*)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>SRB7)(?<extension>.*)"
   :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
@@ -74,6 +80,7 @@
   :tags #{"lc08" "tab1" "ta" "b1" "coastal" "aerosol" "plurpal"}
   :source_info "xml"
   :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
+  :grid_rx 1.0 :grid_ry -1.0 :grid_sx  3000.0 :grid_sy  3000.0 :grid_tx 2565585.0 :grid_ty 3314805.0
   :re_pattern "(?x)(?<prefix>.*)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>TAB1)(?<extension>.*)"
   :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
@@ -84,6 +91,7 @@
   :tags #{"lc08" "tab2" "ta" "b2" "blue"}
   :source_info "xml"
   :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
+  :grid_rx 1.0 :grid_ry -1.0 :grid_sx  3000.0 :grid_sy  3000.0 :grid_tx 2565585.0 :grid_ty 3314805.0
   :re_pattern "(?x)(?<prefix>.*)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>TAB2)(?<extension>.*)"
   :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
@@ -94,6 +102,7 @@
   :tags #{"lc08" "tab3" "ta" "b3" "green"}
   :source_info "xml"
   :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
+  :grid_rx 1.0 :grid_ry -1.0 :grid_sx  3000.0 :grid_sy  3000.0 :grid_tx 2565585.0 :grid_ty 3314805.0
   :re_pattern "(?x)(?<prefix>.*)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>TAB3)(?<extension>.*)"
   :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
@@ -104,6 +113,7 @@
   :tags #{"lc08" "tab4" "ta" "b4" "red"}
   :source_info "xml"
   :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
+  :grid_rx 1.0 :grid_ry -1.0 :grid_sx  3000.0 :grid_sy  3000.0 :grid_tx 2565585.0 :grid_ty 3314805.0
   :re_pattern "(?x)(?<prefix>.*)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>TAB4)(?<extension>.*)"
   :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
@@ -114,6 +124,7 @@
   :tags #{"lc08" "tab5" "ta" "b5" "nir"}
   :source_info "xml"
   :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
+  :grid_rx 1.0 :grid_ry -1.0 :grid_sx  3000.0 :grid_sy  3000.0 :grid_tx 2565585.0 :grid_ty 3314805.0
   :re_pattern "(?x)(?<prefix>.*)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>TAB5)(?<extension>.*)"
   :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
@@ -124,6 +135,7 @@
   :tags #{"lc08" "tab6" "ta" "b6" "swir1"}
   :source_info "xml"
   :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
+  :grid_rx 1.0 :grid_ry -1.0 :grid_sx  3000.0 :grid_sy  3000.0 :grid_tx 2565585.0 :grid_ty 3314805.0
   :re_pattern "(?x)(?<prefix>.*)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>TAB6)(?<extension>.*)"
   :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
@@ -134,6 +146,7 @@
   :tags #{"lc08" "tab7" "ta" "b7" "swir2"}
   :source_info "xml"
   :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
+  :grid_rx 1.0 :grid_ry -1.0 :grid_sx  3000.0 :grid_sy  3000.0 :grid_tx 2565585.0 :grid_ty 3314805.0
   :re_pattern "(?x)(?<prefix>.*)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>TAB7)(?<extension>.*)"
   :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
@@ -144,6 +157,7 @@
   :tags #{"lc08" "tab9" "ta" "b9" "cirrus"}
   :source_info "xml"
   :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
+  :grid_rx 1.0 :grid_ry -1.0 :grid_sx  3000.0 :grid_sy  3000.0 :grid_tx 2565585.0 :grid_ty 3314805.0
   :re_pattern "(?x)(?<prefix>.*)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>TAB9)(?<extension>.*)"
   :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
@@ -154,6 +168,7 @@
   :tags #{"lc08" "bt" "b10" "brightness" "temperature"}
   :source_info "xml"
   :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
+  :grid_rx 1.0 :grid_ry -1.0 :grid_sx  3000.0 :grid_sy  3000.0 :grid_tx 2565585.0 :grid_ty 3314805.0
   :re_pattern "(?x)(?<prefix>.*)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>BTB10)(?<extension>.*)"
   :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
@@ -164,6 +179,7 @@
   :tags #{"lc08" "bt" "b11" "brightness" "temperature"}
   :source_info "xml"
   :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
+  :grid_rx 1.0 :grid_ry -1.0 :grid_sx  3000.0 :grid_sy  3000.0 :grid_tx 2565585.0 :grid_ty 3314805.0
   :re_pattern "(?x)(?<prefix>.*)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>BTB11)(?<extension>.*)"
   :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
@@ -174,6 +190,7 @@
   :tags #{"lc08" "lineage" "qa" "lineageqa"}
   :source_info "xml"
   :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
+  :grid_rx 1.0 :grid_ry -1.0 :grid_sx  3000.0 :grid_sy  3000.0 :grid_tx 2565585.0 :grid_ty 3314805.0
   :re_pattern "(?x)(?<prefix>.*)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>LINEAGEQA)(?<extension>.*)"
   :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "UINT8"
@@ -183,6 +200,7 @@
   :tags #{"lc08" "pixel" "qa" "pixelqa"}
   :source_info "xml"
   :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
+  :grid_rx 1.0 :grid_ry -1.0 :grid_sx  3000.0 :grid_sy  3000.0 :grid_tx 2565585.0 :grid_ty 3314805.0
   :re_pattern "(?x)(?<prefix>.*)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>PIXELQA)(?<extension>.*)"
   :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "UINT16"
@@ -192,6 +210,7 @@
   :tags #{"lc08" "qa" "saturation" "mask"}
   :source_info "xml"
   :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
+  :grid_rx 1.0 :grid_ry -1.0 :grid_sx  3000.0 :grid_sy  3000.0 :grid_tx 2565585.0 :grid_ty 3314805.0
   :re_pattern "(?x)(?<prefix>.*)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>RADSATQA)(?<extension>.*)"
   :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "UINT16"
@@ -201,6 +220,7 @@
   :tags #{"lc08" "sr" "qa" "aerosol" "mask"}
   :source_info "xml"
   :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
+  :grid_rx 1.0 :grid_ry -1.0 :grid_sx  3000.0 :grid_sy  3000.0 :grid_tx 2565585.0 :grid_ty 3314805.0
   :re_pattern "(?x)(?<prefix>.*)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>LC08_SRAEROSOLQA)(?<extension>.*)"
   :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "UINT8"
@@ -210,6 +230,7 @@
   :tags #{"lc08" "sea4" "sensor" "azimuth" "angles"}
   :source_info "xml"
   :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
+  :grid_rx 1.0 :grid_ry -1.0 :grid_sx  3000.0 :grid_sy  3000.0 :grid_tx 2565585.0 :grid_ty 3314805.0
   :re_pattern "(?x)(?<prefix>.*)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>SEA4)(?<extension>.*)"
   :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
@@ -220,6 +241,7 @@
   :tags #{"lc08" "sez4" "sensor" "zenith" "angles"}
   :source_info "xml"
   :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
+  :grid_rx 1.0 :grid_ry -1.0 :grid_sx  3000.0 :grid_sy  3000.0 :grid_tx 2565585.0 :grid_ty 3314805.0
   :re_pattern "(?x)(?<prefix>.*)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>SEZ4)(?<extension>.*)"
   :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
@@ -230,6 +252,7 @@
   :tags #{"lc08" "soa4" "solar" "azimuth" "angles"}
   :source_info "xml"
   :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
+  :grid_rx 1.0 :grid_ry -1.0 :grid_sx  3000.0 :grid_sy  3000.0 :grid_tx 2565585.0 :grid_ty 3314805.0
   :re_pattern "(?x)(?<prefix>.*)(?<mission>LC08)_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>SOA4)(?<extension>.*)"
   :re_groups #{"mission" "projection" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
@@ -240,6 +263,7 @@
   :tags #{"lc08" "soz4" "solar" "zenith" "angles"}
   :source_info "xml"
   :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
+  :grid_rx 1.0 :grid_ry -1.0 :grid_sx  3000.0 :grid_sy  3000.0 :grid_tx 2565585.0 :grid_ty 3314805.0
   :re_pattern "(?x)(?<prefix>.*)(?<mission>LC08)_(?<region>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_C(?<collection>[0-9]{2})_V(?<version>[0-9]{2})_(?<band>SOZ4)(?<extension>.*)"
   :re_groups #{"mission" "region" "tile" "acquired" "produced" "collection" "version" "band" "extension"}
   :data_type "INT16"
