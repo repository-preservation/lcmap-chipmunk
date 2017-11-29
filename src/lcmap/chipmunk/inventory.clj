@@ -10,6 +10,13 @@
             [lcmap.chipmunk.util :as util]))
 
 
+(spec/def ::tile string?)
+(spec/def ::layer string?)
+(spec/def ::source string?)
+(spec/def ::url string?)
+(spec/def ::query (spec/keys :req-un [(or ::tile ::layer ::source ::url)]))
+
+
 (defn insert-source
   "Add source info to inventory."
   [source]
@@ -32,31 +39,29 @@
   (update result :chips json/decode))
 
 
-(defn lookup
-  ""
-  [layer-id source-id]
-  (hayt/select :inventory (hayt/where {:layer layer-id
-                                       :source source-id})))
+(defn identify
+  "Derive a source ID from a URL."
+  [url]
+  (-> url
+      (java.net.URI.)
+      (.getPath)
+      (java.io.File.)
+      (.getName)))
 
 
-(defn lookup!
-  "Retrieve info about a source from the inventory."
-  [layer-id source-id]
-  (->> (lookup layer-id source-id)
-       (alia/execute db/db-session)
-       (map ->source)))
-
-
-(spec/def ::tile string?)
-(spec/def ::layer string?)
-(spec/def ::source string?)
-(spec/def ::query (spec/keys :req-un [(or ::tile ::layer ::source)]))
+(defn url-to-source
+  [params]
+  (if-let [url (params :url)]
+    (-> params
+        (assoc :source (identify url))
+        (dissoc :url))
+    params))
 
 
 (defn search
   "Query inventory by tile, layer, and/or source."
-  [{:keys [:tile :layer :source] :as params}]
-  (let [params (util/check! ::query params)]
+  [{:keys [:tile :layer :source :url] :as params}]
+  (let [params (util/check! ::query (url-to-source params))]
     (->> (hayt/select :inventory
                       (hayt/where params)
                       (hayt/columns :layer :source :tile :url))

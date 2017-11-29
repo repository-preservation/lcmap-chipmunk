@@ -200,16 +200,6 @@
     (:name (first (filter #(compatible? % info) (registry/all!))))))
 
 
-(defn derive-source-id
-  "Derive an ID from source from URL's path."
-  [url]
-  (-> url
-      (java.net.URI.)
-      (.getPath)
-      (java.io.File.)
-      (.getName)))
-
-
 (defn ingest
   "Save data at url; adds chips to layer and source info to inventory."
   ([layer-id source-id url]
@@ -233,5 +223,5 @@
          (throw (ex-info msg {} cause))))))
   ([url]
    (let [layer (derive-layer-name url)
-         source (derive-source-id url)]
+         source (inventory/identify url)]
      (ingest layer source url))))
