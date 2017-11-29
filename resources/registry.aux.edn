@@ -1,24 +1,36 @@
 [{:name "ASPECT"
   :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
+  :grid_rx 1.0 :grid_ry -1.0 :grid_sx  3000.0 :grid_sy  3000.0 :grid_tx 2565585.0 :grid_ty 3314805.0
+  :source_info "path"
   :re_groups  #{"acquired" "band" "extension" "tile" "produced" "projection"}
   :re_pattern "(?x)(?<prefix>.*)AUX_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_V01_(?<band>ASPECT)(?<extension>.*)"}
  {:name "DEM"
   :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
+  :grid_rx 1.0 :grid_ry -1.0 :grid_sx  3000.0 :grid_sy  3000.0 :grid_tx 2565585.0 :grid_ty 3314805.0
+  :source_info "path"
   :re_groups  #{"acquired" "band" "extension" "tile" "produced" "projection"}
   :re_pattern "(?x)(?<prefix>.*)AUX_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_V01_(?<band>DEM)(?<extension>.*)"}
  {:name "MPW"
   :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
+  :grid_rx 1.0 :grid_ry -1.0 :grid_sx  3000.0 :grid_sy  3000.0 :grid_tx 2565585.0 :grid_ty 3314805.0
+  :source_info "path"
   :re_groups  #{"acquired" "band" "extension" "tile" "produced" "projection"}
   :re_pattern "(?x)(?<prefix>.*)AUX_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_V01_(?<band>MPW)(?<extension>.*)"}
  {:name "POSIDEX"
   :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
+  :grid_rx 1.0 :grid_ry -1.0 :grid_sx  3000.0 :grid_sy  3000.0 :grid_tx 2565585.0 :grid_ty 3314805.0
+  :source_info "path"
   :re_groups  #{"acquired" "band" "extension" "tile" "produced" "projection"}
   :re_pattern "(?x)(?<prefix>.*)AUX_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_V01_(?<band>POSIDEX)(?<extension>.*)"}
  {:name "SLOPE"
   :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
+  :grid_rx 1.0 :grid_ry -1.0 :grid_sx  3000.0 :grid_sy  3000.0 :grid_tx 2565585.0 :grid_ty 3314805.0
+  :source_info "path"
   :re_groups  #{"acquired" "band" "extension" "tile" "produced" "projection"}
   :re_pattern "(?x)(?<prefix>.*)AUX_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_V01_(?<band>SLOPE)(?<extension>.*)"}
  {:name "TRENDS"
   :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
+  :grid_rx 1.0 :grid_ry -1.0 :grid_sx  3000.0 :grid_sy  3000.0 :grid_tx 2565585.0 :grid_ty 3314805.0
+  :source_info "path"
   :re_groups  #{"acquired" "band" "extension" "tile" "produced" "projection"}
   :re_pattern "(?x)(?<prefix>.*)AUX_(?<projection>CU)_(?<tile>[0-9]{6})_(?<acquired>[0-9]{8})_(?<produced>[0-9]{8})_V01_(?<band>TRENDS)(?<extension>.*)"}]
