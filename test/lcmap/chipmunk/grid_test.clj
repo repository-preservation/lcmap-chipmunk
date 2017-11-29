@@ -4,8 +4,8 @@
 
 
 (def chip-grid {:grid_rx 1.0 :grid_ry -1.0
-                :grid_sx (double (/ 1 3000))
-                :grid_sy (double (/ 1 3000))
+                :grid_sx 3000.0
+                :grid_sy 3000.0
                 :grid_tx 2565585.0 :grid_ty 3314805.0})
 
 

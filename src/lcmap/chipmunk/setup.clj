@@ -34,12 +34,12 @@
                                                :chip_y     :int
                                                :shift_x    :float
                                                :shift_y    :float
-                                               :grid_rx    :float
-                                               :grid_ry    :float
-                                               :grid_sx    :float
-                                               :grid_sy    :float
-                                               :grid_tx    :float
-                                               :grid_ty    :float
+                                               :grid_rx    :double
+                                               :grid_ry    :double
+                                               :grid_sx    :double
+                                               :grid_sy    :double
+                                               :grid_tx    :double
+                                               :grid_ty    :double
                                                :data_fill  :text
                                                :data_mask  (hayt/frozen (hayt/map-type :text :text))
                                                :data_range (hayt/frozen (hayt/list-type :int))

@@ -16,8 +16,8 @@
         sy (layer :grid_sy)
         tx (layer :grid_tx)
         ty (layer :grid_ty)]
-    [[(* rx sx)        0  (* tx sx)]
-     [       0  (* ry sy) (* ty sy)]
+    [[(/ rx sx)        0  (/ tx sx)]
+     [       0  (/ ry sy) (/ ty sy)]
      [       0         0       1.0 ]]))
 
 
