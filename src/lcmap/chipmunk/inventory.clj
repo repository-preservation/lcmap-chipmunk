@@ -65,5 +65,4 @@
     (->> (hayt/select :inventory
                       (hayt/where params)
                       (hayt/columns :layer :source :tile :url))
-         (alia/execute db/db-session)
-         (map ->source))))
+         (alia/execute db/db-session))))
