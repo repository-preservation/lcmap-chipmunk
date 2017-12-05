@@ -5,6 +5,26 @@
   (:import [org.joda.time DateTime]))
 
 
+;; ## Overview
+;;
+;; Landsat ARD XML metadata contains information about the contents
+;; of an archive, a collection of related bands. It provides details
+;; about the original scenes and produced tiles.
+;;
+
+
+;; ### Locate
+;;
+;; This function relies on a convention to derive a URL to the XML
+;; file: it replaces the last portion of the archive's filename
+;; with '.xml' as shown below.
+;;
+;; If this pattern cannot be found, a nil value is returned.
+;;
+;; http://host/LC08_...C01_V01_SR.tar/LC08_..._C01_V01_SRB1.tif
+;; http://host/LC08_...C01_V01.xml
+;;
+
 (defn locate
   "Given a URL to an ARD source, produce URL to its XML metadata."
   [url]
@@ -14,6 +34,15 @@
       nil)))
 
 
+;; ### Fetch
+;;
+;; Once a URL is derived, the fetch function attempts to obtain
+;; the contents of the XML file. A status check is performed to
+;; avoid attempting to process a non-XML body; a URL to a non-
+;; existent file may return plain text. A more sophisticated check
+;; could be performed, but this works well-enough.
+;;
+
 (defn fetch
   "Given a URL to XML metadata, retrieve the contents."
   [url]
@@ -21,6 +50,13 @@
     (if (<= 200 (resp :status) 299)
       (resp :body))))
 
+
+;; ### Parse
+;;
+;; The parse function retrieves a relevant subset of the info from
+;; the XML. If additional data is required, this is the function to
+;; modify.
+;;
 
 (defn parse
   "Given an XML string, produce a map of relevant metadata."
@@ -41,6 +77,11 @@
     (catch java.lang.RuntimeException ex
       (throw (ex-info "could not retrieve expected values from ARD XML metadata" {})))))
 
+;; Preparing Values
+;;
+;; After retrieving values, a tile ID is derived and the datetime
+;; is converted into an object.
+;;
 
 (defn prep-time
   "Helper function to create a DateTime from a Date and a Time."
@@ -61,6 +102,9 @@
       (assoc :acquired (prep-time info))
       (assoc :tile (prep-tile info))))
 
+
+;; ## Getting Info
+;;
 
 (defn get-info-for
   "Given a URL to a source, retrieve related metadata.
