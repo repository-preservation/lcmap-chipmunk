@@ -10,8 +10,18 @@
             [lcmap.chipmunk.db :as db]))
 
 
-;; These are the default columns for a table that contains chips;
-;; it is used when creating a layer.
+;; ## Overview
+;;
+;; The registry contains defintions for the collection of layers
+;; a Chipmunk instance provides. It also provides behavior for
+;; adding (and removing) the table used by a layer to store data.
+;;
+
+;; ### Layer Data Tables
+;;
+;; When a layer is added to the registry, a corresponding table
+;; used to store the raw raster data (chips) is also created. The
+;; default columns for these tables are:
 ;;
 
 (def default-columns {:primary-key [[:x :y], :acquired]
@@ -31,6 +41,12 @@
 (def default-options {:compression {"sstable_compression" "LZ4Compressor"}
                       :compaction  {"class" "LeveledCompactionStrategy"}})
 
+;; ## Layer Names
+;;
+;; It is necessary to ensure different values for table names are all
+;; converted to a consistent form. This function converts value into
+;; a :snake_case_keyword, e.g. 'LC08 SRB1' => :lc08_srb1
+;;
 
 (defn canonical-layer-name
   "Convert layer name to lower-case keyword"
@@ -39,7 +55,7 @@
   (try
     (csk/->SCREAMING_SNAKE_CASE layer-name :separator #"[\W]+")
     (catch RuntimeException cause
-      (let [msg (format "could not derive canonical layer name for '%s'" layer-name)]
+      (let [msg (format "could derive a the layer name for '%s'" layer-name)]
         (log/warn msg)
       (throw (ex-info msg {:layer-name layer-name} cause))))))
 
@@ -81,7 +97,7 @@
 
 
 (defn delete-layer-row
-  ""
+  "A function to delete a layer from the registry."
   [layer-name]
   (hayt/delete :registry (hayt/where {:name (name layer-name)})))
 
@@ -102,7 +118,8 @@
 (defn lookup
   "Find layer by name."
   [layer-name]
-  (hayt/select :registry (hayt/where {:name (canonical-layer-name layer-name)})))
+  (hayt/select :registry
+               (hayt/where {:name (canonical-layer-name layer-name)})))
 
 
 (defn lookup!
@@ -114,19 +131,19 @@
 
 
 (defn all
-  ""
+  "A query to get all layers from the registry."
   []
   (hayt/select :registry))
 
 
 (defn all!
-  ""
+  "Get all layers from the registry."
   []
   (sort-by :name (alia/execute db/db-session (all))))
 
 
 (defn search!
-  "Search layers by tags."
+  "Get layers that have all the given tags."
   [params]
   (let [tagset (-> params :tags vector flatten set)
         layers (all!)]
