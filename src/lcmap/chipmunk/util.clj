@@ -14,6 +14,7 @@
 ;; may not be properly set implicitly.
 
 (TimeZone/setDefault (TimeZone/getTimeZone "GMT"))
+
 (DateTimeZone/setDefault (DateTimeZone/forTimeZone (TimeZone/getTimeZone "GMT")))
 
 
@@ -104,6 +105,33 @@
 (def intervalizer (spec/conformer intervalize))
 
 
+(defmulti instantize
+  ""
+  (fn [i] (type i)))
+
+
+(defmethod instantize java.lang.String
+  [instant]
+  (try
+    (->> instant
+         (re-matches #"([0-9]{4})([0-9]{2})([0-9]{2})")
+         (rest)
+         (clojure.string/join "-")
+         (DateTime/parse)
+         (.toDate))
+    (catch java.lang.IllegalArgumentException ex :clojure.spec.alpha/invalid)))
+
+
+(defmethod instantize org.joda.time.DateTime
+  [instant]
+  (.toDate instant))
+
+
+(defmethod instantize java.util.Date
+  [instant]
+  instant)
+
+
 (defn re-grouper
   [matcher keys]
   (if (.matches matcher)
@@ -121,3 +149,13 @@
                (ex-info "validation error")
                (throw))
       (spec/conform spec params)))
+
+
+(defn byte-buffer-copy
+  ""
+  [byte-buffer]
+  (let [size (.capacity byte-buffer)
+        copy (byte-array size)]
+    (.get byte-buffer copy)
+    (.rewind byte-buffer)
+    copy))

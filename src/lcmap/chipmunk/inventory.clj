@@ -20,13 +20,15 @@
 (defn insert-source
   "Add source info to inventory."
   [source]
-  (let [relevant (select-keys source [:source :layer :tile :chips :url])]
-    (->> (update relevant :chips json/encode)
-         (hayt/values)
-         (hayt/insert :inventory))))
+  (let [relevant (select-keys source [:source :layer :url :tile :chips :extra])]
+    (as-> relevant source
+      (update source :chips json/encode)
+      (update source :extra json/encode)
+      (hayt/values source)
+      (hayt/insert :inventory source))))
 
 
-(defn save!
+(defn save
   "Add info about a source to the inventory."
   [source]
   (alia/execute db/db-session (insert-source source))
@@ -36,7 +38,9 @@
 (defn ->source
   "Deserialize JSON used to describe what chips were ingested."
   [result]
-  (update result :chips json/decode))
+  (-> result
+      (update :chips json/decode)
+      (update :extra json/decode)))
 
 
 (defn identify
@@ -64,5 +68,6 @@
   (let [params (util/check! ::query (url-to-source params))]
     (->> (hayt/select :inventory
                       (hayt/where params)
-                      (hayt/columns :layer :source :tile :url))
-         (alia/execute db/db-session))))
+                      (hayt/columns :layer :source :tile :url :chips :extra))
+         (alia/execute db/db-session)
+         (map ->source))))

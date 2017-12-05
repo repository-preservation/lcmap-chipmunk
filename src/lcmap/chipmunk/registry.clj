@@ -13,6 +13,7 @@
 ;; These are the default columns for a table that contains chips;
 ;; it is used when creating a layer.
 ;;
+
 (def default-columns {:primary-key [[:x :y], :acquired]
                       :x :bigint
                       :y :bigint
@@ -26,6 +27,7 @@
 ;; compaction strategy is optimal for storing time-series data that
 ;; is potentially saved "out-of-sequence".
 ;;
+
 (def default-options {:compression {"sstable_compression" "LZ4Compressor"}
                       :compaction  {"class" "LeveledCompactionStrategy"}})
 

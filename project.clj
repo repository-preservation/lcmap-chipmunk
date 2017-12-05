@@ -14,6 +14,7 @@
                  [cc.qbits/alia-all "4.0.0"]
                  [cc.qbits/hayt "4.0.0"]
                  [cc.qbits/spandex "0.5.2"]
+                 [cc.qbits/alia-joda-time "4.0.2"]
                  [mount "0.1.11"]
                  [http-kit "2.2.0"]
                  [ring "1.6.2"]

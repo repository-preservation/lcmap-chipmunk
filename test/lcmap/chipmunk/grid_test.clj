@@ -3,10 +3,9 @@
             [lcmap.chipmunk.grid :refer :all]))
 
 
-(def chip-grid {:grid_rx 1.0 :grid_ry -1.0
-                :grid_sx 3000.0
-                :grid_sy 3000.0
-                :grid_tx 2565585.0 :grid_ty 3314805.0})
+(def chip-grid {:rx 1.0 :ry -1.0
+                :sx 3000.0 :sy 3000.0
+                :tx 2565585.0 :ty 3314805.0})
 
 
 (deftest snap-matrix-test

@@ -25,21 +25,12 @@
                                                :name       :text
                                                :info       :text
                                                :tags       (hayt/frozen (hayt/set-type :text))
-                                               :source_info :text
-                                               :re_pattern :text
-                                               :re_groups  (hayt/frozen (hayt/set-type :text))
                                                :pixel_x    :float
                                                :pixel_y    :float
                                                :chip_x     :int
                                                :chip_y     :int
                                                :shift_x    :float
                                                :shift_y    :float
-                                               :grid_rx    :double
-                                               :grid_ry    :double
-                                               :grid_sx    :double
-                                               :grid_sy    :double
-                                               :grid_tx    :double
-                                               :grid_ty    :double
                                                :data_fill  :text
                                                :data_mask  (hayt/frozen (hayt/map-type :text :text))
                                                :data_range (hayt/frozen (hayt/list-type :int))
@@ -47,6 +38,24 @@
                                                :data_shape (hayt/frozen (hayt/list-type :int))
                                                :data_type  :text
                                                :data_units :text})
+                     (hayt/with {:compression {"sstable_compression" "LZ4Compressor"}
+                                 :compaction  {"class" "LeveledCompactionStrategy"}})))
+
+
+(defn create-grid
+  "Return a map that creates a table that defines grids, used for operations like snapping points."
+  []
+  (hayt/create-table :grid
+                     (hayt/if-exists false)
+                     (hayt/column-definitions {:primary-key [:name]
+                                               :name :text
+                                               :proj :text
+                                               :rx :double
+                                               :ry :double
+                                               :sx :double
+                                               :sy :double
+                                               :tx :double
+                                               :ty :double})
                      (hayt/with {:compression {"sstable_compression" "LZ4Compressor"}
                                  :compaction  {"class" "LeveledCompactionStrategy"}})))
 
@@ -103,6 +112,8 @@
       (alia/execute session (create-registry))
       (log/debugf "creating inventory")
       (alia/execute session (create-inventory))
+      (log/debugf "creating grid")
+      (alia/execute session (create-grid))
       (log/debugf "creating inventory's tile index")
       (alia/execute session (create-inventory-tile-index))
       (log/debugf "creating inventory's layer index")

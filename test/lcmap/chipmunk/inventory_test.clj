@@ -3,7 +3,7 @@
             [lcmap.chipmunk.fixtures :as fixtures]
             [lcmap.chipmunk.shared :as shared]
             [lcmap.chipmunk.inventory :as inventory]
-            [lcmap.chipmunk.core :as core]))
+            [lcmap.chipmunk.ingest :as ingest]))
 
 
 (use-fixtures :once fixtures/all-fixtures)
@@ -19,7 +19,7 @@
 
 (deftest search-test
   (let [url (shared/nginx-url "LC08_CU_027009_20130701_20170729_C01_V01_SR.tar/LC08_CU_027009_20130701_20170729_C01_V01_SRB1.tif")
-        summary (core/ingest url)]
+        summary (ingest/save url)]
     (testing "search"
       (testing "by tile"
         (let [query {:tile "027009"}

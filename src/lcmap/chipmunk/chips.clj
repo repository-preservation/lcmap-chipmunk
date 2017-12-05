@@ -5,6 +5,7 @@
             [clojure.spec.test.alpha :as stest]
             [qbits.alia :as alia]
             [qbits.hayt :as hayt]
+            [qbits.hayt.codec.joda-time :as joda-time]
             [lcmap.chipmunk.db :as db]
             [lcmap.chipmunk.util :as util]
             [lcmap.chipmunk.registry :as registry]
@@ -23,11 +24,15 @@
 (defn insert-chip!
   "Add chip to layer."
   [chip]
-  (alia/execute db/db-session (insert-chip chip))
-  (assoc chip :saved true))
+  (try
+    (alia/execute db/db-session (insert-chip chip))
+    (assoc chip :saved true)
+    (catch java.lang.RuntimeException cause
+      (let [msg (format "could not insert chip")]
+        (throw (ex-info msg (dissoc chip :data) cause))))))
 
 
-(defn save!
+(defn save
   "Add all chips to layer."
   [chips]
   (into [] (map insert-chip! chips)))
@@ -53,9 +58,9 @@
 (defn search!
   "Get chips matching query; handles snapping arbitrary x/y to chip x/y."
   [params]
-  (let [layer (registry/lookup! (:ubid params))
-        [x y] (grid/snap params layer)]
-    (->> (assoc params :x x :y y)
+  (let [grid (grid/search "chip")
+        [x y] (grid/snap params grid)]
+    (->> (assoc params :x (long x) :y (long y))
          (util/check! ::query)
          (search)
          (alia/execute db/db-session))))

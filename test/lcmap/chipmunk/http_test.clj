@@ -49,12 +49,12 @@
           body {:url (shared/nginx-url "LC08_CU_027009_20130701_20170729_C01_V01_SR.tar/LC08_CU_027009_20130701_20170729_C01_V01_SRB1.tif")}
           resp (shared/go-fish {:url path :method :post :body body})
           result (get-in resp [:body])]
-      (is (= 2500 (count (result :chips))))
       (is (= "027009" (result :tile)))
-      (is (= "01" (result :collection)))
-      (is (= "01" (result :version)))
       (is (= "LC08_SRB1" (result :layer)))
-      (is (= "LC08_CU_027009_20130701_20170729_C01_V01_SRB1.tif" (result :source)))))
+      (is (= "LC08_CU_027009_20130701_20170729_C01_V01_SRB1.tif" (result :source)))
+      (is (some? (result :extra)))
+      (is (some? (result :chips)))
+      (is (= 2500 (count (result :chips))))))
   (testing "GET /inventory for tile"
     (let [path "/inventory"
           tile "027009"
@@ -76,10 +76,18 @@
       (is (= 1   (-> resp :body count)))))
   (testing "GET /chips that were ingested"
     (let [path  "/chips"
-          query {"ubid" "LC08_SRB1" "x" "1526415" "y" "1946805" "acquired" "1980/2020"}
+          query {"ubid" "LC08_SRB1" "x" "1526415" "y" "1946805" "acquired" "2013/2014"}
           resp  (shared/go-fish {:url "/chips" :query-params query})
           chip  (-> resp :body first)]
+      ;; There should only be one chip because only a single source was ingested.
       (is (= 1 (-> resp :body count)))
+      ;; The hash value should not vary -- if this test fails, either the source
+      ;; data was modified or ingest is saving a different value.
+      (is (= "42eaf57aaf20aac1ae04f539816614ae" (-> resp :body first :hash)))
+      ;; The point values are tested to ensure the point was properly snapped.
       (is (= 1526415 (chip :x)))
       (is (= 1946805 (chip :y)))
-      (is (= "42eaf57aaf20aac1ae04f539816614ae" (-> resp :body first :hash))))))
+      ;; The time value retrieved from the ARD XML metadata does not have a
+      ;; time component. The default behavior is to assume a time of midnight,
+      ;; because it is *obviously* not the actual acquisition time.
+      (is (= "2013-07-01T00:00:00Z" (chip :acquired))))))

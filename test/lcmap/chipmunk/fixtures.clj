@@ -6,32 +6,42 @@
             [lcmap.chipmunk.http]
             [lcmap.chipmunk.db]
             [lcmap.chipmunk.setup :as setup]
-            [lcmap.chipmunk.registry :as registry]))
+            [lcmap.chipmunk.registry :as registry]
+            [lcmap.chipmunk.grid :as grid]))
 
 
 (defn schema-fixture [f]
-  (log/debugf "schema-fixture up")
+  (log/tracef "schema-fixture up")
   (setup/init)
   (f)
   (setup/nuke "chipmunk_test")
-  (log/debugf "schema-fixture down"))
+  (log/tracef "schema-fixture down"))
 
 
 (defn mount-fixture [f]
-  (log/debugf "mount-fixture up")
+  (log/tracef "mount-fixture up")
   (mount/start)
   (f)
   (mount/stop)
-  (log/debugf "mount-fixture down"))
+  (log/tracef "mount-fixture down"))
 
 
 (defn registry-fixture [f]
   (let [layers (-> "test/resources/registry.fixture.edn" slurp edn/read-string)]
-    (log/debugf "registry-fixture up")
+    (log/tracef "registry-fixture up")
     (into [] (map registry/add!) layers)
     (f)
     (into [] (comp (map :name) (map registry/remove!)) layers)
-    (log/debugf "registry-fixture down")))
+    (log/tracef "registry-fixture down")))
 
 
-(def all-fixtures (join-fixtures [schema-fixture mount-fixture registry-fixture]))
+(defn grid-fixture [f]
+  (let [grids (-> "test/resources/grid.fixture.edn" slurp edn/read-string)]
+    (log/tracef "grid-fixture up")
+    (into [] (map grid/add!) grids)
+    (f)
+    (into [] (comp (map :name) (map grid/remove!)) grids)
+    (log/tracef "grid-fixture down")))
+
+
+(def all-fixtures (join-fixtures [schema-fixture mount-fixture registry-fixture grid-fixture]))

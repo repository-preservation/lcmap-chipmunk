@@ -12,6 +12,7 @@
             [ring.middleware.keyword-params :as ring-keyword-params]
             [ring.middleware.cors :as ring-cors]
             [lcmap.chipmunk.config :as config]
+            [lcmap.chipmunk.ingest :as ingest]
             [lcmap.chipmunk.registry :as registry]
             [lcmap.chipmunk.inventory :as inventory]
             [lcmap.chipmunk.chips :as chips]
@@ -63,7 +64,7 @@
   "Ingest data specified by source into implicit layer."
   [{:keys [:body] :as req}]
   (log/debugf "POST source '%s'" (:url body))
-  {:status 200 :body (core/ingest (:url body))})
+  {:status 200 :body (ingest/save (:url body))})
 
 
 (defn healthy
@@ -80,12 +81,19 @@
   (metrics.ring.expose/serve-metrics {}))
 
 
-(defn snap-point
+(defn get-grid
+  ""
+  [{:keys [params] :as request}]
+  (let [grid (grid/search (-> request :params :name)) ]
+    {:status 200 :body grid}))
+
+
+(defn get-point
   ""
   [{:keys [params] :as request}]
   (log/debug "GET snap")
-  (let [layer (registry/lookup! (-> request :params :ubid))
-        [sx sy](grid/snap params layer)]
+  (let [layer (grid/search (-> request :params :name))
+        [sx sy] (grid/snap params layer)]
     {:status 200 :body {:snapped {:x sx :y sy}}}))
 
 
@@ -99,8 +107,10 @@
       (get-chip-specs request))
     (compojure/POST "/chip-specs" []
       (post-chip-specs request))
-    (compojure/GET  "/snap" []
-      (snap-point request))
+    (compojure/GET  "/grid" []
+      (get-grid request))
+    (compojure/GET "/grid/snap" []
+      (get-point request))
     (compojure/GET "/inventory" []
       (get-sources request))
     (compojure/POST "/inventory" []
@@ -117,9 +127,9 @@
   (fn [request]
     (try
       (handler request)
-      (catch java.lang.RuntimeException cause
-        (log/errorf cause "middleware caught exception: %s" (.getMessage cause))
-        {:status 500 :body (json/encode {:error (.getMessage cause) :problem (ex-data cause)})}))))
+      (catch java.lang.RuntimeException ex
+        (log/errorf "middleware caught exception: %s" (.getMessage ex))
+        {:status 500 :body (json/encode {:exception (.getMessage ex)})}))))
 
 
 (def app
@@ -135,14 +145,14 @@
 (defn iso8601-encoder
   "Transform a Joda DateTime object into an ISO8601 string."
   [date-time generator]
-  (log/debug "encoding DateTime to ISO8601")
+  (log/trace "encoding DateTime to ISO8601")
   (.writeString generator (str date-time)))
 
 
 (defn base64-encoder
   "Base64 encode a byte-buffer, usually raster data from Cassandra."
   [buffer generator]
-  (log/debug "encoding HeapByteBuffer")
+  (log/trace "encoding HeapByteBuffer")
   (let [size (- (.limit buffer) (.position buffer))
         copy (byte-array size)]
     (.get buffer copy)
