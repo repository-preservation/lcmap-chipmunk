@@ -1,8 +1,12 @@
 # Chipmunk
 
-Chipmunk. It's nuts.
+Chipmunk enables time-series access to geospatial raster data.
 
-## Deploying Chipmunk
+You can use it to define, store, and retrieve collections of data
+over HTTP.
+
+
+## Deploying
 
 Chipmunk is run as a Docker container so you don't have to worry
 about installing GDAL or building an uberjar. It will automatically
@@ -67,22 +71,101 @@ Start a REPL.
 lein repl
 ```
 
-## Sample Shell Scripts
+## Resources
 
-You can use included bash scripts to define a layer and ingest some data.
 
-Define a layer for LC08 SRB1:
+### Registry
 
-```
-bin/post-layer
-```
+The `/registry` resource provides data about the collections of data
+contained by a Chipmunk instance.
 
-Ingest some LC08 SRB1 data:
+Get info about all layers in a Chipmunk instance:
 
 ```
-bin/post-source http://guest:guest@localhost:9080/LC08_CU_027009_20130701_20170729_C01_V01_SR.tar/LC08_CU_027009_20130701_20170729_C01_V01_SRB1.tif
+http localhost:5656/registry
 ```
 
-## Conclusion
+You may also query the registry using one or more `tags` parameters to
+get a subset of layers.
 
-Chipmunk. It's nuts.
+```
+http localhost:5656/registry \
+     tags==blue \
+     tags==sr
+```
+
+### Inventory
+
+The `/inventory` resource is used to add raster data (using an HTTP POST)
+method or retrieve info about what was ingested (using an HTTP GET).
+
+To ingest data, POST a JSON document containing the URL to the raster data.
+
+```
+http POST localhost:5656/inventory \
+     url=http://localhost:9080/LC08_CU_027009_20130701_20170729_C01_V01_SR.tar/LC08_CU_027009_20130701_20170729_C01_V01_SRB1.tif
+```
+
+The response contains detailed information about the source and a list
+of the chips that were extracted.
+
+To retrieve this information again, perform a `GET` using the same URL.
+
+```
+http GET localhost:5656/inventory \
+     url==http://localhost:9080/LC08_CU_027009_20130701_20170729_C01_V01_SR.tar/LC08_CU_027009_20130701_20170729_C01_V01_SRB1.tif
+```
+
+
+### Chips
+
+The `/chips` resource provides a way to retrieve raw raster data. It gets
+a list of chips, encoded as JSON, in response to spatio-temporal queries.
+
+Please note: the `ubid` parameter corresponds to the name of a layer
+defined in the registry. These parameter names are selected to maintain
+compatability with [Merlin][1].
+
+```
+http GET localhost:5656/chips \
+     ubid==lc08_srb1          \
+     x==1631415               \
+     y==1829805               \
+     acquired==1980/2020
+```
+
+
+### Grids
+
+_TODO: Not implemented, yet!_
+
+Get all defined grids.
+
+```
+http GET localhost:5656/grid
+```
+
+Get snapped point for each defined grid.
+
+```
+http GET localhost:5656/grid x==1631415 y==1829805
+```
+
+
+## Merlin Compatability Notes
+
+_TODO: Not implemented, yet._
+
+Backward compatability with [Merlin][1] will be provided via two resources:
+
+* `/merlin/chips`
+* `/merlin/chip-specs`
+
+Currently, Merlin specific changes are mixed into the entire codebase. This
+needs to be isolated so that consistent terms (layer vs. chip-spec, name vs.
+ubid) can be used.
+
+
+## References
+
+* [1]: https://github.com/USGS-EROS/lcmap-merlin
