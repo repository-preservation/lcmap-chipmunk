@@ -21,6 +21,24 @@
   (:import [org.joda.time DateTime]
            [org.apache.commons.codec.binary Base64]))
 
+;; # Overview
+;;
+;; This namespace provides functions that produce responses
+;; to requests for various resources. It also defines routes,
+;; middleware, encoders, and an HTTP server state.
+;;
+
+
+;; # Responders
+;;
+;; These functions are defined as such to keep routes concise.
+;; Each produces a Ring-style response map. You may notice some
+;; logic that 'renames' parameters; this was done to maintain
+;; compatability with previous consumers of a similar REST API.
+;;
+;; In order to avoid duplication, resources that provide the same
+;; behavior without changing names have been avoided.
+;;
 
 (defn get-base
   "Build response for base URL."
@@ -82,20 +100,27 @@
 
 
 (defn get-grid
-  ""
+  "Obtain parameters for a grid of the given name."
   [{:keys [params] :as request}]
   (let [grid (grid/search (-> request :params :name)) ]
     {:status 200 :body grid}))
 
 
 (defn get-point
-  ""
+  "Convert points to those that are 'on' the grid."
   [{:keys [params] :as request}]
   (log/debug "GET snap")
   (let [layer (grid/search (-> request :params :name))
         [sx sy] (grid/snap params layer)]
     {:status 200 :body {:snapped {:x sx :y sy}}}))
 
+
+;; ## Routes
+;;
+;; As mentioned prior, the route definition does nothing aside
+;; from invoke the corresponding function. This keeps routes
+;; concise (and readable).
+;;
 
 (compojure/defroutes routes
   (compojure/context "/" request
@@ -107,19 +132,25 @@
       (get-chip-specs request))
     (compojure/POST "/chip-specs" []
       (post-chip-specs request))
-    (compojure/GET  "/grid" []
-      (get-grid request))
-    (compojure/GET "/grid/snap" []
-      (get-point request))
     (compojure/GET "/inventory" []
       (get-sources request))
     (compojure/POST "/inventory" []
       (post-source request))
+    (compojure/GET "/grid" []
+      (get-grid request))
+    (compojure/GET "/grid/snap" []
+      (get-point request))
     (compojure/GET "/healthy" []
       (healthy request))
     (compojure/GET "/metrics" []
       (metrics request))))
 
+
+;; ## Middleware
+;;
+;; The only custom middleware provided by Chipmunk is an exception
+;; handler that produces a generic error message.
+;;
 
 (defn wrap-exception-handling
   "Catch otherwise unhandled exceptions."
@@ -128,9 +159,20 @@
     (try
       (handler request)
       (catch java.lang.RuntimeException ex
-        (log/errorf "middleware caught exception: %s" (.getMessage ex))
-        {:status 500 :body (json/encode {:exception (.getMessage ex)})}))))
+        (let [msg (format "middleware caught exception: %s" (.getMessage ex))]
+          (log/errorf msg)
+          {:status 500 :body (json/encode {:exception (.getMessage ex)})})))))
 
+
+;; ## Handler
+;;
+;; This handler combines all routes and middleware. In addition to
+;; our own middleware, we include functions that:
+;;
+;; - convert params map keys into keywords
+;; - convert request and and response bodies to JSON
+;; - add CORS headers to responses
+;;
 
 (def app
   (-> routes
@@ -141,6 +183,12 @@
       (ring-keyword-params/wrap-keyword-params)
       (wrap-exception-handling)))
 
+
+;; ## Encoders
+;;
+;; These functions simplify the converstion of values that do
+;; not have a default way of producing a serialized string.
+;;
 
 (defn iso8601-encoder
   "Transform a Joda DateTime object into an ISO8601 string."
@@ -164,6 +212,12 @@
            (json-gen/add-encoder org.joda.time.DateTime iso8601-encoder)
            (json-gen/add-encoder java.nio.HeapByteBuffer base64-encoder)))
 
+
+;; ## HTTP Server
+;;
+;; This state starts a web server that uses the `app` handler
+;; to process requests.
+;;
 
 (declare http-server)
 
