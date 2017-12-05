@@ -15,6 +15,7 @@
 ;; for specific values such as hostnames and credentials.
 ;;
 
+
 ;; ## Joda Support
 ;;
 ;; Enabling encoding of Joda types provides a degree of convenience.
@@ -25,7 +26,6 @@
 
 
 ;; ## Declarations
-;;
 ;;
 
 (declare db-cluster db-session)
