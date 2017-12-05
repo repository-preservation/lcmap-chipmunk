@@ -13,6 +13,30 @@
             [lcmap.commons.chip :as commons-chip]))
 
 
+;; ## Overview
+;;
+;; A chip is raw raster data, associated with a layer, x and y
+;; coordinate in a uniform reference system, acquisition date
+;; and source.
+;;
+;; All chips for a particular layer (e.g. LC08_SRB1) are stored
+;; in a single table.
+;;
+;; Information about the data type and shape are stored in the
+;; registry, information about the original source is stored in
+;; the inventory. In order to calculate the x and y coordinate
+;; for a chip, use the `snap` function defined in the grid ns.
+;;
+
+
+;; ## Inserting Chips
+;;
+;; Saving a chip is a simple operation. In order to avoid problems
+;; with chips that have additional properties that aren't persisted,
+;; the function used to build the insert statement explicitly
+;; selects that values to be persisted.
+;;
+
 (defn insert-chip
   "Build query to add chip to layer."
   [{:keys [:layer] :as chip}]
@@ -32,11 +56,20 @@
         (throw (ex-info msg (dissoc chip :data) cause))))))
 
 
+;; This is a convenience function that exists to keep ingest
+;; code concise. It operates on a sequence of chips.
+;;
+
 (defn save
   "Add all chips to layer."
   [chips]
   (into [] (map insert-chip! chips)))
 
+
+;; This spec is used to validate chip queries. It uses conformers
+;; to convert values from one type to another; e.g. string values
+;; for points into numbers.
+;;
 
 (spec/def ::x (spec/conformer util/numberizer))
 (spec/def ::y (spec/conformer util/numberizer))
