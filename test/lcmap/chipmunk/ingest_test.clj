@@ -94,7 +94,9 @@
             size (get-in actual [:headers :content-length])
             etag (get-in actual [:headers :etag])]
         (is (= "22083072" size) "size header different; did the sample data change?")
-        (is (clojure.string/includes? etag "59b7d3b9-150f600") "etag header different; did the sample data change?")))
+        ;; Checking an etag value is error prone because timestamps for the last
+        ;; modification date of the file can change.
+        #_(is (clojure.string/includes? etag "59b7d3b9-150f600") "etag header different; did the sample data change?")))
     (testing "to a non-existent source"
       (let [url (shared/nginx-url "LC08_CU_000000_20130701_20170729_C01_V01_SR.tar/LC08_CU_000000_20130701_20170729_C01_V01_SRBX.tif")
             actual (http-info url)]
