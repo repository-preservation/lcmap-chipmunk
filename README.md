@@ -71,6 +71,48 @@ Start a REPL.
 lein repl
 ```
 
+Please examine `dev/user.clj` for additional examples. You will probably
+want to add layers to the registry and define both a chip and tile grid.
+You may use these presets found in the `resources` directory if you plan
+to work with CONUS Landsat ARD.
+
+```
+(let [layers (-> "registry.ard.edn" clojure.java.io/resource slurp edn/read-string)]
+  (map registry/add! layers))
+
+(let [layers (-> "registry.aux.edn" clojure.java.io/resource slurp edn/read-string)]
+  (map registry/add! layers))
+
+(let [grids  (-> "grid.conus.edn" clojure.java.io/resource slurp edn/read-string)]
+  (map grid/add! grids))
+
+```
+
+
+### Additional Data
+
+You may find it desirable to retrieve additional data to help you
+become more familiar with Chipmunk. Although data can be ingested
+directly from non-local sources, bandwidth constraints and rate
+limits may prompt you to host your own data for ingest locally.
+
+Data placed in `test/nginx/data` can be retrieved from a Docker container
+running NGINX. This server can be accessed at `http://localhost:9080/`.
+
+Download Landsat ARD for tile H003V009. Feel free to edit this script to
+obtain other data. (This script skips files that have already been
+retrieved).
+
+```
+./bin/download-data
+```
+
+Once retrieved, the data can be ingested using the following:
+
+```
+ls test/nginx/data/**/*.tar | xargs bin/load
+```
+
 ## Resources
 
 
