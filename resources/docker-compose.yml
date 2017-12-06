@@ -10,23 +10,6 @@ networks:
 
 services:
 
-  elastic:
-    image: elasticsearch:5.2.0
-    ports:
-    - "9200:9200"
-    - "9300:9300"
-    networks:
-      - lcmap_chipmunk
-
-  rabbit:
-    image: rabbitmq:3.6.6-management
-    ports:
-    - "15672:15672"
-    - "5672:5672"
-    - "5671:5671"
-    networks:
-      - lcmap_chipmunk
-
   cassandra:
     image: cassandra:3.9
     ports:
