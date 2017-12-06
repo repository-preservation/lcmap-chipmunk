@@ -92,7 +92,7 @@
   "Get chips matching query; handles snapping arbitrary x/y to chip x/y."
   [params]
   (let [grid (grid/search "chip")
-        [x y] (grid/snap params grid)]
+        [x y] (grid/proj-snap params grid)]
     (->> (assoc params :x (long x) :y (long y))
          (util/check! ::query)
          (search)

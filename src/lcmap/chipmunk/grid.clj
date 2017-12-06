@@ -19,6 +19,13 @@
        (alia/execute db/db-session)))
 
 
+(defn all!
+  "Get all defined grids."
+  []
+  (->> (hayt/select :grid)
+       (alia/execute db/db-session)))
+
+
 (defn search
   "Find a grid by name."
   [name]
@@ -68,8 +75,8 @@
      [1]]))
 
 
-(defn snap-fn
-  "Create a snapping fn for given layer."
+(defn proj-snap-fn
+  "Create fn for finding 'on-the-grid' projection coordinates."
   [grid]
   (fn [point]
     ;; rst = rotate, scale, translate
@@ -84,7 +91,47 @@
       [sx sy])))
 
 
-(defn snap
-  "Find snapped x and y for given point and grid."
+(defn proj-snap
+  "Determine projection system point that is 'on-the-grid'"
   [point grid]
-  ((snap-fn grid) point))
+  ((proj-snap-fn grid) point))
+
+
+(defn grid-snap-fn
+  "Create a fn that calculates grid units of a point (not projection units)."
+  [grid]
+  (fn [point]
+    ;; rst = rotate, scale, translate
+    ;; rsti = rst-inverse
+    ;; sx, sy = snapped-x, snapped-y
+    (let [rst        (transform-matrix grid)
+          orig-pt    (point-matrix point)
+          grid-pt    (matrix/floor (matrix/mmul rst orig-pt))
+          [[sx] [sy] [_]] grid-pt]
+      [sx sy])))
+
+
+(defn grid-snap
+  "Find the point in grid units (not projection units)."
+  [point grid]
+  ((grid-snap-fn grid) point))
+
+
+(defn snap
+  ""
+  [point grid]
+  [(grid :name)
+   {:proj-pt (proj-snap point grid)
+    :grid-pt (grid-snap point grid)}])
+
+
+(defn near
+  ""
+  [params grid]
+  (let [[x y] (proj-snap params grid)
+        dx (grid :sx)
+        dy (grid :sy)]
+    {(grid :name)
+     (for [x (range (- x dx) (+ x dx 1) dx)
+           y (range (- y dy) (+ y dy 1) dy)]
+       (last (snap {:x x :y y} grid)))}))

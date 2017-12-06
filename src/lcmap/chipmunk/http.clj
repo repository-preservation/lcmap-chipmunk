@@ -1,6 +1,7 @@
 (ns lcmap.chipmunk.http
   "Handlers for HTTP requests."
   (:require [clojure.tools.logging :as log]
+            [clojure.stacktrace :as stacktrace]
             [cheshire.core :as json]
             [cheshire.generate :as json-gen :refer [add-encoder]]
             [compojure.core :as compojure]
@@ -102,17 +103,27 @@
 (defn get-grid
   "Obtain parameters for a grid of the given name."
   [{:keys [params] :as request}]
-  (let [grid (grid/search (-> request :params :name)) ]
-    {:status 200 :body grid}))
+  (log/debug "GET /grid")
+  (let [grids (grid/all!) ]
+    {:status 200 :body grids}))
 
 
-(defn get-point
+(defn get-snap
   "Convert points to those that are 'on' the grid."
   [{:keys [params] :as request}]
-  (log/debug "GET snap")
-  (let [layer (grid/search (-> request :params :name))
-        [sx sy] (grid/snap params layer)]
-    {:status 200 :body {:snapped {:x sx :y sy}}}))
+  (log/debug "GET /grid/snap")
+  (let [grids (grid/all!)
+        snaps (into {} (map #(grid/snap params %)) grids)]
+    {:status 200 :body snaps}))
+
+
+(defn get-near
+  "Find points near the given point"
+  [{:keys [params] :as request}]
+  (log/debug "GET /grid/near")
+  (let [grids (grid/all!)
+        nears (into {} (map #(grid/near params %)) grids)]
+    {:status 200 :body nears}))
 
 
 ;; ## Routes
@@ -139,7 +150,9 @@
     (compojure/GET "/grid" []
       (get-grid request))
     (compojure/GET "/grid/snap" []
-      (get-point request))
+      (get-snap request))
+    (compojure/GET "/grid/near" []
+      (get-near request))
     (compojure/GET "/healthy" []
       (healthy request))
     (compojure/GET "/metrics" []
@@ -159,8 +172,10 @@
     (try
       (handler request)
       (catch java.lang.RuntimeException ex
-        (let [msg (format "middleware caught exception: %s" (.getMessage ex))]
+        (let [msg (format "middleware caught exception: %s" ex)]
           (log/errorf msg)
+          (stacktrace/print-stack-trace ex)
+          (stacktrace/print-cause-trace ex)
           {:status 500 :body (json/encode {:exception (.getMessage ex)})})))))
 
 

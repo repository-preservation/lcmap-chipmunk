@@ -40,7 +40,7 @@
   (let [layers (-> "registry.aux.edn" clojure.java.io/resource slurp edn/read-string)]
     (map registry/add! layers))
   (let [grids  (-> "grid.conus.edn" clojure.java.io/resource slurp edn/read-string)]
-    (map grid/save grids)))
+    (map grid/add! grids)))
 
 
 (comment
@@ -71,7 +71,12 @@
 
 
 (comment
-  "Getting a grid and using it to snap a point to the nearest upper-left chip point."
-  (let [point {:x 1526416 :y 1946804}
-        chip-grid (grid/search "chip")]
-    (grid/snap point chip-grid)))
+  "Working with grids, notice the 'off-the-grid' point."
+  (let [grid (grid/search "chip")]
+    (grid/grid-snap {:x 1526416 :y 1946804} grid))
+  (let [grid (grid/search "chip")]
+    (grid/proj-snap {:x 1526416 :y 1946804} grid))
+  (let [grid (grid/search "chip")]
+    (grid/snap {:x 1526416 :y 1946804} grid))
+  (let [grid (grid/search "chip")]
+    (grid/near {:x 1526416 :y 1946804} grid)))
