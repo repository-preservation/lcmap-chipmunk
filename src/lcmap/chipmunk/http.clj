@@ -151,6 +151,10 @@
       (get-chip-specs request))
     (compojure/POST "/chip-specs" []
       (post-chip-specs request))
+    (compojure/GET "/registry" []
+      (get-chip-specs request))
+    (compojure/POST "/registry" []
+      (post-chip-specs request))
     (compojure/GET "/inventory" []
       (get-sources request))
     (compojure/POST "/inventory" []
