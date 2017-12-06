@@ -137,7 +137,11 @@ http GET localhost:5656/chips \
 
 ### Grids
 
-_TODO: Not implemented, yet!_
+Chipmunk instances use one or more grids to calculate points at a
+regular interval.
+
+A grid provides parameters that can be used with an RST (rotation,
+scaling, tranformation) matrix.
 
 Get all defined grids.
 
@@ -145,10 +149,16 @@ Get all defined grids.
 http GET localhost:5656/grid
 ```
 
-Get snapped point for each defined grid.
+Get the grid point for the unit that 'contains' the given point.
 
 ```
-http GET localhost:5656/grid x==1631415 y==1829805
+http GET localhost:5656/grid/snap x==1631415 y==1829805
+```
+
+Get the grid points for units surrounding (and including) the given point.
+
+```
+http GET localhost:5656/grid/snap x==1631415 y==1829805
 ```
 
 
