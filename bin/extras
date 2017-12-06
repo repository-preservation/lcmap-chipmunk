@@ -1,0 +1,15 @@
+#!/bin/bash
+
+BASE_URL="https://edclpdsftp.cr.usgs.gov/downloads/collections/l2-ard-tiles/h03v09"
+BASE_DIR="test/nginx/data/h03v09"
+
+mkdir -p $BASE_DIR
+
+for DAY in 20130418 20130425 20130504
+do
+  for BAND in _BT.tar _QA.tar _SR.tar _TA.tar .xml
+  do
+    file=LC08_CU_003009_"$DAY"_20170727_C01_V01"$BAND"
+    curl "$BASE_URL"/"$file" -o "$BASE_DIR"/"$file"
+  done
+done
