@@ -2,13 +2,13 @@
 
 # Example Usage:
 #
-# `ls test/nginx/data/LC08_*.tar | xargs bin/load`
+# `ls test/nginx/data/**/*.tar | xargs bin/load`
 #
 
 # Update this to read data from a different location.
 #
 
-URL="http://guest:guest@localhost:9080"
+URL="http://localhost:9080/h03v09"
 
 # Ingest each .tif file in each .tar file.
 #

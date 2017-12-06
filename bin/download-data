@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# Use this script to download additional data for development
+# purposes.
+#
+
+# This is the location of the data to download.
+#
+BASE_URL="https://edclpdsftp.cr.usgs.gov/downloads/collections/l2-ard-tiles/h03v09"
+
+# This is the location of where to save the data.
+#
+BASE_DIR="test/nginx/data/h03v09"
+
+# The location may not exist, so we create it if necessary.
+#
+mkdir -p $BASE_DIR
+
+for ARD in LC08_CU_003009_20130418_20170727_C01_V01 \
+	   LC08_CU_003009_20130425_20170727_C01_V01 \
+	   LC08_CU_003009_20130504_20170727_C01_V01 \
+	   LE07_CU_003009_20130417_20170727_C01_V01 \
+	   LE07_CU_003009_20130426_20170727_C01_V01 \
+	   LE07_CU_003009_20130503_20170727_C01_V01
+do
+  for BAND in _BT.tar _QA.tar _SR.tar _TA.tar .xml
+  do
+      FILE="$ARD""$BAND"
+      if [[ -f "$BASE_DIR"/"$FILE" ]]; then
+         echo "skipping previously downloaded file: $FILE"
+      else
+         echo "retrieving file: $FILE"
+	 curl --silent --output "$BASE_DIR"/"$FILE" "$BASE_URL"/"$FILE"
+      fi
+  done
+done
