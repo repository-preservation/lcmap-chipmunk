@@ -16,7 +16,8 @@
   [grid]
   (->> (hayt/values grid)
        (hayt/insert :grid)
-       (alia/execute db/db-session)))
+       (alia/execute db/db-session))
+  grid)
 
 
 (defn all!

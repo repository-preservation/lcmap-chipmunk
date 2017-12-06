@@ -108,6 +108,14 @@
     {:status 200 :body grids}))
 
 
+(defn post-grid
+  "Create (or update) a layer's properties."
+  [{:keys [body] :as req}]
+  (log/debugf "POST grid '%s'" body)
+  (let [grid (grid/add! body)]
+    {:status 201 :body grid}))
+
+
 (defn get-snap
   "Convert points to those that are 'on' the grid."
   [{:keys [params] :as request}]
@@ -149,6 +157,8 @@
       (post-source request))
     (compojure/GET "/grid" []
       (get-grid request))
+    (compojure/POST "/grid" []
+      (post-grid request))
     (compojure/GET "/grid/snap" []
       (get-snap request))
     (compojure/GET "/grid/near" []
