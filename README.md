@@ -55,6 +55,11 @@ After downloading sample data, ingest it all like this:
 ls test/nginx/data/**/*.tar | xargs bin/load
 ```
 
+The `bin/load` script generates full URLs to individual GeoTIFFs contained
+in tar files and handles building URLs to the files hosted on the provided
+NGINX server that can be retrieved by a Chipmunk instance running as a Docker
+container.
+
 
 ## Developing Chipmunk
 
@@ -96,23 +101,11 @@ Start a REPL.
 lein repl
 ```
 
-Please examine `dev/user.clj` for additional examples. You will probably
-want to add layers to the registry and define both a chip and tile grid.
-You may use these presets found in the `resources` directory if you plan
-to work with CONUS Landsat ARD.
+Configure the registry and grids.
 
 ```
-(let [layers (-> "registry.ard.edn" clojure.java.io/resource slurp edn/read-string)]
-  (map registry/add! layers))
-
-(let [layers (-> "registry.aux.edn" clojure.java.io/resource slurp edn/read-string)]
-  (map registry/add! layers))
-
-(let [grids  (-> "grid.conus.edn" clojure.java.io/resource slurp edn/read-string)]
-  (map grid/add! grids))
-
+./bin/setup
 ```
-
 
 ### Additional Data
 
@@ -120,9 +113,6 @@ You may find it desirable to retrieve additional data to help you
 become more familiar with Chipmunk. Although data can be ingested
 directly from non-local sources, bandwidth constraints and rate
 limits may prompt you to host your own data for ingest locally.
-
-Data placed in `test/nginx/data` can be retrieved from a Docker container
-running NGINX. This server can be accessed at `http://localhost:9080/`.
 
 Download Landsat ARD for tile H003V009. Feel free to edit this script to
 obtain other data. (This script skips files that have already been
@@ -161,47 +151,6 @@ http localhost:5656/registry \
      tags==sr
 ```
 
-### Inventory
-
-The `/inventory` resource is used to add raster data (using an HTTP POST)
-method or retrieve info about what was ingested (using an HTTP GET).
-
-To ingest data, POST a JSON document containing the URL to the raster data.
-
-```
-http POST localhost:5656/inventory \
-     url=http://localhost:9080/LC08_CU_027009_20130701_20170729_C01_V01_SR.tar/LC08_CU_027009_20130701_20170729_C01_V01_SRB1.tif
-```
-
-The response contains detailed information about the source and a list
-of the chips that were extracted.
-
-To retrieve this information again, perform a `GET` using the same URL.
-
-```
-http GET localhost:5656/inventory \
-     url==http://localhost:9080/LC08_CU_027009_20130701_20170729_C01_V01_SR.tar/LC08_CU_027009_20130701_20170729_C01_V01_SRB1.tif
-```
-
-
-### Chips
-
-The `/chips` resource provides a way to retrieve raw raster data. It gets
-a list of chips, encoded as JSON, in response to spatio-temporal queries.
-
-Please note: the `ubid` parameter corresponds to the name of a layer
-defined in the registry. These parameter names are selected to maintain
-compatability with [Merlin][1].
-
-```
-http GET localhost:5656/chips \
-     ubid==lc08_srb1          \
-     x==1631415               \
-     y==1829805               \
-     acquired==1980/2020
-```
-
-
 ### Grids
 
 Chipmunk instances use one or more grids to calculate points at a
@@ -226,6 +175,55 @@ Get the grid points for units surrounding (and including) the given point.
 
 ```
 http GET localhost:5656/grid/near x==1631415 y==1829805
+```
+
+
+### Inventory
+
+The `/inventory` resource is used to add raster data (using an HTTP POST
+request) or to retrieve info about what was ingested (using an HTTP GET).
+
+To ingest data, POST a JSON document containing the URL to the raster data.
+
+Please Note: If you are running Chipmunk inside a Docker container, you
+must use the IP address of the NGINX server. This can be obtained and set
+for later use by running:
+
+```
+export NGINX_HOST=`docker inspect -f "{{ .NetworkSettings.Networks.resources_lcmap_chipmunk.IPAddress }}" resources_nginx_1`
+```
+
+```
+http POST localhost:5656/inventory \
+     url=http://$NGINX_HOST/LC08_CU_027009_20130701_20170729_C01_V01_SR.tar/LC08_CU_027009_20130701_20170729_C01_V01_SRB1.tif
+```
+
+The response contains detailed information about the source and a list
+of the chips that were extracted.
+
+To retrieve this information again, perform a `GET` using the same URL.
+
+```
+http GET localhost:5656/inventory \
+     url==http://$NGINX_HOST/LC08_CU_027009_20130701_20170729_C01_V01_SR.tar/LC08_CU_027009_20130701_20170729_C01_V01_SRB1.tif
+```
+
+
+### Chips
+
+The `/chips` resource provides a way to retrieve raw raster data. It gets
+a list of chips, encoded as JSON, in response to spatio-temporal queries.
+
+Please note: the `ubid` parameter corresponds to the name of a layer
+defined in the registry. These parameter names are selected to maintain
+compatability with [Merlin][1].
+
+```
+http GET localhost:5656/chips \
+     ubid==lc08_srb1          \
+     x==1631415               \
+     y==1829805               \
+     acquired==1980/2020
 ```
 
 
