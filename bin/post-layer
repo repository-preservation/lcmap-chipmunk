@@ -1,8 +1,0 @@
-#!/bin/bash
-
-curl -X POST \
-     --verbose \
-     -H 'Content-Type: application/json' \
-     -H 'Accept: application/json' \
-     -d '{"name":"LC08_SRB1"}' \
-     'http://localhost:5656/chip-specs'

@@ -52,14 +52,14 @@
   [{:keys [params] :as req}]
   (log/debugf "GET chip-specs '%s'" params)
   (let [results (registry/search! params)]
-    {:status 200 :body (map #(assoc % :ubid (get % :name)) results)}))
+    {:status 200 :body (map #(assoc % :ubid (% :name)) results)}))
 
 
 (defn post-chip-specs
   "Create (or update) a layer's properties."
   [{:keys [body] :as req}]
   (log/debugf "POST chip-specs '%s'" body)
-  (let [layer (registry/add! body)]
+  (let [layer (map registry/add! body)]
     {:status 201 :body layer}))
 
 
@@ -112,7 +112,7 @@
   "Create (or update) a layer's properties."
   [{:keys [body] :as req}]
   (log/debugf "POST grid '%s'" body)
-  (let [grid (grid/add! body)]
+  (let [grid (map grid/add! body)]
     {:status 201 :body grid}))
 
 

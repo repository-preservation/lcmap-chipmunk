@@ -1,28 +1,43 @@
 #!/bin/bash
 
-# Example Usage:
+# This script is useful for loading all of the rasters
+# contained in a tar file. It relies on `httpie` to
+# POST JSON encoded data to the /inventory.
 #
-# `ls test/nginx/data/**/*.tar | xargs bin/load`
+# Example Usages:
+#
+# 1. Single Tar File
+#
+#    `bin/load test/nginx/data/h03v09/LC08_CU_003009_20130418_20170727_C01_V01_BT.tar`
+#
+# 2. Multiple Tar Files
+#
+#    `ls test/nginx/data/**/*.tar | xargs bin/load`
 #
 
-# Update this to read data from a different location.
+
+# This is the Chipmunk instance you want to put data into
 #
 
-URL="http://localhost:9080/h03v09"
+HOST="localhost:5858/inventory"
 
-# Ingest each .tif file in each .tar file.
+# This trickery allows us to resolve an IP address for the
+# NGINX container that provides HTTP access to tar files.
 #
+NGINX_IP=`docker inspect -f "{{ .NetworkSettings.Networks.resources_lcmap_chipmunk.IPAddress }}" resources_nginx_1`
+NGINX_DATA="test/nginx/data"
+NGINX_URL="http://$NGINX_IP"
 
-mkdir -p tmp
-
+# For each tif in a tar, post a constructed URL to the same
+# data in NGINX to the Chipmunk instance.
+#
 while [ "$1" != "" ]; do
     TAR=$1
-    BASE=$(basename $TAR)
     FILES=$(tar --list --file=$TAR --wildcards '*.tif')
     for TIF in $FILES; do
-	SOURCE="$URL/$BASE/$TIF"
-	echo "$(date) - ingest $SOURCE"
-	bin/post-source $SOURCE > "tmp/ingest_$TIF.json"
+	SOURCE="$NGINX_URL${TAR//$NGINX_DATA/}/$TIF"
+	echo $SOURCE
+	http POST $HOST url=$SOURCE < /dev/tty
     done
     shift
 done

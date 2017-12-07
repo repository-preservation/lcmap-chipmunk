@@ -31,6 +31,30 @@ Chipmunk is configured using these environment variables:
 | `DB_KEYSPACE`  | Chipmunk's keyspace name    |
 
 
+## Presets for Layers and Grids
+
+Once you have a Chipmunk instance running, you may want to load
+it with some data.
+
+Predefined layers and grids can be loaded by running:
+
+```
+./bin/setup
+```
+
+Sample data can be downloaded by running:
+
+```
+./bin/download-data
+```
+
+After downloading sample data, ingest it all like this:
+
+```
+ls test/nginx/data/**/*.tar | xargs bin/load
+```
+
+
 ## Developing Chipmunk
 
 You need to install a few dependencies before running Chipmunk locally.

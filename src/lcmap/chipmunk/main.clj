@@ -20,15 +20,17 @@
    to configure the app."
   [& args]
   (try
-    (log/debug "chipmunk init")
     ;; This needs to happen before mount states are started
     ;; because they expect keyspaces and tables to exist.
+    (log/debug "chipmunk init")
     (lcmap.chipmunk.setup/init)
     ;; A shutdown hook gives us a way to cleanly stop mount
     ;; states.
+    (log/debug "chipmunk add shutdown hook")
     (lcmap.chipmunk.util/add-shutdown-hook)
     ;; Remember, only mount states defined that are defined
     ;; in required namepsaces are started.
+    (log/debug "chipmunk start")
     (mount.core/start)
     (catch RuntimeException ex
       (log/errorf "error starting chipmunk: %s" (.getMessage ex))

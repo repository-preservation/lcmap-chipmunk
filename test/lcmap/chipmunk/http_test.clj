@@ -38,7 +38,7 @@
 
 (deftest post-registry-test
   (testing "POST /chip-specs"
-    (let [layer {:name "LC08_SRB1" :tags ["LC08" "SRB1" "aerosol"]}
+    (let [layer [{:name "LC08_SRB1" :tags ["LC08" "SRB1" "aerosol"]}]
           resp (shared/go-fish {:url "/chip-specs" :method :post :body layer})]
       (is (= 201 (:status resp))))))
 

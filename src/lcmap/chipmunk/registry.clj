@@ -55,7 +55,7 @@
   (try
     (csk/->SCREAMING_SNAKE_CASE layer-name :separator #"[\W]+")
     (catch RuntimeException cause
-      (let [msg (format "could derive a the layer name for '%s'" layer-name)]
+      (let [msg (format "could generate the layer's table name for '%s'" layer-name)]
         (log/warn msg)
       (throw (ex-info msg {:layer-name layer-name} cause))))))
 
@@ -85,9 +85,9 @@
       (alia/execute db/db-session (create-layer-table layer))
       (alia/execute db/db-session (insert-layer-row layer))
       layer)
-    (catch java.lang.RuntimeException cause
-      (let [msg (format "could not create layer %s: %s" layer (.getMessage cause))]
-        (throw (ex-info msg {} cause))))))
+    (catch java.lang.RuntimeException ex
+      (let [msg (format "could not create layer %s: %s" layer (.getMessage ex))]
+        (throw (ex-info msg {} (.getCause ex)))))))
 
 
 (defn drop-layer-table

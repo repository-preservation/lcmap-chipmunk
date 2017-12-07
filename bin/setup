@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# This script can bootstrap a Chipmunk instance without
+# starting a REPL. This should be used with care.
+#
+
+
+HOST=${1:-localhost:5858}
+
+echo "setup $HOST started."
+
+echo "... creating layers for CONUS ARD"
+http POST $HOST/registry < resources/registry.ard.json >> setup.log
+
+echo "... creating layers for CONUS AUX"
+http POST $HOST/registry < resources/registry.aux.json >> setup.log
+
+echo "... creating grid for CONUS ARD"
+http POST $HOST/grid < resources/grid.conus.json >> setup.log
+
+echo "setup complete."

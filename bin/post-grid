@@ -1,8 +1,0 @@
-#!/bin/bash
-
-curl -X POST \
-     --verbose \
-     -H 'Content-Type: application/json' \
-     -H 'Accept: application/json' \
-     -d '{"name": "chip", "rx": 1.0, "ry": -1.0, "sx": 3000.0, "sy": 3000.0, "tx": 2565585.0, "ty": 3314805.0}' \
-     'http://localhost:5656/grid'
