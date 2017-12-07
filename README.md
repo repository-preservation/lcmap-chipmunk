@@ -33,8 +33,9 @@ Chipmunk is configured using these environment variables:
 
 ## Presets for Layers and Grids
 
-Once you have a Chipmunk instance running, you may want to load
-it with some data.
+Once you have a Chipmunk instance running, you may want to load it with
+some data. Please install [HTTPie][2] before using them.
+
 
 Predefined layers and grids can be loaded by running:
 
@@ -244,3 +245,4 @@ ubid) can be used.
 
 
 [1]: https://github.com/USGS-EROS/lcmap-merlin
+[2]: https://httpie.org/#installation
