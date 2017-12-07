@@ -5,7 +5,7 @@
 #
 
 
-HOST=${1:-localhost:5858}
+HOST=${1:-localhost:5656}
 
 echo "setup $HOST started."
 

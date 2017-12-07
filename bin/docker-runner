@@ -1,8 +1,8 @@
 #!/bin/bash
 
-docker run -p 5858:5858 \
+docker run -p 5656:5656 \
   -e DB_HOST=resources_cassandra_1 \
   -e DB_KEYSPACE=chipmunk_local \
-  -e HTTP_PORT=5858 \
+  -e HTTP_PORT=5656 \
   --net=resources_lcmap_chipmunk \
-  -it usgseros/lcmap-chipmunk:latest
+  -it usgseros/lcmap-chipmunk:jmorton

@@ -15,8 +15,8 @@ credentials.
 
 ```
 export DB_HOST=<your_cassandra_host_name>
-export HTTP_PORT=5858
-docker run -p 5858:5858 -it usgseros/lcmap-chipmunk:latest
+export HTTP_PORT=5656
+docker run -p 5656:5656 -it usgseros/lcmap-chipmunk:latest
 ```
 
 Chipmunk is configured using these environment variables:

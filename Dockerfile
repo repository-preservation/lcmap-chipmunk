@@ -3,7 +3,7 @@ MAINTAINER USGS LCMAP http://eros.usgs.gov
 
 ENV version 0.1.0-SNAPSHOT
 ENV jarfile chipmunk-$version-standalone.jar
-EXPOSE 5678
+EXPOSE 5656
 
 RUN mkdir /app
 WORKDIR /app
