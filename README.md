@@ -224,7 +224,7 @@ http GET localhost:5656/grid/snap x==1631415 y==1829805
 Get the grid points for units surrounding (and including) the given point.
 
 ```
-http GET localhost:5656/grid/snap x==1631415 y==1829805
+http GET localhost:5656/grid/near x==1631415 y==1829805
 ```
 
 
@@ -242,6 +242,5 @@ needs to be isolated so that consistent terms (layer vs. chip-spec, name vs.
 ubid) can be used.
 
 
-## References
 
-* [1]: https://github.com/USGS-EROS/lcmap-merlin
+[1]: https://github.com/USGS-EROS/lcmap-merlin
