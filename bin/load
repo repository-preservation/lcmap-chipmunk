@@ -19,14 +19,14 @@
 # This is the Chipmunk instance you want to put data into
 #
 
-HOST="localhost:5656/inventory"
+HOST="localhost:5858/inventory"
 
 # This trickery allows us to resolve an IP address for the
 # NGINX container that provides HTTP access to tar files.
 #
 NGINX_IP=`docker inspect -f "{{ .NetworkSettings.Networks.resources_lcmap_chipmunk.IPAddress }}" resources_nginx_1`
-NGINX_DATA="test/nginx/data"
 NGINX_URL="http://$NGINX_IP"
+NGINX_DATA="test/nginx/data"
 
 # For each tif in a tar, post a constructed URL to the same
 # data in NGINX to the Chipmunk instance.
