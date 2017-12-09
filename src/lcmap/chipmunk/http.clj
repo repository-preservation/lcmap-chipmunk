@@ -179,6 +179,14 @@
 ;; handler that produces a generic error message.
 ;;
 
+
+(defn causes
+  ""
+  [ex]
+  (let [exs (take-while some? (iterate (fn [^Throwable ex] (.getCause ex)) ex))]
+    (into [] (map (juxt #(.getMessage %)) exs))))
+
+
 (defn wrap-exception-handling
   "Catch otherwise unhandled exceptions."
   [handler]
@@ -186,11 +194,10 @@
     (try
       (handler request)
       (catch java.lang.RuntimeException ex
-        (let [msg (format "middleware caught exception: %s" ex)]
-          (log/errorf msg)
-          (stacktrace/print-stack-trace ex)
-          (stacktrace/print-cause-trace ex)
-          {:status 500 :body (json/encode {:exception (.getMessage ex)})})))))
+        (let [msg (format "middleware caught exception: %s" ex)
+              exs (causes ex)]
+          (log/errorf "exception: %s" exs)
+          {:status 500 :body (json/encode {:errors exs})})))))
 
 
 ;; ## Handler
