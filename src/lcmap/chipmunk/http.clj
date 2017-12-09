@@ -69,7 +69,7 @@
   (log/debugf "GET chips '%s'" params)
   (let [ubid  (get-in req [:params :ubid])
         results (map #(assoc % :ubid ubid) (chips/search! params))]
-    {:status 200 :body results}))
+    {:status 200 :body results :headers {"etag" (chips/etag results)}}))
 
 
 (defn get-sources
@@ -180,11 +180,14 @@
 ;;
 
 
-(defn causes
-  ""
-  [ex]
-  (let [exs (take-while some? (iterate (fn [^Throwable ex] (.getCause ex)) ex))]
-    (into [] (map (juxt #(.getMessage %)) exs))))
+(defn cause-messages
+  "Produce a list of messages for a Throwable's cause stack trace."
+  [throwable]
+  (->> throwable
+       (iterate (fn [^Throwable t] (.getCause t)))
+       (take-while some?)
+       (map (fn [t] (.getMessage t)))
+       (into [])))
 
 
 (defn wrap-exception-handling
@@ -194,10 +197,9 @@
     (try
       (handler request)
       (catch java.lang.RuntimeException ex
-        (let [msg (format "middleware caught exception: %s" ex)
-              exs (causes ex)]
-          (log/errorf "exception: %s" exs)
-          {:status 500 :body (json/encode {:errors exs})})))))
+        (let [messages (cause-messages ex)]
+          (log/errorf "exception: %s" messages)
+          {:status 500 :body (json/encode {:errors messages})})))))
 
 
 ;; ## Handler

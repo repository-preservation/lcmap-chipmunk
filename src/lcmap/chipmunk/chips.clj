@@ -6,6 +6,7 @@
             [qbits.alia :as alia]
             [qbits.hayt :as hayt]
             [qbits.hayt.codec.joda-time :as joda-time]
+            [digest :as digest]
             [lcmap.chipmunk.db :as db]
             [lcmap.chipmunk.util :as util]
             [lcmap.chipmunk.registry :as registry]
@@ -77,6 +78,12 @@
 (spec/def ::ubid string?)
 (spec/def ::query (spec/keys :req-un [::x ::y ::acquired ::ubid]))
 
+(defn etag
+  "Produce an etag for a set of chips"
+  [chips]
+  (let [hashes (map (juxt :x :y :acquired :hash) chips)]
+    (digest/md5 (clojure.string/join "+" hashes))))
+
 
 (defn search
   "Get chips matching query."
@@ -91,12 +98,9 @@
 (defn search!
   "Get chips matching query; handles snapping arbitrary x/y to chip x/y."
   [params]
-  (util/check! ::query params)
-  (let [grid (grid/search "chip")
-        [x y] (grid/proj-snap params grid)]
-    (->> (assoc params :x (long x) :y (long y))
+  (let [params  (util/check! ::query params)
+        grid    (grid/search "chip")
+        [sx sy] (grid/proj-snap params grid)]
+    (->> (assoc params :x sx :y sy)
          (search)
          (alia/execute db/db-session))))
-
-
-(spec/fdef lcmap.chipmunk.chips/search! :args (spec/cat :params ::query))
