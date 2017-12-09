@@ -91,10 +91,10 @@
 (defn search!
   "Get chips matching query; handles snapping arbitrary x/y to chip x/y."
   [params]
+  (util/check! ::query params)
   (let [grid (grid/search "chip")
         [x y] (grid/proj-snap params grid)]
     (->> (assoc params :x (long x) :y (long y))
-         (util/check! ::query)
          (search)
          (alia/execute db/db-session))))
 
