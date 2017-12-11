@@ -1,6 +1,5 @@
 [
     {
-        "chip_y": -3000,
         "tags": [
             "brightness",
             "bt",
@@ -16,18 +15,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 10 at-satellite brightness temperature",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "brightness",
             "b11",
@@ -43,18 +36,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 11 at-satellite brightness temperature",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "lineageqa",
             "lineage",
@@ -69,18 +56,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "UINT8",
         "info": "index",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": null
     },
     {
-        "chip_y": -3000,
         "tags": [
             "lc08",
             "pixelqa",
@@ -95,18 +76,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "UINT16",
         "info": "level-2 pixel quality band",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": null
     },
     {
-        "chip_y": -3000,
         "tags": [
             "lc08",
             "saturation",
@@ -121,18 +96,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "UINT16",
         "info": "saturation mask",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": null
     },
     {
-        "chip_y": -3000,
         "tags": [
             "azimuth",
             "lc08",
@@ -148,18 +117,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 4 sensor azimuth angles",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-32768"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "lc08",
             "zenith",
@@ -175,18 +138,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 4 sensor zenith angles",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-32768"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "azimuth",
             "lc08",
@@ -202,18 +159,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 4 solar azimuth angles",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-32768"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "lc08",
             "zenith",
@@ -229,18 +180,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 4 solar zenith angles",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-32768"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "sr",
             "lc08",
@@ -256,18 +201,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "UINT8",
         "info": "surface reflectance aerosol mask",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": null
     },
     {
-        "chip_y": -3000,
         "tags": [
             "sr",
             "lc08",
@@ -285,18 +224,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 1 surface reflectance",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "blue",
             "sr",
@@ -312,18 +245,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 2 surface reflectance",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "b3",
             "sr",
@@ -339,18 +266,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 3 surface reflectance",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "sr",
             "b4",
@@ -366,18 +287,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 4 surface reflectance",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "srb5",
             "nir",
@@ -393,18 +308,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 5 surface reflectance",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "srb6",
             "sr",
@@ -420,18 +329,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 6 surface reflectance",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "sr",
             "srb7",
@@ -447,18 +350,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 7 surface reflectance",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "lc08",
             "plurpal",
@@ -476,18 +373,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 1 top-of-atmosphere reflectance",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "blue",
             "tab2",
@@ -503,18 +394,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 2 top-of-atmosphere reflectance",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "b3",
             "lc08",
@@ -530,18 +415,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 3 top-of-atmosphere reflectance",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "b4",
             "lc08",
@@ -557,18 +436,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 4 top-of-atmosphere reflectance",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "nir",
             "lc08",
@@ -584,18 +457,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 5 top-of-atmosphere reflectance",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "lc08",
             "swir1",
@@ -611,18 +478,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 6 top-of-atmosphere reflectance",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "b7",
             "lc08",
@@ -638,18 +499,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 7 top-of-atmosphere reflectance",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "cirrus",
             "lc08",
@@ -665,18 +520,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 9 top-of-atmosphere reflectance",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "brightness",
             "bt",
@@ -692,18 +541,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 6 at-satellite brightness temperature",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "lineageqa",
             "lineage",
@@ -718,18 +561,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "UINT8",
         "info": "index",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "le07",
             "pixelqa",
@@ -744,18 +581,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "UINT16",
         "info": "level-2 pixel quality band",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "le07",
             "saturation",
@@ -770,18 +601,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "UINT8",
         "info": "saturation mask",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "azimuth",
             "le07",
@@ -794,18 +619,12 @@
         "data_scale": null,
         "data_shape": [],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 4 sensor azimuth angles",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-32768"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "zenith",
             "le07",
@@ -818,18 +637,12 @@
         "data_scale": null,
         "data_shape": [],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 4 sensor zenith angles",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-32768"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "azimuth",
             "le07",
@@ -842,18 +655,12 @@
         "data_scale": null,
         "data_shape": [],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 4 solar azimuth angles",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-32768"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "zenith",
             "le07",
@@ -866,18 +673,12 @@
         "data_scale": null,
         "data_shape": [],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": null,
         "info": "band 4 solar zenith angles",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-32768"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "sr",
             "le07",
@@ -892,18 +693,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "surface reflectance atmosphere opacity",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "blue",
             "sr",
@@ -919,18 +714,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 1 surface reflectance",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "sr",
             "le07",
@@ -946,18 +735,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 2 surface reflectance",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "b3",
             "sr",
@@ -973,18 +756,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 3 surface reflectance",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "nir",
             "sr",
@@ -1001,18 +778,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 4 surface reflectance",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "srb5",
             "sr",
@@ -1028,18 +799,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 5 surface reflectance",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "sr",
             "srb7",
@@ -1055,18 +820,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 7 surface reflectance",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "cloud",
             "sr",
@@ -1081,18 +840,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "UINT8",
         "info": "surface reflectance cloud qa",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": null
     },
     {
-        "chip_y": -3000,
         "tags": [
             "blue",
             "le07",
@@ -1108,18 +861,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 1 top-of-atmosphere reflectance",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "tab2",
             "le07",
@@ -1135,18 +882,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 2 top-of-atmosphere reflectance",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "b3",
             "le07",
@@ -1162,18 +903,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 3 top-of-atmosphere reflectance",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "nir",
             "b4",
@@ -1189,18 +924,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 4 top-of-atmosphere reflectance",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "le07",
             "swir1",
@@ -1216,18 +945,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 5 top-of-atmosphere reflectance",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "b7",
             "le07",
@@ -1243,18 +966,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 7 top-of-atmosphere reflectance",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "lt04",
             "brightness",
@@ -1270,18 +987,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 6 at-satellite brightness temperature",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "lt04",
             "lineageqa",
@@ -1293,18 +1004,12 @@
         "data_scale": null,
         "data_shape": [],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": null,
         "info": "index",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": null
     },
     {
-        "chip_y": -3000,
         "tags": [
             "lt04",
             "pixelqa",
@@ -1319,18 +1024,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": null,
         "info": "level-2 pixel quality band",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": null
     },
     {
-        "chip_y": -3000,
         "tags": [
             "lt04",
             "saturation",
@@ -1345,18 +1044,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": null,
         "info": "saturation mask",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": null
     },
     {
-        "chip_y": -3000,
         "tags": [
             "lt04",
             "azimuth",
@@ -1372,18 +1065,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 4 sensor azimuth angles",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-32768"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "lt04",
             "zenith",
@@ -1399,18 +1086,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 4 sensor zenith angles",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-32768"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "lt04",
             "azimuth",
@@ -1426,18 +1107,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 4 solar azimuth angles",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-32768"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "lt04",
             "zenith",
@@ -1453,18 +1128,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 4 solar zenith angles",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-32768"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "lt04",
             "sr",
@@ -1479,18 +1148,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "surface reflectance atmosphere opacity",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "lt04",
             "blue",
@@ -1506,18 +1169,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 1 surface reflectance",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "lt04",
             "sr",
@@ -1533,18 +1190,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 2 surface reflectance",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "lt04",
             "b3",
@@ -1560,18 +1211,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 3 surface reflectance",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "lt04",
             "nir",
@@ -1588,18 +1233,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 4 surface reflectance",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "lt04",
             "srb5",
@@ -1615,18 +1254,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 5 surface reflectance",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "lt04",
             "sr",
@@ -1642,18 +1275,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 7 surface reflectance",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "lt04",
             "cloud",
@@ -1668,18 +1295,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "UINT8",
         "info": "surface reflectance cloud qa",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": null
     },
     {
-        "chip_y": -3000,
         "tags": [
             "lt04",
             "blue",
@@ -1695,18 +1316,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 1 top-of-atmosphere reflectance",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "lt04",
             "tab2",
@@ -1722,18 +1337,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 2 top-of-atmosphere reflectance",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "lt04",
             "b3",
@@ -1749,18 +1358,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 3 top-of-atmosphere reflectance",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "lt04",
             "nir",
@@ -1776,18 +1379,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 4 top-of-atmosphere reflectance",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "lt04",
             "swir1",
@@ -1803,18 +1400,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 5 top-of-atmosphere reflectance",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "lt04",
             "b7",
@@ -1830,18 +1421,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 7 top-of-atmosphere reflectance",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "brightness",
             "bt",
@@ -1857,18 +1442,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 6 at-satellite brightness temperature",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "lineageqa",
             "lineage",
@@ -1883,18 +1462,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": null,
         "info": "index",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": null
     },
     {
-        "chip_y": -3000,
         "tags": [
             "pixelqa",
             "lt05",
@@ -1909,18 +1482,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": null,
         "info": "level-2 pixel quality band",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": null
     },
     {
-        "chip_y": -3000,
         "tags": [
             "saturation",
             "lt05",
@@ -1935,18 +1502,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": null,
         "info": "saturation mask",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": null
     },
     {
-        "chip_y": -3000,
         "tags": [
             "azimuth",
             "sensor",
@@ -1962,18 +1523,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 4 sensor azimuth angles",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-32768"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "zenith",
             "sensor",
@@ -1989,18 +1544,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 4 sensor zenith angles",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-32768"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "azimuth",
             "lt05",
@@ -2016,18 +1565,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 4 solar azimuth angles",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-32768"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "zenith",
             "lt05",
@@ -2043,18 +1586,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 4 solar zenith angles",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-32768"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "sr",
             "lt05",
@@ -2069,18 +1606,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "surface reflectance atmosphere opacity",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "blue",
             "sr",
@@ -2096,18 +1627,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 1 surface reflectance",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "sr",
             "lt05",
@@ -2123,18 +1648,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 2 surface reflectance",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "b3",
             "sr",
@@ -2150,18 +1669,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 3 surface reflectance",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "nir",
             "sr",
@@ -2178,18 +1691,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 4 surface reflectance",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "srb5",
             "sr",
@@ -2205,18 +1712,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 5 surface reflectance",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "sr",
             "srb7",
@@ -2232,18 +1733,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 7 surface reflectance",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "cloud",
             "sr",
@@ -2258,18 +1753,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "UINT8",
         "info": "surface reflectance cloud qa",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": null
     },
     {
-        "chip_y": -3000,
         "tags": [
             "blue",
             "lt05",
@@ -2285,18 +1774,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 1 top-of-atmosphere reflectance",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "tab2",
             "lt05",
@@ -2312,18 +1795,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 2 top-of-atmosphere reflectance",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "b3",
             "tab3",
@@ -2339,18 +1816,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 3 top-of-atmosphere reflectance",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "nir",
             "b4",
@@ -2366,18 +1837,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 4 top-of-atmosphere reflectance",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "swir1",
             "b5",
@@ -2393,18 +1858,12 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 5 top-of-atmosphere reflectance",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     },
     {
-        "chip_y": -3000,
         "tags": [
             "b7",
             "lt05",
@@ -2420,13 +1879,8 @@
             100
         ],
         "data_range": [],
-        "pixel_x": 30.0,
-        "shift_y": -195.0,
-        "chip_x": 3000,
-        "pixel_y": -30.0,
         "data_type": "INT16",
         "info": "band 7 top-of-atmosphere reflectance",
-        "shift_x": 2415.0,
         "data_units": null,
         "data_fill": "-9999"
     }
