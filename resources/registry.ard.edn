@@ -486,8 +486,7 @@
   :data_shape [100 100]}
  {:name "LT04_LINEAGEQA"
   :info "index"
-  :tags #{"lt04" "lineage" "qa" "lineageqa"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0}
+  :tags #{"lt04" "lineage" "qa" "lineageqa"}}
  {:name "LT04_PIXELQA"
   :info "level-2 pixel quality band"
   :tags #{"lt04" "pixel" "qa" "pixelqa"}
