@@ -1,570 +1,486 @@
 [{:name "LC08_SRB1"
   :info "band 1 surface reflectance"
   :tags #{"lc08" "srb1" "sr" "b1" "coastal" "aerosol" "plurpal"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
  {:name "LC08_SRB2"
   :info "band 2 surface reflectance"
   :tags #{"lc08" "srb2" "sr" "b2" "blue"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
  {:name "LC08_SRB3"
   :info "band 3 surface reflectance"
   :tags #{"lc08" "srb3" "sr" "b3" "green"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
  {:name "LC08_SRB4"
   :info "band 4 surface reflectance"
   :tags #{"lc08" "srb4" "sr" "b4" "red"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
  {:name "LC08_SRB5"
   :info "band 5 surface reflectance"
   :tags #{"lc08" "srb5" "sr" "b5" "nir"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_shape [100 100]
   :data_fill "-9999"}
  {:name "LC08_SRB6"
   :info "band 6 surface reflectance"
   :tags #{"lc08" "srb6" "sr" "b6" "swir1"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_shape [100 100]
   :data_fill "-9999"}
  {:name "LC08_SRB7"
   :info "band 7 surface reflectance"
   :tags #{"lc08" "srb7" "sr" "b7" "swir2"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_shape [100 100]
   :data_fill "-9999"}
  {:name "LC08_TAB1"
   :info "band 1 top-of-atmosphere reflectance"
   :tags #{"lc08" "tab1" "ta" "b1" "coastal" "aerosol" "plurpal"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_shape [100 100]
   :data_fill "-9999"}
  {:name "LC08_TAB2"
   :info "band 2 top-of-atmosphere reflectance"
   :tags #{"lc08" "tab2" "ta" "b2" "blue"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_shape [100 100]
   :data_fill "-9999"}
  {:name "LC08_TAB3"
   :info "band 3 top-of-atmosphere reflectance"
   :tags #{"lc08" "tab3" "ta" "b3" "green"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_shape [100 100]
   :data_fill "-9999"}
  {:name "LC08_TAB4"
   :info "band 4 top-of-atmosphere reflectance"
   :tags #{"lc08" "tab4" "ta" "b4" "red"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_shape [100 100]
   :data_fill "-9999"}
  {:name "LC08_TAB5"
   :info "band 5 top-of-atmosphere reflectance"
   :tags #{"lc08" "tab5" "ta" "b5" "nir"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_shape [100 100]
   :data_fill "-9999"}
  {:name "LC08_TAB6"
   :info "band 6 top-of-atmosphere reflectance"
   :tags #{"lc08" "tab6" "ta" "b6" "swir1"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_shape [100 100]
   :data_fill "-9999"}
  {:name "LC08_TAB7"
   :info "band 7 top-of-atmosphere reflectance"
   :tags #{"lc08" "tab7" "ta" "b7" "swir2"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_shape [100 100]
   :data_fill "-9999"}
  {:name "LC08_TAB9"
   :info "band 9 top-of-atmosphere reflectance"
   :tags #{"lc08" "tab9" "ta" "b9" "cirrus"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_shape [100 100]
   :data_fill "-9999"}
  {:name "LC08_BTB10"
   :info "band 10 at-satellite brightness temperature"
   :tags #{"lc08" "bt" "b10" "brightness" "temperature"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_shape [100 100]
   :data_fill "-9999"}
  {:name "LC08_BTB11"
   :info "band 11 at-satellite brightness temperature"
   :tags #{"lc08" "bt" "b11" "brightness" "temperature"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_shape [100 100]
   :data_fill "-9999"}
  {:name "LC08_LINEAGEQA"
   :info "index"
   :tags #{"lc08" "lineage" "qa" "lineageqa"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "UINT8"
   :data_shape [100 100]}
  {:name "LC08_PIXELQA"
   :info "level-2 pixel quality band"
   :tags #{"lc08" "pixel" "qa" "pixelqa"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "UINT16"
   :data_shape [100 100]}
  {:name "LC08_RADSATQA"
   :info "saturation mask"
   :tags #{"lc08" "qa" "saturation" "mask"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "UINT16"
   :data_shape [100 100]}
  {:name "LC08_SRAEROSOLQA"
   :info "surface reflectance aerosol mask"
   :tags #{"lc08" "sr" "qa" "aerosol" "mask"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "UINT8"
   :data_shape [100 100]}
  {:name "LC08_SEA4"
   :info "band 4 sensor azimuth angles"
   :tags #{"lc08" "sea4" "sensor" "azimuth" "angles"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_shape [100 100]
   :data_fill "-32768"}
  {:name "LC08_SEZ4"
   :info "band 4 sensor zenith angles"
   :tags #{"lc08" "sez4" "sensor" "zenith" "angles"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_shape [100 100]
   :data_fill "-32768"}
  {:name "LC08_SOA4"
   :info "band 4 solar azimuth angles"
   :tags #{"lc08" "soa4" "solar" "azimuth" "angles"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_shape [100 100]
   :data_fill "-32768"}
  {:name "LC08_SOZ4"
   :info "band 4 solar zenith angles"
   :tags #{"lc08" "soz4" "solar" "zenith" "angles"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_shape [100 100]
   :data_fill "-32768"}
 {:name "LE07_SRB1"
   :info "band 1 surface reflectance"
   :tags #{"le07" "srb1" "sr" "b1" "blue"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
  {:name "LE07_SRB2"
   :info "band 2 surface reflectance"
   :tags #{"le07" "srb2" "sr" "b2" "green"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
  {:name "LE07_SRB3"
   :info "band 3 surface reflectance"
   :tags #{"le07" "srb3" "sr" "b3" "red"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
  {:name "LE07_SRB4"
   :info "band 4 surface reflectance"
   :tags #{"le07" "srb4" "sr" "b4" "nir" "infrared"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
  {:name "LE07_SRB5"
   :info "band 5 surface reflectance"
   :tags #{"le07" "srb5" "sr" "b5" "swir1"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
  {:name "LE07_SRB7"
   :info "band 7 surface reflectance"
   :tags #{"le07" "srb7" "sr" "b7" "swir2"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
  {:name "LE07_SRATMOSOPACITYQA"
   :info "surface reflectance atmosphere opacity"
   :tags #{"le07" "sr" "atmosphere" "opacity"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
  {:name "LE07_SRCLOUDQA"
   :info "surface reflectance cloud qa"
   :tags #{"le07" "sr" "cloud" "qa"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "UINT8"
   :data_shape [100 100]}
  {:name "LE07_TAB1"
   :info "band 1 top-of-atmosphere reflectance"
   :tags #{"le07" "tab1" "ta" "b1" "blue"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
  {:name "LE07_TAB2"
   :info "band 2 top-of-atmosphere reflectance"
   :tags #{"le07" "tab2" "ta" "b2" "green"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
  {:name "LE07_TAB3"
   :info "band 3 top-of-atmosphere reflectance"
   :tags #{"le07" "tab3" "ta" "b3" "red"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
  {:name "LE07_TAB4"
   :info "band 4 top-of-atmosphere reflectance"
   :tags #{"le07" "tab4" "ta" "b4" "nir"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
  {:name "LE07_TAB5"
   :info "band 5 top-of-atmosphere reflectance"
   :tags #{"le07" "tab5" "ta" "b5" "swir1"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
  {:name "LE07_TAB7"
   :info "band 7 top-of-atmosphere reflectance"
   :tags #{"le07" "tab7" "ta" "b7" "swir2"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
  {:name "LE07_BTB6"
   :info "band 6 at-satellite brightness temperature"
   :tags #{"le07" "bt" "b6" "brightness" "temperature"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
  {:name "LE07_LINEAGEQA"
   :info "index"
   :tags #{"le07" "lineage" "qa" "lineageqa"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "UINT8"
   :data_fill "-9999"
   :data_shape [100 100]}
  {:name "LE07_PIXELQA"
   :info "level-2 pixel quality band"
   :tags #{"le07" "pixel" "qa" "pixelqa"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "UINT16"
   :data_fill "-9999"
   :data_shape [100 100]}
  {:name "LE07_RADSATQA"
   :info "saturation mask"
   :tags #{"le07" "qa" "saturation" "mask"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "UINT8"
   :data_fill "-9999"
   :data_shape [100 100]}
  {:name "LE07_SEA4"
   :info "band 4 sensor azimuth angles"
   :tags #{"le07" "sea4" "sensor" "azimuth" "angles"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_fill "-32768"}
  {:name "LE07_SEZ4"
   :info "band 4 sensor zenith angles"
   :tags #{"le07" "sez4" "sensor" "zenith" "angles"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_fill "-32768"}
  {:name "LE07_SOA4"
   :info "band 4 solar azimuth angles"
   :tags #{"le07" "soa4" "solar" "azimuth" "angles"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_fill "-32768"}
  {:name "LE07_SOZ4"
   :info "band 4 solar zenith angles"
   :tags #{"le07" "soz4" "solar" "zenith" "angles"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_fill "-32768"}
  {:name "LT05_SRB1"
   :info "band 1 surface reflectance"
   :tags #{"lt05" "srb1" "sr" "b1" "blue"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
  {:name "LT05_SRB2"
   :info "band 2 surface reflectance"
   :tags #{"lt05" "srb2" "sr" "b2" "green"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
  {:name "LT05_SRB3"
   :info "band 3 surface reflectance"
   :tags #{"lt05" "srb3" "sr" "b3" "red"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
  {:name "LT05_SRB4"
   :info "band 4 surface reflectance"
   :tags #{"lt05" "srb4" "sr" "b4" "nir" "infrared"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
  {:name "LT05_SRB5"
   :info "band 5 surface reflectance"
   :tags #{"lt05" "srb5" "sr" "b5" "swir1"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
  {:name "LT05_SRB7"
   :info "band 7 surface reflectance"
   :tags #{"lt05" "srb7" "sr" "b7" "swir2"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
  {:name "LT05_SRATMOSOPACITYQA"
   :info "surface reflectance atmosphere opacity"
   :tags #{"lt05" "sr" "atmosphere" "opacity"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
  {:name "LT05_SRCLOUDQA"
   :info "surface reflectance cloud qa"
   :tags #{"lt05" "sr" "cloud" "qa"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "UINT8"
   :data_shape [100 100]}
  {:name "LT05_TAB1"
   :info "band 1 top-of-atmosphere reflectance"
   :tags #{"lt05" "tab1" "ta" "b1" "blue"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
  {:name "LT05_TAB2"
   :info "band 2 top-of-atmosphere reflectance"
   :tags #{"lt05" "tab2" "ta" "b2" "green"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
  {:name "LT05_TAB3"
   :info "band 3 top-of-atmosphere reflectance"
   :tags #{"lt05" "tab3" "ta" "b3" "red"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
  {:name "LT05_TAB4"
   :info "band 4 top-of-atmosphere reflectance"
   :tags #{"lt05" "tab4" "ta" "b4" "nir"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
  {:name "LT05_TAB5"
   :info "band 5 top-of-atmosphere reflectance"
   :tags #{"lt05" "tab5" "ta" "b5" "swir1"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
  {:name "LT05_TAB7"
   :info "band 7 top-of-atmosphere reflectance"
   :tags #{"lt05" "tab7" "ta" "b7" "swir2"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
  {:name "LT05_BTB6"
   :info "band 6 at-satellite brightness temperature"
   :tags #{"lt05" "bt" "b6" "brightness" "temperature"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
  {:name "LT05_LINEAGEQA"
   :info "index"
   :tags #{"lt05" "lineage" "qa" "lineageqa"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_shape [100 100]}
  {:name "LT05_PIXELQA"
   :info "level-2 pixel quality band"
   :tags #{"lt05" "pixel" "qa" "pixelqa"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_shape [100 100]}
  {:name "LT05_RADSATQA"
   :info "saturation mask"
   :tags #{"lt05" "qa" "saturation" "mask"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_shape [100 100]}
  {:name "LT05_SEA4"
   :info "band 4 sensor azimuth angles"
   :tags #{"lt05" "sea4" "sensor" "azimuth" "angles"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_fill "-32768"
   :data_shape [100 100]}
  {:name "LT05_SEZ4"
   :info "band 4 sensor zenith angles"
   :tags #{"lt05" "sez4" "sensor" "zenith" "angles"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_fill "-32768"
   :data_shape [100 100]}
  {:name "LT05_SOA4"
   :info "band 4 solar azimuth angles"
   :tags #{"lt05" "soa4" "solar" "azimuth" "angles"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_fill "-32768"
   :data_shape [100 100]}
  {:name "LT05_SOZ4"
   :info "band 4 solar zenith angles"
   :tags #{"lt05" "soz4" "solar" "zenith" "angles"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_fill "-32768"
   :data_shape [100 100]}
  {:name "LT04_SRB1"
   :info "band 1 surface reflectance"
   :tags #{"lt04" "srb1" "sr" "b1" "blue"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
  {:name "LT04_SRB2"
   :info "band 2 surface reflectance"
   :tags #{"lt04" "srb2" "sr" "b2" "green"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
  {:name "LT04_SRB3"
   :info "band 3 surface reflectance"
   :tags #{"lt04" "srb3" "sr" "b3" "red"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
  {:name "LT04_SRB4"
   :info "band 4 surface reflectance"
   :tags #{"lt04" "srb4" "sr" "b4" "nir" "infrared"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
  {:name "LT04_SRB5"
   :info "band 5 surface reflectance"
   :tags #{"lt04" "srb5" "sr" "b5" "swir1"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
  {:name "LT04_SRB7"
   :info "band 7 surface reflectance"
   :tags #{"lt04" "srb7" "sr" "b7" "swir2"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
  {:name "LT04_SRATMOSOPACITYQA"
   :info "surface reflectance atmosphere opacity"
   :tags #{"lt04" "sr" "atmosphere" "opacity"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
  {:name "LT04_SRCLOUDQA"
   :info "surface reflectance cloud qa"
   :tags #{"lt04" "sr" "cloud" "qa"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "UINT8"
   :data_shape [100 100]}
  {:name "LT04_TAB1"
   :info "band 1 top-of-atmosphere reflectance"
   :tags #{"lt04" "tab1" "ta" "b1" "blue"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
  {:name "LT04_TAB2"
   :info "band 2 top-of-atmosphere reflectance"
   :tags #{"lt04" "tab2" "ta" "b2" "green"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
  {:name "LT04_TAB3"
   :info "band 3 top-of-atmosphere reflectance"
   :tags #{"lt04" "tab3" "ta" "b3" "red"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
  {:name "LT04_TAB4"
   :info "band 4 top-of-atmosphere reflectance"
   :tags #{"lt04" "tab4" "ta" "b4" "nir"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
  {:name "LT04_TAB5"
   :info "band 5 top-of-atmosphere reflectance"
   :tags #{"lt04" "tab5" "ta" "b5" "swir1"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
  {:name "LT04_TAB7"
   :info "band 7 top-of-atmosphere reflectance"
   :tags #{"lt04" "tab7" "ta" "b7" "swir2"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
  {:name "LT04_BTB6"
   :info "band 6 at-satellite brightness temperature"
   :tags #{"lt04" "bt" "b6" "brightness" "temperature"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
@@ -575,38 +491,32 @@
  {:name "LT04_PIXELQA"
   :info "level-2 pixel quality band"
   :tags #{"lt04" "pixel" "qa" "pixelqa"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_shape [100 100]}
  {:name "LT04_RADSATQA"
   :info "saturation mask"
   :tags #{"lt04" "qa" "saturation" "mask"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_shape [100 100]}
  {:name "LT04_SEA4"
   :info "band 4 sensor azimuth angles"
   :tags #{"lt04" "sea4" "sensor" "azimuth" "angles"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_fill "-32768"
   :data_shape [100 100]}
  {:name "LT04_SEZ4"
   :info "band 4 sensor zenith angles"
   :tags #{"lt04" "sez4" "sensor" "zenith" "angles"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_fill "-32768"
   :data_shape [100 100]}
  {:name "LT04_SOA4"
   :info "band 4 solar azimuth angles"
   :tags #{"lt04" "soa4" "solar" "azimuth" "angles"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_fill "-32768"
   :data_shape [100 100]}
  {:name "LT04_SOZ4"
   :info "band 4 solar zenith angles"
   :tags #{"lt04" "soz4" "solar" "zenith" "angles"}
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0
   :data_type "INT16"
   :data_fill "-32768"
   :data_shape [100 100]}]

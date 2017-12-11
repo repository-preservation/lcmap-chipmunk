@@ -1,24 +1,18 @@
 [{:name "AUX_ASPECT"
   :data_type "INT16"
-  :data_shape [100 100]
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0}
+  :data_shape [100 100]}
  {:name "AUX_DEM"
   :data_type "FLOAT32"
-  :data_shape [100 100]
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0}
+  :data_shape [100 100]}
  {:name "AUX_MPW"
   :data_type "BYTE"
-  :data_shape [100 100]
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0}
+  :data_shape [100 100]}
  {:name "AUX_POSIDEX"
   :data_type "FLOAT32"
-  :data_shape [100 100]
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0}
+  :data_shape [100 100]}
  {:name "AUX_SLOPE"
   :data_type "FLOAT32"
-  :data_shape [100 100]
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0}
+  :data_shape [100 100]}
  {:name "AUX_TRENDS"
   :data_type "BYTE"
-  :data_shape [100 100]
-  :shift_x 2415.0 :shift_y -195.0 :chip_x 3000 :chip_y -3000 :pixel_x 30.0 :pixel_y -30.0}]
+  :data_shape [100 100]}]

@@ -25,12 +25,6 @@
                                                :name       :text
                                                :info       :text
                                                :tags       (hayt/frozen (hayt/set-type :text))
-                                               :pixel_x    :float
-                                               :pixel_y    :float
-                                               :chip_x     :int
-                                               :chip_y     :int
-                                               :shift_x    :float
-                                               :shift_y    :float
                                                :data_fill  :text
                                                :data_mask  (hayt/frozen (hayt/map-type :text :text))
                                                :data_range (hayt/frozen (hayt/list-type :int))
