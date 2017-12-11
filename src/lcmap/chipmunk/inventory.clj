@@ -38,9 +38,9 @@
 (defn ->source
   "Deserialize JSON used to describe what chips were ingested."
   [result]
-  (-> result
-      (update :chips json/decode)
-      (update :extra json/decode)))
+  (cond-> result
+    (result :chips) (update :chips json/decode)
+    (result :extra) (update :extra json/decode)))
 
 
 (defn identify
@@ -64,10 +64,11 @@
 
 (defn search
   "Query inventory by tile, layer, and/or source."
-  [{:keys [:tile :layer :source :url] :as params}]
-  (let [params (util/check! ::query (url-to-source params))]
+  [{:keys [:tile :layer :source :url :only] :as params}]
+  (let [params (util/check! ::query (url-to-source params))
+        columns (or (some-> only list flatten) "*")]
     (->> (hayt/select :inventory
-                      (hayt/where params)
-                      (hayt/columns :layer :source :tile :url :chips :extra))
+                      (hayt/where (dissoc params :only))
+                      (apply hayt/columns columns))
          (alia/execute db/db-session)
          (map ->source))))
