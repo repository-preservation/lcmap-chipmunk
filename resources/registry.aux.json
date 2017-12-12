@@ -1,115 +1,115 @@
 [
     {
-        "data_fill": null, 
-        "data_mask": {}, 
-        "data_range": [], 
-        "data_scale": null, 
+        "data_fill": null,
+        "data_mask": {},
+        "data_range": [],
+        "data_scale": null,
         "data_shape": [
-            100, 
+            100,
             100
-        ], 
-        "data_type": "INT16", 
-        "data_units": null, 
-        "info": null, 
-        "name": "AUX_ASPECT", 
+        ],
+        "data_type": "INT16",
+        "data_units": null,
+        "info": null,
+        "ubid": "AUX_ASPECT",
         "tags": [
-            "aux", 
-            "aux_aspect", 
+            "aux",
+            "aux_aspect",
             "aspect"
         ]
-    }, 
+    },
     {
-        "data_fill": null, 
-        "data_mask": {}, 
-        "data_range": [], 
-        "data_scale": null, 
+        "data_fill": null,
+        "data_mask": {},
+        "data_range": [],
+        "data_scale": null,
         "data_shape": [
-            100, 
+            100,
             100
-        ], 
-        "data_type": "FLOAT32", 
-        "data_units": null, 
-        "info": null, 
-        "name": "AUX_DEM", 
+        ],
+        "data_type": "FLOAT32",
+        "data_units": null,
+        "info": null,
+        "ubid": "AUX_DEM",
         "tags": [
-            "aux", 
-            "aux_dem", 
+            "aux",
+            "aux_dem",
             "dem"
         ]
-    }, 
+    },
     {
-        "data_fill": null, 
-        "data_mask": {}, 
-        "data_range": [], 
-        "data_scale": null, 
+        "data_fill": null,
+        "data_mask": {},
+        "data_range": [],
+        "data_scale": null,
         "data_shape": [
-            100, 
+            100,
             100
-        ], 
-        "data_type": "BYTE", 
-        "data_units": null, 
-        "info": null, 
-        "name": "AUX_MPW", 
+        ],
+        "data_type": "BYTE",
+        "data_units": null,
+        "info": null,
+        "ubid": "AUX_MPW",
         "tags": [
-            "mpw", 
-            "aux_mpw", 
+            "mpw",
+            "aux_mpw",
             "aux"
         ]
-    }, 
+    },
     {
-        "data_fill": null, 
-        "data_mask": {}, 
-        "data_range": [], 
-        "data_scale": null, 
+        "data_fill": null,
+        "data_mask": {},
+        "data_range": [],
+        "data_scale": null,
         "data_shape": [
-            100, 
+            100,
             100
-        ], 
-        "data_type": "FLOAT32", 
-        "data_units": null, 
-        "info": null, 
-        "name": "AUX_POSIDEX", 
+        ],
+        "data_type": "FLOAT32",
+        "data_units": null,
+        "info": null,
+        "ubid": "AUX_POSIDEX",
         "tags": [
-            "posidex", 
-            "aux", 
+            "posidex",
+            "aux",
             "aux_posidex"
         ]
-    }, 
+    },
     {
-        "data_fill": null, 
-        "data_mask": {}, 
-        "data_range": [], 
-        "data_scale": null, 
+        "data_fill": null,
+        "data_mask": {},
+        "data_range": [],
+        "data_scale": null,
         "data_shape": [
-            100, 
+            100,
             100
-        ], 
-        "data_type": "FLOAT32", 
-        "data_units": null, 
-        "info": null, 
-        "name": "AUX_SLOPE", 
+        ],
+        "data_type": "FLOAT32",
+        "data_units": null,
+        "info": null,
+        "ubid": "AUX_SLOPE",
         "tags": [
-            "aux_slope", 
-            "slope", 
+            "aux_slope",
+            "slope",
             "aux"
         ]
-    }, 
+    },
     {
-        "data_fill": null, 
-        "data_mask": {}, 
-        "data_range": [], 
-        "data_scale": null, 
+        "data_fill": null,
+        "data_mask": {},
+        "data_range": [],
+        "data_scale": null,
         "data_shape": [
-            100, 
+            100,
             100
-        ], 
-        "data_type": "BYTE", 
-        "data_units": null, 
-        "info": null, 
-        "name": "AUX_TRENDS", 
+        ],
+        "data_type": "BYTE",
+        "data_units": null,
+        "info": null,
+        "ubid": "AUX_TRENDS",
         "tags": [
-            "aux", 
-            "aux_trends", 
+            "aux",
+            "aux_trends",
             "trends"
         ]
     }

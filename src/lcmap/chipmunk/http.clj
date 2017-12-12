@@ -52,7 +52,7 @@
   [{:keys [params] :as req}]
   (log/debugf "GET chip-specs '%s'" params)
   (let [results (registry/search! params)]
-    {:status 200 :body (map #(assoc % :ubid (% :name)) results)}))
+    {:status 200 :body results}))
 
 
 (defn post-chip-specs

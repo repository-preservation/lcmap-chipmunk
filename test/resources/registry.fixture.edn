@@ -1,144 +1,144 @@
-[{:name "LC08_SRB1"
+[{:ubid "LC08_SRB1"
   :info "band 1 surface reflectance"
   :tags #{"lc08" "srb1" "sr" "b1" "coastal" "aerosol" "plurpal"}
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
- {:name "LC08_SRB2"
+ {:ubid "LC08_SRB2"
   :info "band 2 surface reflectance"
   :tags #{"lc08" "srb2" "sr" "b2" "blue"}
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
- {:name "LC08_SRB3"
+ {:ubid "LC08_SRB3"
   :info "band 3 surface reflectance"
   :tags #{"lc08" "srb3" "sr" "b3" "green"}
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
- {:name "LC08_SRB4"
+ {:ubid "LC08_SRB4"
   :info "band 4 surface reflectance"
   :tags #{"lc08" "srb4" "sr" "b4" "red"}
   :data_type "INT16"
   :data_fill "-9999"
   :data_shape [100 100]}
- {:name "LC08_SRB5"
+ {:ubid "LC08_SRB5"
   :info "band 5 surface reflectance"
   :tags #{"lc08" "srb5" "sr" "b5" "nir"}
   :data_type "INT16"
   :data_shape [100 100]
   :data_fill "-9999"}
- {:name "LC08_SRB6"
+ {:ubid "LC08_SRB6"
   :info "band 6 surface reflectance"
   :tags #{"lc08" "srb6" "sr" "b6" "swir1"}
   :data_type "INT16"
   :data_shape [100 100]
   :data_fill "-9999"}
- {:name "LC08_SRB7"
+ {:ubid "LC08_SRB7"
   :info "band 7 surface reflectance"
   :tags #{"lc08" "srb7" "sr" "b7" "swir2"}
   :data_type "INT16"
   :data_shape [100 100]
   :data_fill "-9999"}
- {:name "LC08_TAB1"
+ {:ubid "LC08_TAB1"
   :info "band 1 top-of-atmosphere reflectance"
   :tags #{"lc08" "tab1" "ta" "b1" "coastal" "aerosol" "plurpal"}
   :data_type "INT16"
   :data_shape [100 100]
   :data_fill "-9999"}
- {:name "LC08_TAB2"
+ {:ubid "LC08_TAB2"
   :info "band 2 top-of-atmosphere reflectance"
   :tags #{"lc08" "tab2" "ta" "b2" "blue"}
   :data_type "INT16"
   :data_shape [100 100]
   :data_fill "-9999"}
- {:name "LC08_TAB3"
+ {:ubid "LC08_TAB3"
   :info "band 3 top-of-atmosphere reflectance"
   :tags #{"lc08" "tab3" "ta" "b3" "green"}
   :data_type "INT16"
   :data_shape [100 100]
   :data_fill "-9999"}
- {:name "LC08_TAB4"
+ {:ubid "LC08_TAB4"
   :info "band 4 top-of-atmosphere reflectance"
   :tags #{"lc08" "tab4" "ta" "b4" "red"}
   :data_type "INT16"
   :data_shape [100 100]
   :data_fill "-9999"}
- {:name "LC08_TAB5"
+ {:ubid "LC08_TAB5"
   :info "band 5 top-of-atmosphere reflectance"
   :tags #{"lc08" "tab5" "ta" "b5" "nir"}
   :data_type "INT16"
   :data_shape [100 100]
   :data_fill "-9999"}
- {:name "LC08_TAB6"
+ {:ubid "LC08_TAB6"
   :info "band 6 top-of-atmosphere reflectance"
   :tags #{"lc08" "tab6" "ta" "b6" "swir1"}
   :data_type "INT16"
   :data_shape [100 100]
   :data_fill "-9999"}
- {:name "LC08_TAB7"
+ {:ubid "LC08_TAB7"
   :info "band 7 top-of-atmosphere reflectance"
   :tags #{"lc08" "tab7" "ta" "b7" "swir2"}
   :data_type "INT16"
   :data_shape [100 100]
   :data_fill "-9999"}
- {:name "LC08_TAB9"
+ {:ubid "LC08_TAB9"
   :info "band 9 top-of-atmosphere reflectance"
   :tags #{"lc08" "tab9" "ta" "b9" "cirrus"}
   :data_type "INT16"
   :data_shape [100 100]
   :data_fill "-9999"}
- {:name "LC08_BTB10"
+ {:ubid "LC08_BTB10"
   :info "band 10 at-satellite brightness temperature"
   :tags #{"lc08" "bt" "b10" "brightness" "temperature"}
   :data_type "INT16"
   :data_shape [100 100]
   :data_fill "-9999"}
- {:name "LC08_BTB11"
+ {:ubid "LC08_BTB11"
   :info "band 11 at-satellite brightness temperature"
   :tags #{"lc08" "bt" "b11" "brightness" "temperature"}
   :data_type "INT16"
   :data_shape [100 100]
   :data_fill "-9999"}
- {:name "LC08_LINEAGEQA"
+ {:ubid "LC08_LINEAGEQA"
   :info "index"
   :tags #{"lc08" "lineage" "qa" "lineageqa"}
   :data_type "UINT8"
   :data_shape [100 100]}
- {:name "LC08_PIXELQA"
+ {:ubid "LC08_PIXELQA"
   :info "level-2 pixel quality band"
   :tags #{"lc08" "pixel" "qa" "pixelqa"}
   :data_type "UINT16"
   :data_shape [100 100]}
- {:name "LC08_RADSATQA"
+ {:ubid "LC08_RADSATQA"
   :info "saturation mask"
   :tags #{"lc08" "qa" "saturation" "mask"}
   :data_type "UINT16"
   :data_shape [100 100]}
- {:name "LC08_SRAEROSOLQA"
+ {:ubid "LC08_SRAEROSOLQA"
   :info "surface reflectance aerosol mask"
   :tags #{"lc08" "sr" "qa" "aerosol" "mask"}
   :data_type "UINT8"
   :data_shape [100 100]}
- {:name "LC08_SEA4"
+ {:ubid "LC08_SEA4"
   :info "band 4 sensor azimuth angles"
   :tags #{"lc08" "sea4" "sensor" "azimuth" "angles"}
   :data_type "INT16"
   :data_shape [100 100]
   :data_fill "-32768"}
- {:name "LC08_SEZ4"
+ {:ubid "LC08_SEZ4"
   :info "band 4 sensor zenith angles"
   :tags #{"lc08" "sez4" "sensor" "zenith" "angles"}
   :data_type "INT16"
   :data_shape [100 100]
   :data_fill "-32768"}
- {:name "LC08_SOA4"
+ {:ubid "LC08_SOA4"
   :info "band 4 solar azimuth angles"
   :tags #{"lc08" "soa4" "solar" "azimuth" "angles"}
   :data_type "INT16"
   :data_shape [100 100]
   :data_fill "-32768"}
- {:name "LC08_SOZ4"
+ {:ubid "LC08_SOZ4"
   :info "band 4 solar zenith angles"
   :tags #{"lc08" "soz4" "solar" "zenith" "angles"}
   :data_type "INT16"

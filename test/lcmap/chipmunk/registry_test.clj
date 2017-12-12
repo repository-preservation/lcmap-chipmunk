@@ -12,12 +12,12 @@
 (deftest add-remove-test
   (testing "layer"
     (testing "add"
-      (let [layer {:name "LC08_SRBX" :tags ["LC08" "SRBX"]}]
+      (let [layer {:ubid "LC08_SRBX" :tags ["LC08" "SRBX"]}]
         (is (= layer (add! layer)))))
     (testing "lookup an existing layer using varying names"
-      (is (= "LC08_SRBX" (-> "LC08_SRBX" lookup! :name)))
-      (is (= "LC08_SRBX" (-> "LC08_srbx" lookup! :name)))
-      (is (= "LC08_SRBX" (-> "lc08-srbx" lookup! :name))))
+      (is (= "LC08_SRBX" (-> "LC08_SRBX" lookup! :ubid)))
+      (is (= "LC08_SRBX" (-> "LC08_srbx" lookup! :ubid)))
+      (is (= "LC08_SRBX" (-> "lc08-srbx" lookup! :ubid))))
     (testing "remove an existing layer"
       (is (= true (remove! "LC08_SRBX"))))
     (testing "remove a non-existing layer"

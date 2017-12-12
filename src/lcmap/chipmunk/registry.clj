@@ -41,7 +41,7 @@
 (def default-options {:compression {"sstable_compression" "LZ4Compressor"}
                       :compaction  {"class" "LeveledCompactionStrategy"}})
 
-;; ## Layer Names
+;; ## UBID
 ;;
 ;; It is necessary to ensure different values for table names are all
 ;; converted to a consistent form. This function converts value into
@@ -50,20 +50,20 @@
 
 (defn canonical-layer-name
   "Convert layer name to lower-case keyword"
-  [layer-name]
+  [ubid]
   ;; separate on non-alphanumeric characters
   (try
-    (csk/->SCREAMING_SNAKE_CASE layer-name :separator #"[\W]+")
+    (csk/->SCREAMING_SNAKE_CASE ubid :separator #"[\W]+")
     (catch RuntimeException cause
-      (let [msg (format "could generate the layer's table name for '%s'" layer-name)]
+      (let [msg (format "could generate the layer's table name for '%s'" ubid)]
         (log/warn msg)
-      (throw (ex-info msg {:layer-name layer-name} cause))))))
+        (throw (ex-info msg {:ubid ubid} cause))))))
 
 
 (defn create-layer-table
   "Create table to store layer's chips."
-  [{name :name :as layer}]
-  (hayt/create-table (keyword name)
+  [{ubid :ubid :as layer}]
+  (hayt/create-table (keyword ubid)
                      (hayt/if-exists false)
                      (hayt/column-definitions default-columns)
                      (hayt/with default-options)))
@@ -81,7 +81,7 @@
   "Add a layer to the registry."
   [layer]
   (try
-    (let [layer (update layer :name canonical-layer-name)]
+    (let [layer (update layer :ubid canonical-layer-name)]
       (alia/execute db/db-session (create-layer-table layer))
       (alia/execute db/db-session (insert-layer-row layer))
       layer)
@@ -92,40 +92,40 @@
 
 (defn drop-layer-table
   "Remove layer's corresponding row and table given by name."
-  [layer-name]
-  (hayt/drop-table (keyword layer-name)))
+  [ubid]
+  (hayt/drop-table (keyword ubid)))
 
 
 (defn delete-layer-row
   "A function to delete a layer from the registry."
-  [layer-name]
-  (hayt/delete :registry (hayt/where {:name (name layer-name)})))
+  [ubid]
+  (hayt/delete :registry (hayt/where {:ubid (name ubid)})))
 
 
 (defn remove!
   "Remove layer's corresponding row and table given by name."
-  [layer-name]
+  [ubid]
   (try
-    (alia/execute db/db-session (drop-layer-table layer-name))
-    (alia/execute db/db-session (delete-layer-row layer-name))
+    (alia/execute db/db-session (drop-layer-table ubid))
+    (alia/execute db/db-session (delete-layer-row ubid))
     true
     (catch java.lang.RuntimeException cause
-      (let [msg (format "could not remove layer '%s'" layer-name)]
+      (let [msg (format "could not remove layer '%s'" ubid)]
         (log/error msg)
         false))))
 
 
 (defn lookup
   "Find layer by name."
-  [layer-name]
+  [ubid]
   (hayt/select :registry
-               (hayt/where {:name (canonical-layer-name layer-name)})))
+               (hayt/where {:ubid (canonical-layer-name ubid)})))
 
 
 (defn lookup!
   "Find layer by name."
-  [layer-name]
-  (->> (lookup layer-name)
+  [ubid]
+  (->> (lookup ubid)
        (alia/execute db/db-session)
        (first)))
 
@@ -139,11 +139,14 @@
 (defn all!
   "Get all layers from the registry."
   []
-  (sort-by :name (alia/execute db/db-session (all))))
+  (sort-by :ubid (alia/execute db/db-session (all))))
 
 
 (defn search!
   "Get layers that have all the given tags."
+  ;;
+  ;; TODO: case-insensitive comparison?
+  ;;
   [params]
   (let [tagset (-> params :tags vector flatten set)
         layers (all!)]

@@ -31,7 +31,7 @@
     (log/tracef "registry-fixture up")
     (into [] (map registry/add!) layers)
     (f)
-    (into [] (comp (map :name) (map registry/remove!)) layers)
+    (into [] (comp (map :ubid) (map registry/remove!)) layers)
     (log/tracef "registry-fixture down")))
 
 
