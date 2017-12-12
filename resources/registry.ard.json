@@ -19,8 +19,7 @@
             "lc08",
             "temperature",
             "b10"
-        ],
-        "ubid": "LC08_BTB10"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -42,8 +41,7 @@
             "lc08",
             "lc08_btb11",
             "temperature"
-        ],
-        "ubid": "LC08_BTB11"
+        ]
     },
     {
         "data_fill": null,
@@ -64,8 +62,7 @@
             "lc08_lineageqa",
             "lc08",
             "qa"
-        ],
-        "ubid": "LC08_LINEAGEQA"
+        ]
     },
     {
         "data_fill": null,
@@ -86,8 +83,7 @@
             "pixelqa",
             "pixel",
             "qa"
-        ],
-        "ubid": "LC08_PIXELQA"
+        ]
     },
     {
         "data_fill": null,
@@ -108,8 +104,7 @@
             "saturation",
             "mask",
             "qa"
-        ],
-        "ubid": "LC08_RADSATQA"
+        ]
     },
     {
         "data_fill": "-32768",
@@ -131,8 +126,7 @@
             "sensor",
             "sea4",
             "angles"
-        ],
-        "ubid": "LC08_SEA4"
+        ]
     },
     {
         "data_fill": "-32768",
@@ -154,8 +148,7 @@
             "sensor",
             "angles",
             "sez4"
-        ],
-        "ubid": "LC08_SEZ4"
+        ]
     },
     {
         "data_fill": "-32768",
@@ -177,8 +170,7 @@
             "soa4",
             "angles",
             "lc08_soa4"
-        ],
-        "ubid": "LC08_SOA4"
+        ]
     },
     {
         "data_fill": "-32768",
@@ -200,8 +192,7 @@
             "solar",
             "soz4",
             "angles"
-        ],
-        "ubid": "LC08_SOZ4"
+        ]
     },
     {
         "data_fill": null,
@@ -223,8 +214,7 @@
             "aerosol",
             "mask",
             "qa"
-        ],
-        "ubid": "LC08_SRAEROSOLQA"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -248,8 +238,7 @@
             "coastal",
             "srb1",
             "b1"
-        ],
-        "ubid": "LC08_SRB1"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -271,8 +260,7 @@
             "lc08_srb2",
             "srb2",
             "b2"
-        ],
-        "ubid": "LC08_SRB2"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -294,8 +282,7 @@
             "srb3",
             "green",
             "lc08_srb3"
-        ],
-        "ubid": "LC08_SRB3"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -317,8 +304,7 @@
             "srb4",
             "red",
             "lc08_srb4"
-        ],
-        "ubid": "LC08_SRB4"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -340,8 +326,7 @@
             "lc08",
             "b5",
             "lc08_srb5"
-        ],
-        "ubid": "LC08_SRB5"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -363,8 +348,7 @@
             "swir1",
             "lc08_srb6",
             "b6"
-        ],
-        "ubid": "LC08_SRB6"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -386,8 +370,7 @@
             "b7",
             "lc08",
             "swir2"
-        ],
-        "ubid": "LC08_SRB7"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -411,8 +394,7 @@
             "coastal",
             "ta",
             "b1"
-        ],
-        "ubid": "LC08_TAB1"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -434,8 +416,7 @@
             "lc08",
             "b2",
             "ta"
-        ],
-        "ubid": "LC08_TAB2"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -457,8 +438,7 @@
             "green",
             "ta",
             "lc08_tab3"
-        ],
-        "ubid": "LC08_TAB3"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -480,8 +460,7 @@
             "red",
             "tab4",
             "ta"
-        ],
-        "ubid": "LC08_TAB4"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -503,8 +482,7 @@
             "tab5",
             "lc08_tab5",
             "ta"
-        ],
-        "ubid": "LC08_TAB5"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -526,8 +504,7 @@
             "b6",
             "tab6",
             "ta"
-        ],
-        "ubid": "LC08_TAB6"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -549,8 +526,7 @@
             "swir2",
             "tab7",
             "ta"
-        ],
-        "ubid": "LC08_TAB7"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -572,8 +548,7 @@
             "lc08_tab9",
             "b9",
             "ta"
-        ],
-        "ubid": "LC08_TAB9"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -595,8 +570,7 @@
             "le07_btb6",
             "temperature",
             "b6"
-        ],
-        "ubid": "LE07_BTB6"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -617,8 +591,7 @@
             "le07",
             "qa",
             "le07_lineageqa"
-        ],
-        "ubid": "LE07_LINEAGEQA"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -639,8 +612,7 @@
             "le07_pixelqa",
             "pixel",
             "qa"
-        ],
-        "ubid": "LE07_PIXELQA"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -661,8 +633,7 @@
             "saturation",
             "mask",
             "qa"
-        ],
-        "ubid": "LE07_RADSATQA"
+        ]
     },
     {
         "data_fill": "-32768",
@@ -681,8 +652,7 @@
             "sensor",
             "sea4",
             "angles"
-        ],
-        "ubid": "LE07_SEA4"
+        ]
     },
     {
         "data_fill": "-32768",
@@ -701,8 +671,7 @@
             "sensor",
             "angles",
             "sez4"
-        ],
-        "ubid": "LE07_SEZ4"
+        ]
     },
     {
         "data_fill": "-32768",
@@ -721,8 +690,7 @@
             "soa4",
             "angles",
             "le07_soa4"
-        ],
-        "ubid": "LE07_SOA4"
+        ]
     },
     {
         "data_fill": "-32768",
@@ -741,8 +709,7 @@
             "solar",
             "soz4",
             "angles"
-        ],
-        "ubid": "LE07_SOZ4"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -763,8 +730,7 @@
             "le07",
             "opacity",
             "atmosphere"
-        ],
-        "ubid": "LE07_SRATMOSOPACITYQA"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -786,8 +752,7 @@
             "le07_srb1",
             "srb1",
             "b1"
-        ],
-        "ubid": "LE07_SRB1"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -809,8 +774,7 @@
             "green",
             "srb2",
             "b2"
-        ],
-        "ubid": "LE07_SRB2"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -832,8 +796,7 @@
             "srb3",
             "red",
             "le07_srb3"
-        ],
-        "ubid": "LE07_SRB3"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -856,8 +819,7 @@
             "srb4",
             "le07_srb4",
             "infrared"
-        ],
-        "ubid": "LE07_SRB4"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -879,8 +841,7 @@
             "le07",
             "swir1",
             "b5"
-        ],
-        "ubid": "LE07_SRB5"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -902,8 +863,7 @@
             "le07",
             "swir2",
             "le07_srb7"
-        ],
-        "ubid": "LE07_SRB7"
+        ]
     },
     {
         "data_fill": null,
@@ -924,8 +884,7 @@
             "le07",
             "le07_srcloudqa",
             "qa"
-        ],
-        "ubid": "LE07_SRCLOUDQA"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -947,8 +906,7 @@
             "le07_tab1",
             "ta",
             "b1"
-        ],
-        "ubid": "LE07_TAB1"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -970,8 +928,7 @@
             "green",
             "b2",
             "ta"
-        ],
-        "ubid": "LE07_TAB2"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -993,8 +950,7 @@
             "tab3",
             "red",
             "ta"
-        ],
-        "ubid": "LE07_TAB3"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -1016,8 +972,7 @@
             "le07",
             "tab4",
             "ta"
-        ],
-        "ubid": "LE07_TAB4"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -1039,8 +994,7 @@
             "b5",
             "tab5",
             "ta"
-        ],
-        "ubid": "LE07_TAB5"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -1062,8 +1016,7 @@
             "swir2",
             "tab7",
             "ta"
-        ],
-        "ubid": "LE07_TAB7"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -1085,163 +1038,7 @@
             "temperature",
             "lt04_btb6",
             "b6"
-        ],
-        "ubid": "LT04_BTB6"
-    },
-    {
-        "data_fill": null,
-        "data_mask": {},
-        "data_range": [],
-        "data_scale": null,
-        "data_shape": [],
-        "data_type": null,
-        "data_units": null,
-        "info": "index",
-        "name": "LT04_LINEAGEQA",
-        "tags": [
-            "lt04",
-            "lineageqa",
-            "lineage",
-            "lt04_lineageqa",
-            "qa"
-        ],
-        "ubid": "LT04_LINEAGEQA"
-    },
-    {
-        "data_fill": null,
-        "data_mask": {},
-        "data_range": [],
-        "data_scale": null,
-        "data_shape": [
-            100,
-            100
-        ],
-        "data_type": null,
-        "data_units": null,
-        "info": "level-2 pixel quality band",
-        "name": "LT04_PIXELQA",
-        "tags": [
-            "lt04",
-            "pixelqa",
-            "lt04_pixelqa",
-            "pixel",
-            "qa"
-        ],
-        "ubid": "LT04_PIXELQA"
-    },
-    {
-        "data_fill": null,
-        "data_mask": {},
-        "data_range": [],
-        "data_scale": null,
-        "data_shape": [
-            100,
-            100
-        ],
-        "data_type": null,
-        "data_units": null,
-        "info": "saturation mask",
-        "name": "LT04_RADSATQA",
-        "tags": [
-            "lt04",
-            "lt04_radsatqa",
-            "saturation",
-            "mask",
-            "qa"
-        ],
-        "ubid": "LT04_RADSATQA"
-    },
-    {
-        "data_fill": "-32768",
-        "data_mask": {},
-        "data_range": [],
-        "data_scale": null,
-        "data_shape": [
-            100,
-            100
-        ],
-        "data_type": "INT16",
-        "data_units": null,
-        "info": "band 4 sensor azimuth angles",
-        "name": "LT04_SEA4",
-        "tags": [
-            "lt04",
-            "azimuth",
-            "sensor",
-            "lt04_sea4",
-            "sea4",
-            "angles"
-        ],
-        "ubid": "LT04_SEA4"
-    },
-    {
-        "data_fill": "-32768",
-        "data_mask": {},
-        "data_range": [],
-        "data_scale": null,
-        "data_shape": [
-            100,
-            100
-        ],
-        "data_type": "INT16",
-        "data_units": null,
-        "info": "band 4 sensor zenith angles",
-        "name": "LT04_SEZ4",
-        "tags": [
-            "lt04",
-            "lt04_sez4",
-            "zenith",
-            "sensor",
-            "angles",
-            "sez4"
-        ],
-        "ubid": "LT04_SEZ4"
-    },
-    {
-        "data_fill": "-32768",
-        "data_mask": {},
-        "data_range": [],
-        "data_scale": null,
-        "data_shape": [
-            100,
-            100
-        ],
-        "data_type": "INT16",
-        "data_units": null,
-        "info": "band 4 solar azimuth angles",
-        "name": "LT04_SOA4",
-        "tags": [
-            "lt04",
-            "azimuth",
-            "solar",
-            "lt04_soa4",
-            "soa4",
-            "angles"
-        ],
-        "ubid": "LT04_SOA4"
-    },
-    {
-        "data_fill": "-32768",
-        "data_mask": {},
-        "data_range": [],
-        "data_scale": null,
-        "data_shape": [
-            100,
-            100
-        ],
-        "data_type": "INT16",
-        "data_units": null,
-        "info": "band 4 solar zenith angles",
-        "name": "LT04_SOZ4",
-        "tags": [
-            "lt04",
-            "zenith",
-            "lt04_soz4",
-            "solar",
-            "soz4",
-            "angles"
-        ],
-        "ubid": "LT04_SOZ4"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -1262,8 +1059,7 @@
             "lt04_sratmosopacitqa",
             "opacity",
             "atmosphere"
-        ],
-        "ubid": "LT04_SRATMOSOPACITYQA"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -1285,8 +1081,7 @@
             "lt04_srb1",
             "srb1",
             "b1"
-        ],
-        "ubid": "LT04_SRB1"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -1308,8 +1103,7 @@
             "green",
             "srb2",
             "b2"
-        ],
-        "ubid": "LT04_SRB2"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -1331,8 +1125,7 @@
             "lt04_srb3",
             "srb3",
             "red"
-        ],
-        "ubid": "LT04_SRB3"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -1355,8 +1148,7 @@
             "srb4",
             "lt04_srb4",
             "infrared"
-        ],
-        "ubid": "LT04_SRB4"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -1378,8 +1170,7 @@
             "swir1",
             "b5",
             "lt04_srb5"
-        ],
-        "ubid": "LT04_SRB5"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -1401,8 +1192,7 @@
             "b7",
             "swir2",
             "lt04_srb7"
-        ],
-        "ubid": "LT04_SRB7"
+        ]
     },
     {
         "data_fill": null,
@@ -1423,8 +1213,7 @@
             "sr",
             "lt04_srcloudqa",
             "qa"
-        ],
-        "ubid": "LT04_SRCLOUDQA"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -1446,8 +1235,7 @@
             "tab1",
             "ta",
             "b1"
-        ],
-        "ubid": "LT04_TAB1"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -1469,8 +1257,7 @@
             "lt04_tab2",
             "b2",
             "ta"
-        ],
-        "ubid": "LT04_TAB2"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -1492,8 +1279,7 @@
             "lt04_tab3",
             "red",
             "ta"
-        ],
-        "ubid": "LT04_TAB3"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -1515,8 +1301,7 @@
             "lt04_tab4",
             "tab4",
             "ta"
-        ],
-        "ubid": "LT04_TAB4"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -1538,8 +1323,7 @@
             "b5",
             "tab5",
             "ta"
-        ],
-        "ubid": "LT04_TAB5"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -1561,8 +1345,7 @@
             "swir2",
             "tab7",
             "ta"
-        ],
-        "ubid": "LT04_TAB7"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -1584,8 +1367,7 @@
             "temperature",
             "lt05",
             "b6"
-        ],
-        "ubid": "LT05_BTB6"
+        ]
     },
     {
         "data_fill": null,
@@ -1606,8 +1388,7 @@
             "lt05_lineageqa",
             "lt05",
             "qa"
-        ],
-        "ubid": "LT05_LINEAGEQA"
+        ]
     },
     {
         "data_fill": null,
@@ -1628,8 +1409,7 @@
             "lt05_pixelqa",
             "pixel",
             "qa"
-        ],
-        "ubid": "LT05_PIXELQA"
+        ]
     },
     {
         "data_fill": null,
@@ -1652,8 +1432,7 @@
             "radsatqa",
             "mask",
             "qa"
-        ],
-        "ubid": "LT05_RADSATQA"
+        ]
     },
     {
         "data_fill": "-32768",
@@ -1675,8 +1454,7 @@
             "lt05_sea4",
             "sea4",
             "angles"
-        ],
-        "ubid": "LT05_SEA4"
+        ]
     },
     {
         "data_fill": "-32768",
@@ -1698,8 +1476,7 @@
             "lt05",
             "angles",
             "sez4"
-        ],
-        "ubid": "LT05_SEZ4"
+        ]
     },
     {
         "data_fill": "-32768",
@@ -1721,8 +1498,7 @@
             "soa4",
             "lt05_soa4",
             "angles"
-        ],
-        "ubid": "LT05_SOA4"
+        ]
     },
     {
         "data_fill": "-32768",
@@ -1744,8 +1520,7 @@
             "solar",
             "soz4",
             "angles"
-        ],
-        "ubid": "LT05_SOZ4"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -1766,8 +1541,7 @@
             "lt05_sratmosopacityqa",
             "opacity",
             "atmosphere"
-        ],
-        "ubid": "LT05_SRATMOSOPACITYQA"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -1789,8 +1563,7 @@
             "lt05_srb1",
             "srb1",
             "b1"
-        ],
-        "ubid": "LT05_SRB1"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -1812,8 +1585,7 @@
             "green",
             "srb2",
             "b2"
-        ],
-        "ubid": "LT05_SRB2"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -1835,8 +1607,7 @@
             "lt05",
             "red",
             "lt05_srb3"
-        ],
-        "ubid": "LT05_SRB3"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -1859,8 +1630,7 @@
             "lt05",
             "infrared",
             "lt05_srb4"
-        ],
-        "ubid": "LT05_SRB4"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -1882,8 +1652,7 @@
             "b5",
             "lt05",
             "lt05_srb5"
-        ],
-        "ubid": "LT05_SRB5"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -1905,8 +1674,7 @@
             "b7",
             "lt05",
             "swir2"
-        ],
-        "ubid": "LT05_SRB7"
+        ]
     },
     {
         "data_fill": null,
@@ -1927,8 +1695,7 @@
             "sr",
             "lt05",
             "qa"
-        ],
-        "ubid": "LT05_SRCLOUDQA"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -1950,8 +1717,7 @@
             "tab1",
             "ta",
             "b1"
-        ],
-        "ubid": "LT05_TAB1"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -1973,8 +1739,7 @@
             "b2",
             "lt05_tab2",
             "ta"
-        ],
-        "ubid": "LT05_TAB2"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -1996,8 +1761,7 @@
             "red",
             "lt05_tab3",
             "ta"
-        ],
-        "ubid": "LT05_TAB3"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -2019,8 +1783,7 @@
             "lt05",
             "tab4",
             "ta"
-        ],
-        "ubid": "LT05_TAB4"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -2042,8 +1805,7 @@
             "lt05",
             "lt05_tab5",
             "ta"
-        ],
-        "ubid": "LT05_TAB5"
+        ]
     },
     {
         "data_fill": "-9999",
@@ -2065,7 +1827,6 @@
             "swir2",
             "tab7",
             "ta"
-        ],
-        "ubid": "LT05_TAB7"
+        ]
     }
 ]
