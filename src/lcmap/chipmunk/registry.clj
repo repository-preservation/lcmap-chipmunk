@@ -148,8 +148,8 @@
   ;; TODO: case-insensitive comparison?
   ;;
   [params]
-  (let [tagset (-> params :tags vector flatten set)
-        layers (all!)]
-    (if (params :tags)
-      (filter #(clojure.set/subset? tagset (% :tags)) layers)
-      layers)))
+  (let [ubid-set (-> params :ubid vector keep flatten set)
+        layers   (all!)]
+    (if (empty? ubid-set)
+      layers
+      (filter #(-> % :ubid ubid-set) layers))))
