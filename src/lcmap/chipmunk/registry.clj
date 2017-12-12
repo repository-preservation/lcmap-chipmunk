@@ -91,19 +91,19 @@
 
 
 (defn drop-layer-table
-  "Remove layer's corresponding row and table given by name."
+  "Remove layer's corresponding row and table given by UBID."
   [ubid]
   (hayt/drop-table (keyword ubid)))
 
 
 (defn delete-layer-row
-  "A function to delete a layer from the registry."
+  "A function to delete a layer from the registry given by UBID."
   [ubid]
   (hayt/delete :registry (hayt/where {:ubid (name ubid)})))
 
 
 (defn remove!
-  "Remove layer's corresponding row and table given by name."
+  "Remove layer's corresponding row and table given by UBID."
   [ubid]
   (try
     (alia/execute db/db-session (drop-layer-table ubid))
@@ -116,14 +116,14 @@
 
 
 (defn lookup
-  "Find layer by name."
+  "Find layer by UBID."
   [ubid]
   (hayt/select :registry
                (hayt/where {:ubid (canonical-layer-name ubid)})))
 
 
 (defn lookup!
-  "Find layer by name."
+  "Find layer by UBID."
   [ubid]
   (->> (lookup ubid)
        (alia/execute db/db-session)
