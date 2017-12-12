@@ -1,214 +1,247 @@
 [
     {
+        "data_fill": "-9999",
+        "data_mask": {},
+        "data_range": [],
+        "data_scale": null,
+        "data_shape": [
+            100,
+            100
+        ],
+        "data_type": "INT16",
+        "data_units": null,
+        "info": "band 10 at-satellite brightness temperature",
+        "name": "LC08_BTB10",
         "tags": [
             "brightness",
+            "lc08_btb10",
             "bt",
             "lc08",
             "temperature",
             "b10"
         ],
+        "ubid": "LC08_BTB10"
+    },
+    {
+        "data_fill": "-9999",
         "data_mask": {},
-        "name": "LC08_BTB10",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 10 at-satellite brightness temperature",
         "data_units": null,
-        "data_fill": "-9999"
-    },
-    {
+        "info": "band 11 at-satellite brightness temperature",
+        "name": "LC08_BTB11",
         "tags": [
             "brightness",
             "b11",
             "bt",
             "lc08",
+            "lc08_btb11",
             "temperature"
         ],
+        "ubid": "LC08_BTB11"
+    },
+    {
+        "data_fill": null,
         "data_mask": {},
-        "name": "LC08_BTB11",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
-        "data_type": "INT16",
-        "info": "band 11 at-satellite brightness temperature",
+        "data_type": "UINT8",
         "data_units": null,
-        "data_fill": "-9999"
-    },
-    {
+        "info": "index",
+        "name": "LC08_LINEAGEQA",
         "tags": [
             "lineageqa",
             "lineage",
+            "lc08_lineageqa",
             "lc08",
             "qa"
         ],
+        "ubid": "LC08_LINEAGEQA"
+    },
+    {
+        "data_fill": null,
         "data_mask": {},
-        "name": "LC08_LINEAGEQA",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
-        "data_type": "UINT8",
-        "info": "index",
+        "data_type": "UINT16",
         "data_units": null,
-        "data_fill": null
-    },
-    {
+        "info": "level-2 pixel quality band",
+        "name": "LC08_PIXELQA",
         "tags": [
             "lc08",
+            "lc08_pixelqa",
             "pixelqa",
             "pixel",
             "qa"
         ],
+        "ubid": "LC08_PIXELQA"
+    },
+    {
+        "data_fill": null,
         "data_mask": {},
-        "name": "LC08_PIXELQA",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "UINT16",
-        "info": "level-2 pixel quality band",
         "data_units": null,
-        "data_fill": null
-    },
-    {
+        "info": "saturation mask",
+        "name": "LC08_RADSATQA",
         "tags": [
+            "lc08_radsatqa",
             "lc08",
             "saturation",
             "mask",
             "qa"
         ],
+        "ubid": "LC08_RADSATQA"
+    },
+    {
+        "data_fill": "-32768",
         "data_mask": {},
-        "name": "LC08_RADSATQA",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
-        "data_type": "UINT16",
-        "info": "saturation mask",
+        "data_type": "INT16",
         "data_units": null,
-        "data_fill": null
-    },
-    {
+        "info": "band 4 sensor azimuth angles",
+        "name": "LC08_SEA4",
         "tags": [
             "azimuth",
+            "lc08_sea4",
             "lc08",
             "sensor",
             "sea4",
             "angles"
         ],
+        "ubid": "LC08_SEA4"
+    },
+    {
+        "data_fill": "-32768",
         "data_mask": {},
-        "name": "LC08_SEA4",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 4 sensor azimuth angles",
         "data_units": null,
-        "data_fill": "-32768"
-    },
-    {
+        "info": "band 4 sensor zenith angles",
+        "name": "LC08_SEZ4",
         "tags": [
+            "lc08_sez4",
             "lc08",
             "zenith",
             "sensor",
             "angles",
             "sez4"
         ],
+        "ubid": "LC08_SEZ4"
+    },
+    {
+        "data_fill": "-32768",
         "data_mask": {},
-        "name": "LC08_SEZ4",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 4 sensor zenith angles",
         "data_units": null,
-        "data_fill": "-32768"
-    },
-    {
+        "info": "band 4 solar azimuth angles",
+        "name": "LC08_SOA4",
         "tags": [
             "azimuth",
             "lc08",
             "solar",
             "soa4",
-            "angles"
+            "angles",
+            "lc08_soa4"
         ],
+        "ubid": "LC08_SOA4"
+    },
+    {
+        "data_fill": "-32768",
         "data_mask": {},
-        "name": "LC08_SOA4",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 4 solar azimuth angles",
         "data_units": null,
-        "data_fill": "-32768"
-    },
-    {
+        "info": "band 4 solar zenith angles",
+        "name": "LC08_SOZ4",
         "tags": [
             "lc08",
             "zenith",
+            "lc08_soz4",
             "solar",
             "soz4",
             "angles"
         ],
+        "ubid": "LC08_SOZ4"
+    },
+    {
+        "data_fill": null,
         "data_mask": {},
-        "name": "LC08_SOZ4",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
-        "data_type": "INT16",
-        "info": "band 4 solar zenith angles",
+        "data_type": "UINT8",
         "data_units": null,
-        "data_fill": "-32768"
-    },
-    {
+        "info": "surface reflectance aerosol mask",
+        "name": "LC08_SRAEROSOLQA",
         "tags": [
             "sr",
             "lc08",
+            "lc08_sraerosolqa",
             "aerosol",
             "mask",
             "qa"
         ],
+        "ubid": "LC08_SRAEROSOLQA"
+    },
+    {
+        "data_fill": "-9999",
         "data_mask": {},
-        "name": "LC08_SRAEROSOLQA",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
-        "data_type": "UINT8",
-        "info": "surface reflectance aerosol mask",
+        "data_type": "INT16",
         "data_units": null,
-        "data_fill": null
-    },
-    {
+        "info": "band 1 surface reflectance",
+        "name": "LC08_SRB1",
         "tags": [
             "sr",
+            "lc08_srb1",
             "lc08",
             "plurpal",
             "aerosol",
@@ -216,148 +249,162 @@
             "srb1",
             "b1"
         ],
+        "ubid": "LC08_SRB1"
+    },
+    {
+        "data_fill": "-9999",
         "data_mask": {},
-        "name": "LC08_SRB1",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 1 surface reflectance",
         "data_units": null,
-        "data_fill": "-9999"
-    },
-    {
+        "info": "band 2 surface reflectance",
+        "name": "LC08_SRB2",
         "tags": [
             "blue",
             "sr",
             "lc08",
+            "lc08_srb2",
             "srb2",
             "b2"
         ],
+        "ubid": "LC08_SRB2"
+    },
+    {
+        "data_fill": "-9999",
         "data_mask": {},
-        "name": "LC08_SRB2",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 2 surface reflectance",
         "data_units": null,
-        "data_fill": "-9999"
-    },
-    {
+        "info": "band 3 surface reflectance",
+        "name": "LC08_SRB3",
         "tags": [
             "b3",
             "sr",
             "lc08",
             "srb3",
-            "green"
+            "green",
+            "lc08_srb3"
         ],
+        "ubid": "LC08_SRB3"
+    },
+    {
+        "data_fill": "-9999",
         "data_mask": {},
-        "name": "LC08_SRB3",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 3 surface reflectance",
         "data_units": null,
-        "data_fill": "-9999"
-    },
-    {
+        "info": "band 4 surface reflectance",
+        "name": "LC08_SRB4",
         "tags": [
             "sr",
             "b4",
             "lc08",
             "srb4",
-            "red"
+            "red",
+            "lc08_srb4"
         ],
+        "ubid": "LC08_SRB4"
+    },
+    {
+        "data_fill": "-9999",
         "data_mask": {},
-        "name": "LC08_SRB4",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 4 surface reflectance",
         "data_units": null,
-        "data_fill": "-9999"
-    },
-    {
+        "info": "band 5 surface reflectance",
+        "name": "LC08_SRB5",
         "tags": [
             "srb5",
             "nir",
             "sr",
             "lc08",
-            "b5"
+            "b5",
+            "lc08_srb5"
         ],
+        "ubid": "LC08_SRB5"
+    },
+    {
+        "data_fill": "-9999",
         "data_mask": {},
-        "name": "LC08_SRB5",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 5 surface reflectance",
         "data_units": null,
-        "data_fill": "-9999"
-    },
-    {
+        "info": "band 6 surface reflectance",
+        "name": "LC08_SRB6",
         "tags": [
             "srb6",
             "sr",
             "lc08",
             "swir1",
+            "lc08_srb6",
             "b6"
         ],
+        "ubid": "LC08_SRB6"
+    },
+    {
+        "data_fill": "-9999",
         "data_mask": {},
-        "name": "LC08_SRB6",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 6 surface reflectance",
         "data_units": null,
-        "data_fill": "-9999"
-    },
-    {
+        "info": "band 7 surface reflectance",
+        "name": "LC08_SRB7",
         "tags": [
             "sr",
+            "lc08_srb7",
             "srb7",
             "b7",
             "lc08",
             "swir2"
         ],
+        "ubid": "LC08_SRB7"
+    },
+    {
+        "data_fill": "-9999",
         "data_mask": {},
-        "name": "LC08_SRB7",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 7 surface reflectance",
         "data_units": null,
-        "data_fill": "-9999"
-    },
-    {
+        "info": "band 1 top-of-atmosphere reflectance",
+        "name": "LC08_TAB1",
         "tags": [
             "lc08",
+            "lc08_tab1",
             "plurpal",
             "aerosol",
             "tab1",
@@ -365,1523 +412,1660 @@
             "ta",
             "b1"
         ],
+        "ubid": "LC08_TAB1"
+    },
+    {
+        "data_fill": "-9999",
         "data_mask": {},
-        "name": "LC08_TAB1",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 1 top-of-atmosphere reflectance",
         "data_units": null,
-        "data_fill": "-9999"
-    },
-    {
+        "info": "band 2 top-of-atmosphere reflectance",
+        "name": "LC08_TAB2",
         "tags": [
             "blue",
+            "lc08_tab2",
             "tab2",
             "lc08",
             "b2",
             "ta"
         ],
+        "ubid": "LC08_TAB2"
+    },
+    {
+        "data_fill": "-9999",
         "data_mask": {},
-        "name": "LC08_TAB2",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 2 top-of-atmosphere reflectance",
         "data_units": null,
-        "data_fill": "-9999"
-    },
-    {
+        "info": "band 3 top-of-atmosphere reflectance",
+        "name": "LC08_TAB3",
         "tags": [
             "b3",
             "lc08",
             "tab3",
             "green",
-            "ta"
+            "ta",
+            "lc08_tab3"
         ],
+        "ubid": "LC08_TAB3"
+    },
+    {
+        "data_fill": "-9999",
         "data_mask": {},
-        "name": "LC08_TAB3",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 3 top-of-atmosphere reflectance",
         "data_units": null,
-        "data_fill": "-9999"
-    },
-    {
+        "info": "band 4 top-of-atmosphere reflectance",
+        "name": "LC08_TAB4",
         "tags": [
+            "lc08_tab4",
             "b4",
             "lc08",
             "red",
             "tab4",
             "ta"
         ],
+        "ubid": "LC08_TAB4"
+    },
+    {
+        "data_fill": "-9999",
         "data_mask": {},
-        "name": "LC08_TAB4",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 4 top-of-atmosphere reflectance",
         "data_units": null,
-        "data_fill": "-9999"
-    },
-    {
+        "info": "band 5 top-of-atmosphere reflectance",
+        "name": "LC08_TAB5",
         "tags": [
             "nir",
             "lc08",
             "b5",
             "tab5",
+            "lc08_tab5",
             "ta"
         ],
+        "ubid": "LC08_TAB5"
+    },
+    {
+        "data_fill": "-9999",
         "data_mask": {},
-        "name": "LC08_TAB5",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 5 top-of-atmosphere reflectance",
         "data_units": null,
-        "data_fill": "-9999"
-    },
-    {
+        "info": "band 6 top-of-atmosphere reflectance",
+        "name": "LC08_TAB6",
         "tags": [
             "lc08",
             "swir1",
+            "lc08_tab6",
             "b6",
             "tab6",
             "ta"
         ],
+        "ubid": "LC08_TAB6"
+    },
+    {
+        "data_fill": "-9999",
         "data_mask": {},
-        "name": "LC08_TAB6",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 6 top-of-atmosphere reflectance",
         "data_units": null,
-        "data_fill": "-9999"
-    },
-    {
+        "info": "band 7 top-of-atmosphere reflectance",
+        "name": "LC08_TAB7",
         "tags": [
             "b7",
             "lc08",
+            "lc08_tab7",
             "swir2",
             "tab7",
             "ta"
         ],
+        "ubid": "LC08_TAB7"
+    },
+    {
+        "data_fill": "-9999",
         "data_mask": {},
-        "name": "LC08_TAB7",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 7 top-of-atmosphere reflectance",
         "data_units": null,
-        "data_fill": "-9999"
-    },
-    {
+        "info": "band 9 top-of-atmosphere reflectance",
+        "name": "LC08_TAB9",
         "tags": [
             "cirrus",
             "lc08",
             "tab9",
+            "lc08_tab9",
             "b9",
             "ta"
         ],
+        "ubid": "LC08_TAB9"
+    },
+    {
+        "data_fill": "-9999",
         "data_mask": {},
-        "name": "LC08_TAB9",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 9 top-of-atmosphere reflectance",
         "data_units": null,
-        "data_fill": "-9999"
-    },
-    {
-        "tags": [
-            "brightness",
-            "bt",
-            "le07",
-            "temperature",
-            "b6"
-        ],
-        "data_mask": {},
+        "info": "band 6 at-satellite brightness temperature",
         "name": "LE07_BTB6",
+        "tags": [
+            "brightness",
+            "bt",
+            "le07",
+            "le07_btb6",
+            "temperature",
+            "b6"
+        ],
+        "ubid": "LE07_BTB6"
+    },
+    {
+        "data_fill": "-9999",
+        "data_mask": {},
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
-        "data_type": "INT16",
-        "info": "band 6 at-satellite brightness temperature",
+        "data_type": "UINT8",
         "data_units": null,
-        "data_fill": "-9999"
-    },
-    {
-        "tags": [
-            "lineageqa",
-            "lineage",
-            "le07",
-            "qa"
-        ],
-        "data_mask": {},
+        "info": "index",
         "name": "LE07_LINEAGEQA",
-        "data_scale": null,
-        "data_shape": [
-            100,
-            100
+        "tags": [
+            "lineageqa",
+            "lineage",
+            "le07",
+            "qa",
+            "le07_lineageqa"
         ],
-        "data_range": [],
-        "data_type": "UINT8",
-        "info": "index",
-        "data_units": null,
-        "data_fill": "-9999"
+        "ubid": "LE07_LINEAGEQA"
     },
     {
-        "tags": [
-            "le07",
-            "pixelqa",
-            "pixel",
-            "qa"
-        ],
+        "data_fill": "-9999",
         "data_mask": {},
-        "name": "LE07_PIXELQA",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "UINT16",
-        "info": "level-2 pixel quality band",
         "data_units": null,
-        "data_fill": "-9999"
-    },
-    {
+        "info": "level-2 pixel quality band",
+        "name": "LE07_PIXELQA",
         "tags": [
             "le07",
-            "saturation",
-            "mask",
+            "pixelqa",
+            "le07_pixelqa",
+            "pixel",
             "qa"
         ],
+        "ubid": "LE07_PIXELQA"
+    },
+    {
+        "data_fill": "-9999",
         "data_mask": {},
+        "data_range": [],
+        "data_scale": null,
+        "data_shape": [
+            100,
+            100
+        ],
+        "data_type": "UINT8",
+        "data_units": null,
+        "info": "saturation mask",
         "name": "LE07_RADSATQA",
-        "data_scale": null,
-        "data_shape": [
-            100,
-            100
+        "tags": [
+            "le07_radsatqa",
+            "le07",
+            "saturation",
+            "mask",
+            "qa"
         ],
-        "data_range": [],
-        "data_type": "UINT8",
-        "info": "saturation mask",
-        "data_units": null,
-        "data_fill": "-9999"
+        "ubid": "LE07_RADSATQA"
     },
     {
-        "tags": [
-            "azimuth",
-            "le07",
-            "sensor",
-            "sea4",
-            "angles"
-        ],
+        "data_fill": "-32768",
         "data_mask": {},
+        "data_range": [],
+        "data_scale": null,
+        "data_shape": [],
+        "data_type": "INT16",
+        "data_units": null,
+        "info": "band 4 sensor azimuth angles",
         "name": "LE07_SEA4",
-        "data_scale": null,
-        "data_shape": [],
-        "data_range": [],
-        "data_type": "INT16",
-        "info": "band 4 sensor azimuth angles",
-        "data_units": null,
-        "data_fill": "-32768"
-    },
-    {
         "tags": [
-            "zenith",
+            "le07_sea4",
+            "azimuth",
             "le07",
             "sensor",
-            "angles",
-            "sez4"
+            "sea4",
+            "angles"
         ],
+        "ubid": "LE07_SEA4"
+    },
+    {
+        "data_fill": "-32768",
         "data_mask": {},
+        "data_range": [],
+        "data_scale": null,
+        "data_shape": [],
+        "data_type": "INT16",
+        "data_units": null,
+        "info": "band 4 sensor zenith angles",
         "name": "LE07_SEZ4",
-        "data_scale": null,
-        "data_shape": [],
-        "data_range": [],
-        "data_type": "INT16",
-        "info": "band 4 sensor zenith angles",
-        "data_units": null,
-        "data_fill": "-32768"
+        "tags": [
+            "le07_sez4",
+            "zenith",
+            "le07",
+            "sensor",
+            "angles",
+            "sez4"
+        ],
+        "ubid": "LE07_SEZ4"
     },
     {
-        "tags": [
-            "azimuth",
-            "le07",
-            "solar",
-            "soa4",
-            "angles"
-        ],
+        "data_fill": "-32768",
         "data_mask": {},
+        "data_range": [],
+        "data_scale": null,
+        "data_shape": [],
+        "data_type": "INT16",
+        "data_units": null,
+        "info": "band 4 solar azimuth angles",
         "name": "LE07_SOA4",
-        "data_scale": null,
-        "data_shape": [],
-        "data_range": [],
-        "data_type": "INT16",
-        "info": "band 4 solar azimuth angles",
-        "data_units": null,
-        "data_fill": "-32768"
-    },
-    {
         "tags": [
-            "zenith",
+            "azimuth",
             "le07",
             "solar",
-            "soz4",
-            "angles"
+            "soa4",
+            "angles",
+            "le07_soa4"
         ],
+        "ubid": "LE07_SOA4"
+    },
+    {
+        "data_fill": "-32768",
         "data_mask": {},
+        "data_range": [],
+        "data_scale": null,
+        "data_shape": [],
+        "data_type": null,
+        "data_units": null,
+        "info": "band 4 solar zenith angles",
         "name": "LE07_SOZ4",
-        "data_scale": null,
-        "data_shape": [],
-        "data_range": [],
-        "data_type": null,
-        "info": "band 4 solar zenith angles",
-        "data_units": null,
-        "data_fill": "-32768"
+        "tags": [
+            "le07_soz4",
+            "zenith",
+            "le07",
+            "solar",
+            "soz4",
+            "angles"
+        ],
+        "ubid": "LE07_SOZ4"
     },
     {
-        "tags": [
-            "sr",
-            "le07",
-            "opacity",
-            "atmosphere"
-        ],
+        "data_fill": "-9999",
         "data_mask": {},
+        "data_range": [],
+        "data_scale": null,
+        "data_shape": [
+            100,
+            100
+        ],
+        "data_type": "INT16",
+        "data_units": null,
+        "info": "surface reflectance atmosphere opacity",
         "name": "LE07_SRATMOSOPACITYQA",
+        "tags": [
+            "sr",
+            "le07_sratmosopacityqa",
+            "le07",
+            "opacity",
+            "atmosphere"
+        ],
+        "ubid": "LE07_SRATMOSOPACITYQA"
+    },
+    {
+        "data_fill": "-9999",
+        "data_mask": {},
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "surface reflectance atmosphere opacity",
         "data_units": null,
-        "data_fill": "-9999"
-    },
-    {
+        "info": "band 1 surface reflectance",
+        "name": "LE07_SRB1",
         "tags": [
             "blue",
             "sr",
             "le07",
+            "le07_srb1",
             "srb1",
             "b1"
         ],
+        "ubid": "LE07_SRB1"
+    },
+    {
+        "data_fill": "-9999",
         "data_mask": {},
-        "name": "LE07_SRB1",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 1 surface reflectance",
         "data_units": null,
-        "data_fill": "-9999"
-    },
-    {
+        "info": "band 2 surface reflectance",
+        "name": "LE07_SRB2",
         "tags": [
             "sr",
             "le07",
+            "le07_srb2",
             "green",
             "srb2",
             "b2"
         ],
+        "ubid": "LE07_SRB2"
+    },
+    {
+        "data_fill": "-9999",
         "data_mask": {},
-        "name": "LE07_SRB2",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 2 surface reflectance",
         "data_units": null,
-        "data_fill": "-9999"
-    },
-    {
+        "info": "band 3 surface reflectance",
+        "name": "LE07_SRB3",
         "tags": [
             "b3",
             "sr",
             "le07",
             "srb3",
-            "red"
+            "red",
+            "le07_srb3"
         ],
+        "ubid": "LE07_SRB3"
+    },
+    {
+        "data_fill": "-9999",
         "data_mask": {},
-        "name": "LE07_SRB3",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 3 surface reflectance",
         "data_units": null,
-        "data_fill": "-9999"
-    },
-    {
+        "info": "band 4 surface reflectance",
+        "name": "LE07_SRB4",
         "tags": [
             "nir",
             "sr",
             "b4",
             "le07",
             "srb4",
+            "le07_srb4",
             "infrared"
         ],
+        "ubid": "LE07_SRB4"
+    },
+    {
+        "data_fill": "-9999",
         "data_mask": {},
-        "name": "LE07_SRB4",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 4 surface reflectance",
         "data_units": null,
-        "data_fill": "-9999"
-    },
-    {
+        "info": "band 5 surface reflectance",
+        "name": "LE07_SRB5",
         "tags": [
             "srb5",
             "sr",
+            "le07_srb5",
             "le07",
             "swir1",
             "b5"
         ],
+        "ubid": "LE07_SRB5"
+    },
+    {
+        "data_fill": "-9999",
         "data_mask": {},
-        "name": "LE07_SRB5",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 5 surface reflectance",
         "data_units": null,
-        "data_fill": "-9999"
-    },
-    {
+        "info": "band 7 surface reflectance",
+        "name": "LE07_SRB7",
         "tags": [
             "sr",
             "srb7",
             "b7",
             "le07",
-            "swir2"
+            "swir2",
+            "le07_srb7"
         ],
+        "ubid": "LE07_SRB7"
+    },
+    {
+        "data_fill": null,
         "data_mask": {},
-        "name": "LE07_SRB7",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
-        "data_type": "INT16",
-        "info": "band 7 surface reflectance",
+        "data_type": "UINT8",
         "data_units": null,
-        "data_fill": "-9999"
-    },
-    {
+        "info": "surface reflectance cloud qa",
+        "name": "LE07_SRCLOUDQA",
         "tags": [
             "cloud",
             "sr",
             "le07",
+            "le07_srcloudqa",
             "qa"
         ],
+        "ubid": "LE07_SRCLOUDQA"
+    },
+    {
+        "data_fill": "-9999",
         "data_mask": {},
-        "name": "LE07_SRCLOUDQA",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
-        "data_type": "UINT8",
-        "info": "surface reflectance cloud qa",
+        "data_type": "INT16",
         "data_units": null,
-        "data_fill": null
-    },
-    {
+        "info": "band 1 top-of-atmosphere reflectance",
+        "name": "LE07_TAB1",
         "tags": [
             "blue",
             "le07",
             "tab1",
+            "le07_tab1",
             "ta",
             "b1"
         ],
+        "ubid": "LE07_TAB1"
+    },
+    {
+        "data_fill": "-9999",
         "data_mask": {},
-        "name": "LE07_TAB1",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 1 top-of-atmosphere reflectance",
         "data_units": null,
-        "data_fill": "-9999"
-    },
-    {
+        "info": "band 2 top-of-atmosphere reflectance",
+        "name": "LE07_TAB2",
         "tags": [
             "tab2",
+            "le07_tab2",
             "le07",
             "green",
             "b2",
             "ta"
         ],
+        "ubid": "LE07_TAB2"
+    },
+    {
+        "data_fill": "-9999",
         "data_mask": {},
-        "name": "LE07_TAB2",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 2 top-of-atmosphere reflectance",
         "data_units": null,
-        "data_fill": "-9999"
-    },
-    {
+        "info": "band 3 top-of-atmosphere reflectance",
+        "name": "LE07_TAB3",
         "tags": [
+            "le07_tab3",
             "b3",
             "le07",
             "tab3",
             "red",
             "ta"
         ],
+        "ubid": "LE07_TAB3"
+    },
+    {
+        "data_fill": "-9999",
         "data_mask": {},
-        "name": "LE07_TAB3",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 3 top-of-atmosphere reflectance",
         "data_units": null,
-        "data_fill": "-9999"
-    },
-    {
+        "info": "band 4 top-of-atmosphere reflectance",
+        "name": "LE07_TAB4",
         "tags": [
             "nir",
             "b4",
+            "le07_tab4",
             "le07",
             "tab4",
             "ta"
         ],
+        "ubid": "LE07_TAB4"
+    },
+    {
+        "data_fill": "-9999",
         "data_mask": {},
-        "name": "LE07_TAB4",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 4 top-of-atmosphere reflectance",
         "data_units": null,
-        "data_fill": "-9999"
-    },
-    {
+        "info": "band 5 top-of-atmosphere reflectance",
+        "name": "LE07_TAB5",
         "tags": [
+            "le07_tab5",
             "le07",
             "swir1",
             "b5",
             "tab5",
             "ta"
         ],
+        "ubid": "LE07_TAB5"
+    },
+    {
+        "data_fill": "-9999",
         "data_mask": {},
-        "name": "LE07_TAB5",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 5 top-of-atmosphere reflectance",
         "data_units": null,
-        "data_fill": "-9999"
-    },
-    {
+        "info": "band 7 top-of-atmosphere reflectance",
+        "name": "LE07_TAB7",
         "tags": [
+            "le07_tab7",
             "b7",
             "le07",
             "swir2",
             "tab7",
             "ta"
         ],
+        "ubid": "LE07_TAB7"
+    },
+    {
+        "data_fill": "-9999",
         "data_mask": {},
-        "name": "LE07_TAB7",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 7 top-of-atmosphere reflectance",
         "data_units": null,
-        "data_fill": "-9999"
-    },
-    {
+        "info": "band 6 at-satellite brightness temperature",
+        "name": "LT04_BTB6",
         "tags": [
             "lt04",
             "brightness",
             "bt",
             "temperature",
+            "lt04_btb6",
             "b6"
         ],
-        "data_mask": {},
-        "name": "LT04_BTB6",
-        "data_scale": null,
-        "data_shape": [
-            100,
-            100
-        ],
-        "data_range": [],
-        "data_type": "INT16",
-        "info": "band 6 at-satellite brightness temperature",
-        "data_units": null,
-        "data_fill": "-9999"
+        "ubid": "LT04_BTB6"
     },
     {
-        "tags": [
-            "lt04",
-            "lineageqa",
-            "lineage",
-            "qa"
-        ],
+        "data_fill": null,
         "data_mask": {},
-        "name": "LT04_LINEAGEQA",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [],
-        "data_range": [],
         "data_type": null,
-        "info": "index",
         "data_units": null,
-        "data_fill": null
-    },
-    {
+        "info": "index",
+        "name": "LT04_LINEAGEQA",
         "tags": [
             "lt04",
-            "pixelqa",
-            "pixel",
+            "lineageqa",
+            "lineage",
+            "lt04_lineageqa",
             "qa"
         ],
+        "ubid": "LT04_LINEAGEQA"
+    },
+    {
+        "data_fill": null,
         "data_mask": {},
-        "name": "LT04_PIXELQA",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": null,
-        "info": "level-2 pixel quality band",
         "data_units": null,
-        "data_fill": null
-    },
-    {
+        "info": "level-2 pixel quality band",
+        "name": "LT04_PIXELQA",
         "tags": [
             "lt04",
+            "pixelqa",
+            "lt04_pixelqa",
+            "pixel",
+            "qa"
+        ],
+        "ubid": "LT04_PIXELQA"
+    },
+    {
+        "data_fill": null,
+        "data_mask": {},
+        "data_range": [],
+        "data_scale": null,
+        "data_shape": [
+            100,
+            100
+        ],
+        "data_type": null,
+        "data_units": null,
+        "info": "saturation mask",
+        "name": "LT04_RADSATQA",
+        "tags": [
+            "lt04",
+            "lt04_radsatqa",
             "saturation",
             "mask",
             "qa"
         ],
+        "ubid": "LT04_RADSATQA"
+    },
+    {
+        "data_fill": "-32768",
         "data_mask": {},
-        "name": "LT04_RADSATQA",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
-        "data_type": null,
-        "info": "saturation mask",
+        "data_type": "INT16",
         "data_units": null,
-        "data_fill": null
-    },
-    {
+        "info": "band 4 sensor azimuth angles",
+        "name": "LT04_SEA4",
         "tags": [
             "lt04",
             "azimuth",
             "sensor",
+            "lt04_sea4",
             "sea4",
             "angles"
         ],
+        "ubid": "LT04_SEA4"
+    },
+    {
+        "data_fill": "-32768",
         "data_mask": {},
-        "name": "LT04_SEA4",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 4 sensor azimuth angles",
         "data_units": null,
-        "data_fill": "-32768"
-    },
-    {
+        "info": "band 4 sensor zenith angles",
+        "name": "LT04_SEZ4",
         "tags": [
             "lt04",
+            "lt04_sez4",
             "zenith",
             "sensor",
             "angles",
             "sez4"
         ],
+        "ubid": "LT04_SEZ4"
+    },
+    {
+        "data_fill": "-32768",
         "data_mask": {},
-        "name": "LT04_SEZ4",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 4 sensor zenith angles",
         "data_units": null,
-        "data_fill": "-32768"
-    },
-    {
+        "info": "band 4 solar azimuth angles",
+        "name": "LT04_SOA4",
         "tags": [
             "lt04",
             "azimuth",
             "solar",
+            "lt04_soa4",
             "soa4",
             "angles"
         ],
+        "ubid": "LT04_SOA4"
+    },
+    {
+        "data_fill": "-32768",
         "data_mask": {},
-        "name": "LT04_SOA4",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 4 solar azimuth angles",
         "data_units": null,
-        "data_fill": "-32768"
-    },
-    {
+        "info": "band 4 solar zenith angles",
+        "name": "LT04_SOZ4",
         "tags": [
             "lt04",
             "zenith",
+            "lt04_soz4",
             "solar",
             "soz4",
             "angles"
         ],
+        "ubid": "LT04_SOZ4"
+    },
+    {
+        "data_fill": "-9999",
         "data_mask": {},
-        "name": "LT04_SOZ4",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 4 solar zenith angles",
         "data_units": null,
-        "data_fill": "-32768"
-    },
-    {
+        "info": "surface reflectance atmosphere opacity",
+        "name": "LT04_SRATMOSOPACITYQA",
         "tags": [
             "lt04",
             "sr",
+            "lt04_sratmosopacitqa",
             "opacity",
             "atmosphere"
         ],
+        "ubid": "LT04_SRATMOSOPACITYQA"
+    },
+    {
+        "data_fill": "-9999",
         "data_mask": {},
-        "name": "LT04_SRATMOSOPACITYQA",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "surface reflectance atmosphere opacity",
         "data_units": null,
-        "data_fill": "-9999"
-    },
-    {
+        "info": "band 1 surface reflectance",
+        "name": "LT04_SRB1",
         "tags": [
             "lt04",
             "blue",
             "sr",
+            "lt04_srb1",
             "srb1",
             "b1"
         ],
+        "ubid": "LT04_SRB1"
+    },
+    {
+        "data_fill": "-9999",
         "data_mask": {},
-        "name": "LT04_SRB1",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 1 surface reflectance",
         "data_units": null,
-        "data_fill": "-9999"
-    },
-    {
+        "info": "band 2 surface reflectance",
+        "name": "LT04_SRB2",
         "tags": [
             "lt04",
             "sr",
+            "lt04_srb2",
             "green",
             "srb2",
             "b2"
         ],
+        "ubid": "LT04_SRB2"
+    },
+    {
+        "data_fill": "-9999",
         "data_mask": {},
-        "name": "LT04_SRB2",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 2 surface reflectance",
         "data_units": null,
-        "data_fill": "-9999"
-    },
-    {
+        "info": "band 3 surface reflectance",
+        "name": "LT04_SRB3",
         "tags": [
             "lt04",
             "b3",
             "sr",
+            "lt04_srb3",
             "srb3",
             "red"
         ],
+        "ubid": "LT04_SRB3"
+    },
+    {
+        "data_fill": "-9999",
         "data_mask": {},
-        "name": "LT04_SRB3",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 3 surface reflectance",
         "data_units": null,
-        "data_fill": "-9999"
-    },
-    {
+        "info": "band 4 surface reflectance",
+        "name": "LT04_SRB4",
         "tags": [
             "lt04",
             "nir",
             "sr",
             "b4",
             "srb4",
+            "lt04_srb4",
             "infrared"
         ],
+        "ubid": "LT04_SRB4"
+    },
+    {
+        "data_fill": "-9999",
         "data_mask": {},
-        "name": "LT04_SRB4",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 4 surface reflectance",
         "data_units": null,
-        "data_fill": "-9999"
-    },
-    {
+        "info": "band 5 surface reflectance",
+        "name": "LT04_SRB5",
         "tags": [
             "lt04",
             "srb5",
             "sr",
             "swir1",
-            "b5"
+            "b5",
+            "lt04_srb5"
         ],
+        "ubid": "LT04_SRB5"
+    },
+    {
+        "data_fill": "-9999",
         "data_mask": {},
-        "name": "LT04_SRB5",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 5 surface reflectance",
         "data_units": null,
-        "data_fill": "-9999"
-    },
-    {
+        "info": "band 7 surface reflectance",
+        "name": "LT04_SRB7",
         "tags": [
             "lt04",
             "sr",
             "srb7",
             "b7",
-            "swir2"
+            "swir2",
+            "lt04_srb7"
         ],
+        "ubid": "LT04_SRB7"
+    },
+    {
+        "data_fill": null,
         "data_mask": {},
-        "name": "LT04_SRB7",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
-        "data_type": "INT16",
-        "info": "band 7 surface reflectance",
+        "data_type": "UINT8",
         "data_units": null,
-        "data_fill": "-9999"
-    },
-    {
+        "info": "surface reflectance cloud qa",
+        "name": "LT04_SRCLOUDQA",
         "tags": [
             "lt04",
             "cloud",
             "sr",
+            "lt04_srcloudqa",
             "qa"
         ],
+        "ubid": "LT04_SRCLOUDQA"
+    },
+    {
+        "data_fill": "-9999",
         "data_mask": {},
-        "name": "LT04_SRCLOUDQA",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
-        "data_type": "UINT8",
-        "info": "surface reflectance cloud qa",
+        "data_type": "INT16",
         "data_units": null,
-        "data_fill": null
-    },
-    {
+        "info": "band 1 top-of-atmosphere reflectance",
+        "name": "LT04_TAB1",
         "tags": [
             "lt04",
             "blue",
+            "lt04_tab1",
             "tab1",
             "ta",
             "b1"
         ],
+        "ubid": "LT04_TAB1"
+    },
+    {
+        "data_fill": "-9999",
         "data_mask": {},
-        "name": "LT04_TAB1",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 1 top-of-atmosphere reflectance",
         "data_units": null,
-        "data_fill": "-9999"
-    },
-    {
+        "info": "band 2 top-of-atmosphere reflectance",
+        "name": "LT04_TAB2",
         "tags": [
             "lt04",
             "tab2",
             "green",
+            "lt04_tab2",
             "b2",
             "ta"
         ],
+        "ubid": "LT04_TAB2"
+    },
+    {
+        "data_fill": "-9999",
         "data_mask": {},
-        "name": "LT04_TAB2",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 2 top-of-atmosphere reflectance",
         "data_units": null,
-        "data_fill": "-9999"
-    },
-    {
+        "info": "band 3 top-of-atmosphere reflectance",
+        "name": "LT04_TAB3",
         "tags": [
             "lt04",
             "b3",
             "tab3",
+            "lt04_tab3",
             "red",
             "ta"
         ],
+        "ubid": "LT04_TAB3"
+    },
+    {
+        "data_fill": "-9999",
         "data_mask": {},
-        "name": "LT04_TAB3",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 3 top-of-atmosphere reflectance",
         "data_units": null,
-        "data_fill": "-9999"
-    },
-    {
+        "info": "band 4 top-of-atmosphere reflectance",
+        "name": "LT04_TAB4",
         "tags": [
             "lt04",
             "nir",
             "b4",
+            "lt04_tab4",
             "tab4",
             "ta"
         ],
+        "ubid": "LT04_TAB4"
+    },
+    {
+        "data_fill": "-9999",
         "data_mask": {},
-        "name": "LT04_TAB4",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 4 top-of-atmosphere reflectance",
         "data_units": null,
-        "data_fill": "-9999"
-    },
-    {
+        "info": "band 5 top-of-atmosphere reflectance",
+        "name": "LT04_TAB5",
         "tags": [
             "lt04",
+            "lt04_tab5",
             "swir1",
             "b5",
             "tab5",
             "ta"
         ],
+        "ubid": "LT04_TAB5"
+    },
+    {
+        "data_fill": "-9999",
         "data_mask": {},
-        "name": "LT04_TAB5",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 5 top-of-atmosphere reflectance",
         "data_units": null,
-        "data_fill": "-9999"
-    },
-    {
+        "info": "band 7 top-of-atmosphere reflectance",
+        "name": "LT04_TAB7",
         "tags": [
             "lt04",
             "b7",
+            "lt04_tab7",
             "swir2",
             "tab7",
             "ta"
         ],
+        "ubid": "LT04_TAB7"
+    },
+    {
+        "data_fill": "-9999",
         "data_mask": {},
-        "name": "LT04_TAB7",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 7 top-of-atmosphere reflectance",
         "data_units": null,
-        "data_fill": "-9999"
-    },
-    {
+        "info": "band 6 at-satellite brightness temperature",
+        "name": "LT05_BTB6",
         "tags": [
             "brightness",
+            "lt05_btb6",
             "bt",
             "temperature",
             "lt05",
             "b6"
         ],
+        "ubid": "LT05_BTB6"
+    },
+    {
+        "data_fill": null,
         "data_mask": {},
-        "name": "LT05_BTB6",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
-        "data_type": "INT16",
-        "info": "band 6 at-satellite brightness temperature",
+        "data_type": null,
         "data_units": null,
-        "data_fill": "-9999"
-    },
-    {
+        "info": "index",
+        "name": "LT05_LINEAGEQA",
         "tags": [
             "lineageqa",
             "lineage",
+            "lt05_lineageqa",
             "lt05",
             "qa"
         ],
+        "ubid": "LT05_LINEAGEQA"
+    },
+    {
+        "data_fill": null,
         "data_mask": {},
-        "name": "LT05_LINEAGEQA",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": null,
-        "info": "index",
         "data_units": null,
-        "data_fill": null
-    },
-    {
+        "info": "level-2 pixel quality band",
+        "name": "LT05_PIXELQA",
         "tags": [
             "pixelqa",
             "lt05",
+            "lt05_pixelqa",
             "pixel",
             "qa"
         ],
+        "ubid": "LT05_PIXELQA"
+    },
+    {
+        "data_fill": null,
         "data_mask": {},
-        "name": "LT05_PIXELQA",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": null,
-        "info": "level-2 pixel quality band",
         "data_units": null,
-        "data_fill": null
-    },
-    {
+        "info": "saturation mask",
+        "name": "LT05_RADSATQA",
         "tags": [
+            "radsat",
+            "lt05_radsatqa",
             "saturation",
             "lt05",
+            "radsatqa",
             "mask",
             "qa"
         ],
+        "ubid": "LT05_RADSATQA"
+    },
+    {
+        "data_fill": "-32768",
         "data_mask": {},
-        "name": "LT05_RADSATQA",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
-        "data_type": null,
-        "info": "saturation mask",
+        "data_type": "INT16",
         "data_units": null,
-        "data_fill": null
-    },
-    {
+        "info": "band 4 sensor azimuth angles",
+        "name": "LT05_SEA4",
         "tags": [
             "azimuth",
             "sensor",
             "lt05",
+            "lt05_sea4",
             "sea4",
             "angles"
         ],
+        "ubid": "LT05_SEA4"
+    },
+    {
+        "data_fill": "-32768",
         "data_mask": {},
-        "name": "LT05_SEA4",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 4 sensor azimuth angles",
         "data_units": null,
-        "data_fill": "-32768"
-    },
-    {
+        "info": "band 4 sensor zenith angles",
+        "name": "LT05_SEZ4",
         "tags": [
             "zenith",
+            "lt05_sez4",
             "sensor",
             "lt05",
             "angles",
             "sez4"
         ],
+        "ubid": "LT05_SEZ4"
+    },
+    {
+        "data_fill": "-32768",
         "data_mask": {},
-        "name": "LT05_SEZ4",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 4 sensor zenith angles",
         "data_units": null,
-        "data_fill": "-32768"
-    },
-    {
+        "info": "band 4 solar azimuth angles",
+        "name": "LT05_SOA4",
         "tags": [
             "azimuth",
             "lt05",
             "solar",
             "soa4",
+            "lt05_soa4",
             "angles"
         ],
+        "ubid": "LT05_SOA4"
+    },
+    {
+        "data_fill": "-32768",
         "data_mask": {},
-        "name": "LT05_SOA4",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 4 solar azimuth angles",
         "data_units": null,
-        "data_fill": "-32768"
-    },
-    {
+        "info": "band 4 solar zenith angles",
+        "name": "LT05_SOZ4",
         "tags": [
+            "lt05_soz4",
             "zenith",
             "lt05",
             "solar",
             "soz4",
             "angles"
         ],
+        "ubid": "LT05_SOZ4"
+    },
+    {
+        "data_fill": "-9999",
         "data_mask": {},
-        "name": "LT05_SOZ4",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 4 solar zenith angles",
         "data_units": null,
-        "data_fill": "-32768"
-    },
-    {
+        "info": "surface reflectance atmosphere opacity",
+        "name": "LT05_SRATMOSOPACITYQA",
         "tags": [
             "sr",
             "lt05",
+            "lt05_sratmosopacityqa",
             "opacity",
             "atmosphere"
         ],
+        "ubid": "LT05_SRATMOSOPACITYQA"
+    },
+    {
+        "data_fill": "-9999",
         "data_mask": {},
-        "name": "LT05_SRATMOSOPACITYQA",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "surface reflectance atmosphere opacity",
         "data_units": null,
-        "data_fill": "-9999"
-    },
-    {
+        "info": "band 1 surface reflectance",
+        "name": "LT05_SRB1",
         "tags": [
             "blue",
             "sr",
             "lt05",
+            "lt05_srb1",
             "srb1",
             "b1"
         ],
+        "ubid": "LT05_SRB1"
+    },
+    {
+        "data_fill": "-9999",
         "data_mask": {},
-        "name": "LT05_SRB1",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 1 surface reflectance",
         "data_units": null,
-        "data_fill": "-9999"
-    },
-    {
+        "info": "band 2 surface reflectance",
+        "name": "LT05_SRB2",
         "tags": [
             "sr",
+            "lt05_srb2",
             "lt05",
             "green",
             "srb2",
             "b2"
         ],
+        "ubid": "LT05_SRB2"
+    },
+    {
+        "data_fill": "-9999",
         "data_mask": {},
-        "name": "LT05_SRB2",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 2 surface reflectance",
         "data_units": null,
-        "data_fill": "-9999"
-    },
-    {
+        "info": "band 3 surface reflectance",
+        "name": "LT05_SRB3",
         "tags": [
             "b3",
             "sr",
             "srb3",
             "lt05",
-            "red"
+            "red",
+            "lt05_srb3"
         ],
+        "ubid": "LT05_SRB3"
+    },
+    {
+        "data_fill": "-9999",
         "data_mask": {},
-        "name": "LT05_SRB3",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 3 surface reflectance",
         "data_units": null,
-        "data_fill": "-9999"
-    },
-    {
+        "info": "band 4 surface reflectance",
+        "name": "LT05_SRB4",
         "tags": [
             "nir",
             "sr",
             "b4",
             "srb4",
             "lt05",
-            "infrared"
+            "infrared",
+            "lt05_srb4"
         ],
+        "ubid": "LT05_SRB4"
+    },
+    {
+        "data_fill": "-9999",
         "data_mask": {},
-        "name": "LT05_SRB4",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 4 surface reflectance",
         "data_units": null,
-        "data_fill": "-9999"
-    },
-    {
+        "info": "band 5 surface reflectance",
+        "name": "LT05_SRB5",
         "tags": [
             "srb5",
             "sr",
             "swir1",
             "b5",
-            "lt05"
+            "lt05",
+            "lt05_srb5"
         ],
+        "ubid": "LT05_SRB5"
+    },
+    {
+        "data_fill": "-9999",
         "data_mask": {},
-        "name": "LT05_SRB5",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 5 surface reflectance",
         "data_units": null,
-        "data_fill": "-9999"
-    },
-    {
+        "info": "band 7 surface reflectance",
+        "name": "LT05_SRB7",
         "tags": [
+            "lt05_srb7",
             "sr",
             "srb7",
             "b7",
             "lt05",
             "swir2"
         ],
+        "ubid": "LT05_SRB7"
+    },
+    {
+        "data_fill": null,
         "data_mask": {},
-        "name": "LT05_SRB7",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
-        "data_type": "INT16",
-        "info": "band 7 surface reflectance",
+        "data_type": "UINT8",
         "data_units": null,
-        "data_fill": "-9999"
-    },
-    {
+        "info": "surface reflectance cloud qa",
+        "name": "LT05_SRCLOUDQA",
         "tags": [
             "cloud",
+            "lt05_srcloudqa",
             "sr",
             "lt05",
             "qa"
         ],
+        "ubid": "LT05_SRCLOUDQA"
+    },
+    {
+        "data_fill": "-9999",
         "data_mask": {},
-        "name": "LT05_SRCLOUDQA",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
-        "data_type": "UINT8",
-        "info": "surface reflectance cloud qa",
+        "data_type": "INT16",
         "data_units": null,
-        "data_fill": null
-    },
-    {
+        "info": "band 1 top-of-atmosphere reflectance",
+        "name": "LT05_TAB1",
         "tags": [
             "blue",
             "lt05",
+            "lt05_tab1",
             "tab1",
             "ta",
             "b1"
         ],
+        "ubid": "LT05_TAB1"
+    },
+    {
+        "data_fill": "-9999",
         "data_mask": {},
-        "name": "LT05_TAB1",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 1 top-of-atmosphere reflectance",
         "data_units": null,
-        "data_fill": "-9999"
-    },
-    {
+        "info": "band 2 top-of-atmosphere reflectance",
+        "name": "LT05_TAB2",
         "tags": [
             "tab2",
             "lt05",
             "green",
             "b2",
+            "lt05_tab2",
             "ta"
         ],
+        "ubid": "LT05_TAB2"
+    },
+    {
+        "data_fill": "-9999",
         "data_mask": {},
-        "name": "LT05_TAB2",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 2 top-of-atmosphere reflectance",
         "data_units": null,
-        "data_fill": "-9999"
-    },
-    {
+        "info": "band 3 top-of-atmosphere reflectance",
+        "name": "LT05_TAB3",
         "tags": [
             "b3",
             "tab3",
             "lt05",
             "red",
+            "lt05_tab3",
             "ta"
         ],
+        "ubid": "LT05_TAB3"
+    },
+    {
+        "data_fill": "-9999",
         "data_mask": {},
-        "name": "LT05_TAB3",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 3 top-of-atmosphere reflectance",
         "data_units": null,
-        "data_fill": "-9999"
-    },
-    {
+        "info": "band 4 top-of-atmosphere reflectance",
+        "name": "LT05_TAB4",
         "tags": [
             "nir",
+            "lt05_tab4",
             "b4",
             "lt05",
             "tab4",
             "ta"
         ],
+        "ubid": "LT05_TAB4"
+    },
+    {
+        "data_fill": "-9999",
         "data_mask": {},
-        "name": "LT05_TAB4",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 4 top-of-atmosphere reflectance",
         "data_units": null,
-        "data_fill": "-9999"
-    },
-    {
+        "info": "band 5 top-of-atmosphere reflectance",
+        "name": "LT05_TAB5",
         "tags": [
             "swir1",
             "b5",
             "tab5",
             "lt05",
+            "lt05_tab5",
             "ta"
         ],
+        "ubid": "LT05_TAB5"
+    },
+    {
+        "data_fill": "-9999",
         "data_mask": {},
-        "name": "LT05_TAB5",
+        "data_range": [],
         "data_scale": null,
         "data_shape": [
             100,
             100
         ],
-        "data_range": [],
         "data_type": "INT16",
-        "info": "band 5 top-of-atmosphere reflectance",
         "data_units": null,
-        "data_fill": "-9999"
-    },
-    {
+        "info": "band 7 top-of-atmosphere reflectance",
+        "name": "LT05_TAB7",
         "tags": [
+            "lt05_tab7",
             "b7",
             "lt05",
             "swir2",
             "tab7",
             "ta"
         ],
-        "data_mask": {},
-        "name": "LT05_TAB7",
-        "data_scale": null,
-        "data_shape": [
-            100,
-            100
-        ],
-        "data_range": [],
-        "data_type": "INT16",
-        "info": "band 7 top-of-atmosphere reflectance",
-        "data_units": null,
-        "data_fill": "-9999"
+        "ubid": "LT05_TAB7"
     }
 ]
