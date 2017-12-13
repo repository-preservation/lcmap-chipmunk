@@ -21,6 +21,7 @@
                  [ring/ring-json "0.4.0"]
                  [jumblerg/ring.middleware.cors "1.0.1"]
                  [compojure "1.6.0"]
+                 [cheshire "5.8.0"]
                  [metrics-clojure "2.9.0"]
                  [metrics-clojure-health "2.9.0"]
                  [metrics-clojure-jvm "2.9.0"]
