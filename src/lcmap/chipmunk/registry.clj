@@ -140,16 +140,3 @@
   "Get all layers from the registry."
   []
   (sort-by :ubid (alia/execute db/db-session (all))))
-
-
-(defn search!
-  "Get layers that have all the given tags."
-  ;;
-  ;; TODO: case-insensitive comparison?
-  ;;
-  [params]
-  (let [ubid-set (-> params :ubid vector keep flatten set)
-        layers   (all!)]
-    (if (empty? ubid-set)
-      layers
-      (filter #(-> % :ubid ubid-set) layers))))

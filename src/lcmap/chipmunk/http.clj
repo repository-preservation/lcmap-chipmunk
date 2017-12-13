@@ -47,18 +47,18 @@
   {:status 200 :body ["Chipmunk. It's nuts!"]})
 
 
-(defn get-chip-specs
+(defn get-registry
   "Get all chips (in a layer) specified meeting criteria in params."
   [{:keys [params] :as req}]
-  (log/debugf "GET chip-specs '%s'" params)
-  (let [results (registry/search! params)]
+  (log/debugf "GET registry '%s'" params)
+  (let [results (registry/all!)]
     {:status 200 :body results}))
 
 
-(defn post-chip-specs
+(defn post-registry
   "Create (or update) a layer's properties."
   [{:keys [body] :as req}]
-  (log/debugf "POST chip-specs '%s'" body)
+  (log/debugf "POST registry '%s'" body)
   (let [layer (map registry/add! body)]
     {:status 201 :body layer}))
 
@@ -147,14 +147,10 @@
       (get-base request))
     (compojure/GET "/chips" []
       (get-chips request))
-    (compojure/GET "/chip-specs" []
-      (get-chip-specs request))
-    (compojure/POST "/chip-specs" []
-      (post-chip-specs request))
     (compojure/GET "/registry" []
-      (get-chip-specs request))
+      (get-registry request))
     (compojure/POST "/registry" []
-      (post-chip-specs request))
+      (post-registry request))
     (compojure/GET "/inventory" []
       (get-sources request))
     (compojure/POST "/inventory" []

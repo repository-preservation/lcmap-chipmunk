@@ -30,16 +30,16 @@
 
 
 (deftest get-registry-test
-  (testing "GET /chip-specs"
-    (let [resp (shared/go-fish {:url "/chip-specs"})]
+  (testing "GET /registry"
+    (let [resp (shared/go-fish {:url "/registry"})]
       (is (= 200 (:status resp)))
       (is (< 1 (-> resp :body count))))))
 
 
 (deftest post-registry-test
-  (testing "POST /chip-specs"
+  (testing "POST /registry"
     (let [layer [{:ubid "LC08_SRB1" :tags ["LC08" "SRB1" "aerosol"]}]
-          resp (shared/go-fish {:url "/chip-specs" :method :post :body layer})]
+          resp (shared/go-fish {:url "/registry" :method :post :body layer})]
       (is (= 201 (:status resp))))))
 
 
