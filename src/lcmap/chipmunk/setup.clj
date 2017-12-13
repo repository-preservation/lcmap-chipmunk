@@ -21,8 +21,8 @@
   []
   (hayt/create-table :registry
                      (hayt/if-exists false)
-                     (hayt/column-definitions {:primary-key [:name]
-                                               :name       :text
+                     (hayt/column-definitions {:primary-key [:ubid]
+                                               :ubid       :text
                                                :info       :text
                                                :tags       (hayt/frozen (hayt/set-type :text))
                                                :data_fill  :text
