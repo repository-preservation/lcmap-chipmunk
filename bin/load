@@ -19,7 +19,7 @@
 # This is the Chipmunk instance you want to put data into
 #
 
-HOST="localhost:5858/inventory"
+HOST="localhost:5656/inventory"
 
 # This trickery allows us to resolve an IP address for the
 # NGINX container that provides HTTP access to tar files.
