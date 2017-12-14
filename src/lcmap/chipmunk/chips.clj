@@ -10,8 +10,7 @@
             [lcmap.chipmunk.db :as db]
             [lcmap.chipmunk.util :as util]
             [lcmap.chipmunk.registry :as registry]
-            [lcmap.chipmunk.grid :as grid]
-            [lcmap.commons.chip :as commons-chip]))
+            [lcmap.chipmunk.grid :as grid]))
 
 
 ;; ## Overview

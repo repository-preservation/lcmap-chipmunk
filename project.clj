@@ -1,4 +1,4 @@
-(defproject chipmunk "0.1.0-SNAPSHOT"
+(defproject chipmunk "1.0.0-RC1"
   :description "Geospatial data ingest tools"
   :url "http://github.com/usgs-eros/lcmap-chipmunk"
   :license {:name "Unlicense"
@@ -28,8 +28,7 @@
                  [metrics-clojure-ring "2.9.0"]
                  [net.mikera/core.matrix "0.61.0"]
                  [net.mikera/vectorz-clj "0.47.0"]
-                 [com.github.kyleburton/clj-xpath "1.4.3"]
-                 [gov.usgs.eros/lcmap-commons "1.0.1-SNAPSHOT"]]
+                 [com.github.kyleburton/clj-xpath "1.4.3"]]
   :plugins [[lein-environ "1.1.0"]]
   :profiles {:dev     {:resource-paths ["dev"]}
              :repl    {:resource-paths ["dev"]}

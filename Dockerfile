@@ -1,7 +1,7 @@
 FROM usgseros/ubuntu-gis-clj
 MAINTAINER USGS LCMAP http://eros.usgs.gov
 
-ENV version 0.1.0-SNAPSHOT
+ENV version 1.0.0-RC1
 ENV jarfile chipmunk-$version-standalone.jar
 EXPOSE 5656
 

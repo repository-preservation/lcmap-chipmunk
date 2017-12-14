@@ -32,7 +32,7 @@ services:
     restart: always
 
   chipmunk:
-    image: "usgseros/lcmap-chipmunk:develop-0.1.0-SNAPSHOT"
+    image: "usgseros/lcmap-chipmunk:develop-1.0.0-RC1"
     ports:
       - "5656:5656"
     environment:
