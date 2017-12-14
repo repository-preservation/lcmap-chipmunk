@@ -23,12 +23,6 @@
       (is (= 200 (:status resp))))))
 
 
-(deftest get-metrics-test
-  (testing "it exists, but there isn't much there right now"
-    (let [resp (shared/go-fish {:url "/metrics"})]
-      (is (= 200 (:status resp))))))
-
-
 (deftest get-registry-test
   (testing "GET /registry"
     (let [resp (shared/go-fish {:url "/registry"})]

@@ -5,7 +5,6 @@
             [cheshire.core :as json]
             [cheshire.generate :as json-gen :refer [add-encoder]]
             [compojure.core :as compojure]
-            [metrics.ring.expose]
             [mount.core :as mount]
             [org.httpkit.server :as server]
             [ring.middleware.json :as ring-json]
@@ -93,13 +92,6 @@
   {:status 200 :body {:healthy true}})
 
 
-(defn metrics
-  "Handler for reporting metrics."
-  [request]
-  (log/debug "GET metrics")
-  (metrics.ring.expose/serve-metrics {}))
-
-
 (defn get-grid
   "Obtain parameters for a grid of the given name."
   [{:keys [params] :as request}]
@@ -164,9 +156,7 @@
     (compojure/GET "/grid/near" []
       (get-near request))
     (compojure/GET "/healthy" []
-      (healthy request))
-    (compojure/GET "/metrics" []
-      (metrics request))))
+      (healthy request))))
 
 
 ;; ## Middleware
