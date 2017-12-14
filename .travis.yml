@@ -17,7 +17,7 @@ env:
 
 before_install:
   - sudo sysctl -w vm.max_map_count=262144
-  - docker-compose -f resources/docker-compose-travis.yml up
+  - docker-compose -f resources/docker-compose-travis.yml up -d
   - sudo apt-add-repository ppa:ubuntugis/ppa -y
   - sudo apt-get update -qq
   - sudo apt-get install libgdal-dev libgdal-java -y
