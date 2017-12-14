@@ -17,7 +17,7 @@ env:
 
 before_install:
   - sudo sysctl -w vm.max_map_count=262144
-  - make docker-compose-up
+  - docker-compose -f resources/docker-compose.yml up --scale chipmunk=0
   - sudo apt-add-repository ppa:ubuntugis/ppa -y
   - sudo apt-get update -qq
   - sudo apt-get install libgdal-dev libgdal-java -y
