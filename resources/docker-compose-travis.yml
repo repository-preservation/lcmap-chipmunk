@@ -1,0 +1,32 @@
+version: "3"
+
+networks:
+  lcmap_chipmunk:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      - subnet: 192.168.43.0/24
+
+services:
+
+  cassandra:
+    image: cassandra:3.9
+    ports:
+    - "9042:9042"
+    networks:
+      - lcmap_chipmunk
+    restart: always
+
+  nginx:
+    image: "nginx:latest"
+    ports:
+      - "9080:80"
+      - "9443:443"
+    volumes:
+      - ./../test/nginx/config:/etc/nginx/conf.d
+      - ./../test/nginx/ssl:/etc/ssl
+      - ./../test/nginx/data/:/usr/share/nginx/data
+    networks:
+      - lcmap_chipmunk
+    restart: always
