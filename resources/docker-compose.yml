@@ -1,4 +1,4 @@
-version: "2"
+version: "3"
 
 networks:
   lcmap_chipmunk:
@@ -16,6 +16,7 @@ services:
     - "9042:9042"
     networks:
       - lcmap_chipmunk
+    restart: always
 
   nginx:
     image: "nginx:latest"
@@ -28,3 +29,16 @@ services:
       - ./../test/nginx/data/:/usr/share/nginx/data
     networks:
       - lcmap_chipmunk
+    restart: always
+
+  chipmunk:
+    image: "usgseros/lcmap-chipmunk:develop-0.1.0-SNAPSHOT"
+    ports:
+      - "5656:5656"
+    environment:
+      - DB_HOST=resources_cassandra_1
+      - DB_KEYSPACE=chipmunk_local
+      - HTTP_PORT=5656
+    networks:
+      - lcmap_chipmunk
+    restart: always

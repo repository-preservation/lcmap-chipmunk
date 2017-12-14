@@ -1,0 +1,35 @@
+#!/bin/bash
+
+echo "Adding seed data to Chipmunk instance."
+
+if ! [ -x "$(command -v http)" ]; then
+   echo 'Error: httpie is not installed.' >&2
+   exit 1
+fi
+
+if http --check-status --ignore-stdin --timeout=2.5 HEAD localhost:5656/healthy &> /dev/null; then
+   echo "Your chipmunk looks healthy!"
+else
+   echo "Oh no! Your chipmunk *is not* healthy."
+   case $? in
+        2) echo 'Request timed out!' ;;
+        3) echo 'Unexpected HTTP 3xx Redirection!' ;;
+        4) echo 'HTTP 4xx Client Error!' ;;
+        5) echo 'HTTP 5xx Server Error!' ;;
+        6) echo 'Exceeded --max-redirects=<n> redirects!' ;;
+        *) echo 'Other Error!' ;;
+   esac
+   exit 1
+fi
+
+
+echo "...configuring grid presets...."
+http POST localhost:5656/grid < resources/grid.conus.json > setup.log
+
+echo "...configuring registry ARD presets..."
+http POST localhost:5656/registry < resources/registry.ard.json > setup.log
+
+echo "...configuring registry AUX presets..."
+http POST localhost:5656/registry < resources/registry.ard.json > setup.log
+
+echo "...done!"

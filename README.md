@@ -6,7 +6,7 @@ You can use it to define, store, and retrieve collections of data
 over HTTP.
 
 
-## Deploying
+## Deploying Chipmunk
 
 Chipmunk is run as a Docker container so you don't have to worry
 about installing GDAL or building an uberjar. It will automatically
@@ -31,35 +31,26 @@ Chipmunk is configured using these environment variables:
 | `DB_KEYSPACE`  | Chipmunk's keyspace name    |
 
 
-## Presets for Layers and Grids
+## Running a Local Chipmunk
 
-Once you have a Chipmunk instance running, you may want to load it with
-some data. Please install [HTTPie][2] before using them.
-
-
-Predefined layers and grids can be loaded by running:
+Start backing services and a Chipmunk instance using docker-compose. This will
+log all container output to stdout; use ctrl-c to stop all containers.
 
 ```
-./bin/setup
+bin/boot
 ```
 
-Sample data can be downloaded by running:
+Load presets for the registry and grid resources.
 
 ```
-./bin/download-data
+bin/seed
 ```
 
-After downloading sample data, ingest it all like this:
+Load additional sample data, if desired.
 
 ```
-ls test/nginx/data/**/*.tar | xargs bin/load
+bin/grab && ls test/nginx/data/**/*.tar | xargs bin/load
 ```
-
-The `bin/load` script generates full URLs to individual GeoTIFFs contained
-in tar files and handles building URLs to the files hosted on the provided
-NGINX server that can be retrieved by a Chipmunk instance running as a Docker
-container.
-
 
 ## Developing Chipmunk
 
@@ -77,13 +68,16 @@ cd lcmap-chipmunk
 
 Start backing services using Docker compose.
 
+*Important: If you plan to run Chipmunk from a REPL, be sure to set the scale
+to zero.* Otherwise, the instance you start will conflict with one configured
+to start automatically with docker-compose.
+
 ```
-make docker-compose-up
+docker-compose -f resources/docker-compose.yml up --scale chipmunk=0
 ```
 
 Create a `profiles.clj` so you don't have to mess with environment
-variables for local development. The built-in example will work
-out-of-the-box.
+variables for local development.
 
 ```
 cp profiles.example.clj profiles.clj
@@ -95,41 +89,25 @@ Run the tests.
 lein test
 ```
 
-Start a REPL.
+Start a REPL (this automatically starts a Chipmunk instance).
 
 ```
 lein repl
 ```
 
-Configure the registry and grids.
+Finally, check `dev/user.clj` to learn more about loading
+data using a REPL.
 
-```
-./bin/setup
-```
-
-### Additional Data
-
-You may find it desirable to retrieve additional data to help you
-become more familiar with Chipmunk. Although data can be ingested
-directly from non-local sources, bandwidth constraints and rate
-limits may prompt you to host your own data for ingest locally.
-
-Download Landsat ARD for tile H003V009. Feel free to edit this script to
-obtain other data. (This script skips files that have already been
-retrieved).
-
-```
-./bin/download-data
-```
-
-Once retrieved, the data can be ingested using the following:
-
-```
-ls test/nginx/data/**/*.tar | xargs bin/load
-```
 
 ## Resources
 
+Chipmunk provides a few basic resources to enable the storage
+and retrieval of geospatial time-series data.
+
+* Registry
+* Grids
+* Inventory
+* Chips
 
 ### Registry
 
@@ -142,30 +120,29 @@ Get info about all layers in a Chipmunk instance:
 http localhost:5656/registry
 ```
 
-You may also query the registry using one or more `tags` parameters to
-get a subset of layers.
+To add data to the registry, POST a JSON document containing a list
+of layers.
 
 ```
-http localhost:5656/registry \
-     tags==blue \
-     tags==sr
+http POST localhost:5656/registry < resource/registry.ard.json
 ```
 
 ### Grids
 
-Chipmunk instances use one or more grids to calculate points at a
-regular interval.
+The `/grid` resource provides data about how raw data's spatial segmentation.
 
 A grid provides parameters that can be used with an RST (rotation,
 scaling, tranformation) matrix.
-
-Get all defined grids.
 
 ```
 http GET localhost:5656/grid
 ```
 
-Get the grid point for the unit that 'contains' the given point.
+For your convenience, two sub-resources are provided that can be used to
+determine how arbitrary points are transformed into other points that align
+to the grid.
+
+Get the grid point for an arbitrary x and y coordinate.
 
 ```
 http GET localhost:5656/grid/snap x==1631415 y==1829805
@@ -214,10 +191,6 @@ http GET localhost:5656/inventory \
 The `/chips` resource provides a way to retrieve raw raster data. It gets
 a list of chips, encoded as JSON, in response to spatio-temporal queries.
 
-Please note: the `ubid` parameter corresponds to the name of a layer
-defined in the registry. These parameter names are selected to maintain
-compatability with [Merlin][1].
-
 ```
 http GET localhost:5656/chips \
      ubid==lc08_srb1          \
@@ -227,20 +200,4 @@ http GET localhost:5656/chips \
 ```
 
 
-## Merlin Compatability Notes
-
-_TODO: Not implemented, yet._
-
-Backward compatability with [Merlin][1] will be provided via two resources:
-
-* `/merlin/chips`
-* `/merlin/chip-specs`
-
-Currently, Merlin specific changes are mixed into the entire codebase. This
-needs to be isolated so that consistent terms (layer vs. chip-spec, name vs.
-ubid) can be used.
-
-
-
-[1]: https://github.com/USGS-EROS/lcmap-merlin
 [2]: https://httpie.org/#installation

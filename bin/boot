@@ -1,0 +1,20 @@
+#!/bin/bash
+
+#
+# Use this script to start Cassandra, NGINX, and Chipmunk as Docker containers.
+#
+# ./bin/boot
+#
+
+if ! [ -x "$(command -v docker)" ]; then
+    echo 'Error: docker is not installed.' >&2
+    exit 1
+fi
+
+if ! [ -x "$(command -v docker-compose)" ]; then
+    echo 'Error: docker-compose is not installed.' >&2
+    exit 1
+else
+    echo 'Starting Chipmunk backing service Docker containers.'
+    docker-compose -f resources/docker-compose.yml up
+fi
