@@ -269,6 +269,7 @@
  {:ubid "LE07_SOZ4"
   :info "band 4 solar zenith angles"
   :tags #{"le07_soz4" "le07" "soz4" "solar" "zenith" "angles"}
+  :data_type "INT16"
   :data_fill "-32768"}
  {:ubid "LT05_SRB1"
   :info "band 1 surface reflectance"
@@ -362,14 +363,17 @@
  {:ubid "LT05_LINEAGEQA"
   :info "index"
   :tags #{"lt05_lineageqa" "lt05" "lineage" "qa" "lineageqa"}
+  :data_type "UINT8"
   :data_shape [100 100]}
  {:ubid "LT05_PIXELQA"
   :info "level-2 pixel quality band"
   :tags #{"lt05_pixelqa" "lt05" "pixel" "qa" "pixelqa"}
+  :data_type "UINT16"
   :data_shape [100 100]}
  {:ubid "LT05_RADSATQA"
   :info "saturation mask"
   :tags #{"lt05_radsatqa" "lt05" "radsatqa" "radsat" "qa" "saturation" "mask"}
+  :data_type "UINT8"
   :data_shape [100 100]}
  {:ubid "LT05_SEA4"
   :info "band 4 sensor azimuth angles"
@@ -486,14 +490,18 @@
   :data_shape [100 100]}
  {:ubid "LT04_LINEAGEQA"
   :info "index"
-  :tags #{"lt04_lineageqa" "lt04" "lineage" "qa" "lineageqa"}}
+  :tags #{"lt04_lineageqa" "lt04" "lineage" "qa" "lineageqa"}
+  :data_type "UINT8"
+  :data_shape [100 100]}
  {:ubid "LT04_PIXELQA"
   :info "level-2 pixel quality band"
   :tags #{"lt04_pixelqa" "lt04" "pixel" "qa" "pixelqa"}
+  :data_type "UINT16"
   :data_shape [100 100]}
  {:ubid "LT04_RADSATQA"
   :info "saturation mask"
   :tags #{"lt04_radsatqa" "lt04" "qa" "saturation" "mask"}
+  :data_type "UINT8"
   :data_shape [100 100]}
  {:ubid "LT04_SEA4"
   :info "band 4 sensor azimuth angles"
