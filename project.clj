@@ -5,7 +5,8 @@
             :url ""}
   :dependencies [[org.clojure/clojure "1.9.0"]
                  [org.gdal/gdal "1.11.2"]
-                 [camel-snake-kebab "0.4.0"]
+                 [cider/cider-nrepl "0.15.1"]
+		 [camel-snake-kebab "0.4.0"]
                  [digest "1.4.6"]
                  [clojurewerkz/buffy "1.1.0"]
                  [org.clojure/tools.logging "0.4.0"]
