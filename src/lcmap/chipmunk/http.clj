@@ -202,10 +202,10 @@
   (-> routes
       (ring-json/wrap-json-body {:keywords? true})
       (ring-json/wrap-json-response)
-      (ring-cors/wrap-cors #".*")
       (ring-defaults/wrap-defaults ring-defaults/api-defaults)
       (ring-keyword-params/wrap-keyword-params)
-      (wrap-exception-handling)))
+      (wrap-exception-handling)
+      (ring-cors/wrap-cors #".*")))
 
 
 ;; ## Encoders

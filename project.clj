@@ -5,7 +5,7 @@
             :url ""}
   :dependencies [[org.clojure/clojure "1.9.0"]
                  [org.gdal/gdal "1.11.2"]
-                 [camel-snake-kebab "0.4.0"]
+		 [camel-snake-kebab "0.4.0"]
                  [digest "1.4.6"]
                  [clojurewerkz/buffy "1.1.0"]
                  [org.clojure/tools.logging "0.4.0"]
@@ -31,7 +31,8 @@
                  [com.github.kyleburton/clj-xpath "1.4.3"]]
   :plugins [[lein-environ "1.1.0"]]
   :profiles {:dev     {:resource-paths ["dev"]}
-             :repl    {:resource-paths ["dev"]}
+             :repl    {:resource-paths ["dev"]
+		       :dependencies [[cider/cider-nrepl "0.15.1"]]}
              :test    {:resource-paths ["test" "test/resources"]}
              :uberjar {:omit-source true
                        :aot :all}}
