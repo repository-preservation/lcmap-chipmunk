@@ -6,6 +6,7 @@
   (:import [org.gdal.gdal gdal]
            [org.gdal.gdalconst gdalconst]))
 
+(set! *warn-on-reflection* false)
 
 ;; ## Init
 ;;
@@ -76,7 +77,7 @@
 
 (defn close
   "Free resources associated with an open dataset."
-  [ds]
+  [^org.gdal.gdal.Dataset ds]
   (log/tracef "GDAL close dataset")
   (if ds (.delete ds)))
 
@@ -100,63 +101,64 @@
 
 (defn get-projection
   "Get a dataset's projection as well known text."
-  [ds]
+  [^org.gdal.gdal.Dataset ds]
   (.GetProjection ds))
 
 
 (defn get-raster-count
   "Get the number of raster contained in the dataset."
-  [ds]
+  [^org.gdal.gdal.Dataset ds]
   (.GetRasterCount ds))
 
 
 (defn get-raster-x-size
   "Get the dataset's number of pixels in the raster's x dimension."
-  [ds]
+  [^org.gdal.gdal.Dataset ds]
   (.GetRasterXSize ds))
 
 
 (defn get-raster-y-size
   "Get the dataset's number of pixels in the raster's y dimension."
-  [ds]
+  [^org.gdal.gdal.Dataset ds]
   (.GetRasterYSize ds))
 
 
 (defn get-geo-transform
   "Get the dataset's affine transform matrix as an array."
-  [ds]
+  [^org.gdal.gdal.Dataset ds]
   (.GetGeoTransform ds))
 
 
 (defn get-geo-transform-vec
   "Get the dataset's affine transform matrix as a vector."
-  [ds]
+  [^org.gdal.gdal.Dataset ds]
   (vec (get-geo-transform ds)))
 
 
-(defn get-metadata [ds]
+(defn get-metadata 
   "Get the dataset's metadata as a map."
+  [^org.gdal.gdal.Dataset ds]
   (.GetMetadata_Dict ds))
 
 
 (defn band
   "Get the dataset's band indicated by ix, a one-based index."
-  ([ds ix]
+  ([^org.gdal.gdal.Dataset ds ix]
    (.GetRasterBand ds ix))
-  ([ds]
+  ([^org.gdal.gdal.Dataset ds]
    (.GetRasterBand ds 1)))
 
 
 (defn get-data-type
   "GDAL data type of the band."
-  [band]
+  [^org.gdal.gdal.Band band]
   (.getDataType band))
 
 
 (defn read-raster-direct
   "Read a region of raster data and return a DirectByteBuffer"
-  ([band xoff yoff xsize ysize]
-   (let [buf-type (get-data-type band)]
+  ([^org.gdal.gdal.Band band ^Integer xoff ^Integer yoff ^Integer xsize ^Integer ysize]
+   (let [^Integer buf-type (get-data-type band)]
      (.ReadRaster_Direct band xoff yoff xsize ysize buf-type))))
 
 
