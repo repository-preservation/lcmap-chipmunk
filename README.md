@@ -52,6 +52,17 @@ Load additional sample data, if desired.
 bin/grab && ls test/nginx/data/**/*.tar | xargs bin/load
 ```
 
+## Running Operationally
+
+Chipmunk uses approximately 3.8GB to perform 10 simultaneous ingests.  The
+suggested execution parameters are therefore:
+
+```java -server -Xms=4352m -Xmx=4352m -XX:+UseG1GC -jar chipmunk-x.x.x.jar```
+
+This will run Chipmunk with 4.3GB memory using the server JVM compiler and the G1GC garbage collector.
+It is important to set the minimum and maximum memory (Xms and Xmx) equal to one another after profiling
+so the JVM can avoid heap sizing operations.
+
 ## Developing Chipmunk
 
 You need to install a few dependencies before running Chipmunk locally.

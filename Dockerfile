@@ -10,4 +10,4 @@ WORKDIR /app
 COPY target/$jarfile $jarfile
 COPY resources/log4j.properties log4j.properties
 
-ENTRYPOINT java -jar $jarfile
+ENTRYPOINT java -server -jar $jarfile
