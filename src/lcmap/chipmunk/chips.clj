@@ -12,6 +12,7 @@
             [lcmap.chipmunk.registry :as registry]
             [lcmap.chipmunk.grid :as grid]))
 
+(set! *warn-on-reflection* true)
 
 ;; ## Overview
 ;;

@@ -19,7 +19,10 @@
             [lcmap.chipmunk.grid :as grid]
             [lcmap.chipmunk.core :as core])
   (:import [org.joda.time DateTime]
-           [org.apache.commons.codec.binary Base64]))
+           [org.apache.commons.codec.binary Base64]
+           [com.fasterxml.jackson.core.JsonGenerator]))
+
+(set! *warn-on-reflection* true)
 
 ;; # Overview
 ;;
@@ -172,7 +175,7 @@
   (->> throwable
        (iterate (fn [^Throwable t] (.getCause t)))
        (take-while some?)
-       (map (fn [t] (.getMessage t)))
+       (map (fn [^Throwable t] (.getMessage t)))
        (into [])))
 
 
@@ -216,14 +219,14 @@
 
 (defn iso8601-encoder
   "Transform a Joda DateTime object into an ISO8601 string."
-  [date-time generator]
+  [^org.joda.time.DateTime date-time ^com.fasterxml.jackson.core.JsonGenerator generator]
   (log/trace "encoding DateTime to ISO8601")
   (.writeString generator (str date-time)))
 
 
 (defn base64-encoder
   "Base64 encode a byte-buffer, usually raster data from Cassandra."
-  [buffer generator]
+  [^java.nio.HeapByteBuffer buffer ^com.fasterxml.jackson.core.JsonGenerator generator]
   (log/trace "encoding HeapByteBuffer")
   (let [size (- (.limit buffer) (.position buffer))
         copy (byte-array size)]

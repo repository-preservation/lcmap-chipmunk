@@ -15,6 +15,7 @@
   (:require [environ.core :as environ]
             [mount.core :as mount]))
 
+(set! *warn-on-reflection* true)
 
 (def config (select-keys environ/env [:db-host :db-user :db-pass :db-port :db-keyspace :http-port]))
 

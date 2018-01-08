@@ -7,6 +7,7 @@
             [lcmap.chipmunk.config :as config])
   (:import org.joda.time.DateTime))
 
+(set! *warn-on-reflection* true)
 
 ;; ## Overview
 ;;

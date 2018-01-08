@@ -18,6 +18,8 @@
             [mount.core :as mount])
   (:import [org.joda.time DateTime]))
 
+(set! *warn-on-reflection* true)
+
 ;;
 ;; Starting a REPL will automatically setup and start the system.
 ;;

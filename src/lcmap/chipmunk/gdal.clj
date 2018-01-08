@@ -6,7 +6,7 @@
   (:import [org.gdal.gdal gdal]
            [org.gdal.gdalconst gdalconst]))
 
-(set! *warn-on-reflection* false)
+(set! *warn-on-reflection* true)
 
 ;; ## Init
 ;;

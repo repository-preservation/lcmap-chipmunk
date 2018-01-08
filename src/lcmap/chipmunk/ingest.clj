@@ -10,6 +10,7 @@
   (:import [java.net URI]
            [java.io File]))
 
+(set! *warn-on-reflection* true)
 
 ;; # Overview
 ;;
