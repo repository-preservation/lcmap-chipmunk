@@ -4,6 +4,7 @@
             [org.httpkit.client :as http])
   (:import [org.joda.time DateTime]))
 
+(set! *warn-on-reflection* true)
 
 ;; ## Overview
 ;;

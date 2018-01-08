@@ -7,6 +7,7 @@
   (:import  [org.joda.time DateTime Interval DateTimeZone]
             [java.util TimeZone]))
 
+(set! *warn-on-reflection* true)
 
 ;; The time zone is set explicitly for both the JVM and Joda to avoid
 ;; conditions where Joda uses previously cached values; setting the
@@ -123,17 +124,17 @@
 
 
 (defmethod instantize org.joda.time.DateTime
-  [instant]
+  [^org.joda.time.DateTime instant]
   (.toDate instant))
 
 
 (defmethod instantize java.util.Date
-  [instant]
+  [^java.util.Date instant]
   instant)
 
 
 (defn re-grouper
-  [matcher keys]
+  [^java.util.regex.Matcher matcher keys]
   (if (.matches matcher)
     (into {} (map (fn [k] [k (.group matcher (name k))])) keys)))
 
@@ -153,7 +154,7 @@
 
 (defn byte-buffer-copy
   ""
-  [byte-buffer]
+  [^java.nio.ByteBuffer byte-buffer]
   (let [size (.capacity byte-buffer)
         copy (byte-array size)]
     (.get byte-buffer copy)

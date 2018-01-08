@@ -4,6 +4,7 @@
             [metrics.reporters.jmx :as metrics-jmx]
             [mount.core :as mount]))
 
+(set! *warn-on-reflection* true)
 
 (defn start-jmx-reporter []
   (log/debug "start jmx listener")

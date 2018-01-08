@@ -5,6 +5,7 @@
             [qbits.hayt :as hayt]
             [lcmap.chipmunk.config :as config]))
 
+(set! *warn-on-reflection* true)
 
 (defn create-keyspace
   "Returns a map that creates a keyspace suitable for development purposes;

@@ -9,6 +9,7 @@
             [camel-snake-kebab.core :as csk]
             [lcmap.chipmunk.db :as db]))
 
+(set! *warn-on-reflection* true)
 
 ;; ## Overview
 ;;
