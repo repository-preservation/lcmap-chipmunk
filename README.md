@@ -144,15 +144,15 @@ http POST localhost:5656/registry < resource/registry.ard.json
 
 The `/grid` resource provides data about how raw data's spatial segmentation.
 
-A grid provides parameters that can be used with an RST (rotation,
-scaling, tranformation) matrix.
+A grid provides parameters that can be used with an RST (reflection,
+scaling, translation) matrix.
 
 ```
 http GET localhost:5656/grid
 ```
 
 For your convenience, two sub-resources are provided that can be used to
-determine how arbitrary points are transformed into other points that align
+determine how arbitrary points are translated into other points that align
 to the grid.
 
 Get the grid point for an arbitrary x and y coordinate.
