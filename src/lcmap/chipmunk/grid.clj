@@ -6,7 +6,7 @@
             [lcmap.chipmunk.db :as db]
             [lcmap.chipmunk.util :as util]))
 
-(set! *warn-on-reflectionsion* true)
+(set! *warn-on-reflection* true)
 
 ;; ## DB Functions
 ;;
