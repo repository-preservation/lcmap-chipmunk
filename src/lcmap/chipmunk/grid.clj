@@ -6,7 +6,7 @@
             [lcmap.chipmunk.db :as db]
             [lcmap.chipmunk.util :as util]))
 
-(set! *warn-on-reflection* true)
+(set! *warn-on-reflectionsion* true)
 
 ;; ## DB Functions
 ;;
@@ -81,7 +81,7 @@
   "Create fn for finding 'on-the-grid' projection coordinates."
   [grid]
   (fn [point]
-    ;; rst = rotate, scale, translate
+    ;; rst = reflection, scale, translation
     ;; rsti = rst-inverse
     ;; sx, sy = snapped-x, snapped-y
     (let [rst        (transform-matrix grid)
@@ -103,7 +103,7 @@
   "Create a fn that calculates grid units of a point (not projection units)."
   [grid]
   (fn [point]
-    ;; rst = rotate, scale, translate
+    ;; rst = reflection, scale, translation
     ;; rsti = rst-inverse
     ;; sx, sy = snapped-x, snapped-y
     (let [rst        (transform-matrix grid)
