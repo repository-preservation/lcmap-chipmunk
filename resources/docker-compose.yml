@@ -39,6 +39,8 @@ services:
       - DB_HOST=resources_cassandra_1
       - DB_KEYSPACE=chipmunk_local
       - HTTP_PORT=5656
+      - Xms=4352m
+      - Xmx=4352m
     networks:
       - lcmap_chipmunk
     restart: always
