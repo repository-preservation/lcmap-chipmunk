@@ -1,4 +1,4 @@
-(defproject chipmunk "1.0.0-RC1"
+(defproject chipmunk "1.0.0-RC2"
   :description "Geospatial data ingest tools"
   :url "http://github.com/usgs-eros/lcmap-chipmunk"
   :license {:name "Unlicense"
