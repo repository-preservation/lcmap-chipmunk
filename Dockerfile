@@ -1,7 +1,7 @@
 FROM usgseros/ubuntu-gis-clj
 MAINTAINER USGS LCMAP http://eros.usgs.gov
 
-ENV version 1.0.0-RC2
+ENV version 1.0.0-RC3
 ENV jarfile chipmunk-$version-standalone.jar
 EXPOSE 5656
 
@@ -10,4 +10,4 @@ WORKDIR /app
 COPY target/$jarfile $jarfile
 COPY resources/log4j.properties log4j.properties
 
-ENTRYPOINT java -server -jar $jarfile
+ENTRYPOINT java -server -XX:+UseG1GC -jar $jarfile
