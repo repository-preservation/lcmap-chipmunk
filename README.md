@@ -1,5 +1,5 @@
 # Chipmunk
-
+[![Build Status](https://travis-ci.org/USGS-EROS/lcmap-chipmunk.svg?branch=develop)](https://travis-ci.org/USGS-EROS/lcmap-chipmunk)
 Chipmunk enables time-series access to geospatial raster data.
 
 You can use it to define, store, and retrieve collections of data
