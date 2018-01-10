@@ -20,7 +20,7 @@ echo Commit: $COMMIT
 # Version is extracted from project.clj so that a meaningful tag can
 # be added to the image. This expects a particular versioning scheme
 # and handles the case when the string "-SNAPSHOT" is not present.
-export VERSION=`head -n1 project.clj | grep -oP "[\d+]\.[\d+]\.[\d+](-SNAPSHOT)?(-RC[\d+])?"`
+export VERSION=`bin/version`
 echo Version: $VERSION
 
 # The docker login command print an error if authentication
@@ -46,7 +46,7 @@ if [ "$BRANCH" == "master" ] || [ "$BRANCH" == "develop" ] ; then
 
     echo "Building Docker image for $COMMIT_TAG ($BRANCH_TAG)"
     lein uberjar
-    docker build -f Dockerfile -t $COMMIT_TAG .
+    docker build --build-arg version=$VERSION -f Dockerfile -t $COMMIT_TAG .
     docker tag $COMMIT_TAG $BRANCH_TAG
     docker push $REPO
     echo "Building Docker image ... done"

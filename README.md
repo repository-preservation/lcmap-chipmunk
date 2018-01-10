@@ -17,7 +17,9 @@ credentials.
 ```
 export DB_HOST=<your_cassandra_host_name>
 export HTTP_PORT=5656
-docker run -p 5656:5656 -it usgseros/lcmap-chipmunk:latest
+export Xmx=4352m
+export Xms=4352m
+docker run -p 5656:5656 -e DB_HOST=$DB_HOST -e HTTP_PORT=$HTTP_PORT -e Xms=$Xms -e Xmx=$Xmx -it usgseros/lcmap-chipmunk:latest
 ```
 
 Chipmunk is configured using these environment variables:
@@ -30,6 +32,8 @@ Chipmunk is configured using these environment variables:
 | `DB_PASS`      | Cassandra password          |
 | `DB_PORT`      | Cassandra cluster port      |
 | `DB_KEYSPACE`  | Chipmunk's keyspace name    |
+| `Xmx`          | Maximum JVM memory          |
+| `Xms`          | Minimum JVM memory          |
 
 
 ## Running a Local Chipmunk
@@ -65,6 +69,8 @@ This will run Chipmunk with 4.3GB memory using the server JVM compiler and the G
 
 It is important to set the minimum and maximum memory (Xms and Xmx) equal to one another after profiling
 so the JVM can avoid heap resizing operations.
+
+Inside a Docker container, the JVM may see more memory than is actually available to the cgroup, leading to out-of-memory conditions.  Setting Xms and Xmx solves this as well.
 
 ## Developing Chipmunk
 
