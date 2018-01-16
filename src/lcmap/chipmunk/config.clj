@@ -13,7 +13,8 @@
   | `DB_KEYSPACE`  | Chipmunk's keyspace name    |
   "
   (:require [environ.core :as environ]
-            [mount.core :as mount]))
+            [mount.core :as mount]
+            [qbits.alia.policy.load-balancing :as lb]))
 
 (set! *warn-on-reflection* true)
 
@@ -29,9 +30,12 @@
 
 
 (defn alia-config
-  "Produce alia specific configuration from environment."
+  "Produce alia specific configuration from environment.
+   Uses round-robin load balancing policy.  If running across
+   multiple datacenters, use dc-aware-round-robin policy instead."
   []
   {:contact-points (-> :db-host config string->vector)
    :credentials    {:user (:db-user config)
                     :password (:db-pass config)}
-   :query-options  {:consistency :quorum}})
+   :query-options  {:consistency :quorum}
+   :load-balancing-policy (lb/round-robin-policy)})
