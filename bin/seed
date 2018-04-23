@@ -30,6 +30,6 @@ echo "...configuring registry ARD presets..."
 http POST localhost:5656/registry < resources/registry.ard.json > setup.log
 
 echo "...configuring registry AUX presets..."
-http POST localhost:5656/registry < resources/registry.ard.json > setup.log
+http POST localhost:5656/registry < resources/registry.aux.json > setup.log
 
 echo "...done!"
