@@ -201,8 +201,7 @@ of the chips that were extracted.
 To retrieve this information again, perform a `GET` using the same URL.
 
 ```
-http GET localhost:5656/inventory \
-     url==http://$NGINX_HOST/LC08_CU_027009_20130701_20170729_C01_V01_SR.tar/LC08_CU_027009_20130701_20170729_C01_V01_SRB1.tif
+http GET localhost:5656/inventory?url=http://$NGINX_HOST/LC08_CU_027009_20130701_20170729_C01_V01_SR.tar/LC08_CU_027009_20130701_20170729_C01_V01_SRB1.tif
 ```
 
 
