@@ -211,11 +211,7 @@ The `/chips` resource provides a way to retrieve raw raster data. It gets
 a list of chips, encoded as JSON, in response to spatio-temporal queries.
 
 ```
-http GET localhost:5656/chips \
-     ubid==lc08_srb1          \
-     x==1631415               \
-     y==1829805               \
-     acquired==1980/2020
+http GET "localhost:5656/chips?ubid=lc08_srb1&x=1631415&y=1829805&acquired=1980/2020"
 ```
 
 
