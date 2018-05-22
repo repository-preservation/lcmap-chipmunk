@@ -86,6 +86,13 @@
                      (hayt/index-name :inventory_layer_ix)
                      (hayt/if-exists false)))
 
+(defn create-inventory-materialized-view
+  ""
+  []
+  (str "CREATE MATERIALIZED VIEW IF NOT EXISTS inventory_by_tile 
+        AS SELECT tile, source FROM inventory 
+        WHERE tile IS NOT null AND source IS NOT null 
+        PRIMARY KEY(tile, source);"))
 
 (defn init
   "Create table to store metadata about each layer."
@@ -113,6 +120,8 @@
       (alia/execute session (create-inventory-tile-index))
       (log/debugf "creating inventory's layer index")
       (alia/execute session (create-inventory-layer-index))
+      (log/debugf "creating inventory materialized view")
+      (alia/execute session (create-inventory-materialized-view))
       :done
       (catch java.lang.RuntimeException cause
         (log/errorf "could not create chipmunk's default tables.")
