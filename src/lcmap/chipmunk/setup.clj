@@ -86,13 +86,18 @@
                      (hayt/index-name :inventory_layer_ix)
                      (hayt/if-exists false)))
 
+
+
 (defn create-inventory-materialized-view
-  ""
+  "Return a map that creates a materialized view from the inventory
+  table with a primary key using tile"
   []
-  (str "CREATE MATERIALIZED VIEW IF NOT EXISTS inventory_by_tile 
-        AS SELECT tile, source FROM inventory 
-        WHERE tile IS NOT null AND source IS NOT null 
-        PRIMARY KEY(tile, source);"))
+  (hash-map :materialized-view :inventory_by_tile 
+            :select :inventory 
+            :columns [:tile :source] 
+            :primary-key [:tile :source] 
+            :if-exists false 
+            :where [[not= :tile 'NULL] [not= :source 'NULL]]))
 
 (defn init
   "Create table to store metadata about each layer."
