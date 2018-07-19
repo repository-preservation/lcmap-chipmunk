@@ -14,11 +14,18 @@
   "
   (:require [environ.core :as environ]
             [mount.core :as mount]
-            [qbits.alia.policy.load-balancing :as lb]))
+            [qbits.alia.policy.load-balancing :as lb]
+            [lcmap.chipmunk.util :as util]))
 
 (set! *warn-on-reflection* true)
 
-(def config (select-keys environ/env [:db-host :db-user :db-pass :db-port :db-keyspace :http-port]))
+(def config (select-keys environ/env [:db-host
+                                      :db-user
+                                      :db-pass
+                                      :db-port
+                                      :db-keyspace
+                                      :http-port
+                                      :db-read-timeout-millis]))
 
 
 (defn string->vector
@@ -38,4 +45,6 @@
    :credentials    {:user (:db-user config)
                     :password (:db-pass config)}
    :query-options  {:consistency :quorum}
-   :load-balancing-policy (lb/round-robin-policy)})
+   :load-balancing-policy (lb/round-robin-policy)
+   :socket-options {:read-timeout-millis
+                    (util/numberize (or (-> config :db-read-timeout-millis) nil))}})

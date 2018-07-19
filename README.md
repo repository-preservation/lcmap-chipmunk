@@ -19,7 +19,8 @@ docker run -p 5656:5656 -e HTTP_PORT=5656 \
                         -e DB_HOST=<cassandra host> \
 			-e DB_USER=<cassandra user> \
 			-e DB_PASS=<cassandra pw> \
-			-e DB_KEYSPACE=<cassandra keyspace> \
+			-e DB_KEYSPACE=<cassandra keyspace>
+			-e DB_READ_TIMEOUT_MILLIS=600000 \
 			-e Xms=4352m \
 			-e Xmx=4352m \
 			-it usgseros/lcmap-chipmunk:latest
@@ -27,16 +28,17 @@ docker run -p 5656:5656 -e HTTP_PORT=5656 \
 
 Chipmunk is configured using these environment variables:
 
-| ENV            | Description                 |
-| -------------- | --------------------------- |
-| `HTTP_PORT`    | Chipmunk's HTTP listener    |
-| `DB_HOST`      | Cassandra node (just one)   |
-| `DB_USER`      | Cassandra username          |
-| `DB_PASS`      | Cassandra password          |
-| `DB_PORT`      | Cassandra cluster port      |
-| `DB_KEYSPACE`  | Chipmunk's keyspace name    |
-| `Xmx`          | Maximum JVM memory          |
-| `Xms`          | Minimum JVM memory          |
+| ENV                      | Description               |
+| ------------------------ | --------------------------|
+| `HTTP_PORT`              | Chipmunk's HTTP listener  |
+| `DB_HOST`                | Cassandra node (just one) |
+| `DB_USER`                | Cassandra username        |
+| `DB_PASS`                | Cassandra password        |
+| `DB_PORT`                | Cassandra cluster port    |
+| `DB_KEYSPACE`            | Chipmunk's keyspace name  |
+| `DB_READ_TIMEOUT_MILLIS` | Cassandra query timeout   |
+| `Xmx`                    | Maximum JVM memory        |
+| `Xms`                    | Minimum JVM memory        |
 
 
 ## Running a Local Chipmunk
