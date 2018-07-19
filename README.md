@@ -15,11 +15,14 @@ create keyspaces and default tables if you give it priveleged
 credentials.
 
 ```
-export DB_HOST=<your_cassandra_host_name>
-export HTTP_PORT=5656
-export Xmx=4352m
-export Xms=4352m
-docker run -p 5656:5656 -e DB_HOST=$DB_HOST -e HTTP_PORT=$HTTP_PORT -e Xms=$Xms -e Xmx=$Xmx -it usgseros/lcmap-chipmunk:latest
+docker run -p 5656:5656 -e HTTP_PORT=5656 \
+                        -e DB_HOST=<cassandra host> \
+			-e DB_USER=<cassandra user> \
+			-e DB_PASS=<cassandra pw> \
+			-e DB_KEYSPACE=<cassandra keyspace> \
+			-e Xms=4352m \
+			-e Xmx=4352m \
+			-it usgseros/lcmap-chipmunk:latest
 ```
 
 Chipmunk is configured using these environment variables:
@@ -128,6 +131,7 @@ and retrieval of geospatial time-series data.
 * Grids
 * Inventory
 * Chips
+* Sources
 
 ### Registry
 
@@ -204,7 +208,6 @@ To retrieve this information again, perform a `GET` using the same URL.
 http GET localhost:5656/inventory?url=http://$NGINX_HOST/LC08_CU_027009_20130701_20170729_C01_V01_SR.tar/LC08_CU_027009_20130701_20170729_C01_V01_SRB1.tif
 ```
 
-
 ### Chips
 
 The `/chips` resource provides a way to retrieve raw raster data. It gets
@@ -214,5 +217,13 @@ a list of chips, encoded as JSON, in response to spatio-temporal queries.
 http GET "localhost:5656/chips?ubid=lc08_srb1&x=1631415&y=1829805&acquired=1980/2020"
 ```
 
+### Sources
+
+The `/sources` resource is a performant subset of inventory data.  HTTP GET requests
+with a `tile` parameter will return any sources that have been ingested for the given tile.
+
+```
+http GET "localhost:5656/sources?tile=003009"
+```
 
 [2]: https://httpie.org/#installation

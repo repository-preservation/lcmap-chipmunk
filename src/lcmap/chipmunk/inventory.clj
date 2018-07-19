@@ -73,3 +73,15 @@
                       (apply hayt/columns columns))
          (alia/execute db/db-session)
          (map ->source))))
+
+
+(defn tile->sources
+  "Query inventory materialized view by tile"
+  [{:keys [:tile] :as params}]
+  (let [params (util/check! ::query params)
+        columns "*"]
+    (->> (hayt/select :inventory_by_tile
+                      (hayt/where params)
+                      (apply hayt/columns columns))
+         (alia/execute db/db-session)
+         (map ->source))))
