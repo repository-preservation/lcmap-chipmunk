@@ -74,6 +74,13 @@
     {:status 200 :body results :headers {"etag" (chips/etag results)}}))
 
 
+(defn get-tile->sources
+  "Find sources by tile."
+  [{:keys [params] :as req}]
+  (log/debugf "GET tile-sources '%s'" params)
+  {:status 200 :body (inventory/tile->sources params)})
+
+
 (defn get-sources
   "Find sources matching query params."
   [{:keys [params] :as req}]
@@ -146,6 +153,8 @@
       (get-registry request))
     (compojure/POST "/registry" []
       (post-registry request))
+    (compojure/GET "/sources" []
+      (get-tile->sources request))
     (compojure/GET "/inventory" []
       (get-sources request))
     (compojure/POST "/inventory" []

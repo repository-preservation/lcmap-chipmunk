@@ -125,7 +125,7 @@
       (alia/execute session (create-inventory-tile-index))
       (log/debugf "creating inventory's layer index")
       (alia/execute session (create-inventory-layer-index))
-      (log/debugf "creating inventory materialized view")
+      (log/debugf "creating inventory's materialized view")
       (alia/execute session (create-inventory-materialized-view))
       :done
       (catch java.lang.RuntimeException cause
