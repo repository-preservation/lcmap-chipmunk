@@ -21,14 +21,6 @@
   (let [url (shared/nginx-url "LC08_CU_027009_20130701_20170729_C01_V01_SR.tar/LC08_CU_027009_20130701_20170729_C01_V01_SRB1.tif")
         summary (ingest/save url)]
     (testing "search"
-      (testing "by tile"
-        (let [query {:tile "027009"}
-              result (inventory/search query)]
-          (is (= 1 (count result)))))
-      (testing "by layer"
-        (let [query {:layer "LC08_SRB1"}
-              result (inventory/search query)]
-          (is (= 1 (count result)))))
       (testing "by source id"
         (let [query {:source "LC08_CU_027009_20130701_20170729_C01_V01_SRB1.tif"}
               result (inventory/search query)]
