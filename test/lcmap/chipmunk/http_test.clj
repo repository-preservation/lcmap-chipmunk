@@ -49,18 +49,6 @@
       (is (some? (result :extra)))
       (is (some? (result :chips)))
       (is (= 2500 (count (result :chips))))))
-  (testing "GET /inventory for tile"
-    (let [path "/inventory"
-          tile "027009"
-          resp (shared/go-fish {:url path :query-params {:tile tile}})]
-      (is (= 200 (:status resp)))
-      (is (= 1 (-> resp :body count)))))
-  (testing "GET /inventory for layer"
-    (let [path  "/inventory"
-          query {"layer" "LC08_SRB1"}
-          resp  (shared/go-fish {:url path :query-params query})]
-      (is (= 200 (:status resp)))
-      (is (= 1 (-> resp :body count)))))
   (testing "GET /inventory for source"
     (let [path   "/inventory"
           source "LC08_CU_027009_20130701_20170729_C01_V01_SRB1.tif"
