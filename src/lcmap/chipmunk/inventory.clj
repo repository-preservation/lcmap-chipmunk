@@ -15,7 +15,8 @@
 (spec/def ::layer string?)
 (spec/def ::source string?)
 (spec/def ::url string?)
-(spec/def ::query (spec/keys :req-un [(or ::tile ::layer ::source ::url)]))
+(spec/def ::search-query (spec/keys :req-un [(or ::source ::url)]))
+(spec/def ::source-query (spec/keys :req-un [(or ::tile ::url)]))
 
 
 (defn insert-source
@@ -64,9 +65,9 @@
 
 
 (defn search
-  "Query inventory by tile, layer, and/or source."
-  [{:keys [:tile :layer :source :url :only] :as params}]
-  (let [params (util/check! ::query (url-to-source params))
+  "Query inventory by source."
+  [{:keys [:source :url :only] :as params}]
+  (let [params (util/check! ::search-query (url-to-source params))
         columns (or (some-> only list flatten) "*")]
     (->> (hayt/select :inventory
                       (hayt/where (dissoc params :only))
@@ -78,7 +79,7 @@
 (defn tile->sources
   "Query inventory materialized view by tile"
   [{:keys [:tile] :as params}]
-  (let [params (util/check! ::query params)
+  (let [params (util/check! ::source-query params)
         columns "*"]
     (->> (hayt/select :inventory_by_tile
                       (hayt/where params)

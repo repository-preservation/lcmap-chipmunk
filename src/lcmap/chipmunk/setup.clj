@@ -69,25 +69,6 @@
                                                :extra    :text})))
 
 
-(defn create-inventory-tile-index
-  ""
-  []
-  (hayt/create-index :inventory
-                     :tile
-                     (hayt/index-name :inventory_tile_ix)
-                     (hayt/if-exists false)))
-
-
-(defn create-inventory-layer-index
-  ""
-  []
-  (hayt/create-index :inventory
-                     :layer
-                     (hayt/index-name :inventory_layer_ix)
-                     (hayt/if-exists false)))
-
-
-
 (defn create-inventory-materialized-view
   "Return a map that creates a materialized view from the inventory
   table with a primary key using tile"
@@ -121,10 +102,6 @@
       (alia/execute session (create-inventory))
       (log/debugf "creating grid")
       (alia/execute session (create-grid))
-      (log/debugf "creating inventory's tile index")
-      (alia/execute session (create-inventory-tile-index))
-      (log/debugf "creating inventory's layer index")
-      (alia/execute session (create-inventory-layer-index))
       (log/debugf "creating inventory's materialized view")
       (alia/execute session (create-inventory-materialized-view))
       :done
