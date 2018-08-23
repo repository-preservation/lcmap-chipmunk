@@ -115,7 +115,9 @@
         (is (= 1 (:raster-count actual)))
         (is (= 5000 (:raster-x-size actual)))
         (is (= 5000 (:raster-y-size actual)))
-        (is (string/includes? proj_wkt "Albers,GEOGCS[WGS 84,DATUM[WGS_1984,SPHEROID[WGS 84,6378140,298.25"))))
+        (is (string/includes? proj_wkt "Albers,GEOGCS[WGS 84,DATUM[WGS_1984,SPHEROID[WGS 84,6378140,298.25"))
+        (is (string/includes? proj_wkt "AUTHORITY[EPSG,7030]],AUTHORITY[EPSG,6326]],PRIMEM[Greenwich,0],UNIT[degree,0.0174532925199433],AUTHORITY[EPSG,4326]],PROJECTION[Albers_Conic_Equal_Area],PARAMETER[standard_parallel_1,29.5],PARAMETER[standard_parallel_2,45.5],PARAMETER[latitude_of_center,23],PARAMETER[longitude_of_center,-96],PARAMETER[false_easting,0],PARAMETER[false_northing,0],UNIT[metre,1,AUTHORITY[EPSG,9001]]]"))
+))
     (testing "for an invalid source"
       (let [url (shared/nginx-url "wtf.tar/idk.tif")]
         (is (thrown? clojure.lang.ExceptionInfo (gdal-info url)))))))
