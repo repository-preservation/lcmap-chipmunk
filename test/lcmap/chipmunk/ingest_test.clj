@@ -163,3 +163,13 @@
   (testing "derive layer name from invalid source"
     (let [url (shared/nginx-url "wtf.tar/idk.tif")]
       (is (thrown? clojure.lang.ExceptionInfo (derive-ubid url))))))
+
+(deftest derive-aux-ubid-test
+  (testing "derive layer name from aux nlcd source"
+    (let [url (shared/nginx-url "AUX_CU_NLCD.tar/AUX_CU_027009_19990731_20171030_V01_NLCD.tif")
+          actual (derive-ubid url)]
+      (is (= "AUX_NLCD" actual))))
+  (testing "derive layer name from aux nlcd training source"
+    (let [url (shared/nginx-url "AUX_CU_NLCD.tar/AUX_CU_027009_19990731_20171030_V01_NLCD_TRAINING.tif")
+          actual (derive-ubid url)]
+      (is (= "AUX_NLCD_TRAINING" actual)))))
