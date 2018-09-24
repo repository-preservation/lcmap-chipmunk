@@ -112,5 +112,40 @@
             "aux_trends",
             "trends"
         ]
+    },
+    {
+        "data_fill": "255",
+        "data_mask": {},
+        "data_range": [],
+        "data_scale": null,
+        "data_shape": [
+            100,
+            100
+        ],
+        "data_type": "BYTE",
+        "data_units": null,
+        "info": null,
+        "ubid": "AUX_NLCD",
+        "tags": [
+            "nlcd"
+        ]
+    },
+    {
+        "data_fill": "255",
+        "data_mask": {},
+        "data_range": [],
+        "data_scale": null,
+        "data_shape": [
+            100,
+            100
+        ],
+        "data_type": "BYTE",
+        "data_units": null,
+        "info": null,
+        "ubid": "AUX_NLCD_TRAINING",
+        "tags": [
+            "nlcd",
+            "training"
+        ]
     }
 ]
