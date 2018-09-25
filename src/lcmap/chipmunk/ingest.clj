@@ -56,7 +56,7 @@
       (?<produced>[0-9]{8})_
       (C(?<collection>[0-9]{2})_)? # intentionally optional (aux data)
       (V(?<version>[0-9]{2})_)
-      (?<band>[A-Z0-9_]+)
+      (?<band>[A-Z0-9]+)
       (?<extension>.*))")
 
 
