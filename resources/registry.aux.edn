@@ -26,7 +26,7 @@
   :data_type "BYTE"
   :data_shape [100 100]
   :tags ["aux_nlcd" "aux" "nlcd"]}
- {:ubid "AUX_NLCD_TRAINING"
+ {:ubid "AUX_NLCDTRN"
   :data_type "BYTE"
   :data_shape [100 100]
-  :tags ["aux_nlcd_training" "aux" "nlcd"]}]
+  :tags ["aux_nlcdtrn" "aux" "nlcd" "training"]}]
