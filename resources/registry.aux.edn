@@ -21,4 +21,12 @@
  {:ubid "AUX_TRENDS"
   :data_type "BYTE"
   :data_shape [100 100]
-  :tags ["aux_trends" "aux" "trends"]}]
+  :tags ["aux_trends" "aux" "trends"]}
+ {:ubid "AUX_NLCD"
+  :data_type "BYTE"
+  :data_shape [100 100]
+  :tags ["aux_nlcd" "aux" "nlcd"]}
+ {:ubid "AUX_NLCD_TRAINING"
+  :data_type "BYTE"
+  :data_shape [100 100]
+  :tags ["aux_nlcd_training" "aux" "nlcd"]}]
