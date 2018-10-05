@@ -6,7 +6,14 @@
 
 # This is the location of the data to download.
 #
-BASE_URL="https://edclpdsftp.cr.usgs.gov/downloads/collections/l2-ard-tiles/h03v09"
+#BASE_URL="https://edclpdsftp.cr.usgs.gov/downloads/collections/l2-ard-tiles/h03v09"
+
+BASE_URL="https://edclpdsftp.cr.usgs.gov/downloads"
+ARD_URL="/collections/l2-ard-tiles/h03v09"
+AUX_URL="/lcmap/ancillary/tiled"
+NLCDORG_URL="/lcmap/nlcd/original"
+NLCDTRN_URL="/lcmap/nlcd/training"
+
 
 # This is the location of where to save the data.
 #
@@ -37,7 +44,37 @@ do
          echo "skipping previously downloaded file: $FILE"
       else
          echo "retrieving file: $FILE"
-	 curl --silent --output "$BASE_DIR"/"$FILE" "$BASE_URL"/"$FILE"
+	 curl --silent --output "$BASE_DIR"/"$FILE" "$BASE_URL$ARD_URL"/"$FILE"
       fi
   done
 done
+
+
+# Pull down AUX data
+FILE="AUX_CU_003009_20000731_20171031_V01.tar"
+if [[ -f "$BASE_DIR"/"$FILE" ]]; then
+    echo "skipping previously downloaded file: $FILE"
+else
+    echo "retrieving file: $FILE"
+    curl --silent --output "$BASE_DIR"/"$FILE" "$BASE_URL$AUX_URL"/"$FILE"
+fi
+
+
+# Pull down NLCD
+FILE="AUX_CU_003009_20010101_20180921_V01_NLCD.tif"
+if [[ -f "$BASE_DIR"/"$FILE" ]]; then
+    echo "skipping previously downloaded file: $FILE"
+else
+    echo "retrieving file: $FILE"
+    curl --silent --output "$BASE_DIR"/"$FILE" "$BASE_URL$NLCDORG_URL"/"$FILE"
+fi
+
+
+# Pull down NLCDTRN
+FILE="AUX_CU_003009_20010101_20180921_V01_NLCDTRN.tif"
+if [[ -f "$BASE_DIR"/"$FILE" ]]; then
+    echo "skipping previously downloaded file: $FILE"
+else
+    echo "retrieving file: $FILE"
+    curl  --silent --output "$BASE_DIR"/"$FILE" "$BASE_URL$NLCDTRN_URL"/"$FILE"
+fi
