@@ -1,12 +1,13 @@
 (ns lcmap.chipmunk.ingest
   "Functions used to inspect, extract, and persist source data."
-  (:require [lcmap.chipmunk.util :as util]
-            [lcmap.chipmunk.gdal :as gdal]
+  (:require [digest :as digest]
+            [lcmap.chipmunk.ard :as ard]
             [lcmap.chipmunk.chips :as chips]
+            [lcmap.chipmunk.config :as config]
+            [lcmap.chipmunk.gdal :as gdal]
             [lcmap.chipmunk.inventory :as inventory]
-            [lcmap.chipmunk.ard  :as ard]
-            [org.httpkit.client :as http]
-            [digest :as digest])
+            [lcmap.chipmunk.util :as util]
+            [org.httpkit.client :as http])
   (:import [java.net URI]
            [java.io File]))
 
@@ -24,7 +25,7 @@
 
 ;; ## Inspect
 ;;
-;; The inspection functions get and deriver different types of information
+;; The inspection functions get and derive different types of information
 ;; about a source. This includes info from the file name, GDAL metadata,
 ;; the HTTP response of the resource, and ARD XML metadata.
 ;;
@@ -121,7 +122,7 @@
   [url]
   (if-let [info (path-info url) ]
     (-> (:archive info)
-      (http/head)
+      (http/head (config/http-options))
       (deref)
       (dissoc :body))))
 
