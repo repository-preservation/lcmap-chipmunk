@@ -1,6 +1,7 @@
 (ns lcmap.chipmunk.ard
   "Provides functions for retrieving and parsing ARD XML metadata."
   (:require [clj-xpath.core :as xpath]
+            [lcmap.chipmunk.config :as config]
             [org.httpkit.client :as http])
   (:import [org.joda.time DateTime]))
 
@@ -47,7 +48,7 @@
 (defn fetch
   "Given a URL to XML metadata, retrieve the contents."
   [url]
-  (let [resp @(http/get url)]
+  (let [resp @(http/get url (config/http-options))]
     (if (<= 200 (resp :status) 299)
       (resp :body))))
 
