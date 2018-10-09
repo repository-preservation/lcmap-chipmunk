@@ -37,7 +37,7 @@ while [ "$1" != "" ]; do
     for TIF in $FILES; do
 	SOURCE="$NGINX_URL${TAR//$NGINX_DATA/}/$TIF"
 	echo $SOURCE
-	http POST $HOST url=$SOURCE < /dev/tty
+	http --timeout 120 POST $HOST url=$SOURCE < /dev/tty
     done
     shift
 done
