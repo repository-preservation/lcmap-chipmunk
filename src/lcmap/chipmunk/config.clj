@@ -41,7 +41,7 @@
 
 (defn http-options
   []
-  {:timeout (:http-timeout-millis config)})
+  {:timeout (util/numberize(:http-timeout-millis config))})
 
 
 (defn alia-config
