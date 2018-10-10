@@ -21,7 +21,7 @@ docker run -p 5656:5656
            -e DB_HOST=<cassandra host> \
 	   -e DB_USER=<cassandra user> \
 	   -e DB_PASS=<cassandra pw> \
-	   -e DB_KEYSPACE=<cassandra keyspace>
+	   -e DB_KEYSPACE=<cassandra keyspace> \
 	   -e DB_READ_TIMEOUT_MILLIS=600000 \
 	   -e GDAL_HTTP_TIMEOUT=615 \
 	   -e Xms=4352m \
