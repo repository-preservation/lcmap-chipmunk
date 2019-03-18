@@ -16,20 +16,17 @@ services:
     - "9042:9042"
     networks:
       - lcmap_chipmunk
-    restart: always
 
   nginx:
     image: "nginx:latest"
     ports:
       - "9080:80"
-      - "9443:443"
     volumes:
       - ./../test/nginx/config:/etc/nginx/conf.d
       - ./../test/nginx/ssl:/etc/ssl
       - ./../test/nginx/data/:/usr/share/nginx/data
     networks:
       - lcmap_chipmunk
-    restart: always
 
   chipmunk:
     image: "usgseros/lcmap-chipmunk:develop-1.0.2-SNAPSHOT"
@@ -43,4 +40,3 @@ services:
       - Xmx=4352m
     networks:
       - lcmap_chipmunk
-    restart: always
