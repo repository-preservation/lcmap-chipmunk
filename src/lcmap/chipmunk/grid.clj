@@ -53,7 +53,6 @@
 (matrix/set-current-implementation :vectorz)
 
 
-
 (defn transform-matrix
   "Produce transform matrix from given layer's grid-spec."
   [layer]
@@ -76,6 +75,7 @@
     [[x]
      [y]
      [1]]))
+
 
 (defn proj-snap-fn
   "Create fn for finding 'on-the-grid' projection coordinates."
