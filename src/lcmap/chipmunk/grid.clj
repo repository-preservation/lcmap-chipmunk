@@ -53,6 +53,7 @@
 (matrix/set-current-implementation :vectorz)
 
 
+
 (defn transform-matrix
   "Produce transform matrix from given layer's grid-spec."
   [layer]
@@ -62,9 +63,16 @@
         sy (layer :sy)
         tx (layer :tx)
         ty (layer :ty)]
-    [[(/ rx sx)        0  (/ tx sx)]
-     [       0  (/ ry sy) (/ ty sy)]
-     [       0         0       1.0 ]]))
+    (comment (println "rx:" rx)
+    (println "ry:" ry)
+    (println "sx:" sx)
+    (println "sy:" sy)
+    (println "tx:" tx)
+    (println "ty:" ty))
+
+    [[(/ rx sx) 0          (/ tx sx)]
+     [0         (/ ry sy)  (/ ty sy)]
+     [0         0          1.0 ]]))
 
 
 (defn point-matrix
@@ -76,7 +84,6 @@
      [y]
      [1]]))
 
-
 (defn proj-snap-fn
   "Create fn for finding 'on-the-grid' projection coordinates."
   [grid]
@@ -87,7 +94,9 @@
     (let [rst        (transform-matrix grid)
           rsti       (matrix/inverse rst)
           orig-pt    (point-matrix point)
-          grid-pt    (matrix/floor (matrix/mmul rst orig-pt))
+          multiplied (matrix/mmul rst orig-pt)
+          floated    (map (fn [x] (vector (float (first x)))) multiplied)
+          grid-pt    (matrix/floor floated)
           snap-pt    (matrix/round (matrix/mmul rsti grid-pt))
           [[sx] [sy] [_]] snap-pt]
       [sx sy])))
@@ -106,9 +115,11 @@
     ;; rst = reflection, scale, translation
     ;; rsti = rst-inverse
     ;; sx, sy = snapped-x, snapped-y
-    (let [rst        (transform-matrix grid)
-          orig-pt    (point-matrix point)
-          grid-pt    (matrix/floor (matrix/mmul rst orig-pt))
+    (let [rst             (transform-matrix grid)
+          orig-pt         (point-matrix point)
+          multiplied      (matrix/mmul rst orig-pt)
+          floated         (map (fn [x] (vector (float (first x)))) multiplied)
+          grid-pt         (matrix/floor floated)
           [[sx] [sy] [_]] grid-pt]
       [sx sy])))
 
