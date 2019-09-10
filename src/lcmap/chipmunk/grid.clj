@@ -63,13 +63,6 @@
         sy (layer :sy)
         tx (layer :tx)
         ty (layer :ty)]
-    (comment (println "rx:" rx)
-    (println "ry:" ry)
-    (println "sx:" sx)
-    (println "sy:" sy)
-    (println "tx:" tx)
-    (println "ty:" ty))
-
     [[(/ rx sx) 0          (/ tx sx)]
      [0         (/ ry sy)  (/ ty sy)]
      [0         0          1.0 ]]))
