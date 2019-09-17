@@ -92,7 +92,7 @@
                (hayt/where [[= :x (long x)]
                             [= :y (long y)]
                             [>= :acquired (-> acquired bean :start str)]
-                            [<= :acquired (-> acquired bean :end str)]])))
+                            [<  :acquired (-> acquired bean :end str)]])))
 
 
 (defn search!

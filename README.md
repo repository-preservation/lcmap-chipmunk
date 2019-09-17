@@ -15,30 +15,35 @@ create keyspaces and default tables if you give it priveleged
 credentials.
 
 ```
-docker run -p 5656:5656 -e HTTP_PORT=5656 \
-                        -e DB_HOST=<cassandra host> \
-			-e DB_USER=<cassandra user> \
-			-e DB_PASS=<cassandra pw> \
-			-e DB_KEYSPACE=<cassandra keyspace>
-			-e DB_READ_TIMEOUT_MILLIS=600000 \
-			-e Xms=4352m \
-			-e Xmx=4352m \
-			-it usgseros/lcmap-chipmunk:latest
+docker run -p 5656:5656 
+           -e HTTP_PORT=5656 \
+     	   -e HTTP_TIMEOUT_MILLIS=615000 \
+           -e DB_HOST=<cassandra host> \
+	   -e DB_USER=<cassandra user> \
+	   -e DB_PASS=<cassandra pw> \
+	   -e DB_KEYSPACE=<cassandra keyspace> \
+	   -e DB_READ_TIMEOUT_MILLIS=600000 \
+	   -e GDAL_HTTP_TIMEOUT=615 \
+	   -e Xms=4352m \
+	   -e Xmx=4352m \
+	   -it usgseros/lcmap-chipmunk:latest
 ```
 
 Chipmunk is configured using these environment variables:
 
-| ENV                      | Description               |
-| ------------------------ | --------------------------|
-| `HTTP_PORT`              | Chipmunk's HTTP listener  |
-| `DB_HOST`                | Cassandra node (just one) |
-| `DB_USER`                | Cassandra username        |
-| `DB_PASS`                | Cassandra password        |
-| `DB_PORT`                | Cassandra cluster port    |
-| `DB_KEYSPACE`            | Chipmunk's keyspace name  |
-| `DB_READ_TIMEOUT_MILLIS` | Cassandra query timeout   |
-| `Xmx`                    | Maximum JVM memory        |
-| `Xms`                    | Minimum JVM memory        |
+| ENV                      | Description                     |
+| ------------------------ | --------------------------------|
+| `HTTP_PORT`              | Chipmunk's HTTP listener        |
+| `HTTP_TIMEOUT_MILLIS`    | Chipmunk's HTTP Client timeout  |
+| `DB_HOST`                | Cassandra node (just one)       |
+| `DB_USER`                | Cassandra username              |
+| `DB_PASS`                | Cassandra password              |
+| `DB_PORT`                | Cassandra cluster port          |
+| `DB_KEYSPACE`            | Chipmunk's keyspace name        |
+| `DB_READ_TIMEOUT_MILLIS` | Cassandra query timeout         |
+| `GDAL_HTTP_TIMEOUT`      | Timeout (secs) for GDAL vsicurl | 
+| `Xmx`                    | Maximum JVM memory              |
+| `Xms`                    | Minimum JVM memory              |
 
 
 ## Running a Local Chipmunk
@@ -76,6 +81,10 @@ It is important to set the minimum and maximum memory (Xms and Xmx) equal to one
 so the JVM can avoid heap resizing operations.
 
 Inside a Docker container, the JVM may see more memory than is actually available to the cgroup, leading to out-of-memory conditions.  Setting Xms and Xmx solves this as well.
+
+JVMs 1.8 build 121 and later may use -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap instead of the -Xms and -Xmx flags in the Docker ENTRYPOINT.
+
+Chipmunk's Docker image currently runs JDK 1.7.
 
 ## Developing Chipmunk
 

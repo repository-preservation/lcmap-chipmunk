@@ -14,6 +14,7 @@ env:
   - DB_HOST="localhost"
   - DB_KEYSPACE="chipmunk_test"
   - HTTP_PORT="5757"
+  - HTTP_TIMEOUT_MILLIS=120000
 
 before_install:
   - sudo sysctl -w vm.max_map_count=262144
