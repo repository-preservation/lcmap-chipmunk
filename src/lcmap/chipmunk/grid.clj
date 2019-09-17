@@ -62,9 +62,9 @@
         sy (layer :sy)
         tx (layer :tx)
         ty (layer :ty)]
-    [[(/ rx sx)        0  (/ tx sx)]
-     [       0  (/ ry sy) (/ ty sy)]
-     [       0         0       1.0 ]]))
+    [[(/ rx sx) 0          (/ tx sx)]
+     [0         (/ ry sy)  (/ ty sy)]
+     [0         0          1.0 ]]))
 
 
 (defn point-matrix
@@ -87,7 +87,9 @@
     (let [rst        (transform-matrix grid)
           rsti       (matrix/inverse rst)
           orig-pt    (point-matrix point)
-          grid-pt    (matrix/floor (matrix/mmul rst orig-pt))
+          multiplied (matrix/mmul rst orig-pt)
+          floated    (map (fn [x] (vector (float (first x)))) multiplied)
+          grid-pt    (matrix/floor floated)
           snap-pt    (matrix/round (matrix/mmul rsti grid-pt))
           [[sx] [sy] [_]] snap-pt]
       [sx sy])))
@@ -106,9 +108,11 @@
     ;; rst = reflection, scale, translation
     ;; rsti = rst-inverse
     ;; sx, sy = snapped-x, snapped-y
-    (let [rst        (transform-matrix grid)
-          orig-pt    (point-matrix point)
-          grid-pt    (matrix/floor (matrix/mmul rst orig-pt))
+    (let [rst             (transform-matrix grid)
+          orig-pt         (point-matrix point)
+          multiplied      (matrix/mmul rst orig-pt)
+          floated         (map (fn [x] (vector (float (first x)))) multiplied)
+          grid-pt         (matrix/floor floated)
           [[sx] [sy] [_]] grid-pt]
       [sx sy])))
 

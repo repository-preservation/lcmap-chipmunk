@@ -28,9 +28,10 @@
                  [metrics-clojure-ring "2.9.0"]
                  [net.mikera/core.matrix "0.61.0"]
                  [net.mikera/vectorz-clj "0.47.0"]
-                 [com.github.kyleburton/clj-xpath "1.4.3"]]
+                 [com.github.kyleburton/clj-xpath "1.4.3"]
+                 [org.clojure/data.csv "0.1.4"]]
   :plugins [[lein-environ "1.1.0"]]
-  :profiles {:dev     {:resource-paths ["dev"]}
+  :profiles {:dev     {:resource-paths ["dev"]}                       
              :repl    {:resource-paths ["dev"]
 		       :dependencies [[cider/cider-nrepl "0.15.1"]]}
              :test    {:resource-paths ["test" "test/resources"]}
