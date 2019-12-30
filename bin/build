@@ -14,7 +14,7 @@ BRANCH="${TRAVIS_BRANCH:-`git rev-parse --abbrev-ref HEAD | tr / -`}"
 echo Branch: $BRANCH
 
 # ...same for the commit.
-COMMIT="${TRAVIS_COMMIT:-`git rev-parse HEAD`}"
+COMMIT="${TRAVIS_COMMIT:-`git rev-parse --short HEAD`}"
 echo Commit: $COMMIT
 
 # Version is extracted from project.clj so that a meaningful tag can
@@ -35,19 +35,16 @@ fi
 # Travis will build topic branches, but Docker images should not be
 # built for each one because this would result in a *lot* of images
 # during periods of active development.
-if [ "$BRANCH" == "master" ] || [ "$BRANCH" == "develop" ] ; then
+if [ "$BRANCH" == "master" ] || [ "$BRANCH" == "develop" ]; then
 
     # Using the commit SHA will ensure that built images persist on
-    # Docker Hub unless explicitly removed. A more meaningful tag
-    # is also created using the <branch>-<version> but that can be
-    # superseded by subsequent builds.
-    COMMIT_TAG=$REPO:$COMMIT
-    BRANCH_TAG=$REPO:$BRANCH-$VERSION
+    # Docker Hub unless explicitly removed, and will ensure the
+    # built image can be traced back to a code commit.
 
-    echo "Building Docker image for $COMMIT_TAG ($BRANCH_TAG)"
+    TAG=$REPO:$BRANCH-$VERSION-$COMMIT
+    echo "Building Docker image for $TAG"
     lein uberjar
-    docker build --build-arg version=$VERSION -f Dockerfile -t $COMMIT_TAG .
-    docker tag $COMMIT_TAG $BRANCH_TAG
+    docker build --build-arg version=$VERSION -f Dockerfile -t $TAG .
     docker push $REPO
     echo "Building Docker image ... done"
 
