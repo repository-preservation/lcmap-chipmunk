@@ -14,7 +14,7 @@ BRANCH="${TRAVIS_BRANCH:-`git rev-parse --abbrev-ref HEAD | tr / -`}"
 echo Branch: $BRANCH
 
 # ...same for the commit.
-COMMIT="${TRAVIS_COMMIT:-`git rev-parse --short HEAD`}"
+COMMIT=`git rev-parse --short HEAD`
 echo Commit: $COMMIT
 
 # Version is extracted from project.clj so that a meaningful tag can
